@@ -1,0 +1,18 @@
+ [02-Feb-2020 14:22:32 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/gembulwe/public_html/application/controllers/Welcome.php on line 30
+[02-Feb-2020 14:22:34 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/gembulwe/public_html/application/controllers/Welcome.php on line 30
+[02-Feb-2020 14:22:36 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/gembulwe/public_html/application/controllers/Welcome.php on line 30
+[02-Feb-2020 14:22:38 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/gembulwe/public_html/application/controllers/Welcome.php on line 30
+[02-Feb-2020 14:22:39 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/gembulwe/public_html/application/controllers/Welcome.php on line 30
+[02-Feb-2020 14:23:47 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/gembulwe/public_html/application/controllers/Welcome.php on line 30
+[02-Feb-2020 14:23:49 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/gembulwe/public_html/application/controllers/Welcome.php on line 30
+[02-Feb-2020 14:26:32 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/gembulwe/public_html/application/controllers/Dasboard.php on line 55
+[02-Feb-2020 14:26:34 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/gembulwe/public_html/application/controllers/Dasboard.php on line 55
+[02-Feb-2020 14:26:35 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/gembulwe/public_html/application/controllers/Dasboard.php on line 55
+[02-Feb-2020 14:26:41 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/gembulwe/public_html/application/controllers/Dasboard.php on line 55
+[02-Feb-2020 14:34:01 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/gembulwe/public_html/application/controllers/Dasboard.php on line 55
+[02-Feb-2020 14:54:57 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/gembulwe/public_html/application/controllers/Dasboard.php on line 55
+[02-Feb-2020 14:56:04 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/gembulwe/public_html/application/controllers/Welcome.php on line 30
+[21-Feb-2020 17:01:00 Asia/Jakarta] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home/gembulwe/public_html/application/views/Login.php on line 77
+[21-Feb-2020 17:01:03 Asia/Jakarta] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home/gembulwe/public_html/application/views/Login.php on line 77
+[13-Apr-2020 13:27:17 Asia/Jakarta] PHP Fatal error:  Cannot redeclare Grafik_model::grafik_surat_masuk() in /home/gembulwe/public_html/application/models/Grafik_model.php on line 42
+[13-Apr-2020 13:27:20 Asia/Jakarta] PHP Fatal error:  Cannot redeclare Grafik_model::grafik_surat_masuk() in /home/gembulwe/public_html/application/models/Grafik_model.php on line 42
