@@ -49,7 +49,7 @@ class Tdisposisi extends CI_Controller
             );
             $this->template->load('template', 'tdisposisi/tbl_disposisi_read', $data);
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-warniing fade-in">Data Tidak Di Temukan.</div>');
+            $this->session->set_flashdata('message', '<div class="callout callout-warniing fade-in">Data Tidak Di Temukan.</div>');
             redirect(site_url('tdisposisi'));
         }
     }
@@ -123,7 +123,7 @@ class Tdisposisi extends CI_Controller
             );
             $this->template->load('template', 'tdisposisi/tbl_disposisi_form', $data);
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-info fade-in">Data Tidak Di Temukan.</div>');
+            $this->session->set_flashdata('message', '<div class="callout callout-info fade-in">Data Tidak Di Temukan.</div>');
             redirect(site_url('tdisposisi'));
         }
     }
@@ -146,7 +146,7 @@ class Tdisposisi extends CI_Controller
             );
 
             $this->Tdisposisi_model->update($this->input->post('id_disposisi', TRUE), $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
+            $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
             redirect(site_url('tdisposisi'));
         }
     }
@@ -157,10 +157,10 @@ class Tdisposisi extends CI_Controller
 
         if ($row) {
             $this->Tdisposisi_model->delete($id);
-            $this->session->set_flashdata('message', '<div class="alert alert-danger fade-in"><i class="fa fa-check"></i>Data Berhasil Di Hapus</div>');
+            $this->session->set_flashdata('message', '<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>Data Berhasil Di Hapus</div>');
             redirect(site_url('tdisposisi'));
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-warniing fade-in">Ops Something Went Wrong Please Contact Administrator.</div>');
+            $this->session->set_flashdata('message', '<div class="callout callout-warniing fade-in">Ops Something Went Wrong Please Contact Administrator.</div>');
             redirect(site_url('tdisposisi'));
         }
     }

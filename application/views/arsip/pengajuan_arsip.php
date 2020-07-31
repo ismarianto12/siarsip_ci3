@@ -78,9 +78,9 @@
   <?php }elseif($form == 'y'){  ?>
 
 
-    <div class="alert alert-success"><tt><?= keterangan('setting') ?></tt>.</div>
+    <div class="callout callout-success"><tt><?= keterangan('setting') ?></tt>.</div>
     <br />
-    <center><div class="alert alert-info">Pejabat pembuat pengajuan arsip saat ini atas nama : <?= $this->session->nama ?></div></center>
+    <center><div class="callout callout-info">Pejabat pembuat pengajuan arsip saat ini atas nama : <?= $this->session->nama ?></div></center>
     <form action="" method="POST" enctype="multipart/form-data">
       <div class="form-group">
        <label class="col-sm-3"><b>Nama Arsip</b></label>

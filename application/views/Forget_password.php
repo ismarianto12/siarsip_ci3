@@ -83,7 +83,7 @@
     e.preventDefault();
     var email = $('#email').val();
     if (email == '') {
-     $('#notifikasi').html('<div class="alert alert-danger">Password Tidak Boleh Kosong</div>');
+     $('#notifikasi').html('<div class="callout callout-danger">Password Tidak Boleh Kosong</div>');
    }else{
     $.ajax({
       url  : '<?= base_url('Lupa_password/cek_email') ?>',
@@ -92,12 +92,12 @@
       chace: false,
       success:function(data){
        if (data != 'n') {
-         $('#notifikasi').html('<div class="alert alert-success">Informasi Reset password berhasil di kirim ke email : '+email+'</div>'); 
+         $('#notifikasi').html('<div class="callout callout-success">Informasi Reset password berhasil di kirim ke email : '+email+'</div>'); 
        }else{
-        $('#notifikasi').html('<div class="alert alert-warning">Gagal mengirim email, email yang anda di entrikan tidak cocok dengan yang ada di database.</div>');
+        $('#notifikasi').html('<div class="callout callout-warning">Gagal mengirim email, email yang anda di entrikan tidak cocok dengan yang ada di database.</div>');
       }
     },error:function(data){
-      $('#notifikasi').html('<div class="alert alert-danger">Maaf saat ini jaringan terganggu.</div>');
+      $('#notifikasi').html('<div class="callout callout-danger">Maaf saat ini jaringan terganggu.</div>');
     }
   })
 

@@ -122,7 +122,7 @@
                                         chace: false,
                                         success: function(data) {
                                             $('#datatables').DataTable().ajax.reload();
-                                            $('#notifikasi').html('<div class="alert alert-info">Data Berhasil Di Hapus</div>');
+                                            $('#notifikasi').html('<div class="callout callout-info">Data Berhasil Di Hapus</div>');
                                         },
                                         error: function(data) {
                                             swal('Harap Coba Lagi', 'Tidak dapat menghapus', 'danger');

@@ -305,7 +305,7 @@
 									success: function(result) {
 
 										$('#datatables').DataTable().ajax.reload();
-										$('#notifikasi').html('<div class="alert alert-success">Data arsip berhail di hapus.</div>');
+										$('#notifikasi').html('<div class="callout callout-success">Data arsip berhail di hapus.</div>');
 										// $('#tampilan_cari').modal('hide');
 									},
 									error: function(result) {
@@ -340,7 +340,7 @@
 									success: function(data) {
 										$('#datatables').DataTable().ajax.reload();
 										$('.list_data_pengajuan').DataTable().ajax.reload();
-										$('#notifikasi').html('<div class="alert alert-success">Data pengajuan arsip berhasil di terima </div>');
+										$('#notifikasi').html('<div class="callout callout-success">Data pengajuan arsip berhasil di terima </div>');
 										$('#tampilan_cari').modal('hide');
 									},
 									error: function(data) {
@@ -366,7 +366,7 @@
 
 					$('#refresh_table').click(function() {
 						$('.list_data_pengajuan').DataTable().ajax.reload();
-						$('#notifikasi').html('<div class="alert alert-success">Data berhasil di refresh</div>');
+						$('#notifikasi').html('<div class="callout callout-success">Data berhasil di refresh</div>');
 					});
 				});
 			</script>

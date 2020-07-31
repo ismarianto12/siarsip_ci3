@@ -1,6 +1,6 @@
 <div class="col-lg-12">
 <div class="widget flat radius-bordered">
-<div class="widget-header bg-blue">
+<div class="callout callout-info">
     <span class="widget-caption">Edit Profil</span>
 </div>
 <div class="widget-body">

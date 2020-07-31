@@ -1,6 +1,6 @@
 <div class='col-lg-12'>
   <div class='widget'>
-    <div class='widget-header bg-blue'>
+    <div class='callout callout-info'>
       <span class='widget-caption'><?= ucfirst($judul) ?></span>
     </div>
     <?= $this->session->flashdata('message') ?>

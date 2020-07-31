@@ -1,4 +1,4 @@
-<div class="alert alert-warning">Data di bawah berdasarkan bulan dalam satu tahun.</div>
+<div class="callout callout-warning">Data di bawah berdasarkan bulan dalam satu tahun.</div>
 
 <script src="<?= base_url() ?>assets/js/charts/chartjs/Chart.js"></script>  
 

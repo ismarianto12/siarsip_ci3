@@ -212,7 +212,7 @@ var InitiateChartJS = function () {
 
     <div class="col-md-6">
 
-<div class="widget-header bg-blue">
+<div class="callout callout-info">
         <span class="widget-caption">Informasi Login</span>
     </div>
      <table class="table table-striped">

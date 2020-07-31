@@ -58,7 +58,7 @@ class Arsip extends CI_Controller
                 );
                 $this->template->load('template', 'arsip/arsip_read', $data);
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-warniing fade-in">Data Tidak Di Temukan.</div>');
+                $this->session->set_flashdata('message', '<div class="callout callout-warniing fade-in">Data Tidak Di Temukan.</div>');
                 redirect(site_url('arsip'));
             }
         }
@@ -184,10 +184,10 @@ class Arsip extends CI_Controller
             );
             $this->load->view('arsip/arsip_form', $data);
             //  } else {
-            //   $this->session->set_flashdata('message', '<div class="alert alert-info fade-in">Data Tidak Di Temukan.</div>');
+            //   $this->session->set_flashdata('message', '<div class="callout callout-info fade-in">Data Tidak Di Temukan.</div>');
             // }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-success fade-in"><i class="fa fa-check"></i>The Uri Signature Missmacth.</div>');
+            $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>The Uri Signature Missmacth.</div>');
             //redirect(site_url('arsip'));
         }
     }
@@ -253,10 +253,10 @@ class Arsip extends CI_Controller
                         'permision' => $permision
                     );
                     $this->db->update('arsip', $data, array('id_arsip' => $this->input->post('id_arsip')));
-                    $this->session->set_flashdata('message', '<div class="alert alert-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
+                    $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
                     redirect(site_url('arsip?jenis=' . $this->input->post('id_jenis')));
                 } else {
-                    $this->session->set_flashdata('message', $this->upload->display_errors('<div class="alert alert-success fade-in"><i class="fa fa-check"></i>', '</div>'));
+                    $this->session->set_flashdata('message', $this->upload->display_errors('<div class="callout callout-success fade-in"><i class="fa fa-check"></i>', '</div>'));
                     redirect(site_url('arsip?jenis=' . $this->input->post('id_jenis')));
                 }
             } else {
@@ -311,7 +311,7 @@ class Arsip extends CI_Controller
             @unlink('assets/arsip/' . $row->file_arsip);
             @unlink('assets/arsip/' . $row->nama_arsip . '.png');
             $this->Arsip_model->delete($id);
-            //$this->session->set_flashdata('message', '<div class="alert alert-danger fade-in"><i class="fa fa-check"></i>Data Berhasil Di Hapus</div>');
+            //$this->session->set_flashdata('message', '<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>Data Berhasil Di Hapus</div>');
             // redirect(site_url('arsip?jenis='.$row->id_jenis));
             //  echo $id;
             catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'Menghapus data arsip', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
@@ -474,14 +474,14 @@ class Arsip extends CI_Controller
                     ];
                     $cek = $this->db->insert('pengajuan_arsip', $insert);
                     if ($cek) {
-                        $this->session->set_flashdata('pesan', '<div class="alert alert-success"><i class="fa fa-check"></i>Data entri pegajuan arsip berhasil jika penambahan arsip, di setujui oleh bagian administrator maka data arsip akan tampil di master arsip data</div>');
+                        $this->session->set_flashdata('pesan', '<div class="callout callout-success"><i class="fa fa-check"></i>Data entri pegajuan arsip berhasil jika penambahan arsip, di setujui oleh bagian administrator maka data arsip akan tampil di master arsip data</div>');
                         redirect(base_url('arsip/pengajuan_arsip'));
                     } else {
-                        $this->session->set_flashdata('pesan', '<div class="alert alert-danger">Data entri pegajuan arsip gagal</div>');
+                        $this->session->set_flashdata('pesan', '<div class="callout callout-danger">Data entri pegajuan arsip gagal</div>');
                         redirect(base_url('arsip/pengajuan_arsip'));
                     }
                 } else {
-                    $this->session->set_flashdata('pesan', $this->upload->display_errors('<div class="alert alert-danger">', '</div>'));
+                    $this->session->set_flashdata('pesan', $this->upload->display_errors('<div class="callout callout-danger">', '</div>'));
                     redirect(base_url('arsip/pengajuan_arsip'));
                 }
             } else {
@@ -555,7 +555,7 @@ class Arsip extends CI_Controller
             if ($cek) {
                 redirect(base_url('arsip/pengajuan_arsip'));
             } else {
-                $this->session->set_flashdata('pesan', '<div class="alert alert-danger"><i class="fa fa-check"></i>Data berhasil di hapus</div>');
+                $this->session->set_flashdata('pesan', '<div class="callout callout-danger"><i class="fa fa-check"></i>Data berhasil di hapus</div>');
                 redirect(base_url('arsip/pengajuan_arsip'));
             }
         } elseif ($action == 'detail') {

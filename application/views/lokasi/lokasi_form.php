@@ -32,7 +32,7 @@
             $("form").removeAttr("disabled");
             $('#datatables').DataTable().ajax.reload();
           } else if (data.ket == 2) {
-            $('#notifikasi').html('<div class="alert alert-danger">' + data.respon + '</div>');
+            $('#notifikasi').html('<div class="callout callout-danger">' + data.respon + '</div>');
             $('form').css("opacity", "");
             $("form").removeAttr("disabled");
             $('#datatables').DataTable().ajax.reload();

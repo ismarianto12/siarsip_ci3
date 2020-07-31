@@ -1,7 +1,7 @@
 <div class='col-lg-12'>
     <div class='widget'>
 
-        <div class="alert alert-success fade-in"><i class="fa fa-user"></i><?= $judul ?></div>
+        <div class="callout callout-success fade-in"><i class="fa fa-user"></i><?= $judul ?></div>
 
 
         <div class="widget-body">

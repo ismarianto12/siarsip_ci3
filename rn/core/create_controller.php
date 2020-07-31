@@ -89,7 +89,7 @@ $string .= "\n\t
 );
             \$this->template->load('template','$c_url/$v_read', \$data);
         } else {
-            \$this->session->set_flashdata('message', '<div class=\"alert alert-warniing fade-in\">Data Tidak Di Temukan.</div>');
+            \$this->session->set_flashdata('message', '<div class=\"callout callout-warniing fade-in\">Data Tidak Di Temukan.</div>');
             redirect(site_url('$c_url'));
         }
     }
@@ -121,7 +121,7 @@ foreach ($non_pk as $row) {
 $string .= "\n\t    );
 
             \$this->".$m."->insert(\$data);
-            \$this->session->set_flashdata('message', '<div class=\"alert alert-success fade-in\"><i class=\"fa fa-check\"></i>Data Berhasil Di Tambahkan.</div>');
+            \$this->session->set_flashdata('message', '<div class=\"callout callout-success fade-in\"><i class=\"fa fa-check\"></i>Data Berhasil Di Tambahkan.</div>');
             redirect(site_url('$c_url'));
         }
     }
@@ -141,7 +141,7 @@ foreach ($all as $row) {
 $string .= "\n\t    );
              \$this->template->load('template','$c_url/$v_form', \$data);
         } else {
-            \$this->session->set_flashdata('message', '<div class=\"alert alert-info fade-in\">Data Tidak Di Temukan.</div>');
+            \$this->session->set_flashdata('message', '<div class=\"callout callout-info fade-in\">Data Tidak Di Temukan.</div>');
             redirect(site_url('$c_url'));
         }
     }
@@ -160,7 +160,7 @@ foreach ($non_pk as $row) {
 $string .= "\n\t    );
 
             \$this->".$m."->update(\$this->input->post('$pk', TRUE), \$data);
-            \$this->session->set_flashdata('message', '<div class=\"alert alert-success fade-in\"><i class=\"fa fa-check\"></i>Edit Data Berhasil.</div>');
+            \$this->session->set_flashdata('message', '<div class=\"callout callout-success fade-in\"><i class=\"fa fa-check\"></i>Edit Data Berhasil.</div>');
             redirect(site_url('$c_url'));
         }
     }
@@ -171,10 +171,10 @@ $string .= "\n\t    );
 
         if (\$row) {
             \$this->".$m."->delete(\$id);
-            \$this->session->set_flashdata('message', '<div class=\"alert alert-danger fade-in\"><i class=\"fa fa-check\"></i>Data Berhasil Di Hapus</div>');
+            \$this->session->set_flashdata('message', '<div class=\"callout callout-danger fade-in\"><i class=\"fa fa-check\"></i>Data Berhasil Di Hapus</div>');
             redirect(site_url('$c_url'));
         } else {
-            \$this->session->set_flashdata('message', '<div class=\"alert alert-warniing fade-in\">Ops Something Went Wrong Please Contact Administrator.</div>');
+            \$this->session->set_flashdata('message', '<div class=\"callout callout-warniing fade-in\">Ops Something Went Wrong Please Contact Administrator.</div>');
             redirect(site_url('$c_url'));
         }
     }

@@ -53,7 +53,7 @@
    <?php
    $stat= isset($_GET['stat']) ? $_GET['stat'] : '';
    if ($stat == 1) {
-     echo "<div class='alert alert-info'>Anda Berhasil Keluar Silahkan Login Untuk Melanjut kan kembali</div>"; 
+     echo "<div class='callout callout-info'>Anda Berhasil Keluar Silahkan Login Untuk Melanjut kan kembali</div>"; 
    }else{
 
    }

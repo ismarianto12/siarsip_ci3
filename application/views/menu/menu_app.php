@@ -134,7 +134,7 @@
             </div>
   <script>
 $(function(){
-    $('.tampil').html('<br /><div class="alert alert-danger">Icon Menu</div>') ;
+    $('.tampil').html('<br /><div class="callout callout-danger">Icon Menu</div>') ;
     $('.icon_r').click(function(){
      var id = $(this).val();
     $('.modal').modal('hide');
@@ -177,7 +177,7 @@ $(document).ready(function(){
 
 function kosong(){
  $("input[name='checkbox']").val('');
- $('.tampil').html('<br /><div class="alert alert-danger">Icon Menu</div>');
+ $('.tampil').html('<br /><div class="callout callout-danger">Icon Menu</div>');
 }
 
 

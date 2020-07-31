@@ -46,7 +46,7 @@ class Profile extends CI_controller
 						'active' => 'Y',
 					);
 					$this->db->update('login', $data, array('id_user' => $this->session->id_user));
-					$this->session->set_flashdata('message', '<div class="alert alert-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
+					$this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
 					redirect(site_url('login'));
 				} else {
 					$this->session->set_flashdata('message', $this->upload->display_errors('<div class="callout callout-danger">', '</div>'));

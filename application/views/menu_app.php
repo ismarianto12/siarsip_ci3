@@ -1,7 +1,7 @@
 <?php
 $sc = isset($_GET['save']) ? $_GET['save']  : '';
 if ($sc == 'sc') {
-  echo "<div class='alert alert-success'>Perubahan pada settingan menu berhasil di simpan.</div>";
+  echo "<div class='callout callout-success'>Perubahan pada settingan menu berhasil di simpan.</div>";
 }
 echo $this->session->flashdata('pesan');
 ?>
@@ -108,8 +108,8 @@ echo $this->session->flashdata('pesan');
                             <div class="control-group">
                               <div class="radio">
                                 <label>
-                                  <input class="icon_r" type="radio" value="<?= $key ?>">
-                                  <span class="text"><i class="<?= $key ?>"></i><?= $key ?></span>
+                                  <input class="icon_r" type="radio" value="fa <?= $key ?>">
+                                  <span class="text"><i class="<fa ?= $key ?>"></i><?= $key ?></span>
                                 </label>
                               </div>
 
@@ -155,11 +155,11 @@ echo $this->session->flashdata('pesan');
   </div>
   <script>
     $(function() {
-      $('.tampil').html('<br /><div class="alert alert-danger">Icon Menu</div>');
+      $('.tampil').html('<br /><div class="callout callout-danger">Icon Menu</div>');
       $('.icon_r').click(function() {
         var id = $(this).val();
         $('.modal').modal('hide');
-        $('.tampil').html('<div class="control-group"><div class="radio"><label><input id="fa_icon" type="radio" value="' + id + ' fa-fw" checked><span class="text"><i class="' + id + ' fa-fw"></i>' + id + '</span></label></div></div>');
+        $('.tampil').html('<div class="control-group"><div class="radio"><label><input id="fa_icon" type="radio" value="fa ' + id + '" checked><span class="text"><i class="fa ' + id + '"></i>' + id + '</span></label></div></div>');
 
       });
     });
@@ -197,7 +197,7 @@ echo $this->session->flashdata('pesan');
 
     function kosong() {
       $("input[name='checkbox']").val('');
-      $('.tampil').html('<br /><div class="alert alert-danger">Icon Menu</div>');
+      $('.tampil').html('<br /><div class="callout callout-danger">Icon Menu</div>');
     }
   </script>
 
@@ -421,7 +421,7 @@ echo $this->session->flashdata('pesan');
           $has = str_replace('.php', '', $ct);
           $data = $this->db->get_where('menu', array('link' => strtolower($has)));
           if ($data->num_rows() > 0) {
-            echo '<div class="alert alert-danger"><i class="fa fa-check"></i>' . $has . 'Menu ini Sudah Ada </div>';
+            echo '<div class="callout callout-danger"><i class="fa fa-check"></i>' . $has . 'Menu ini Sudah Ada </div>';
           } else {
             echo '  <div class="control-group">
         <div class="radio">

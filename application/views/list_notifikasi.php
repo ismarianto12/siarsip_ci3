@@ -10,7 +10,7 @@
     </a>
     <?php endforeach; }else{ ?>
  
- <div class="alert alert-danger">Tidak ada surat masuk terbaru</div>
+ <div class="callout callout-danger">Tidak ada surat masuk terbaru</div>
     <?php } ?> 
 </div>
 </li>

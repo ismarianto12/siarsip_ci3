@@ -124,7 +124,7 @@
     })
 
     $(function() {
-        $('.no_surat_show').html('<div class="alert alert-success">No surat akan muncul di sini</div>');
+        $('.no_surat_show').html('<div class="callout callout-success">No surat akan muncul di sini</div>');
         $('#id_jenis_surat').change(function() {
             var id_jenis_surat = $(this).val();
             $.ajax({

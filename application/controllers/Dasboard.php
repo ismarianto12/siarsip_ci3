@@ -57,7 +57,7 @@ function ganti_foto($action=''){
      @unlink('assets/img/foto/'.$foto->row()->foto);
 
    }else{
-    echo $this->upload->display_errors('<div class="alert alert-danger">','</div>');
+    echo $this->upload->display_errors('<div class="callout callout-danger">','</div>');
   } 
 }else{
   $x['judul'] = "edit foto profil";

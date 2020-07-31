@@ -51,7 +51,7 @@ class Tbl_surat_keluar extends CI_Controller
       );
       $this->template->load('template', 'tbl_surat_keluar/tbl_surat_keluar_read', $data);
     } else {
-      $this->session->set_flashdata('message', '<div class="alert alert-warniing fade-in">Data Tidak Di Temukan.</div>');
+      $this->session->set_flashdata('message', '<div class="callout callout-warniing fade-in">Data Tidak Di Temukan.</div>');
       redirect(site_url('tbl_surat_keluar'));
     }
   }
@@ -112,10 +112,10 @@ class Tbl_surat_keluar extends CI_Controller
           'id_user' => $this->session->id_user,
         );
         $this->Tbl_surat_keluar_model->insert($data);
-        $this->session->set_flashdata('message', '<div class="alert alert-success fade-in"><i class="fa fa-check"></i>Data Berhasil Di Tambahkan.</div>');
+        $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Data Berhasil Di Tambahkan.</div>');
         redirect(site_url('tbl_surat_keluar'));
       } else {
-        $this->session->set_flashdata('message', $this->upload->display_errors('<div class="alert alert-danger fade-in"><i class="fa fa-check"></i>', '</div>'));
+        $this->session->set_flashdata('message', $this->upload->display_errors('<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>', '</div>'));
         redirect(site_url('tbl_surat_keluar/tambah'));
       }
     }
@@ -143,7 +143,7 @@ class Tbl_surat_keluar extends CI_Controller
       );
       $this->template->load('template', 'tbl_surat_keluar/tbl_surat_keluar_form', $data);
     } else {
-      $this->session->set_flashdata('message', '<div class="alert alert-info fade-in">Data Tidak Di Temukan.</div>');
+      $this->session->set_flashdata('message', '<div class="callout callout-info fade-in">Data Tidak Di Temukan.</div>');
       redirect(site_url('tbl_surat_keluar'));
     }
   }
@@ -179,7 +179,7 @@ class Tbl_surat_keluar extends CI_Controller
         );
 
         $this->Tbl_surat_keluar_model->update($this->input->post('id_surat', TRUE), $data);
-        $this->session->set_flashdata('message', '<div class="alert alert-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
+        $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
         redirect(site_url('tbl_surat_keluar'));
       } else {
         $conf['file_name'] = 'surat_keluar' . date('Y-m-d');
@@ -202,10 +202,10 @@ class Tbl_surat_keluar extends CI_Controller
           );
 
           $this->Tbl_surat_keluar_model->update($this->input->post('id_surat', TRUE), $data);
-          $this->session->set_flashdata('message', '<div class="alert alert-success fade-in"><i class="fa fa-check"></i>Data Berhasil Di Tambahkan.</div>');
+          $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Data Berhasil Di Tambahkan.</div>');
           redirect(site_url('tbl_surat_keluar'));
         } else {
-          $this->session->set_flashdata('message', $this->upload->display_errors('<div class="alert alert-danger fade-in"><i class="fa fa-check"></i>', '</div>'));
+          $this->session->set_flashdata('message', $this->upload->display_errors('<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>', '</div>'));
           redirect(site_url('tbl_surat_keluar/edit/' . $this->input->post('id_surat')));
         }
       }
@@ -248,10 +248,10 @@ class Tbl_surat_keluar extends CI_Controller
         @unlink('assets/surat_keluar/' . $row->file);
       }
       $this->Tbl_surat_keluar_model->delete($id);
-      $this->session->set_flashdata('message', '<div class="alert alert-danger fade-in"><i class="fa fa-check"></i>Data Berhasil Di Hapus</div>');
+      $this->session->set_flashdata('message', '<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>Data Berhasil Di Hapus</div>');
       redirect(site_url('tbl_surat_keluar'));
     } else {
-      $this->session->set_flashdata('message', '<div class="alert alert-warniing fade-in">Ops Something Went Wrong Please Contact Administrator.</div>');
+      $this->session->set_flashdata('message', '<div class="callout callout-warniing fade-in">Ops Something Went Wrong Please Contact Administrator.</div>');
       redirect(site_url('tbl_surat_keluar'));
     }
   }

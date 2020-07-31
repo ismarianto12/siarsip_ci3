@@ -1,209 +1,317 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">  
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('/assets/img/').identitas('favicon') ?>">
-    <title><?= $judul ?></title>
-    <!-- ===== Bootstrap CSS ===== -->
-    <link href="<?= base_url() ?>assets/template/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/template/plugins/components/morrisjs/morris.css" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/template/plugins/components/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-     
-    <link href="<?= base_url() ?>assets/template/css/animate.css" rel="stylesheet">
-    <!-- ===== Custom CSS ===== -->
-    <link href="<?= base_url() ?>assets/template/css/style.css" rel="stylesheet">
-    <!-- ===== Color CSS ===== -->
-    <link href="<?= base_url() ?>assets/template/css/colors/default.css" id="theme" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template/css/sweet-alert.css">
-    <script src="<?= base_url() ?>assets/template/plugins/components/jquery/dist/jquery.min.js"></script>
- 
-    <link rel="stylesheet" href="<?= base_url() ?>assets/template/css/bootstrap-timepicker.min.css"> 
-    <script src="<?= base_url() ?>/assets/template/js/bootstrap-timepicker.min.js"></script>  
-    <link href="<?= base_url() ?>/assets/template/plugins/components/morrisjs/morris.css" rel="stylesheet"> 
-    <!--[if lt IE 9]>
-    <script src="<?= base_url() ?>assets/template/https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="<?= base_url() ?>assets/template/https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->  
+<html>
 
-    <link href="<?= base_url() ?>/assets/template/plugins/components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" /> 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><?= $judul ?></title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/dist/css/skins/_all-skins.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/iCheck/flat/blue.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/morris/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <!-- Date Picker -->
+
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template/css/sweet-alert.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/datepicker/datepicker3.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/daterangepicker/daterangepicker-bs3.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
+    <script src="<?= base_url() ?>/assets/template_lte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
+<script type="text/javascript">
+    function googleTranslateElementInit2() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'id',
+            autoDisplay: false
+        }, 'google_translate_element2');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+
 <style type="text/css">
-    #goog-gt-tt {display:none !important;}
-    .goog-te-banner-frame {display:none !important;}
-    .goog-te-menu-value:hover {text-decoration:none !important;}
-    .goog-text-highlight {background-color:transparent !important;box-shadow:none !important;}
-    body {top:0 !important;}
-    #google_translate_element2 {display:none!important;}
+    .dt-buttons {
+        padding: 10px 10px 10px;
+        background: #ddd;
+        margin-bottom: 20px;
+        margin-left: 10px;
+    }
 </style>
 
-<div id="google_translate_element2"></div>
-<script type="text/javascript">
-    function googleTranslateElementInit2() {new google.translate.TranslateElement({pageLanguage: 'id',autoDisplay: false}, 'google_translate_element2');}
-</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
-
 
 <script type="text/javascript">
-    function GTranslateGetCurrentLang() {var keyValue = document['cookie'].match('(^|;) ?googtrans=([^;]*)(;|$)');return keyValue ? keyValue[2].split('/')[2] : null;}
-    function GTranslateFireEvent(element,event){try{if(document.createEventObject){var evt=document.createEventObject();element.fireEvent('on'+event,evt)}else{var evt=document.createEvent('HTMLEvents');evt.initEvent(event,true,true);element.dispatchEvent(evt)}}catch(e){}}
-    function doGTranslate(lang_pair){if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];if(GTranslateGetCurrentLang() == null && lang == lang_pair.split('|')[0])return;var teCombo;var sel=document.getElementsByTagName('select');for(var i=0;i<sel.length;i++)if(/goog-te-combo/.test(sel[i].className)){teCombo=sel[i];break;}if(document.getElementById('google_translate_element2')==null||document.getElementById('google_translate_element2').innerHTML.length==0||teCombo.length==0||teCombo.innerHTML.length==0){setTimeout(function(){doGTranslate(lang_pair)},500)}else{teCombo.value=lang;GTranslateFireEvent(teCombo,'change');GTranslateFireEvent(teCombo,'change')}}
+    function GTranslateGetCurrentLang() {
+        var keyValue = document['cookie'].match('(^|;) ?googtrans=([^;]*)(;|$)');
+        return keyValue ? keyValue[2].split('/')[2] : null;
+    }
+
+    function GTranslateFireEvent(element, event) {
+        try {
+            if (document.createEventObject) {
+                var evt = document.createEventObject();
+                element.fireEvent('on' + event, evt)
+            } else {
+                var evt = document.createEvent('HTMLEvents');
+                evt.initEvent(event, true, true);
+                element.dispatchEvent(evt)
+            }
+        } catch (e) {}
+    }
+
+    function doGTranslate(lang_pair) {
+        if (lang_pair.value) lang_pair = lang_pair.value;
+        if (lang_pair == '') return;
+        var lang = lang_pair.split('|')[1];
+        if (GTranslateGetCurrentLang() == null && lang == lang_pair.split('|')[0]) return;
+        var teCombo;
+        var sel = document.getElementsByTagName('select');
+        for (var i = 0; i < sel.length; i++)
+            if (/goog-te-combo/.test(sel[i].className)) {
+                teCombo = sel[i];
+                break;
+            } if (document.getElementById('google_translate_element2') == null || document.getElementById('google_translate_element2').innerHTML.length == 0 || teCombo.length == 0 || teCombo.innerHTML.length == 0) {
+            setTimeout(function() {
+                doGTranslate(lang_pair)
+            }, 500)
+        } else {
+            teCombo.value = lang;
+            GTranslateFireEvent(teCombo, 'change');
+            GTranslateFireEvent(teCombo, 'change')
+        }
+    }
 </script>
 
-<body class="mini-sidebar">
-    <!-- ===== Main-Wrapper ===== -->
-    <div id="wrapper">
-      <!--   <div class="preloader">
-            <div class="cssload-speeding-wheel"></div>
-        </div> -->
-        <!-- ===== Top-Navigation ===== -->
-        <nav class="navbar navbar-default navbar-static-top m-b-0">
-            <div class="navbar-header">
-                <a class="navbar-toggle font-20 hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse">
-                    <i class="fa fa-bars"></i>
+<script type="text/javascript">
+    $(function() {
+        var reload = 'yes';
+        $.post('<?= base_url('tsuratmasuk/get_notification') ?>', {
+            reload: reload
+        }, function(respond) {
+            $('.surat_notif').html(respond);
+        });
+    });
+    /*set interval function*/
+    $(function() {
+        $('#surat_masuk_list').html('<div class="callout callout-info">Load data ...</div>');
+        $('#notifikasi_not').click(function() {
+            $.ajax({
+                url: '<?= base_url('tsuratmasuk/get_list') ?>',
+                type: 'post',
+                chace: false,
+                success: function(data) {
+                    $('#surat_masuk_list').html(data);
+                },
+                error: function(data) {
+                    $('#surat_masuk_list').html(data);
+                }
+            });
+        })
+    });
+</script>
+
+<?php $data = $this->properti->user($this->session->id_user); ?>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="<?= site_url('') ?>" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>A</b>LT</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Admin</b>Strator</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
                 </a>
-                <div class="top-left-part">
-                    
-                </div>
-                <ul class="nav navbar-top-links navbar-left hidden-xs">
-                    <li>
-                        <a href="javascript:void(0)" class="sidebartoggler font-20 waves-effect waves-light"><i class="icon-arrow-left-circle"></i></a>
-                    </li>
-                 </ul>
-  
-                <ul class="nav navbar-top-links navbar-right pull-right">
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- Messages: style can be found in dropdown.less-->
+                        <li class="dropdown messages-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="label label-success">Surat Masuk <div class="surat_notif"></div></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <div id="surat_masuk_list"></div>
+                                <li class="footer"><a href="#">Lihat Semua</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown notifications-menu">
+                            <a href="javascript:void(0);" onclick="doGTranslate('id|id');return false;" title="Indonesian" class="gflag nturl dropdown-toggle waves-effect waves-light font-20" data-toggle="dropdown" href="javascript:void(0);">
+                                <img src="<?= base_url('assets/template/plugins/images/id.png') ?>" style="height:20px">
+                            </a>
+                        </li>
+                        <li class="dropdown tasks-menu">
+                            <a href="javascript:void(0);" onclick="doGTranslate('id|en');return false;" title="English" class="gflag nturl dropdown-toggle waves-effect waves-light font-20" data-toggle="dropdown" href="javascript:void(0);">
+                                <img src="<?= base_url('assets/template/plugins/images/en.png') ?>" style="height:20px">
+                            </a>
+                        </li>
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="<?= base_url('assets/img/foto/' . $data['foto']) ?>" class="user-image" alt="User Image" onerror="this.onerror=null;this.src='<?= base_url('assets/img/no_image.jpg') ?>';">
+                                <span class="hidden-xs"><?= $data['nama'] ?></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="<?= base_url('assets/img/foto/' . $data['foto']) ?>" class="img-circle" alt="User Image" onerror="this.onerror=null;this.src='<?= base_url('assets/img/no_image.jpg') ?>';">
+                                    <p>
+                                        <?= ucfirst($this->session->userame) ?> - <?= ucfirst($this->session->level) ?>
+                                        <small>Login terakkhir : <?= date('Y-m-d H:i:s')  ?></small>
+                                    </p>
+                                </li>
 
-                      <li class="dropdown">
-                        <a  id="notifikasi_not" class="dropdown-toggle waves-effect waves-light font-20" data-toggle="dropdown" href="javascript:void(0);">
-                            <i class="icon-speech"></i>
-                            <span class="badge badge-xs badge-danger"><div class="surat_notif"></div></span>
-                        </a>
-                        <ul class="dropdown-menu mailbox animated bounceInDown">
-                            <li>
-                                <div class="drop-title">Data surat masuk.</div>
-                            </li>
-                            
-                           <div id="surat_masuk_list"></div>
-                         </ul>
-                    </li>
-
-
-                    <li class="dropdown"> 
-                        <a href="javascript:void(0);" onclick="doGTranslate('id|id');return false;" title="Indonesian" class="gflag nturl dropdown-toggle waves-effect waves-light font-20" data-toggle="dropdown" href="javascript:void(0);">
-                         <img src="<?= base_url('assets/template/plugins/images/id.png') ?>">
-                     </a> 
-                 </li>
-                 <li class="dropdown"> 
-                   <a href="javascript:void(0);" onclick="doGTranslate('id|en');return false;" title="English" class="gflag nturl dropdown-toggle waves-effect waves-light font-20" data-toggle="dropdown" href="javascript:void(0);">
-                     <img src="<?= base_url('assets/template/plugins/images/en.png') ?>">
-                 </a>
-             </li>
-             
-         </ul>
-     </div>
- </nav>
- 
- <?php $data=$this->db->get_where('login',array('id_user'=>$this->session->id_user))->row_array(); ?>
- <aside class="sidebar">
-    <div class="scroll-sidebar">
-        <div class="user-profile">
-            <div class="dropdown user-pro-body">
-                <div class="profile-image">
-                    <img src="<?= base_url('assets/img/foto/'.$data['foto']) ?>" alt="user-img" class="img-circle" id="image_2" onerror="this.onerror=null;this.src='<?= base_url('assets/img/no_image.jpg') ?>';">
-                    <a href="javascript:void(0);" class="dropdown-toggle u-dropdown text-blue" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <span class="badge badge-danger">
-                            <i class="fa fa-angle-down"></i>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu animated flipInY">
-                        <li><a href="<?= base_url('profile') ?>"><i class="fa fa-user"></i> Profile</a></li>
-                        <li><a href="<?= base_url('histori') ?>"><i class="fa fa-inbox"></i> Log akses</a></li>
-                        <li role="separator" class="divider"></li>
-                        
-                        <li><a href="<?= base_url('logout') ?>"><i class="fa fa-power-off"></i> Logout</a></li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="<?= base_url('profile') ?>" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="<?= base_url('logout') ?>" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Control Sidebar Toggle Button -->
+                        <!-- <li>
+                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                        </li> -->
                     </ul>
                 </div>
-                <p class="profile-text m-t-15 font-16"><a href="javascript:void(0);"> <?= ucfirst($data['nama']) ?></a></p>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="<?= base_url('assets/img/foto/' . $data['foto']) ?>" class="img-circle" alt="User Image" onerror="this.onerror=null;this.src='<?= base_url('assets/img/no_image.jpg') ?>';">
+                    </div>
+                    <div class="pull-left info">
+                        <p><?= $this->session->username ?></p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <!-- search form -->
+                <!-- <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form> -->
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <?= $this->properti->menu_app('Bottom', $this->session->level) ?>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Dashboard
+                    <small>Control panel</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="<?= base_url() ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active"><?= ucfirst(strtolower($judul)) ?></li>
+                </ol>
+            </section>
+            <!-- Small boxes (Stat box) -->
+            <?php
+            //dont change by hand 
+            if ($this->uri->segment(1) == 'dasboard') {
+                echo $contents;
+            } else { ?>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12" style="background: #fff;">
+                            <div class="box" style="padding: 10px 10px 10px;">
+                                <?= $contents ?>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            <?php } ?>
+            <!-- /.content -->
+        </div><!-- /.content-wrapper -->
+        <footer class="main-footer">
+
+            <div id="google_translate_element2"></div>
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.3.0
             </div>
-        </div>
-        <nav class="sidebar-nav"> 
-           <?= main_menu('Bottom',$this->session->level) ?>
-       </nav>
-       
-   </div>
-</aside>
-<!-- ===== Left-Sidebar-End ===== -->
-<!-- ===== Page-Content ===== -->
-<div class="page-wrapper">
-        
-            <!-- ===== Page-Container ===== -->
-            <div class="container-fluid" style="background: #fff"><?= $contents ?>
-        </div>
-        <!-- ===== Page-Container-End ===== -->
-        
-    </div>
-    <!-- ===== Page-Content-End ===== -->
-</div>
+            <strong>Copyright &copy; <?= date('Y') ?><a href="http://almsaeedstudio.com">Template By : Almsaeed Studio</a>.</strong> All rights reserved.
+        </footer>
 
-<script type="text/javascript"> 
-  $(function(){  
-     var reload = 'yes';   
-     $.post('<?= base_url('tsuratmasuk/get_notification') ?>',{reload : reload },function(respond){
-       $('.surat_notif').html(respond);
-     }); 
-  });
- /*set interval function*/
-    $(function(){
-        $('#surat_masuk_list').html('<div class="alert alert-info">Load data ...</div>');
-        $('#notifikasi_not').click(function(){
-         $.ajax({
-           url :'<?= base_url('tsuratmasuk/get_list') ?>',
-           type:'post',
-           chace:false,
-           success:function(data){
-             $('#surat_masuk_list').html(data);
-         },error:function(data){
-             $('#surat_masuk_list').html(data);
-         }
-          }); 
-        })
-    });   
-  </script>
- 
-        <script src="<?= base_url() ?>assets/template/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="<?= base_url() ?>/assets/template/plugins/components/raphael/raphael-min.js"></script>
-        <script src="<?= base_url() ?>/assets/template/plugins/components/morrisjs/morris.js"></script>
-        <!-- ===== Slimscroll JavaScript ===== -->
-        <script src="<?= base_url() ?>assets/template/js/jquery.slimscroll.js"></script>
-        <!-- ===== Wave Effects JavaScript ===== -->
-        <script src="<?= base_url() ?>assets/template/js/waves.js"></script>
-        <!-- ===== Menu Plugin JavaScript ===== -->
-        <script src="<?= base_url() ?>assets/template/js/sidebarmenu.js"></script>
-        <!-- ===== Custom JavaScript ===== -->
-        <script src="<?= base_url() ?>assets/template/js/custom.js"></script>
-        <!-- ===== Plugin JS ===== -->
-        <script src="<?= base_url() ?>assets/template/js/sweet-alert.js"></script>
-        <!-- ===== Style Switcher JS ===== --> 
-        <script src="<?= base_url() ?>/assets/template/plugins/components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
 
-        <script src="<?= base_url() ?>assets/template/plugins/components/styleswitcher/jQuery.style.switcher.js"></script>  
-        <!-- datatable -->
-        <script src="<?= base_url() ?>assets/template/plugins/components/datatables/jquery.dataTables.min.js"></script>
+    </div><!-- ./wrapper -->
 
-        <script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.flash.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-        <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js"></script> 
-        <script src="<?= base_url('assets/template') ?>/plugins/components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-          
-    </body>
+    <!-- jQuery 2.1.4 -->
+    <!-- jQuery UI 1.11.4 -->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script src="<?= base_url() ?>assets/template/js/sweet-alert.js"></script>
 
-    
-    </html>
+    <script src="<?= base_url() ?>assets/template/plugins/components/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url() ?>assets/template_lte/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js"></script>
+
+    <script>
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="<?= base_url() ?>/assets/template_lte/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+
+    <script src="<?= base_url() ?>/assets/template_lte/plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="<?= base_url() ?>/assets/template_lte/dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="<?= base_url() ?>/assets/template_lte/dist/js/demo.js"></script>
+</body>
+
+</html>

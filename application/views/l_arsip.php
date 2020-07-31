@@ -101,7 +101,7 @@
 
     <?php
 else:
-    echo '<br /><br />   <div class="alert alert-danger">Maaf saat ini data tidak tersedia</div>'; 
+    echo '<br /><br />   <div class="callout callout-danger">Maaf saat ini data tidak tersedia</div>'; 
 endif;
 
     }

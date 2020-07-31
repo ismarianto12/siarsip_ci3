@@ -7,8 +7,6 @@
  */
 class Setting extends CI_controller
 {
-
-
   function __construct()
   {
     parent::__construct();
@@ -49,7 +47,7 @@ class Setting extends CI_controller
           $id_urut = $row['urutan'];
         }
         // $this->db->query("INSERT into menu VALUES('','0','".$_POST['label']."', '".$link."','Ya','Bottom','".$row['urutan']."')");
-        $icon = ($this->input->post('icon')) ? $_POST['icon'] : 'icon-list fa-fw';
+        $icon = ($this->input->post('icon')) ? $_POST['icon'] : 'fa fa-list';
         $insert = [
           'id_parent' => '0',
           'nama_menu' => $this->input->post('label'),

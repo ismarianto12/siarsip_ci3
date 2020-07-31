@@ -54,7 +54,7 @@ class Tsuratmasuk extends CI_Controller
       );
       $this->template->load('template', 'tsuratmasuk/tbl_surat_masuk_read', $data);
     } else {
-      $this->session->set_flashdata('message', '<div class="alert alert-warniing fade-in">Data Tidak Di Temukan.</div>');
+      $this->session->set_flashdata('message', '<div class="callout callout-warniing fade-in">Data Tidak Di Temukan.</div>');
       redirect(site_url('tsuratmasuk'));
     }
   }

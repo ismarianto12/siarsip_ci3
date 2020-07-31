@@ -33,7 +33,7 @@
             $('.main_app').hide().slideUp();
             $('#datatables').DataTable().ajax.reload();
           } else if (data.ket == 2) {
-            $('#notifikasi').html('<div class="alert alert-danger">' + data.respon + '</div>');
+            $('#notifikasi').html('<div class="callout callout-danger">' + data.respon + '</div>');
             $('form').css("opacity", "");
             $("form").removeAttr("disabled");
             $('#datatables').DataTable().ajax.reload();
@@ -49,7 +49,7 @@
 
 <div class='col-lg-12'>
   <div class='widget'>
-    <div class='widget-header bg-blue'>
+    <div class='callout callout-info'>
       <span class='widget-caption'><?= ucfirst($judul) ?></span>
     </div>
     <div class='widget-body'>
@@ -76,7 +76,7 @@
         </div>
         <div class="form-group">
 
-          <span class="alert alert-danger">
+          <span class="callout callout-danger">
             <i class="fa fa-info"></i>
             *** File yang dapat di upload docx Zip,gif,jpg,png,jpeg,PNG,pdf,PDF,doc,docx,mp4,mp3,MP3;
           </span>

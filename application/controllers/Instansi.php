@@ -94,7 +94,7 @@ class Instansi extends CI_Controller
       );
       $this->template->load('template', 'instansi/instansi_read', $data);
     } else {
-      $this->session->set_flashdata('message', '<div class="alert alert-warniing fade-in">Data Tidak Di Temukan.</div>');
+      $this->session->set_flashdata('message', '<div class="callout callout-warniing fade-in">Data Tidak Di Temukan.</div>');
       redirect(site_url('instansi'));
     }
   }
@@ -125,7 +125,7 @@ class Instansi extends CI_Controller
             'jabatan' => $this->input->post('jabatan'),
           );
           $this->db->update('instansi', $data);
-          $this->session->set_flashdata('message', '<div class="alert alert-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
+          $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
           redirect(site_url('instansi'));
         } else {
 
@@ -186,7 +186,7 @@ class Instansi extends CI_Controller
 
           $update_data  = array_merge($data, $hasil_gambar1, $hasil_gambar2);
           $this->db->update('instansi', $update_data);
-          $this->session->set_flashdata('message', '<div class="alert alert-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
+          $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
           redirect(site_url('instansi'));
           /*favicon*/
         }
@@ -211,7 +211,7 @@ class Instansi extends CI_Controller
 
           );
           $this->db->insert('instansi', $data);
-          $this->session->set_flashdata('message', '<div class="alert alert-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
+          $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
           redirect(site_url('instansi'));
         } else {
 
@@ -259,7 +259,7 @@ class Instansi extends CI_Controller
           );
           $insert  = array_merge($data, $hasil_gambar1, $hasil_gambar2);
           $this->db->insert('instansi', $insert);
-          $this->session->set_flashdata('message', '<div class="alert alert-success fade-in"><i class="fa fa-check"></i>Data instansi berhasil di update.</div>');
+          $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Data instansi berhasil di update.</div>');
           redirect(site_url('instansi'));
         }
       }
@@ -274,10 +274,10 @@ class Instansi extends CI_Controller
 
     if ($row) {
       $this->Instansi_model->delete($id);
-      $this->session->set_flashdata('message', '<div class="alert alert-danger fade-in"><i class="fa fa-check"></i>Data Berhasil Di Hapus</div>');
+      $this->session->set_flashdata('message', '<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>Data Berhasil Di Hapus</div>');
       redirect(site_url('instansi'));
     } else {
-      $this->session->set_flashdata('message', '<div class="alert alert-warniing fade-in">Ops Something Went Wrong Please Contact Administrator.</div>');
+      $this->session->set_flashdata('message', '<div class="callout callout-warniing fade-in">Ops Something Went Wrong Please Contact Administrator.</div>');
       redirect(site_url('instansi'));
     }
   }

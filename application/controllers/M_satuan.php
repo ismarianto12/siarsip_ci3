@@ -55,7 +55,7 @@ class M_satuan extends CI_Controller
             );
             $this->template->load('template', 'm_satuan/m_satuan_read', $data);
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-warniing fade-in">Data Tidak Di Temukan.</div>');
+            $this->session->set_flashdata('message', '<div class="callout callout-warniing fade-in">Data Tidak Di Temukan.</div>');
             redirect(site_url('m_satuan'));
         }
     }
@@ -114,7 +114,7 @@ class M_satuan extends CI_Controller
             );
             $this->load->view('m_satuan/m_satuan_form', $data);
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-info fade-in">Data Tidak Di Temukan.</div>');
+            $this->session->set_flashdata('message', '<div class="callout callout-info fade-in">Data Tidak Di Temukan.</div>');
             redirect(site_url('m_satuan'));
         }
     }
@@ -156,10 +156,10 @@ class M_satuan extends CI_Controller
         if ($row) {
             catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'menghapus satuan arsip.', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
             $this->M_satuan_model->delete($id);
-            $this->session->set_flashdata('message', '<div class="alert alert-danger fade-in"><i class="fa fa-check"></i>Data Berhasil Di Hapus</div>');
+            $this->session->set_flashdata('message', '<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>Data Berhasil Di Hapus</div>');
             redirect(site_url('m_satuan'));
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-warniing fade-in">Ops Something Went Wrong Please Contact Administrator.</div>');
+            $this->session->set_flashdata('message', '<div class="callout callout-warniing fade-in">Ops Something Went Wrong Please Contact Administrator.</div>');
             redirect(site_url('m_satuan'));
         }
     }

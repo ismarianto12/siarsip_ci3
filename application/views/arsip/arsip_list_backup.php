@@ -38,11 +38,11 @@
 
 <?php
         if ($jenis =='') {
-         echo '<div class="alert alert-warning">Silahkan pilih data di combo box untuk menampilkan data</div>';
+         echo '<div class="callout callout-warning">Silahkan pilih data di combo box untuk menampilkan data</div>';
      }else{
         if ($jenis !='') {
             $nama_arsip = $this->Arsip_model->get_jenis($jenis);
-            echo '<div class="alert alert-info">Jenis arsip '.ucfirst($nama_arsip).'</div>';
+            echo '<div class="callout callout-info">Jenis arsip '.ucfirst($nama_arsip).'</div>';
         };
         ?>
 
