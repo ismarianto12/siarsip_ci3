@@ -61,7 +61,7 @@
              <div class='panel-wrapper collapse in' aria-expanded='true'>
                  <div class='panel-body'>
                      <?= $this->session->flashdata('message') ?>
-                     <form to="<?php echo $action; ?>" id="simpan" method="post" enctype="multipart/form-data">
+                     <form to="<?php echo $action; ?>" id="simpan" method="post" class="form-horizontal" enctype="multipart/form-data">
                          <div class='form-body'>
                              ** ) Harap Isikan data yang di butuhkan pada form.
                              <br /><br /><br /><br />
