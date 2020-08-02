@@ -57,6 +57,9 @@
         background: #ddd;
         margin-bottom: 20px;
         margin-left: 10px;
+    } 
+    div.dt-buttons {
+        clear: both;
     }
 </style>
 

@@ -35,6 +35,8 @@
             </tr>
           </thead>
         </table>
+        <hr />  
+        <br /> 
         <script type="text/javascript">
           $(document).ready(function() {
             $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings) {
