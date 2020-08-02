@@ -300,21 +300,21 @@
             <div class="form-group">
               <label for="varchar" class='control-label col-md-3'><b>Tujuan Disposisi</b></label>
               <div class='col-md-9'>
-                <textarea class="form-control" name="tujuan" cols="12" rows="10"></textarea>
+                <textarea class="form-control" name="tujuan" cols="12" rows="10" required></textarea>
               </div>
             </div>
 
             <div class="form-group">
               <label for="timestamp" class='control-label col-md-3'><b>Isi Disposisi</b></label>
               <div class='col-md-9'>
-                <textarea class="form-control" name="isi_disposisi" id="isi_disposisi"></textarea>
+                <textarea class="form-control" name="isi_disposisi" id="isi_disposisi" required></textarea>
               </div>
             </div>
 
             <div class="form-group">
               <label for="timestamp" class='control-label col-md-3'><b>Batas Waktu</b></label>
               <div class='col-md-9'>
-                <input type="date" class="form-control" name="batas_waktu" id="batas_waktu" placeholder="Batas Waktu.." value="" />
+                <input type="date" class="form-control" name="batas_waktu" id="batas_waktu" placeholder="Batas Waktu.." value="" required/>
               </div>
             </div>
             <div class="form-group">

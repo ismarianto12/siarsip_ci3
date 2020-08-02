@@ -84,7 +84,7 @@ class Tdisposisi extends CI_Controller
                     'batas_waktu' => $this->input->post('batas_waktu', TRUE),
                     'catatan' => $this->input->post('catatan', TRUE),
                     'id_surat' => $this->input->post('id_surat', TRUE),
-                    'id_user' => $this->sesion->id_user,
+                    'id_user' => $this->session->id_user,
                 );
                 $this->db->update('tbl_disposisi', $data, array('id_surat' => $this->input->post('id_surat')));
             else :

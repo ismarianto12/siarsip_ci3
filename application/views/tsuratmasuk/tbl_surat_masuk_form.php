@@ -72,8 +72,7 @@
                                  </div>
                              </div>
 
-
-                             <div class="form-group">
+                              <div class="form-group">
                                  <label for="varchar" class='control-label col-md-3'><b>No Surat<?php echo form_error('no_surat') ?></b></label>
                                  <div class='col-md-9'>
                                      <input type="text" class="form-control" name="no_surat" id="no_surat" placeholder="No Surat" value="<?php echo $no_surat; ?>" />
