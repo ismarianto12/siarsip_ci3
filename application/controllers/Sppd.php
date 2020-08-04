@@ -33,12 +33,10 @@ class Sppd extends CI_Controller
 
 	function cetakdta($id)
 	{
-		error_reporting(0);
 		$this->load->library('odf');
 		$odf = new odf('assets/odt/surat_sppd.odt');
 		$odf->setVars('d_pengesahan', 'cucok');
 		$odf->setVars('nama_pejabat', 'cucok');
-
 
 		$odf->exportAsAttachedFile('ss' . '_' . 'ss' . '.odt');
 	}
@@ -58,19 +56,26 @@ class Sppd extends CI_Controller
 			echo 'response data null';
 			die;
 		}
-		$pdf = new mPdf();
-		$pdf->AddPage('P');
+		// $pdf = new mPdf();
+		// $pdf->AddPage('P');
 
+		// $render = [
+		// 	'judul' => 'cetak data sspd',
+		// 	'sppd'  => $data->row_array(),
+		// ];
+		// $html = $this->load->view('sppd/sppd_pdf', $render, TRUE);
+
+		// $pdf->SetTitle('Surat Perjalanan Dinas');
+		// $pdf->WriteHTML($html);
+		// $pdf->Output('Surat Perjalanan Dinas' . date('Y-m-d H:i:s') . '.pdf', 'I');
+		// ob_end_flush();
+
+		
 		$render = [
 			'judul' => 'cetak data sspd',
 			'sppd'  => $data->row_array(),
-		];
-		$html = $this->load->view('sppd/sppd_pdf', $render, TRUE);
-
-		$pdf->SetTitle('Surat Perjalanan Dinas');
-		$pdf->WriteHTML($html);
-		$pdf->Output('Surat Perjalanan Dinas' . date('Y-m-d H:i:s') . '.pdf', 'I');
-		ob_end_flush();
+		]; 
+		$this->load->view('sppd/sppd_pdf', $render);
 	}
 
 	public function detail($id)

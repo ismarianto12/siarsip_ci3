@@ -61,7 +61,7 @@ else
 	ob_start();
 
 define('EXT', '.php');
-define('TMP_PATH', 'tmp/');
+define('TMP_PATH', 'tmp');
 
 define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
