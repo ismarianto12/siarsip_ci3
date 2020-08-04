@@ -1,5 +1,8 @@
 <?php
 // by ismarianto 
+
+use function PHPSTORM_META\override;
+
 class properti
 {
 
@@ -136,5 +139,50 @@ class properti
     public function getDataArsip($jenis_id)
     {
         return $this->ci->db->select('count(id_arsip) as count')->from('arsip')->where('id_jenis', $jenis_id)->get();
+    }
+
+    //sppd
+
+    public function output($params)
+    {
+        return $this->ci->load->view($params);
+    }
+
+    public function render($params)
+    {
+        $rootPath = $_SERVER['DOCUMENT_ROOT'];
+        $thisPath = dirname($_SERVER['PHP_SELF'] . '/zayed_sspd');
+        $onlyPath = str_replace($rootPath, '', $thisPath);
+        self::override();
+
+        if ($onlyPath == '/zayed_sspd') {
+            self::output($params);
+        } else {
+            print('Directory_forbiden');
+        }
+    }
+
+
+    //code of letter
+    function getCode()
+    {
+        $tahun = date('Y');
+        $data  = $this->ci->db->select_max('id')
+            ->from('sppd')
+            ->get()->row();
+        if ($data->id  > 1) {
+            $nomor_surat = $tahun . '/' . $data->id . '/sspd/';
+            return $nomor_surat;
+        } else {
+            $nomor_surat = $tahun . '/' . 1 . '/sspd/';
+            return $nomor_surat;
+        }
+    }
+
+    //response json
+    public function json(array $params)
+    {
+        http_response_code(200);
+        return json_encode($params);
     }
 }

@@ -1,9 +1,7 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-
+ 
 $active_group = 'default';
-$query_builder = TRUE;
-
+$query_builder = TRUE; 
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
@@ -24,9 +22,4 @@ $db['default'] = array(
 	'stricton' => TRUE,
 	'failover' => array(),
 	'save_queries' => TRUE
-);
-
-
-	// $db['default']['username'] = 'zayed_97';
-	// $db['default']['password'] = 'kotokar319';
-	// $db['default']['database'] = 'fakultas';
+); 

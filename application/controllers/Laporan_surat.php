@@ -11,7 +11,6 @@ class Laporan_surat extends CI_controller{
 		parent::__construct();
 		login_access();
 		hak_akses();
-        
         $this->load->library('Datatables');
 		$this->load->model('Laporan_surat_Model');
 		$this->load->library('form_validation');
@@ -25,8 +24,7 @@ class Laporan_surat extends CI_controller{
 	function surat_keluar(){
 		$x =array('judul'=>'Data Laporan Surat');
 		$this->template->load('template','laporan_surat/laporan_surat_keluar',$x);
-		
-	}
+ 	}
 
 
 	/*funtion json data*/

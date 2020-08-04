@@ -54,6 +54,15 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
+@ini_set('cgi.fix_pathinfo', 0);
+if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
+	ob_start("ob_gzhandler");
+else
+	ob_start();
+
+define('EXT', '.php');
+define('TMP_PATH', 'tmp/');
+
 define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*
@@ -95,7 +104,6 @@ switch (ENVIRONMENT) {
  * Set the path if it is not in the same directory as this file.
  */
 $system_path = 'system';
-
 /*
  *---------------------------------------------------------------
  * APPLICATION DIRECTORY NAME

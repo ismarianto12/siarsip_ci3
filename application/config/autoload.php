@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database', 'email', 'session','template','upload','pdf_tc','Ciqrcode','Properti'); 
+$autoload['libraries'] = array('database', 'email', 'session','template','upload','pdf_tc','Ciqrcode','Properti','CI_Loader'); 
 /*
 | -------------------------------------------------------------------
 |  Auto-load Drivers
@@ -132,3 +132,5 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array();
+
+$autoload['plugin'] = array();

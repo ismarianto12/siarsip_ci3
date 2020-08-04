@@ -108,6 +108,7 @@
 
 <script type="text/javascript">
     $(function() {
+        $('.callout').fadeOut();
         var reload = 'yes';
         $.post('<?= base_url('tsuratmasuk/get_notification') ?>', {
             reload: reload
