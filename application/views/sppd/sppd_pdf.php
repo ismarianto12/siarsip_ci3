@@ -214,8 +214,25 @@
             <td><?= $sppd['description'] ?></td>
 
         </tr>
-
     </table>
+
+    <div style="float: right; width:  50%;text-align: center;">
+        <br />
+        Dikeluarkan di Pada Tanggal
+        : <?= strip_tags(strtoupper(identitas('alamat'))); ?>
+        : <?= tgl_indonesia(date('Y-m-d')) ?>
+        <br /><br />
+        -
+        An. <?= strip_tags(strtoupper(identitas('jabatan'))); ?>
+
+        <br /><br /> <br /><br />
+
+        <?= strip_tags(strtoupper(identitas('nama_pejabat'))); ?> <br />
+        <?= strip_tags(strtoupper(identitas('nip'))); ?>
+
+    </div>
+
+
     <pagebreak></pagebreak>
     <table>
         <tr>
@@ -365,12 +382,13 @@
         : <?= tgl_indonesia(date('Y-m-d')) ?>
         <br /><br />
         -
-        An. Kepala Dinas Kantor Resmi
+        An. <?= strip_tags(strtoupper(identitas('jabatan'))); ?>
+
         <br /><br /> <br /><br />
-    
-        <?= strip_tags(strtoupper(identitas('nama_pejabat'))); ?> 
-        <?= strip_tags(strtoupper(identitas('jabatan'))); ?> 
-        
+
+        <?= strip_tags(strtoupper(identitas('nama_pejabat'))); ?> <br />
+        <?= strip_tags(strtoupper(identitas('nip'))); ?>
+
     </div>
 </div>
 </div>

@@ -110,9 +110,9 @@
     </section>
 </form>
 <script type="text/javascript">
-     $(document).ready(function() {
+    $(document).ready(function() {
         $('#trsppd').submit(function(e) {
-        //    alert('haha');
+            //    alert('haha');
             e.preventDefault();
             $.ajax({
                 url: $(this).attr('action'),
@@ -122,9 +122,13 @@
                 chace: false,
                 success: function(data) {
                     if (data.response == 'y') {
-                        swal('success', 'data berhasil di simpan');
-                    } else if(data.response == 'n'){
-                        swal('errors', data.message);
+                        redirect();
+                    } else if (data.response == 'n') {
+                        swal({
+                            title: "Error",
+                            text: "Error :" + data.message,
+                            type: "error"
+                        })
                     }
                 },
                 error: function(data, xhr, status) {
@@ -133,4 +137,31 @@
             });
         })
     })
+
+
+    ///after data clicked in button
+    function redirect() {
+        swal({
+            title: 'Data berhasil di input ',
+            text: 'Anda kembali kembali kehalamn awal ? , Klik ok  untuk melanjutkan ?',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Konfirmasi lagi',
+            closeOnConfirm: false
+        }).then(function() {
+
+        }).done(function() {
+
+            swal({
+                title: "Process ..",
+                text: "Sedang Mengalihkan ke halaman ",
+                type: "success"
+            }).then(function() {
+                location.href = '/events';
+            });
+        });
+    });
+    }
 </script>
