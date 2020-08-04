@@ -11,8 +11,7 @@
                          <tr>
                              <th width="80px">No</th>
                              <th>No SSPD</th>
-                             <th>Tanggal</th>
-                             <th>Status</th>
+                             <th>Tanggal</th> 
                              <th>Maksud</th>
                              <th>Pemberi Perintah</th>
                              <th>yang di perintah</th>
@@ -66,9 +65,8 @@
                                      "data": "code"
                                  }, {
                                      "data": "date"
-                                 }, {
-                                     "data": "status"
-                                 }, {
+                                 },
+                                 {
                                      "data": "purpose"
                                  },
                                  {

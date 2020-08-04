@@ -22,7 +22,7 @@ class Sppd_model extends CI_Model
 		$this->datatables->from('sppd');
 		// //add this line for join
 		// $this->datatables->join('login', 'login.id_user= table2.field');
-		$this->datatables->add_column('action', anchor(site_url('sppd/detail/$1'), '<i class="fa fa-book"></i>Detail data ', 'class="btn btn-info btn-xs edit"') . anchor(site_url('sppd/print/$1'), '<i class="fa fa-print"></i>Print ', 'class="btn btn-info btn-xs edit"') . "  " . anchor(site_url('sppd/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id');
+		$this->datatables->add_column('action', anchor(site_url('sppd/printdata/$1'), '<i class="fa fa-book"></i>Detail data ', 'class="btn btn-info btn-xs edit"') . anchor(site_url('sppd/printdata/$1'), '<i class="fa fa-print"></i>Print ', 'class="btn btn-info btn-xs edit" target="_blank"') . "  " . anchor(site_url('sppd/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id');
 		return $this->datatables->generate();
 	}
 
