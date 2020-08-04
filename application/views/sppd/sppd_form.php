@@ -139,29 +139,21 @@
     })
 
 
-    ///after data clicked in button
+    ///after data clicked in button 
     function redirect() {
         swal({
-            title: 'Data berhasil di input ',
-            text: 'Anda kembali kembali kehalamn awal ? , Klik ok  untuk melanjutkan ?',
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Konfirmasi lagi',
-            closeOnConfirm: false
-        }).then(function() {
-
-        }).done(function() {
-
-            swal({
-                title: "Process ..",
-                text: "Sedang Mengalihkan ke halaman ",
-                type: "success"
-            }).then(function() {
-                location.href = '/events';
+                title: 'Data berhasil di input ',
+                text: 'Anda kembali kembali kehalamn awal ? , Klik ok  untuk melanjutkan ?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Konfirmasi',
+                closeOnConfirm: false
+            },
+            function() {
+                swal('Mengalihkan .. ', 'Data Sedang di alihkan', 'success');
+                window.location.href = '<?= base_url('sppd') ?>';
             });
-        });
-    });
     }
 </script>

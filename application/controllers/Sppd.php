@@ -39,7 +39,15 @@ class Sppd extends CI_Controller
 		// $odf->setVars('nama_pejabat', 'cucok');
 
 		// $odf->exportAsAttachedFile('ss' . '_' . 'ss' . '.odt');
-  
+		if ($id == '' || $id == 0) {
+			echo 'response data null';
+			die;
+		}
+		$data = $this->Sppd_model->cetak($id);
+		if ($data->num_rows() > 0) { } else {
+			echo 'response data null';
+			die;
+		}
 		$render = [
 			'judul' => 'cetak data sspd',
 			'sppd'  => $data->row_array(),
@@ -75,7 +83,6 @@ class Sppd extends CI_Controller
 		$pdf->WriteHTML($html);
 		$pdf->Output('Surat Perjalanan Dinas' . date('Y-m-d H:i:s') . '.pdf', 'I');
 		ob_end_flush();
-
 	}
 
 	public function detail($id)

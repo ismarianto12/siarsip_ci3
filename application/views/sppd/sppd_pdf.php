@@ -102,23 +102,29 @@
     <br />
 
 
-    <table>
-        <tr>
-            <td>Lembar Ke</td>
-            <td>:</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Kode No</td>
-            <td>:</td>
-            <td><?= $sppd['code'] ?></td>
-        </tr>
-        <tr>
-            <td>Nomor</td>
-            <td>:</td>
-            <td></td>
-        </tr>
-    </table>
+    <div style="float: right; width:  35%;text-align: center;">
+        <table>
+            <tr>
+                <td>Lembar Ke</td>
+                <td>:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Kode No</td>
+                <td>:</td>
+                <td><?= $sppd['code'] ?></td>
+            </tr>
+            <tr>
+                <td>Nomor</td>
+                <td>:</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    <br />
+    <br />
+    
     <br />
     <br />
     <table>
