@@ -55,7 +55,7 @@
                              processing: true,
                              serverSide: true,
                              ajax: {
-                                 "url": "sppd/json",
+                                 "url": "<?= base_url('sppd/json') ?>",
                                  "type": "POST"
                              },
                              columns: [{

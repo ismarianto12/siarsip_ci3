@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="<?= base_url('assets/template_lte/plugins') ?>/select2/select2.css">
 
 <script>
-
     $(function() {
         function dataParserB(data, selected) {
             retval = [{
@@ -39,114 +38,143 @@
         text-align: right;
     }
 </style>
-<form id="trsppd" action="<?= $action ?>" method="POST" class="form-horizontal">
-    <section class="content">
-        <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs" id="myTabs">
-                <li class="active"><a href="#tab_1" data-toggle="tab" id="trsppd_tab_1">Data SPPD</a></li>
-                <li id="wrapInput"></li>
-                <li class="pull-right bg-danger no-margin" style="padding-right:10px ;padding-left:10px ">
-                    <h5 style="font-weight:bold;">
-                    </h5>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <div class="tab-pane active full-height" id="tab_1">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-5">
-                                <label>Pejabat yang memberi perintah</label>
-                                <select id="nip_pejabat" name="nip_pejabat" class="form-control">
-                                </select>
-                                <input type="hidden" name="code" id="code">
+
+
+
+<div class='row'>
+    <div class='col-md-12'>
+        <div class='panel panel-info'>
+            <div class='panel-heading'><?= ucfirst($judul) ?></div>
+            <div class='panel-wrapper collapse in' aria-expanded='true'>
+                <div class='panel-body'>
+                <form id="trsppd" action="<?= $action ?>" method="POST" class="form-horizontal">
+                   <div class='form-body'>
+                            ** ) Harap Isikan data yang di butuhkan pada form.
+                            <br /><br /><br /><br />
+                            <div class="form-group">
+                                <label for="varchar" class='control-label col-md-3'><b>Pejabat yang memberi perintah<?php echo form_error('letter_code') ?></b></label>
+                                <div class='col-md-9'>
+                                    <select id="nip_pejabat" name="nip_pejabat" class="form-control">
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Maksud Perjalanan Dinas</label>
-                        <input type="text" name="purpose" id="purpose" class="form-control sc-input-required" placeholder="Maksud Perjalanan Dinas">
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label>Alat Angkut yang dipergunakan</label>
-                                <input type="text" name="transport" id="transport" class="form-control sc-input-required" placeholder="Alat Angkut yang dipergunakan">
+                            <div class="form-group">
+                                <label for="varchar" class='control-label col-md-3'><b>Maksud Perjalanan Dinas<?php echo form_error('letter_subject') ?></b></label>
+                                <div class='col-md-9'>
+                                    <input type="text" name="purpose" id="purpose" class="form-control sc-input-required" placeholder="Maksud Perjalanan Dinas">
+                                </div>
                             </div>
-                            <div class="col-sm-3">
-                                <label>Tempat Berangkat</label>
-                                <input type="text" name="place_from" id="place_from" class="form-control sc-input-required" placeholder="Tempat Berangkat">
+                            <div class="form-group">
+                                <label for="varchar" class='control-label col-md-3'><b>Alat Angkut yang dipergunakan<?php echo form_error('letter_about') ?></b></label>
+                                <div class='col-md-9'>
+                                    <input type="text" name="transport" id="transport" class="form-control sc-input-required" placeholder="Alat Angkut yang dipergunakan">
+
+                                </div>
                             </div>
-                            <div class="col-sm-3">
-                                <label>Tempat Tujuan</label>
-                                <input type="text" name="place_to" id="place_to" class="form-control sc-input-required" placeholder="Tempat Tujuan">
+                            <div class="form-group">
+                                <label for="varchar" class='control-label col-md-3'><b>Tempat Berangkat<?php echo form_error('letter_from') ?></b></label>
+                                <div class='col-md-9'>
+                                    <input type="text" class="form-control" name="place_from" id="place_from" placeholder="Letter From" value="<?php echo $place_from; ?>" />
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <label>Lama Perjalanan (Hari)</label>
-                                <input type="text" name="length_journey" id="length_journey" class="form-control sc-input-required sc-number" value="1" placeholder="Lama Perjalanan">
+                            <div class="form-group">
+                                <label for="letter_content" class='control-label col-md-3'><b>Tempat Tujuan<?php echo form_error('letter_content') ?></b></label>
+
+                                <div class='col-md-9'>
+                                    <textarea class="form-control" rows="3" name="place_to" id="place_to" placeholder="Letter Content"><?php echo $place_to; ?></textarea>
+                                </div>
                             </div>
-                            <div class="col-sm-2">
-                                <label>Tgl Berangkat</label>
-                                <input type="date" name="date_go" id="date_go" class="form-control sc-input-required sc-date" value="" placeholder="Tgl Berangkat">
+                            <div class="form-group">
+                                <label for="date" class='control-label col-md-3'><b>Lama Perjalanan (Hari)<?php echo form_error('letter_date') ?></b></label>
+                                <div class='col-md-9'>
+                                    <input type="number" class="form-control" name="length_journey" id="length_journey" placeholder="Letter Date" value="<?php echo $length_journey; ?>" />
+                                </div>
                             </div>
-                            <div class="col-sm-2">
-                                <label>Tgl Kembali</label>
-                                <input type="date" name="date_back" id="date_back" class="form-control sc-input-required sc-date" value="" placeholder="Tgl Kembali">
+                            <div class="form-group">
+                                <label for="varchar" class='control-label col-md-3'><b>Tgl Berangkat<?php echo form_error('code') ?></b></label>
+                                <div class='col-md-9'>
+                                    <input type="date" class="form-control" name="date_go" id="date_go" placeholder="Code" value="<?php echo $code; ?>" />
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label>Pejabat yang di perintah</label>
-                                <select id="nip_diperintah" name="nip_leader" class="form-control">
-                                </select>
+                            <div class="form-group">
+                                <label for="date" class='control-label col-md-3'><b>Tgl Kembali<?php echo form_error('date') ?></b></label>
+                                <div class='col-md-9'>
+                                    <input type="date" class="form-control" name="date_back" id="date_back" placeholder="Date" value="<?php echo $date; ?>" />
+                                </div>
                             </div>
-                            <div class="col-sm-2">
-                                <label>Tingkat Perjalanan</label>
-                                <input type="text" name="rate_travel" id="rate_travel" class="form-control sc-input-required" placeholder="Tingkat Perjalanan">
+                            <div class="form-group">
+                                <label for="varchar" class='control-label col-md-3'><b>Pejabat yang di perintah<?php echo form_error('nip_pejabat') ?></b></label>
+                                <div class='col-md-9'>
+                                    <select id="nip_diperintah" name="nip_leader" class="form-control">
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Pengikut &nbsp;&nbsp;<small style="opacity:.7"><i>(optional)</i></small></label>
-                        <!-- <input type="text" name="nip" id="nip" class="form-control sc-select-multi" placeholder="Pengikut" data-sf="LoadNip"> -->
-                        <select class="form-control multiplepegawai" name="nip">
-                            <?php foreach ($this->db->get('pegawai')->result_array() as $list) { ?>
-                                <option value="<?= $list['id'] ?>"><?= $list['nama'] ?> - <?= $list['nip'] ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <label>Instansi (Pembebanan Anggaran)</label>
-                                <input type="text" name="government" id="government" class="form-control sc-input-required" placeholder="Instansi (Pembebanan Anggaran)">
+                            <div class="form-group">
+                                <label for="varchar" class='control-label col-md-3'><b>Tingkat Perjalanan<?php echo form_error('rate_travel') ?></b></label>
+                                <div class='col-md-9'>
+                                    <input type="text" class="form-control" name="rate_travel" id="rate_travel" placeholder="Nip Leader" value="<?php echo $rate_travel; ?>" />
+                                </div>
                             </div>
-                            <div class="col-sm-2">
-                                <label>Mata Aggaran</label>
-                                <input type="text" name="budget_from" id="budget_from" class="form-control sc-input-required" placeholder="Mata Aggaran">
+                            <div class="form-group">
+                                <label for="varchar" class='control-label col-md-3'><b>Pengikut<?php echo form_error('nip') ?></b></label>
+                                <div class='col-md-9'>
+                                    <select class="form-control multiplepegawai" name="nip">
+                                        <?php foreach ($this->db->get('pegawai')->result_array() as $list) { ?>
+                                            <option value="<?= $list['id'] ?>"><?= $list['nama'] ?> - <?= $list['nip'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Keterangan Lain &nbsp;&nbsp;<small style="opacity:.7"><i>(optional)</i></small></label>
-                        <input type="text" name="description" id="description" class="form-control" placeholder="Keterangn Lain">
-                    </div>
-                    <hr />
-                    <div class="form-group">
-                        <label>Dasar Surat</label>
-                        <input type="text" name="letter_content" id="letter_content" class="form-control  sc-input-required" placeholder="Dasar Surat">
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="trsppd" name="cmdSave">Simpan</button>
+                            <div class="form-group">
+                                <label for="nip" class='control-label col-md-3'><b>Instansi (Pembebanan Anggaran)<?php echo form_error('nip') ?></b></label>
+
+                                <div class='col-md-9'>
+                                    <input type="text" name="government" id="government" class="form-control sc-input-required" placeholder="Instansi (Pembebanan Anggaran)" value="<?= $goverment ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="budget_from" class='control-label col-md-3'><b>Mata Aggaran<?php echo form_error('budget_from') ?></b></label>
+                                <div class='col-md-9'>
+                                    <input type="text" name="budget_from" id="budget_from" class="form-control sc-input-required" placeholder="Mata Aggaran" value="<?= $budget_from ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="varchar" class='control-label col-md-3'><b>Keterangan<?php echo form_error('description') ?></b></label>
+                                <div class='col-md-9'>
+                                    <input type="text" name="description" id="description" value="<?= $description ?>" class="form-control" placeholder="Keterangn Lain">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="varchar" class='control-label col-md-3'><b>Dasar Surat<?php echo form_error('place_from') ?></b></label>
+                                <div class='col-md-9'>
+                                    <input type="text" name="letter_content" id="letter_content" class="form-control  sc-input-required" placeholder="Dasar Surat" value="<?= $letter_content ?>">
+
+                                </div>
+                            </div>
+                            <input type="hidden" name="id" value="<?php echo $id; ?>" />
+
+
+                            <div class='form-actions'>
+                                <div class='row'>
+                                    <div class='col-md-12'>
+                                        <div class='row'>
+                                            <div class='col-md-offset-3 col-md-9'>
+                                            <button type="submit" class="btn btn-primary" id="trsppd" name="cmdSave">Simpan</button>
+                                             <a href="<?php echo site_url('sppd') ?>" class="btn btn-default"><i class='fa fa-share'></i>Cancel</a>
+ 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
                 </div>
-            </div><!-- /.tab-content -->
+            </div>
         </div>
-    </section>
-</form>
+    </div>
+</div>
+
 <script type="text/javascript">
     $('.multiplepegawai').select2();
     $(document).ready(function() {
