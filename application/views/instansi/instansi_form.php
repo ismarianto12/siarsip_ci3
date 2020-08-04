@@ -47,6 +47,11 @@
     </div>
 
     <div class="form-group">
+      <label for="varchar">Nip * ) jika ada <?php echo form_error('nip') ?></label>
+      <input type="text" class="form-control" name="nip" id="nip" placeholder="Nip pegawai" value="<?php echo $nip; ?>" />
+    </div>
+
+    <div class="form-group">
       <label for="varchar">Jabatan <?php echo form_error('jabatan') ?></label>
       <input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="Jabatan" value="<?php echo $jabatan; ?>" />
     </div>
