@@ -342,6 +342,17 @@ class Pegawai extends CI_Controller
 		exit();
 	}
 
+
+	public function json_select()
+	{
+		$data = $this->db->get('pegawai');
+		$row = [];
+		foreach ($data->result_array() as $list) {
+			$row[] = ['val' => $list['id'], 'text' => $list['nama'] . '-' . $list['nip']];
+		}
+		echo json_encode($row,JSON_PRETTY_PRINT);
+	}
+
 	public function word()
 	{
 		header("Content-type: application/vnd.ms-word");

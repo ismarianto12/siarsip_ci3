@@ -1,3 +1,35 @@
+<script src="<?= base_url('assets/template/js/tinyselect.js') ?>"></script>
+<link rel="stylesheet" href="<?= base_url('assets/template/css/tinyselect.css') ?>">
+<script src="<?= base_url('assets/template_lte/plugins') ?>/select2/select2.full.min.js"></script>
+
+<link rel="stylesheet" href="<?= base_url('assets/template_lte/plugins') ?>/select2/select2.min.css">
+<link rel="stylesheet" href="<?= base_url('assets/template_lte/plugins') ?>/select2/select2.css">
+
+<script>
+
+    $(function() {
+        function dataParserB(data, selected) {
+            retval = [{
+                val: "-1",
+                text: "---"
+            }];
+            data.forEach(function(v) {
+                retval.push(v);
+            });
+            return retval;
+        }
+        $("#nip_pejabat").tinyselect({
+            dataUrl: "<?= base_url('pegawai/json_select') ?>",
+            dataParser: dataParserB
+        });
+        $("#nip_diperintah").tinyselect({
+            dataUrl: "<?= base_url('pegawai/json_select') ?>",
+            dataParser: dataParserB
+        });
+    });
+</script>
+
+
 <style type="text/css">
     .sc-date {
         text-align: center;
@@ -24,8 +56,8 @@
                         <div class="row">
                             <div class="col-sm-5">
                                 <label>Pejabat yang memberi perintah</label>
-                                <input type="text" name="nip_pejabat" id="nip_pejabat" class="form-control sc-input-required sc-select" placeholder="Pejabat yang memberi perintah" data-sf="LoadNip">
-                                <input type="hidden" name="cPageSource" id="cPageSource" value="">
+                                <select id="nip_pejabat" name="nip_pejabat" class="form-control">
+                                </select>
                                 <input type="hidden" name="code" id="code">
                             </div>
                         </div>
@@ -58,19 +90,20 @@
                             </div>
                             <div class="col-sm-2">
                                 <label>Tgl Berangkat</label>
-                                <input type="text" name="date_go" id="date_go" class="form-control sc-input-required sc-date" value="" placeholder="Tgl Berangkat">
+                                <input type="date" name="date_go" id="date_go" class="form-control sc-input-required sc-date" value="" placeholder="Tgl Berangkat">
                             </div>
                             <div class="col-sm-2">
                                 <label>Tgl Kembali</label>
-                                <input type="text" name="date_back" id="date_back" class="form-control sc-input-required sc-date" value="" placeholder="Tgl Kembali">
+                                <input type="date" name="date_back" id="date_back" class="form-control sc-input-required sc-date" value="" placeholder="Tgl Kembali">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
-                                <label>Pegawai yang diperintah</label>
-                                <input type="text" name="nip_leader" id="nip_leader" class="form-control sc-input-required sc-select" placeholder="Pegawai yang diperintah" data-sf="LoadNip">
+                                <label>Pejabat yang di perintah</label>
+                                <select id="nip_diperintah" name="nip_leader" class="form-control">
+                                </select>
                             </div>
                             <div class="col-sm-2">
                                 <label>Tingkat Perjalanan</label>
@@ -80,7 +113,12 @@
                     </div>
                     <div class="form-group">
                         <label>Pengikut &nbsp;&nbsp;<small style="opacity:.7"><i>(optional)</i></small></label>
-                        <input type="text" name="nip" id="nip" class="form-control sc-select-multi" placeholder="Pengikut" data-sf="LoadNip">
+                        <!-- <input type="text" name="nip" id="nip" class="form-control sc-select-multi" placeholder="Pengikut" data-sf="LoadNip"> -->
+                        <select class="form-control multiplepegawai" name="nip">
+                            <?php foreach ($this->db->get('pegawai')->result_array() as $list) { ?>
+                                <option value="<?= $list['id'] ?>"><?= $list['nama'] ?> - <?= $list['nip'] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <div class="row">
@@ -110,6 +148,7 @@
     </section>
 </form>
 <script type="text/javascript">
+    $('.multiplepegawai').select2();
     $(document).ready(function() {
         $('#trsppd').submit(function(e) {
             //    alert('haha');
