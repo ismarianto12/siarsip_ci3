@@ -10,7 +10,7 @@ class Sppd extends CI_Controller
 		login_access();
 		// hak_akses(); 
 		$this->load->model(['Sppd_model', 'Pegawai_model']);
-		$this->load->library(['form_validation', 'datatables', 'mpdf']);
+		$this->load->library(['form_validation', 'datatables', 'Mpdf']);
 	}
 
 	public function index()
