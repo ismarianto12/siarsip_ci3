@@ -59,7 +59,7 @@
                                  "type": "POST"
                              },
                              columns: [{
-                                     "data": "id",
+                                     "data": "sppd_id",
                                      "orderable": false
                                  }, {
                                      "data": "code"

@@ -107,7 +107,7 @@
             <tr>
                 <td>Lembar Ke</td>
                 <td>:</td>
-                <td></td>
+                <td>1</td>
             </tr>
             <tr>
                 <td>Kode No</td>
@@ -122,6 +122,9 @@
         </table>
     </div>
 
+    <br />
+    <br />
+    
     <br />
     <br />
     
@@ -181,7 +184,7 @@
         <tr>
             <td>7. Lamanya Perjalanan Dinas</td>
             <td>:</td>
-            <td><?= $sppd['length_journey'] ?></td>
+            <td><?= $sppd['length_journey'] ?> / Hari</td>
         </tr>
 
         <tr>
@@ -289,7 +292,7 @@
 
 
     <div class="center">
-        MEMERINTAHKAN :
+       <b>  MEMERINTAHKAN </b>
     </div>
     <br /><br />
     <table>
