@@ -70,7 +70,7 @@ class Sppd extends CI_Controller
 				echo 'response data null';
 				die;
 			}
-			$pdf = new mPdf();
+			$pdf = new mpdf();
 			$pdf->AddPage('P');
 
 			$render = [
@@ -247,8 +247,8 @@ class Sppd extends CI_Controller
 		if ($row) {
 			$data = array(
 				'judul' => 'Data SPPD',
-				'button' => 'Update', 
-			    'kode_surat' => $this->properti->getCode(),
+				'button' => 'Update',
+				'kode_surat' => $this->properti->getCode(),
 				'action' => site_url('sppd/edit_data/' . $row->id),
 				'id' => set_value('id', $row->id),
 				'letter_code' => set_value('letter_code', $row->letter_code),
