@@ -15,7 +15,7 @@ class Sppd extends CI_Controller
 		parent::__construct();
 		login_access();
 		// hak_akses(); 
-		$this->load->model(['Sppd_model','Pegawai_model']);
+		$this->load->model(['Sppd_model', 'Pegawai_model']);
 		$this->load->library(['form_validation', 'datatables', 'mpdf']);
 	}
 
@@ -58,31 +58,35 @@ class Sppd extends CI_Controller
 
 
 
-	public function printdata($id)
+	public function printdata($id, $key = NULL)
 	{
-		ob_start();
-		if ($id == '' || $id == 0) {
-			echo 'response data null';
-			die;
-		}
-		$data = $this->Sppd_model->cetak($id);
-		if ($data->num_rows() > 0) { } else {
-			echo 'response data null';
-			die;
-		}
-		$pdf = new mPdf();
-		$pdf->AddPage('P');
+		if ($key == $this->properti->key($id)) {
 
-		$render = [
-			'judul' => 'cetak data sspd',
-			'sppd'  => $data->row_array(),
-		];
-		$html = $this->load->view('sppd/sppd_pdf', $render, TRUE);
+			ob_start();
+			if ($id == '' || $id == 0) {
+				echo 'response data null';
+				die;
+			}
+			$data = $this->Sppd_model->cetak($id);
+			if ($data->num_rows() > 0) { } else {
+				echo 'response data null';
+				die;
+			}
+			$pdf = new mPdf();
+			$pdf->AddPage('P');
 
-		$pdf->SetTitle('Surat Perjalanan Dinas');
-		$pdf->WriteHTML($html);
-		$pdf->Output('Surat Perjalanan Dinas' . date('Y-m-d H:i:s') . '.pdf', 'I');
-		ob_end_flush();
+			$render = [
+				'judul' => 'cetak data sspd',
+				'sppd'  => $data->row_array(),
+			];
+			$html = $this->load->view('sppd/sppd_pdf', $render, TRUE);
+			$pdf->SetTitle('Surat Perjalanan Dinas');
+			$pdf->WriteHTML($html);
+			$pdf->Output('Surat Perjalanan Dinas' . date('Y-m-d H:i:s') . '.pdf', 'I');
+			ob_end_flush();
+		} else { 
+			echo 'data tidak terparsing dengan baik : '. $this->properti->key($id);
+		}
 	}
 
 	public function detail($id)
@@ -182,7 +186,7 @@ class Sppd extends CI_Controller
 	public function tambah_data()
 	{
 
-		$diperintah = implode(',', $this->input->post('nip')); 
+		$diperintah = implode(',', $this->input->post('nip'));
 		$this->_rules();
 		$letter_code = $this->properti->getCode();
 		if ($this->form_validation->run() == FALSE) {
@@ -305,8 +309,8 @@ class Sppd extends CI_Controller
 			echo $this->properti->json($data);
 			die;
 		} else {
-			
-		    $diperintah = implode(',', $this->input->post('nip')); 
+
+			$diperintah = implode(',', $this->input->post('nip'));
 			$data = [
 				'nip_pejabat' => $this->input->post('nip_pejabat'),
 				'letter_code' => ($this->input->post('letter_code')) ? $this->input->post('letter_code') : 0,

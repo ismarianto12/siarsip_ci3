@@ -185,4 +185,16 @@ class properti
         http_response_code(200);
         return json_encode($params);
     }
+
+    public function parsing($parsing)
+    {
+        $arr = explode(',', '\'' . $parsing . '\'');
+        $sc  = implode('\',\'', $arr);
+        return $sc;
+    }
+
+    public function key($key)
+    {
+       return sha1('ismarianto_zayed'.md5('$1'));
+    }
 }

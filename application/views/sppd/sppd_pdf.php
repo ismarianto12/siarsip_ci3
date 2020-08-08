@@ -146,13 +146,13 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;a. Pangkat dan Golongan</td>
             <td>:</td>
-            <td><?= $sspd['jabatan_pimpinan'] ?></td>
+            <td><?= $sppd['jabatan_pimpinan'] ?> / <?= $sspd['golongan_pimpinan'] ?></td>
             
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;b. Jabatan</td>
             <td>:</td>
-            <td><?= $sspd['jabatan_pengikut'] ?></td>
+            <td><?= $sppd['jabatan_pengikut'] ?></td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;c. Tingkat menurut peraturan perjalanan</td>
@@ -190,13 +190,13 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;b. Tanggal Berangkat</td>
             <td>:</td>
-            <td><?= $sppd['date_go'] ?></td>
+            <td><?= tgl_indonesia($sppd['date_go']) ?></td>
         </tr>
 
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;b. Tanggal Harus Kembali</td>
             <td>:</td>
-            <td><?= $sppd['date_back'] ?></td>
+            <td><?= tgl_indonesia($sppd['date_back']) ?></td>
 
         </tr>
         <tr>
@@ -303,9 +303,8 @@
             <td>
 
             <?php 
-              $no  = 1;
-              $arr = explode(',','\''.$sppd['nip'].'\'');
-              $sc  = implode('\',\'',$arr); 
+              $no       = 1;
+              $sc       = $this->properti->parsing($sppd['nip']);
               $pengikut = $this->Pegawai_model->getPengikut($sc);
                   foreach($pengikut->result_array() as $listp){ 
             ?>

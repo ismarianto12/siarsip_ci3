@@ -23,7 +23,7 @@ class Sppd_model extends CI_Model
 		// //add this line for join
 		$this->datatables->join('pegawai a', 'a.nip = sppd.nip_pejabat', 'left outer');
 		$this->datatables->join('pegawai b', 'b.nip = sppd.nip_leader', 'left outer');
-		$this->datatables->add_column('action', anchor(site_url('sppd/printdata/$1'), '<i class="fa fa-book"></i>Detail data ', 'class="btn btn-info btn-xs edit"') . anchor(site_url('sppd/printdata/$1'), '<i class="fa fa-print"></i>Print ', 'class="btn btn-info btn-xs edit" target="_blank"') . "  " . anchor(site_url('sppd/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'sppd_id');
+		$this->datatables->add_column('action', anchor(site_url('sppd/printdata/$1'), '<i class="fa fa-book"></i>Detail data ', 'class="btn btn-info btn-xs edit"') . anchor(site_url('sppd/printdata/$1/'.sha1('ismarianto_zayed'.md5('$1'))), '<i class="fa fa-print"></i>Print ', 'class="btn btn-info btn-xs edit" target="_blank"') . "  " . anchor(site_url('sppd/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'sppd_id');
 		return $this->datatables->generate();
 	}
 
@@ -152,6 +152,12 @@ class Sppd_model extends CI_Model
 		
 		a.jabatan as jabatan_pimpinan,
 		b.jabatan as jabatan_pengikut,  
+
+		a.golongan as golongan_pimpinan,
+		b.golongan as golongan_pengikut,  
+
+		
+
 		b.nip, sppd.nip,a.nama as pimpinan,b.nama as pengikut, letter_code,letter_subject,letter_about,letter_from,letter_content,letter_date,code,date,nip_leader,rate_travel,purpose,transport,place_from,place_to,length_journey,date_go,date_back,government,budget,budget_from,description,result_date,result,result_username,file,file_update,status');
 		$this->db->from('sppd');
 		$this->db->join('pegawai a', 'a.nip = sppd.nip_pejabat', 'left outer');

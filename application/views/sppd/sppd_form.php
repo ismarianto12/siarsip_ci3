@@ -1,9 +1,9 @@
 <script src="<?= base_url('assets/template/js/tinyselect.js') ?>"></script>
-<link rel="stylesheet" href="<?= base_url('assets/template/css/tinyselect.css') ?>"> 
+<link rel="stylesheet" href="<?= base_url('assets/template/css/tinyselect.css') ?>">
 
 <!--  -->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<link href="<?= base_url() ?>/assets/template_lte/plugins/select2/select2.min.css" rel="stylesheet" />
+<script src="<?= base_url() ?>/assets/template_lte/plugins/select2/select2.min.js"></script>
 
 <script>
     $(function() {
@@ -56,6 +56,14 @@
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>Pejabat yang memberi perintah<?php echo form_error('letter_code') ?></b></label>
                                 <div class='col-md-9'>
+                                    <?php if ($this->uri->segment(2) == 'edit') {
+                                        $sc       = $this->properti->parsing($nip_pejabat);
+                                        $pengikut = $this->Pegawai_model->getPengikut($sc);
+                                        foreach ($pengikut->result_array() as $listp) {
+                                            echo '<span class="label label-success">' . $listp['nama'] . '-' . $listp['nip'] . '</span> <br />';
+                                        }
+                                    } ?>
+                                    <br />
                                     <select id="nip_pejabat" name="nip_pejabat" class="form-control">
                                     </select>
                                 </div>
@@ -63,13 +71,13 @@
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>Maksud Perjalanan Dinas<?php echo form_error('letter_subject') ?></b></label>
                                 <div class='col-md-9'>
-                                    <input type="text" name="purpose" id="purpose" class="form-control sc-input-required" placeholder="Maksud Perjalanan Dinas">
+                                    <input type="text" name="purpose" id="purpose" class="form-control sc-input-required" placeholder="Maksud Perjalanan Dinas" value="<?= $purpose ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>Alat Angkut yang dipergunakan<?php echo form_error('letter_about') ?></b></label>
                                 <div class='col-md-9'>
-                                    <input type="text" name="transport" id="transport" class="form-control sc-input-required" placeholder="Alat Angkut yang dipergunakan">
+                                    <input type="text" value="<?= $transport ?>" name="transport" id="transport" class="form-control sc-input-required" placeholder="Alat Angkut yang dipergunakan">
 
                                 </div>
                             </div>
@@ -107,6 +115,15 @@
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>Pejabat yang di perintah<?php echo form_error('nip_pejabat') ?></b></label>
                                 <div class='col-md-9'>
+                                    <?php 
+                                      
+                                      $nip_leader = $this->properti->parsing($nip_leader);
+                                      $ldiperintah = $this->Pegawai_model->getPengikut($nip_leader); 
+                                      $lnama       = $ldiperintah->row()->nama;
+                                      $lnip        = $ldiperintah->row()->nip;   
+                                      echo 'pejabat yang di perintah sebelumnya . <br /><span class="label label-success">'.$lnama.'-'.$lnip.'</span> <br />';
+                                    ?>
+                                        <br />
                                     <select id="nip_diperintah" name="nip_leader" class="form-control">
                                     </select>
                                 </div>
@@ -118,8 +135,20 @@
                                 </div>
                             </div>
                             <div class="form-group">
+
                                 <label for="varchar" class='control-label col-md-3'><b>Pengikut<?php echo form_error('nip') ?></b></label>
                                 <div class='col-md-9'>
+                                    <?php if ($this->uri->segment(2) == 'edit') {
+                                        echo '
+                                        Data pengikut yang di pilih sebelum nya .<ul>';
+                                        $sc       = $this->properti->parsing($nip);
+                                        $pengikut = $this->Pegawai_model->getPengikut($sc);
+                                        foreach ($pengikut->result_array() as $listp) {
+                                            echo '<li><span class="label label-success">' . $listp['nama'] . '-' . $listp['nip'] . '</span><br /><br /></li>';
+                                        }
+                                        echo '</ul>'; 
+                                    } ?>
+
                                     <select name="nip[]" class="js-example-basic-multiple form-control" multiple="multiple">
                                         <?php foreach ($this->db->get('pegawai')->result_array() as $list) { ?>
                                             <option value="<?= $list['nip'] ?>"><?= $list['nama'] ?> - <?= $list['nip'] ?></option>
@@ -131,7 +160,7 @@
                                 <label for="nip" class='control-label col-md-3'><b>Instansi (Pembebanan Anggaran)<?php echo form_error('nip') ?></b></label>
 
                                 <div class='col-md-9'>
-                                    <input type="text" name="government" id="government" class="form-control sc-input-required" placeholder="Instansi (Pembebanan Anggaran)" value="<?= $goverment ?>">
+                                    <input type="text" name="government" id="government" class="form-control sc-input-required" placeholder="Instansi (Pembebanan Anggaran)" value="<?= $government ?>">
                                 </div>
                             </div>
                             <div class="form-group">
