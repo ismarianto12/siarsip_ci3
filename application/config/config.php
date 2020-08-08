@@ -58,8 +58,7 @@ $config['index_page'] = '';
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
-//$config['uri_protocol']	= 'REQUEST_URI';
-$config['uri_protocol']	= "PATH_INFO";
+$config['uri_protocol']	= 'REQUEST_URI';
 
 /*
 |--------------------------------------------------------------------------
@@ -528,3 +527,5 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+$config['judul_utama'] = 'Selamat datang di sistem informasi mahasiswa baru.';
+$config['pesan_awal'] = 'Selamat datang di halaman pendaftaran mahasiswa baru';
