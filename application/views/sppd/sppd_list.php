@@ -70,10 +70,10 @@
                                      "data": "purpose"
                                  },
                                  {
-                                     'data': 'nip_pejabat'
+                                     'data': 'pimpinan'
                                  },
                                  {
-                                     'data': 'nip_leader'
+                                     'data': 'pengikut'
                                  },
                                  {
                                      "data": "place_to"

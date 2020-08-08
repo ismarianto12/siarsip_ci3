@@ -132,21 +132,24 @@
         <tr>
             <td>1. Pejabat yang memberi perintah .</td>
             <td>:</td>
-            <td></td>
+            <td><?= $sppd['pimpinan'] ?></td>
         </tr>
 
         <tr>
             <td>2. Nama Pegawai Yang Di Perintah </td>
-            <td>:</td>
-            <td></td>
+            <td>:</td> 
+            <td><?= $sppd['pengikut'] ?></td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;a. Pangkat dan Golongan</td>
             <td>:</td>
+            <td><?= $sspd['jabatan_pimpinan'] ?></td>
+            
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;b. Jabatan</td>
             <td>:</td>
+            <td><?= $sspd['jabatan_pengikut'] ?></td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;c. Tingkat menurut peraturan perjalanan</td>
@@ -207,7 +210,7 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;a. Instansi</td>
             <td>:</td>
-            <td><?= $sppd['goverment'] ?></td>
+            <td><?= $sppd['government'] ?></td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;a. Mata Anggaran</td>
@@ -295,74 +298,41 @@
                 Kepada :
             </td>
             <td>
-                <table>
+
+            <?php 
+              $no  = 1;
+              $arr = explode(',','\''.$sppd['nip'].'\'');
+              $sc  = implode('\',\'',$arr); 
+              $pengikut = $this->Pegawai_model->getPengikut($sc);
+                  foreach($pengikut->result_array() as $listp){ 
+            ?>
+                <table style="margin-left: 30px;">
                     <tr>
-                        <td>1. Nama</td>
+                        <td><?= $no ?>. Nama</td>
                         <td>:</td>
-                        <td>MIRZA RAMADHANY</td>
+                        <td><?= $listp['nama'] ?></td>
                     </tr>
                     <tr>
                         <td>
                             Pangkat / gol</td>
                         <td> :</td>
-                        <td>Pembina Utama Muda / IVc
+                        <td><?= $listp['jabatan'] ?> 
                         </td>
                     </tr>
                     <tr>
                         <td>
                             NIP </td>
                         <td>:</td>
-                        <td>1958060519860811001</td>
+                        <td><?= $listp['nip'] ?></td>
                     </tr>
                     <tr>
                         <td>
                             Jabatan </td>
                         <td>:</td>
-                        <td>Kepala Dinas</td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            Jabatan </td>
-                        <td>:</td>
-                        <td>Kepala Dinas</td>
-                    </tr>
-
+                        <td><?= $listp['jabatan'] ?></td>
+                    </tr>  
                 </table>
-                <table>
-                    <tr>
-                        <td>2. Nama</td>
-                        <td>:</td>
-                        <td>MIRZA RAMADHANY</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Pangkat / gol</td>
-                        <td> :</td>
-                        <td>Pembina Utama Muda / IVc
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            NIP </td>
-                        <td>:</td>
-                        <td>1958060519860811001</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Jabatan </td>
-                        <td>:</td>
-                        <td>Kepala Dinas</td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            Jabatan </td>
-                        <td>:</td>
-                        <td>Kepala Dinas</td>
-                    </tr>
-
-                </table>
+                  <?php $no++; } ?>    
             </td>
         </tr>
 
@@ -372,8 +342,10 @@
         <tr>
             <td>
                 Untuk </td>
-            <td>:</td>
-            <td> aa</td>
+            <td style="
+    padding: 14px;">:</td>
+            <td style="
+    padding: 14px;"> <?= $sppd['purpose'] ?></td>
         </tr>
     </table>
     <br />
@@ -388,10 +360,8 @@
         : <?= tgl_indonesia(date('Y-m-d')) ?>
         <br /><br />
         -
-        An. <?= strip_tags(strtoupper(identitas('jabatan'))); ?>
-
-        <br /><br /> <br /><br />
-
+        An. <?= strip_tags(strtoupper(identitas('jabatan'))); ?> 
+        <br /><br /> <br /><br /> 
         <?= strip_tags(strtoupper(identitas('nama_pejabat'))); ?> <br />
         <?= strip_tags(strtoupper(identitas('nip'))); ?>
 

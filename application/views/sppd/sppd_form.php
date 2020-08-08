@@ -1,9 +1,9 @@
 <script src="<?= base_url('assets/template/js/tinyselect.js') ?>"></script>
-<link rel="stylesheet" href="<?= base_url('assets/template/css/tinyselect.css') ?>">
-<script src="<?= base_url('assets/template_lte/plugins') ?>/select2/select2.full.min.js"></script>
+<link rel="stylesheet" href="<?= base_url('assets/template/css/tinyselect.css') ?>"> 
 
-<link rel="stylesheet" href="<?= base_url('assets/template_lte/plugins') ?>/select2/select2.min.css">
-<link rel="stylesheet" href="<?= base_url('assets/template_lte/plugins') ?>/select2/select2.css">
+<!--  -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
 <script>
     $(function() {
@@ -25,6 +25,8 @@
             dataUrl: "<?= base_url('pegawai/json_select') ?>",
             dataParser: dataParserB
         });
+        $('.js-example-basic-multiple').select2();
+
     });
 </script>
 
@@ -47,8 +49,8 @@
             <div class='panel-heading'><?= ucfirst($judul) ?></div>
             <div class='panel-wrapper collapse in' aria-expanded='true'>
                 <div class='panel-body'>
-                <form id="trsppd" action="<?= $action ?>" method="POST" class="form-horizontal">
-                   <div class='form-body'>
+                    <form id="trsppd" action="<?= $action ?>" method="POST" class="form-horizontal">
+                        <div class='form-body'>
                             ** ) Harap Isikan data yang di butuhkan pada form.
                             <br /><br /><br /><br />
                             <div class="form-group">
@@ -112,15 +114,15 @@
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>Tingkat Perjalanan<?php echo form_error('rate_travel') ?></b></label>
                                 <div class='col-md-9'>
-                                    <input type="text" class="form-control" name="rate_travel" id="rate_travel" placeholder="Nip Leader" value="<?php echo $rate_travel; ?>" />
+                                    <input type="text" class="form-control" name="rate_travel" id="rate_travel" placeholder="Rete Travel" value="<?php echo $rate_travel; ?>" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>Pengikut<?php echo form_error('nip') ?></b></label>
                                 <div class='col-md-9'>
-                                    <select class="form-control multiplepegawai" name="nip">
+                                    <select name="nip[]" class="js-example-basic-multiple form-control" multiple="multiple">
                                         <?php foreach ($this->db->get('pegawai')->result_array() as $list) { ?>
-                                            <option value="<?= $list['id'] ?>"><?= $list['nama'] ?> - <?= $list['nip'] ?></option>
+                                            <option value="<?= $list['nip'] ?>"><?= $list['nama'] ?> - <?= $list['nip'] ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -160,9 +162,9 @@
                                     <div class='col-md-12'>
                                         <div class='row'>
                                             <div class='col-md-offset-3 col-md-9'>
-                                            <button type="submit" class="btn btn-primary" id="trsppd" name="cmdSave">Simpan</button>
-                                             <a href="<?php echo site_url('sppd') ?>" class="btn btn-default"><i class='fa fa-share'></i>Cancel</a>
- 
+                                                <button type="submit" class="btn btn-primary" id="trsppd" name="cmdSave">Simpan</button>
+                                                <a href="<?php echo site_url('sppd') ?>" class="btn btn-default"><i class='fa fa-share'></i>Cancel</a>
+
                                             </div>
                                         </div>
                                     </div>

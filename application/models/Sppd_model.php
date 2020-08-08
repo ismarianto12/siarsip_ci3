@@ -18,11 +18,12 @@ class Sppd_model extends CI_Model
 	// datatables
 	function json()
 	{
-		$this->datatables->select('id,letter_code,letter_subject,letter_about,letter_from,letter_content,letter_date,code,date,nip_pejabat,nip_leader,rate_travel,nip,purpose,transport,place_from,place_to,length_journey,date_go,date_back,government,budget,budget_from,description,result_date,result,result_username,file,file_update,status,username,username_update,datetime_insert,datetime_update');
+		$this->datatables->select('sppd.id as sppd_id,a.nip , b.nip, sppd.nip,a.nama as pimpinan,b.nama as pengikut, letter_code,letter_subject,letter_about,letter_from,letter_content,letter_date,code,date,nip_leader,rate_travel,purpose,transport,place_from,place_to,length_journey,date_go,date_back,government,budget,budget_from,description,result_date,result,result_username,file,file_update,status');
 		$this->datatables->from('sppd');
 		// //add this line for join
-		// $this->datatables->join('login', 'login.id_user= table2.field');
-		$this->datatables->add_column('action', anchor(site_url('sppd/printdata/$1'), '<i class="fa fa-book"></i>Detail data ', 'class="btn btn-info btn-xs edit"') . anchor(site_url('sppd/printdata/$1'), '<i class="fa fa-print"></i>Print ', 'class="btn btn-info btn-xs edit" target="_blank"') . "  " . anchor(site_url('sppd/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id');
+		$this->datatables->join('pegawai a', 'a.nip = sppd.nip_pejabat', 'left outer');
+		$this->datatables->join('pegawai b', 'b.nip = sppd.nip_leader', 'left outer');
+		$this->datatables->add_column('action', anchor(site_url('sppd/printdata/$1'), '<i class="fa fa-book"></i>Detail data ', 'class="btn btn-info btn-xs edit"') . anchor(site_url('sppd/printdata/$1'), '<i class="fa fa-print"></i>Print ', 'class="btn btn-info btn-xs edit" target="_blank"') . "  " . anchor(site_url('sppd/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'sppd_id');
 		return $this->datatables->generate();
 	}
 
@@ -147,10 +148,16 @@ class Sppd_model extends CI_Model
 
 	function cetak($id)
 	{
-		$data = $this->db->select('*')
-			->from($this->table)
-			->where('id', $id)
-			->get();
-		return $data;
+		$this->db->select('sppd.id,a.nip,
+		
+		a.jabatan as jabatan_pimpinan,
+		b.jabatan as jabatan_pengikut,  
+		b.nip, sppd.nip,a.nama as pimpinan,b.nama as pengikut, letter_code,letter_subject,letter_about,letter_from,letter_content,letter_date,code,date,nip_leader,rate_travel,purpose,transport,place_from,place_to,length_journey,date_go,date_back,government,budget,budget_from,description,result_date,result,result_username,file,file_update,status');
+		$this->db->from('sppd');
+		$this->db->join('pegawai a', 'a.nip = sppd.nip_pejabat', 'left outer');
+		$this->db->join('pegawai b', 'b.nip = sppd.nip_leader', 'left outer');
+		$this->db->where('sppd.id', $id);
+		return $this->db->get();
 	}
+
 }

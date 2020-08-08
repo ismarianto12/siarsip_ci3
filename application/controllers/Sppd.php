@@ -15,7 +15,7 @@ class Sppd extends CI_Controller
 		parent::__construct();
 		login_access();
 		// hak_akses(); 
-		$this->load->model('Sppd_model');
+		$this->load->model(['Sppd_model','Pegawai_model']);
 		$this->load->library(['form_validation', 'datatables', 'mpdf']);
 	}
 
@@ -181,6 +181,8 @@ class Sppd extends CI_Controller
 
 	public function tambah_data()
 	{
+
+		$diperintah = implode(',', $this->input->post('nip')); 
 		$this->_rules();
 		$letter_code = $this->properti->getCode();
 		if ($this->form_validation->run() == FALSE) {
@@ -209,7 +211,7 @@ class Sppd extends CI_Controller
 				'date_back' => $this->input->post('date_back'),
 				'nip_leader' => $this->input->post('nip_leader'),
 				'rate_travel' => $this->input->post('rate_travel'),
-				'nip' => $this->input->post('nip'),
+				'nip' => $diperintah,
 				'date' => date('Y-m-d'),
 				'result_date' => date('Y-m-d'),
 				'result' => ($this->input->post('result')) ? $this->input->post('result') : 0,
@@ -303,6 +305,8 @@ class Sppd extends CI_Controller
 			echo $this->properti->json($data);
 			die;
 		} else {
+			
+		    $diperintah = implode(',', $this->input->post('nip')); 
 			$data = [
 				'nip_pejabat' => $this->input->post('nip_pejabat'),
 				'letter_code' => ($this->input->post('letter_code')) ? $this->input->post('letter_code') : 0,
@@ -321,7 +325,7 @@ class Sppd extends CI_Controller
 				'date' => date('Y-m-d'),
 				'nip_leader' => $this->input->post('nip_leader'),
 				'rate_travel' => $this->input->post('rate_travel'),
-				'nip' => $this->input->post('nip'),
+				'nip' => $diperintah,
 				'result_date' => date('Y-m-d'),
 				'result' => ($this->input->post('result')) ? $this->input->post('result') : 0,
 				'result_username' => ($this->input->post('result_username')) ? $this->input->post('result_username') : 0,
@@ -369,7 +373,7 @@ class Sppd extends CI_Controller
 		$this->form_validation->set_rules('date_back', 'date_back', 'trim|required');
 		$this->form_validation->set_rules('nip_leader', 'nip_leader', 'trim|required');
 		$this->form_validation->set_rules('rate_travel', 'rate_travel', 'trim|required');
-		$this->form_validation->set_rules('nip', 'nip', 'trim|required');
+		$this->form_validation->set_rules('nip[]', 'nip', 'trim|required');
 		$this->form_validation->set_rules('government', 'government', 'trim|required');
 		$this->form_validation->set_rules('budget_from', 'budget_from', 'trim|required');
 		$this->form_validation->set_rules('description', 'description', 'trim|required');

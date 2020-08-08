@@ -230,7 +230,7 @@ class Pegawai extends CI_Controller
 
 	public function _rules()
 	{
-		$this->form_validation->set_rules('nip', 'nip', 'trim|required');
+		$this->form_validation->set_rules('nip', 'nip', 'trim|required|unique[pegawai:nip]');
 		$this->form_validation->set_rules('nama', 'nama', 'trim|required');
 		$this->form_validation->set_rules('no_hp', 'no hp', 'trim|required');
 		$this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
@@ -348,7 +348,7 @@ class Pegawai extends CI_Controller
 		$data = $this->db->get('pegawai');
 		$row = [];
 		foreach ($data->result_array() as $list) {
-			$row[] = ['val' => $list['id'], 'text' => $list['nama'] . '-' . $list['nip']];
+			$row[] = ['val' => $list['nip'], 'text' => $list['nama'] . '-' . $list['nip']];
 		}
 		echo json_encode($row,JSON_PRETTY_PRINT);
 	}
