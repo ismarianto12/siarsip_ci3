@@ -51,7 +51,7 @@
                 <div class='panel-body'>
                     <form id="trsppd" action="<?= $action ?>" method="POST" class="form-horizontal">
                         <div class='form-body'>
-                            ** ) Harap Isikan data yang di butuhkan pada form.
+                            <b>Kode Surat - <?= $kode_surat ?></b>
                             <br /><br /><br /><br />
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>Pejabat yang memberi perintah<?php echo form_error('letter_code') ?></b></label>
@@ -115,15 +115,16 @@
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>Pejabat yang di perintah<?php echo form_error('nip_pejabat') ?></b></label>
                                 <div class='col-md-9'>
-                                    <?php 
-                                      
-                                      $nip_leader = $this->properti->parsing($nip_leader);
-                                      $ldiperintah = $this->Pegawai_model->getPengikut($nip_leader); 
-                                      $lnama       = $ldiperintah->row()->nama;
-                                      $lnip        = $ldiperintah->row()->nip;   
-                                      echo 'pejabat yang di perintah sebelumnya . <br /><span class="label label-success">'.$lnama.'-'.$lnip.'</span> <br />';
+                                    <?php
+                                    if ($this->uri->segment(3) == 'edit') {
+                                        $nip_leader  = $this->properti->parsing($nip_leader);
+                                        $ldiperintah = $this->Pegawai_model->getPengikut($nip_leader);
+                                        $lnama       = $ldiperintah->row()->nama;
+                                        $lnip        = $ldiperintah->row()->nip;
+                                        echo 'pejabat yang di perintah sebelumnya . <br /><span class="label label-success">' . $lnama . '-' . $lnip . '</span> <br />';
+                                    }
                                     ?>
-                                        <br />
+                                    <br />
                                     <select id="nip_diperintah" name="nip_leader" class="form-control">
                                     </select>
                                 </div>
@@ -146,7 +147,7 @@
                                         foreach ($pengikut->result_array() as $listp) {
                                             echo '<li><span class="label label-success">' . $listp['nama'] . '-' . $listp['nip'] . '</span><br /><br /></li>';
                                         }
-                                        echo '</ul>'; 
+                                        echo '</ul>';
                                     } ?>
 
                                     <select name="nip[]" class="js-example-basic-multiple form-control" multiple="multiple">

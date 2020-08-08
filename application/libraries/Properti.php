@@ -171,10 +171,10 @@ class properti
             ->from('sppd')
             ->get()->row();
         if ($data->id  > 1) {
-            $nomor_surat = $tahun . '/' . $data->id . '/sspd/';
+            $nomor_surat = $tahun . '/' . $data->id . '/sspd/'.$data->id.'-'.$tahun;
             return $nomor_surat;
         } else {
-            $nomor_surat = $tahun . '/' . 1 . '/sspd/';
+            $nomor_surat = $tahun . '/' . 1 . '/sspd/1'.$tahun;
             return $nomor_surat;
         }
     }

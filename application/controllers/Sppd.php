@@ -56,8 +56,6 @@ class Sppd extends CI_Controller
 	}
 
 
-
-
 	public function printdata($id, $key = NULL)
 	{
 		if ($key == $this->properti->key($id)) {
@@ -84,8 +82,8 @@ class Sppd extends CI_Controller
 			$pdf->WriteHTML($html);
 			$pdf->Output('Surat Perjalanan Dinas' . date('Y-m-d H:i:s') . '.pdf', 'I');
 			ob_end_flush();
-		} else { 
-			echo 'data tidak terparsing dengan baik : '. $this->properti->key($id);
+		} else {
+			echo 'data tidak terparsing dengan baik : ' . $this->properti->key($id);
 		}
 	}
 
@@ -141,9 +139,12 @@ class Sppd extends CI_Controller
 
 	public function tambah()
 	{
+
+		$letter_code = $this->properti->getCode();
 		$data = array(
 			'judul' => 'Tambah Surat Perjalanan Dinas',
 			'button' => 'Create',
+			'kode_surat' => $this->properti->getCode(),
 			'action' => site_url('sppd/tambah_data'),
 			'id' => set_value('id'),
 			'letter_code' => set_value('letter_code'),
@@ -246,7 +247,8 @@ class Sppd extends CI_Controller
 		if ($row) {
 			$data = array(
 				'judul' => 'Data SPPD',
-				'button' => 'Update',
+				'button' => 'Update', 
+			    'kode_surat' => $this->properti->getCode(),
 				'action' => site_url('sppd/edit_data/' . $row->id),
 				'id' => set_value('id', $row->id),
 				'letter_code' => set_value('letter_code', $row->letter_code),
