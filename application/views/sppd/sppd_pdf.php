@@ -231,7 +231,7 @@
     <div style="float: right; width:  50%;text-align: center;">
         <br />
         Dikeluarkan di Pada Tanggal
-        : <?= strip_tags(strtoupper(identitas('alamat'))); ?>
+        , <?= (identitas('alamat')) ? strip_tags(strtoupper(identitas('alamat'))) : 'Alamat Kosong'; ?>
         : <?= tgl_indonesia(date('Y-m-d')) ?>
         <br /><br />
         -
