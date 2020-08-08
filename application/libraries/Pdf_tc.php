@@ -8,3 +8,11 @@ class Pdf_tc extends TCPDF
         parent::__construct();
     }
 }
+
+
+
+// Server: sql12.freemysqlhosting.net
+// Name: sql12359358
+// Username: sql12359358
+// Password: js1Xgna9HM
+// Port number: 3306
