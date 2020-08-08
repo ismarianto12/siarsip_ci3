@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?= $judul ?></title>
     <!-- Tell the browser to be responsive to screen width -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/bootstrap/css/bootstrap.min.css">
