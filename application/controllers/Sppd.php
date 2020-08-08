@@ -1,13 +1,7 @@
 <?php
-
-/*developed by ismarianto putra
-  you can visit my site in ismarianto.com
-  for more complain anda more information.  
-*/
-
+ 
 if (!defined('BASEPATH'))
 	exit('No direct script access allowed');
-
 class Sppd extends CI_Controller
 {
 	function __construct()
