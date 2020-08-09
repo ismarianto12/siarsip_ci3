@@ -71,7 +71,7 @@
     }
 </style>
 
-<div class="boduy">
+<div class="body">
     <table>
         <tr>
             <td>
