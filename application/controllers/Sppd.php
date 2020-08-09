@@ -10,7 +10,7 @@ class Sppd extends CI_Controller
 		login_access();
 		// hak_akses(); 
 		$this->load->model(['Sppd_model', 'Pegawai_model']);
-		$this->load->library(['form_validation', 'datatables', 'Mpdf/Mpdf']);
+		$this->load->library(['form_validation', 'datatables', 'Cpdf']);
 	}
 
 	public function index()
@@ -64,7 +64,7 @@ class Sppd extends CI_Controller
 				echo 'response data null';
 				die;
 			}
-			$pdf = new Mpdf();
+			$pdf = new Cpdf();
 			$pdf->AddPage('P');
 
 			$render = [
