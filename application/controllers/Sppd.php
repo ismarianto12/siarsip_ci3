@@ -10,7 +10,7 @@ class Sppd extends CI_Controller
 		login_access();
 		// hak_akses(); 
 		$this->load->model(['Sppd_model', 'Pegawai_model']);
-		$this->load->library(['form_validation', 'datatables', 'Cpdf']);
+		$this->load->library(['form_validation', 'datatables']);
 	}
 
 	public function index()
@@ -52,9 +52,14 @@ class Sppd extends CI_Controller
 
 	public function printdata($id, $key = NULL)
 	{
+ 		
 		if ($key == $this->properti->key($id)) {
-
-			ob_start();
+			header("Content-type: application/vnd.ms-word");
+			header("Content-Disposition: attacment;Filename=Surat-Perjalanan-Dinas-".date('Y-m-d H:i:s').'.rtf');
+			
+			//header("Content-type: application/vnd.ms-word");
+			//header("Content-Disposition: attachment;Filename=pegawai.doc");
+	
 			if ($id == '' || $id == 0) {
 				echo 'response data null';
 				die;
@@ -64,18 +69,12 @@ class Sppd extends CI_Controller
 				echo 'response data null';
 				die;
 			}
-			$pdf = new Cpdf();
-			$pdf->AddPage('P');
-
+ 
 			$render = [
 				'judul' => 'cetak data sspd',
 				'sppd'  => $data->row_array(),
 			];
-			$html = $this->load->view('sppd/sppd_pdf', $render, TRUE);
-			$pdf->SetTitle('Surat Perjalanan Dinas');
-			$pdf->WriteHTML($html);
-			$pdf->Output('Surat Perjalanan Dinas' . date('Y-m-d H:i:s') . '.pdf', 'I');
-			ob_end_flush();
+			$this->load->view('sppd/sppd_docx', $render);  
 		} else {
 			echo 'data tidak terparsing dengan baik : ' . $this->properti->key($id);
 		}
