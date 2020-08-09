@@ -73,7 +73,7 @@
       <div class="white-box">
         <center>
           <img src="<?= base_url() . '/assets/img/' . identitas('logo') ?>" alt="" class="img-responsive" id="logo" align="center">
-          <h3 class="box-title m-b-20">Aplikasi Kearsipan</h3>
+          <h3 class="box-title m-b-20">Aplikasi Sudikap (Surat + Surat Dinas dan Kearsipan)</h3>
           <br /><br />
         </center>
         <div id="notifikasi"></div>
