@@ -4,10 +4,10 @@ $active_group = 'default';
 $query_builder = TRUE; 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'sim_surat',
+	'hostname' => 'sql12.freemysqlhosting.net',
+	'username' => 'sql12359358',
+	'password' => 'js1Xgna9HM',
+	'database' => 'sql12359358',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -23,27 +23,3 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 ); 
-
-// $active_group = 'default';
-// $query_builder = TRUE; 
-// $db['default'] = array(
-// 	'dsn'	=> '',
-// 	'hostname' => 'sql12.freemysqlhosting.net',
-// 	'username' => 'sql12359358',
-// 	'password' => 'js1Xgna9HM',
-// 	'database' => 'sql12359358',
-// 	'dbdriver' => 'mysqli',
-// 	'dbprefix' => '',
-// 	'pconnect' => FALSE,
-// 	'db_debug' => (ENVIRONMENT !== 'production'),
-// 	'cache_on' => FALSE,
-// 	'cachedir' => '',
-// 	'char_set' => 'utf8',
-// 	'dbcollat' => 'utf8_general_ci',
-// 	'swap_pre' => '',
-// 	'encrypt' => FALSE,
-// 	'compress' => FALSE,
-// 	'stricton' => TRUE,
-// 	'failover' => array(),
-// 	'save_queries' => TRUE
-// ); 
