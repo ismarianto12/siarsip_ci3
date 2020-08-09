@@ -5,7 +5,7 @@
              <h3 class='box-title m-b-0'><?= $judul ?></h3>
              <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
              <div class='table-responsive'>
-                 <?php echo anchor(site_url('tmjabatan/tambah'), 'Tambah Data', 'class="btn btn-primary"'); ?>
+                 <?php echo anchor(site_url('tmjabatan/tambah'), 'Tambah Data', 'class="btn btn-primary btn-xs"'); ?>
                  <?php echo anchor(site_url('tmjabatan/excel'), '<i class=\'fa fa-file-excel-o\'></i>Excel', 'class="btn btn-info btn-xs"'); ?>
                  <?php echo anchor(site_url('tmjabatan/word'), '<i class=\'fa fa-file-word-o\'></i>Word', 'class="btn btn-danger btn-xs"'); ?>
 

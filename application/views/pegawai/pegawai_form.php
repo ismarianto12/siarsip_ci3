@@ -1,3 +1,4 @@
+
 <div class='row'>
     <div class='col-md-12'>
         <div class='panel panel-info'>
@@ -47,7 +48,12 @@
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>Golongan<?php echo form_error('golongan') ?></b></label>
                                 <div class='col-md-9'>
-                                    <input type="text" class="form-control" name="golongan" id="golongan" placeholder="Golongan" value="<?php echo $golongan; ?>" />
+                                    <select name="golongan" class="form-control">
+                                        <?php foreach ($this->properti->tmjabatan()->result_array() as $data) {
+                                            $check = ($data['id'] == $golongan) ? 'selected' : ''; ?>
+                                            <option value="<?= $data['id'] ?>" <?= $check ?>> <?= $data['Description'] ?></option> 
+                                        <?php } ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">

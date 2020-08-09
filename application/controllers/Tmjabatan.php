@@ -41,7 +41,7 @@ class Tmjabatan extends CI_Controller
                 'Title' => $row->Title,
                 'Description' => $row->Description,
                 'Stat' => $row->Stat,
-                'OtherString' => $row->OtherString, 
+                'OtherString' => $row->OtherString,
                 'judul' => 'Detail :  Master Jabatan',
             );
             $this->template->load('template', 'tmjabatan/tmjabatan_read', $data);
