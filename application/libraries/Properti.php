@@ -1,6 +1,6 @@
 <?php
 // by ismarianto 
-
+ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_reporting(E_ALL);
 use function PHPSTORM_META\override;
 
 class properti
@@ -201,5 +201,20 @@ class properti
     public function tmjabatan()
     {
         return $this->ci->db->get('tmjabatan');
+    }
+
+
+    public function golongan($golongan)
+    {
+        if ($golongan == '') {
+            return 'kosong';
+        } else {
+            $data =  $this->ci->db->get_where('tmjabatan', array('id' => $golongan));
+            if ($data->num_rows() > 0) {
+                return $data->row()->Description;
+            } else {
+                return 'Kosong';
+            }
+        }
     }
 }

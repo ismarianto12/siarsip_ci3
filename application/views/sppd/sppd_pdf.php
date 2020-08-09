@@ -146,7 +146,7 @@
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;a. Pangkat dan Golongan</td>
             <td>:</td>
-            <td><?= $sppd['jabatan_pimpinan'] ?> / <?= $sspd['golongan_pimpinan'] ?></td>
+            <td><?= $sppd['jabatan_pimpinan'] ?> / <?= $this->properti->golongan($sppd['golongan_pimpinan']) ?></td>
             
         </tr>
         <tr>
