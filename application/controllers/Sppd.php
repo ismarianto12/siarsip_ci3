@@ -54,11 +54,8 @@ class Sppd extends CI_Controller
 	{
  		
 		if ($key == $this->properti->key($id)) {
-			header("Content-type: application/vnd.ms-word");
-			header("Content-Disposition: attacment;Filename=Surat-Perjalanan-Dinas-".date('Y-m-d H:i:s').'.rtf');
-			
-			//header("Content-type: application/vnd.ms-word");
-			//header("Content-Disposition: attachment;Filename=pegawai.doc");
+			 header("Content-type: application/vnd.ms-word");
+			 header("Content-Disposition: attachment;Filename=Surat-Perjalanan-Dinas-".date('Y-m-d H:i:s').'.rtf');
 	
 			if ($id == '' || $id == 0) {
 				echo 'response data null';
