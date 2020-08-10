@@ -2,7 +2,7 @@
     <div class='col-sm-12'>
         <?= $this->session->userdata('message') ?>
         <div class='white-box'>
-            <p class='text-muted m-b-30'>Surat perjalanan dinas</p>
+            <h4 class='text-muted m-b-30'><i class="fa fa-list"></i> Report Surat perjalanan dinas</h4>
             <hr />
             <div class='table-responsive'>
                 <div class="form-group">
