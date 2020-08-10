@@ -273,9 +273,9 @@
 
 
     <div class="child" style="font-size:18px">
-        SURAT PERINTAH TUGAS <br />
-        <b>NOMOR : <?= $sppd['code'] ?> </b>
+        SURAT PERINTAH TUGAS <br /> 
     </div>
+    <b>NOMOR : <?= $sppd['code'] ?> </b>
     <br />
 
 
