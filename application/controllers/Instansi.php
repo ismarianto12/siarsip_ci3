@@ -67,7 +67,7 @@ class Instansi extends CI_Controller
       'favicon' => set_value('favicon', $favicon),
       'nama_pejabat' => set_value('nama_pejabat', $nama_pejabat),
       'jabatan' => set_value('jabatan', $jabatan),
-      'nip'=>set_value('nip',$nip),
+      'nip' => set_value('nip', $nip),
 
     );
     $this->template->load('template', 'instansi/instansi_form', $data);
@@ -94,7 +94,7 @@ class Instansi extends CI_Controller
         'fax' => $row->fax,
         'npwp' => $row->npwp,
         'logo' => $row->logo,
-        'judul' => 'Detail :  INSTANSI',
+        'judul' => 'Detail :  Instansi',
       );
       $this->template->load('template', 'instansi/instansi_read', $data);
     } else {
@@ -209,7 +209,7 @@ class Instansi extends CI_Controller
             'keterangan_situs' => $this->input->post('keterangan_situs', TRUE),
             'alamat_lengkap' => $this->input->post('alamat_lengkap', TRUE),
             'telp' => $this->input->post('telp', TRUE),
-            'fax' => $this->input->post('fax', TRUE), 
+            'fax' => $this->input->post('fax', TRUE),
             'nip' => $this->input->post('nip', TRUE),
             'npwp' => $this->input->post('npwp', TRUE),
             'nama_pejabat' => $this->input->post('nama_pejabat'),
