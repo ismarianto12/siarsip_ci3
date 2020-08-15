@@ -1,7 +1,7 @@
 <?php
- 
+
 $active_group = 'default';
-$query_builder = TRUE; 
+$query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'sql12.freemysqlhosting.net',
@@ -11,7 +11,7 @@ $db['default'] = array(
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
-	'db_debug' => TRUE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',
@@ -22,4 +22,4 @@ $db['default'] = array(
 	'stricton' => TRUE,
 	'failover' => array(),
 	'save_queries' => TRUE
-); 
+);
