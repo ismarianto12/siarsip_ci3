@@ -267,7 +267,7 @@
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
-                        <div class="col-xs-12" style="background: #fff;">
+                        <div class="col-xs-12">
                             <div class="box" style="padding: 10px 10px 10px;">
                                 <?= $contents ?>
                             </div>

@@ -198,13 +198,11 @@
     width: 90%;
   }
 </style>
-
-<body onload="window.print()">
+<body>
   <div class="container">
     <!-- Container START -->
     <div id="colres">
-      <div class="disp">
-        <img class="logodisp" src="<?= base_url() . '/assets/img/' . identitas('logo') ?>" />
+      <div class="disp"> 
         <h6 class="up">KEMENTRIAN AGAMA REPUBLIK INDONESIA</h6>
         <h5 class="up" id="nama">KANTOR KEMENTRIAN AGAMA KOTA MADIUN</h5><br />
         <h6 class="status">KANTOR KEMENTRIAN AGAMA KOTA MADIUN</h6>

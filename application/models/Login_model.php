@@ -16,15 +16,16 @@ class Login_model extends CI_Model
     }
 
     // datatables
-    function json() {
+    function json()
+    {
         $this->datatables->select('id_user,username,password,nama,level,email,log,active,IF(active=  "Y","<a href=\'#\' class=\'btn btn-success btn-xs\' onclick=\'javasciprt: return non_aktif()\'><i class=\'fa fa-check\'></i>Aktif</a>","<a href=\'#\' class=\'btn btn-danger btn-xs\'onclick=\'javasciprt: return non_aktif()\'><i class=\'fa fa-trash\'></i>Tidak Aktif</a>") as aktif_users');
 
 
         $this->datatables->from('login');
         //add this line for join
         //$this->datatables->join('table2', 'login.field = table2.field');
-        $this->datatables->add_column('aktif_user',"$1", 'aktif_users');
-        $this->datatables->add_column('action', anchor(site_url('login/detail/$1'),'<i class="fa fa-book"></i>Read','class="btn btn-info btn-xs edit"')."  ".anchor(site_url('login/edit/$1'),'<i class="fa fa-edit"></i> Update','class="btn btn-success btn-xs edit"')."<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id_user');
+        $this->datatables->add_column('aktif_user', "$1", 'aktif_users');
+        $this->datatables->add_column('action', anchor(site_url('login/detail/$1'), '<i class="fa fa-book"></i>Read', 'class="btn btn-info btn-xs edit"') . "  " . anchor(site_url('login/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id_user');
         return $this->datatables->generate();
     }
 
@@ -41,33 +42,35 @@ class Login_model extends CI_Model
         $this->db->where($this->id, $id);
         return $this->db->get($this->table)->row();
     }
-    
+
     // get total rows
-    function total_rows($q = NULL) {
+    function total_rows($q = NULL)
+    {
         $this->db->like('id_user', $q);
-	$this->db->or_like('username', $q);
-	$this->db->or_like('password', $q);
-	$this->db->or_like('nama', $q);
-	$this->db->or_like('level', $q);
-	$this->db->or_like('email', $q);
-	$this->db->or_like('log', $q);
-	$this->db->or_like('aktif', $q);
-	$this->db->from($this->table);
+        $this->db->or_like('username', $q);
+        $this->db->or_like('password', $q);
+        $this->db->or_like('nama', $q);
+        $this->db->or_like('level', $q);
+        $this->db->or_like('email', $q);
+        $this->db->or_like('log', $q);
+        $this->db->or_like('aktif', $q);
+        $this->db->from($this->table);
         return $this->db->count_all_results();
     }
 
     // get data with limit and search
-    function get_limit_data($limit, $start = 0, $q = NULL) {
+    function get_limit_data($limit, $start = 0, $q = NULL)
+    {
         $this->db->order_by($this->id, $this->order);
         $this->db->like('id_user', $q);
-	$this->db->or_like('username', $q);
-	$this->db->or_like('password', $q);
-	$this->db->or_like('nama', $q);
-	$this->db->or_like('level', $q);
-	$this->db->or_like('email', $q);
-	$this->db->or_like('log', $q);
-	$this->db->or_like('aktif', $q);
-	$this->db->limit($limit, $start);
+        $this->db->or_like('username', $q);
+        $this->db->or_like('password', $q);
+        $this->db->or_like('nama', $q);
+        $this->db->or_like('level', $q);
+        $this->db->or_like('email', $q);
+        $this->db->or_like('log', $q);
+        $this->db->or_like('aktif', $q);
+        $this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
 
@@ -90,7 +93,4 @@ class Login_model extends CI_Model
         $this->db->where($this->id, $id);
         $this->db->delete($this->table);
     }
-
 }
-
- 

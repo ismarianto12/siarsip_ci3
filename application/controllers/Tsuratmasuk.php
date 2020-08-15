@@ -37,6 +37,7 @@ class Tsuratmasuk extends CI_Controller
   {
     $row = $this->Tsuratmasuk_model->get_by_id($id);
     if ($row) {
+      $user = $this->db->get_where('login', ['id_user' => $row->id_user])->row();
       $data = array(
         'id_surat' => $row->id_surat,
         'no_agenda' => $row->no_agenda,
@@ -49,7 +50,7 @@ class Tsuratmasuk extends CI_Controller
         'tgl_diterima' => $row->tgl_diterima,
         'file' => $row->file,
         'keterangan' => $row->keterangan,
-        'id_user' => $row->id_user,
+        'id_user' => $user->nama,
         'judul' => 'Detail surat masuk',
       );
       $this->template->load('template', 'tsuratmasuk/tbl_surat_masuk_read', $data);

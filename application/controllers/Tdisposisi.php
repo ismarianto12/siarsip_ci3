@@ -207,6 +207,10 @@ class Tdisposisi extends CI_Controller
         if ($id != '') :
             $data_db = $this->Tdisposisi_model->lembar_disposisi($id);
             if ($data_db->num_rows() > 0) {
+
+                header("Content-type: application/vnd.ms-word");
+                header("Content-Disposition: attachment;Filename=Lembar-disposisi-".date('Y-m-d').'.rtf'); 
+
                 $x = array(
                     'judul' => 'Cetak data disposisi surat',
                     'qrcode' => $this->qrcode(),
@@ -215,7 +219,8 @@ class Tdisposisi extends CI_Controller
                 $this->load->view('disposisi/disposisi', $x);
             } else {
                 redirect(base_url('tsuratmasuk'));
-            } else :
+            }
+        else :
         endif;
     }
 }
