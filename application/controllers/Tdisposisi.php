@@ -22,7 +22,7 @@ class Tdisposisi extends CI_Controller
     public function index()
     {
         $x['judul'] = 'Data : Tdisposisi';
-        $this->template->load('template', 'tdisposisi/tbl_disposisi_list', $x);
+        $this->template->load('template', 'tdisposisi/tdisposisi_list', $x);
     }
 
     public function json()

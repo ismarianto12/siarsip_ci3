@@ -1,4 +1,4 @@
-<div class='col-lg-12'>
+<div class='col-lg-12' style="background:#fff">
   <div class='widget'>
     <div class='callout callout-info'>
       <span class='widget-caption'><?= ucfirst($judul) ?></span>

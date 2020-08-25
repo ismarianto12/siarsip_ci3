@@ -17,11 +17,13 @@ class Tdisposisi_model extends CI_Model
 
     // datatables
     function json() {
-        $this->datatables->select('id_disposisi,tujuan,isi_disposisi,sifat,batas_waktu,catatan,id_surat,id_user');
-        $this->datatables->from('tbl_disposisi');
+        $this->datatables->select('a.id_disposisi,a.tujuan,a.isi_disposisi,a.sifat,a.batas_waktu,a.catatan,a.id_surat,a.id_user,
+        b.id_surat,b.no_agenda,b.no_surat,b.asal_surat,b.isi,b.kode,b.indeks    
+        ');
+        $this->datatables->from('tbl_disposisi a');
         //add this line for join
-        //$this->datatables->join('table2', 'tbl_disposisi.field = table2.field');
-        $this->datatables->add_column('action', anchor(site_url('tdisposisi/detail/$1'),'<i class="fa fa-book"></i>Read','class="btn btn-info btn-xs edit"')."  ".anchor(site_url('tdisposisi/edit/$1'),'<i class="fa fa-edit"></i> Update','class="btn btn-success btn-xs edit"')."<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id_disposisi');
+        $this->datatables->join('tbl_surat_masuk b', 'a.id_surat = b.id_surat');
+        $this->datatables->add_column('action', anchor(site_url('tdisposisi/detail/$1'),'<i class="fa fa-book"></i>Read','class="btn btn-info btn-xs edit"')."  ".anchor(site_url('tdisposisi/edit/$1'),'<i class="fa fa-edit"></i> Update','class="btn btn-success btn-xs edit"')."<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'a.id_disposisi');
         return $this->datatables->generate();
     }
 
