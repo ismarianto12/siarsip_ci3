@@ -3,9 +3,8 @@
          <?= $this->session->userdata('message') ?>
          <div class='white-box'>
              <h3 class='box-title m-b-0'><?= $judul ?></h3>
-             <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
+             <p class='text-muted m-b-30'>Histori Disposisi</p>
              <div class='table-responsive'>
-                 <?php echo anchor(site_url('tdisposisi/tambah'), 'Tambah Data', 'class="btn btn-primary"'); ?>
 
                  <br /><br />
                  <table class="table" id="datatables">
@@ -17,11 +16,6 @@
                              <th>No Surat</th>
                              <th>Kepada</th>
                              <th>Keterangan</th>
-                             <th>Status Surat</th>
-                             <th>Tanggapan</th>
-                             <th>Waktu</th>
-                             <th>Ket Surat</th>
-                             <th width="200px">Action</th>
                          </tr>
                      </thead>
 
@@ -62,33 +56,19 @@
                                  "type": "POST"
                              },
                              columns: [{
-                                     "data": "id_disposisi",
-                                     "orderable": false
-                                 }, {
-                                     "data": "no_disposisi"
-                                 }, {
-                                     "data": "no_agenda"
-                                 }, {
-                                     "data": "no_surat"
-                                 }, {
-                                     "data": "kepada"
-                                 }, {
-                                     "data": "keterangan"
-                                 }, {
-                                     "data": "status_surat"
-                                 }, {
-                                     "data": "tanggapan"
-                                 }, {
-                                     "data": "waktu"
-                                 }, {
-                                     "data": "ket_surat"
-                                 },
-                                 {
-                                     "data": "action",
-                                     "orderable": false,
-                                     "className": "text-center"
-                                 }
-                             ],
+                                 "data": "id_disposisi",
+                                 "orderable": false
+                             }, {
+                                 "data": "no_disposisi"
+                             }, {
+                                 "data": "no_agenda"
+                             }, {
+                                 "data": "no_surat"
+                             }, {
+                                 "data": "kepada"
+                             }, {
+                                 "data": "keterangan"
+                             }],
                              order: [
                                  [0, 'desc']
                              ],
