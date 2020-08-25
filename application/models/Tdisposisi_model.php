@@ -17,8 +17,8 @@ class Tdisposisi_model extends CI_Model
 
     // datatables
     function json() {
-        $this->datatables->select('a.id_disposisi,a.tujuan,a.isi_disposisi,a.sifat,a.batas_waktu,a.catatan,a.id_surat,a.id_user,
-        b.id_surat,b.no_agenda,b.no_surat,b.asal_surat,b.isi,b.kode,b.indeks    
+        $this->datatables->select('
+        * 
         ');
         $this->datatables->from('tbl_disposisi a');
         //add this line for join
