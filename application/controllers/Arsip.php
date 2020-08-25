@@ -447,11 +447,11 @@ class Arsip extends CI_Controller
             $x['file'] = '';
         }
         if ($action == 'add') {
-            if ($this->session->level == 'admin') {
-                $x['judul'] = 'halaman tidak boleh diakses ';
-                $this->template->load('template', '404', $x);
-                exit();
-            };
+            // if ($this->session->level == 'admin') {
+            //     $x['judul'] = 'halaman tidak boleh diakses ';
+            //     $this->template->load('template', '404', $x);
+            //     exit();
+            // };
 
             if (isset($_POST['kirim'])) {
                 $satuan = ($this->input->post('satuan')) ? $this->input->post('satuan') : 'kosong';
