@@ -45,7 +45,7 @@ class Tdisposisi extends CI_Controller
                 'id_surat' => $row->id_surat,
                 'id_user' => $row->id_user,
 
-                'judul' => 'Detail :  TDISPOSISI',
+                'judul' => 'Detail Disposisis Surat',
             );
             $this->template->load('template', 'tdisposisi/tbl_disposisi_read', $data);
         } else {
