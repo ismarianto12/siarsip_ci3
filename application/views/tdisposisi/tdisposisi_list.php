@@ -12,8 +12,7 @@
                          <tr>
                              <th width="80px">No</th> 
                              <th>No Agenda</th>
-                             <th>No Surat</th>
-                             <th>Kepada</th>
+                             <th>No Surat</th> 
                              <th>Tujuan</th> 
                              <th>Sifat</th>
                              <th>Batas Waktu</th> 
@@ -56,7 +55,8 @@
                                  "url": "tdisposisi/json",
                                  "type": "POST"
                              },
-                             columns: [{
+                             columns: [
+                                 {
                                  "data": "id_disposisi",
                                  "orderable": false
                              },  {
@@ -69,7 +69,7 @@
                                  "data": "sifat"
                              }, {
                                  "data": "batas_waktu"
-                             }, 
+                             }
                              ],
                              order: [
                                  [0, 'desc']
