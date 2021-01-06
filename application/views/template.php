@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <title><?= $judul ?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">

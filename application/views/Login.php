@@ -2,6 +2,7 @@
 <html lang="en"> 
 <head>
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,7 +73,7 @@
       </script>
       <div class="white-box">
         <center>
-          <img src="<?= base_url() . '/assets/img/' . identitas('logo') ?>" alt="" class="img-responsive" id="logo" align="center">
+          <img src="<?= base_url() . '/assets/img/' . identitas('logo') ?>" alt="" class="img-responsive" id="logo" align="center"  onerror="this.onerror=null;this.src='<?= base_url('assets/img/no_image.jpg') ?>';">
           <h3 class="box-title m-b-20">Aplikasi Sudikap</h3>
           <small>(Surat + Surat Dinas dan Kearsipan)</small>
         </center>
