@@ -11,3 +11,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |	https://codeigniter.com/user_guide/general/hooks.html
 |
 */
+$hook['post_controller'][] = array(
+        'class'    => 'Pjax',
+        'function' => 'initialize',
+        'filename' => 'Pjax.php',
+        'filepath' => 'hooks'
+);
