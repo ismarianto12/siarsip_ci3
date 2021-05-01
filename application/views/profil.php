@@ -64,7 +64,7 @@
                                     <div class='form-group'>
                                         <label class='control-label col-md-3'>Foto </label>
                                         <div class='col-md-9'>
-                                            <img src="<?= base_url('assets/img/foto/' . $foto) ?>" alt="" class="header-avatar" id="image_upload_preview" class="img-responsive" style="width: 100px;height: 100px">
+                                            <img src="<?= base_url('assets/img/foto/' . $foto) ?>" alt="" class="header-avatar" id="image_upload_preview" class="img-responsive" style="width: 100px;height: 100px" onerror="this.onerror=null;this.src='<?= base_url() ?>/assets/img/no_image.jpg';">
                                             <br />
                                             <input type='file' id="foto" name="foto" class='form-control' placeholder='Foto..'>
                                         </div>

@@ -1,4 +1,4 @@
-<section class="content">
+<section class="content" id="pjax-container">
     <!-- Small boxes (Stat box) -->
     <div class="row">
         <div class="col-lg-3 col-xs-6">

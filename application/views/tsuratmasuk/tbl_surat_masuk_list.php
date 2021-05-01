@@ -37,7 +37,7 @@
             <?php endforeach; ?>
           </select>
         </div>
-        <br  /><br  />
+        <br /><br />
         <?= $this->session->userdata('message') ?>
         <div id="notifikasi"></div>
         <table class="table" id="datatables">
@@ -47,7 +47,7 @@
               <th>No Agenda</th>
               <th>No Surat</th>
               <th>Asal Surat</th>
-              <th>Isi</th>
+
               <th>Tgl Diterima</th>
               <th>File</th>
               <th>Disposisi</th>
@@ -107,7 +107,7 @@
                 },
                 {
                   extend: 'csvHtml5',
-                  className: 'btn bg-navy btn-flat margin'
+                  className: 'btn btn-warning btn-xs'
                 },
                 {
                   extend: 'pdfHtml5',
@@ -124,8 +124,6 @@
                   "data": "no_surat"
                 }, {
                   "data": "asal_surat"
-                }, {
-                  "data": "isi"
                 }, {
                   "data": "tgl_diterima"
                 }, {

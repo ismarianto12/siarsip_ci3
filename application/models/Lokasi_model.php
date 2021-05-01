@@ -22,9 +22,8 @@ class Lokasi_model extends CI_Model
         $this->datatables->from('lokasi');
         //add this line for join
         //$this->datatables->join('table2', 'lokasi.field = table2.field');
-        $this->datatables->add_column('action', anchor(site_url('lokasi/detail/$1'), '<i class="fa fa-book"></i>Read', 'class="btn btn-info btn-xs edit"') . " 
-        <button to='" . site_url('lokasi/edit/$1') . "' id='edit' class='btn bg-navy btn-flat margin edit><i class='fa fa-trash'></i> Edit</button>
-        <a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id_lokasi');
+        $this->datatables->add_column('action', anchor(site_url('lokasi/detail/$1'), '<i class="fa fa-book"></i>', 'class="btn btn-info btn-xs"') . " 
+        <button to='" . site_url('lokasi/edit/$1') . "' id='edit' class='btn btn-info btn-xs'><i class='fa fa-edit'></i></button><a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i></a>", 'id_lokasi');
         return $this->datatables->generate();
     }
 

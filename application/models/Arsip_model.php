@@ -71,7 +71,7 @@ class Arsip_model extends CI_Model
             $this->datatables->where('a.id_jenis', $this->input->post('id_jenis'));
         } else {
         }
-        $this->datatables->add_column('file_arsip', "<a href='" . base_url('assets/arsip/$1') . "' class='btn btn-success btn-xs' target='_blank'><i class='fa fa-download'></i>Download</a>", 'file_arsip');
+        $this->datatables->add_column('file_arsip', "<a href='" . base_url('assets/arsip/$1') . "' class='btn btn-success btn-xs' target='_blank'><i class='fa fa-download'></i></a>", 'file_arsip');
         $this->datatables->add_column('nama_satuan', '$1', 'nama_satuan');
         $this->datatables->add_column('nama', '$1', 'nama');
         $this->datatables->add_column('jenis_arsip', '$1', 'jenis_arsip');
@@ -89,9 +89,9 @@ class Arsip_model extends CI_Model
         //  $this->datatables->add_column('file_arsip','$1','nama_satuan');
         $this->datatables->add_column('qr_code', '<img src="' . base_url('assets/qrarsip/$1.png') . '" id="barcode" onError="this.onerror=null;this.src=\'' . base_url('assets/img/no_image.jpg') . '\';">', 'nama_arsip');
 
-        $this->datatables->add_column('action', anchor(site_url('arsip/detail/$1'), '<i class="fa fa-book"></i>Read', 'class="btn btn-info btn-xs edit"') . "
-         <button to='" . base_url('arsip/edit/$1') . "' id='edit' class='btn bg-navy btn-flat margin edit'><i class='fa fa-trash'></i> Edit</button>
-        <a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id_arsip');
+        $this->datatables->add_column('action', anchor(site_url('arsip/detail/$1'), '<i class="fa fa-book"></i>', 'class="btn btn-info btn-xs edit"') . "
+         <button to='" . base_url('arsip/edit/$1') . "' id='edit' class='btn btn-warning btn-xs'><i class='fa fa-trash'></i></button>
+        <a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i></a>", 'id_arsip');
         return $this->datatables->generate();
     }
 

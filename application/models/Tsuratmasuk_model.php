@@ -25,13 +25,13 @@ class Tsuratmasuk_model extends CI_Model
             $this->datatables->where('disposisi', $this->input->post('disposisi'));
         }
         //$this->datatables->join('table2', 'tbl_surat_masuk.field = table2.field');
-        $this->datatables->add_column('file_surat', "<a href='" . base_url('assets/file_surat/$1') . "' class='btn btn-success btn-xs'>Detail File Surat</a>", 'file');
+        $this->datatables->add_column('file_surat', "<a href='" . base_url('assets/file_surat/$1') . "' class='btn btn-success btn-xs'><i class='fa fa-download'></i></a>", 'file');
 
         if ($this->session->level != 'admin' and $this->session->level != 'staff') {
         } else {
-            $this->datatables->add_column('action', anchor(site_url('tsuratmasuk/detail/$1'), '<i class="fa fa-book"></i>Read', 'class="btn btn-info btn-xs edit"') . "
-        <button id='edit' to='" . base_url('tsuratmasuk/edit/$1') . "' class='btn bg-navy btn-flat margin waning'><i class='fa fa-trash'></i> Edit</button>
-        <a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>&nbsp; <a href='#' class='btn btn-info btn-xs' onclick='javasciprt: return set_disposisi($1)'><i class='fa fa-check'></i> Disposisi</a>", 'id_surat');
+            $this->datatables->add_column('action', anchor(site_url('tsuratmasuk/detail/$1'), '<i class="fa fa-book"></i>', 'class="btn btn-info btn-xs edit"') . "
+        <button id='edit' to='" . base_url('tsuratmasuk/edit/$1') . "' class='btn btn-warning btn-xs'><i class='fa fa-edit'></i></button>
+        <a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i>  </a>&nbsp; <a href='#' class='btn btn-info btn-xs' onclick='javasciprt: return set_disposisi($1)'><i class='fa fa-check'></i> </a>", 'id_surat');
         }
         return $this->datatables->generate();
     }

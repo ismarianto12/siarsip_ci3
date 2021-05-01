@@ -118,7 +118,7 @@
                                  <div class='col-md-9'>
 
                                      <?php if ($this->uri->segment(2) == 'edit') : ?>
-                                         <a href="<?= base_url('assets/file_surat/' . $file) ?>" target="_blank">Detail File Surat</a>
+                                         <a href="<?= base_url('assets/file_surat/' . $file) ?>" target="_blank" class="btn btn-primary">Detail File Surat</a>
                                      <?php endif; ?>
                                      <input type="file" class="form-control" name="file" id="file" placeholder="File" value="<?php echo $file; ?>" />
                                  </div>

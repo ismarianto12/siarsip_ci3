@@ -10,6 +10,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
+    <link rel="icon" href="https://www.jobstreet.co.id/assets/favicon.jobStreet.ico" />
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/dist/css/AdminLTE.min.css">
@@ -20,13 +21,14 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/morris/morris.css">
     <!-- jvectormap -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
- 
+
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template/css/sweet-alert.css">
 
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template_lte/dist/css/pace.min.css">
 
     <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-    <script src="<?= base_url() ?>/assets/template_lte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="https://project.ptlmp.my.id/assets/js//2.1.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://fengyuanchen.github.io/datepicker/css/datepicker.css">
 
@@ -115,7 +117,7 @@
 
 <script type="text/javascript">
     $(function() {
-        $('.callout').fadeOut();
+        // $('.callout').fadeOut();
         var reload = 'yes';
         $.post('<?= base_url('tsuratmasuk/get_notification') ?>', {
             reload: reload
@@ -271,7 +273,7 @@
                 echo $contents;
             } else { ?>
                 <!-- Main content -->
-                <section class="content">
+                <section class="content" id="pjax-container">
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
@@ -291,13 +293,14 @@
             <div class="pull-right hidden-xs">
                 <b>Version</b> 2.3.0
             </div>
-
         </footer>
 
 
     </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.pjax/1.9.6/jquery.pjax.min.js"></script>
 
 
+    <script src="<?= base_url() ?>/assets/template_lte/plugins/pace/pace.js"></script>
     <script src="https://fengyuanchen.github.io/datepicker/js/datepicker.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script src="<?= base_url() ?>assets/template/js/sweet-alert.js"></script>
@@ -312,10 +315,39 @@
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js"></script>
 
-    <script>
-        $.widget.bridge('uibutton', $.ui.button);
+    <script type="text/javascript">
+        $(document).pjax('a', '#pjax-container');
+        $(document).ajaxStart(function() {
+            Pace.restart({
+                catchupTime: 100,
+                initialRate: .03,
+                minTime: 250,
+                ghostTime: 100,
+                maxProgressPerFrame: 20,
+                easeFactor: 1.25,
+                startOnPageLoad: true,
+                restartOnPushState: true,
+                restartOnRequestAfter: 500,
+                target: 'body',
+                elements: {
+                    checkInterval: 100,
+                    selectors: ['body']
+                },
+                eventLag: {
+                    minSamples: 10,
+                    sampleCount: 3,
+                    lagThreshold: 3
+                },
+                ajax: {
+                    trackMethods: ['GET'],
+                    trackWebSockets: true,
+                    ignoreURLs: []
+                }
+            })
+
+
+        });
     </script>
-    <!-- Bootstrap 3.3.5 -->
     <script src="<?= base_url() ?>/assets/template_lte/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 
