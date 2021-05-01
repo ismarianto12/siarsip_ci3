@@ -20,8 +20,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/morris/morris.css">
     <!-- jvectormap -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-
-
+ 
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template/css/sweet-alert.css">
 
 

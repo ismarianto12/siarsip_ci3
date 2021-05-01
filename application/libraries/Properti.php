@@ -78,21 +78,21 @@ class properti
                 $icon = ($menu['items'][$itemId]->icon) ? '<i class="' . $menu['items'][$itemId]->icon . '"></i>' : '<i class="fa fa-list"></i>';
 
                 if (!isset($menu['parents'][$itemId])) {
-                    if (preg_match("/^http/", $menu['items'][$itemId]->link)) {
-                        $html .= "<li><a href='" . $menu['items'][$itemId]->link . "'><i class='fa fa-files-o'></i>" . $menu['items'][$itemId]->nama_menu . "</a></li>";
+                    if (preg_match("/^http/", strtolower($menu['items'][$itemId]->link))) {
+                        $html .= "<li><a href='" . strtolower($menu['items'][$itemId]->link) . "'><i class='fa fa-files-o'></i>" . $menu['items'][$itemId]->nama_menu . "</a></li>";
                     } else {
                         if ($menu['items'][$itemId]->id_parent == 0) :
-                            $html .= "<li><a href='" . base_url() . '' . $menu['items'][$itemId]->link . "'>" . $icon . "<span>" . $menu['items'][$itemId]->nama_menu . "</span></a></li>";
+                            $html .= "<li><a href='" . base_url() . '' . strtolower($menu['items'][$itemId]->link) . "'>" . $icon . "<span>" . $menu['items'][$itemId]->nama_menu . "</span></a></li>";
                         else :
-                            $html .= "<li class='treeview'><a href='" . base_url() . '' . $menu['items'][$itemId]->link . "'><i class='fa fa-files-o'></i><span>" . $menu['items'][$itemId]->nama_menu . "</span></a></li>";
+                            $html .= "<li class='treeview'><a href='" . base_url() . '' . strtolower($menu['items'][$itemId]->link) . "'><i class='fa fa-files-o'></i><span>" . $menu['items'][$itemId]->nama_menu . "</span></a></li>";
                         endif;
                     }
                 }
                 if (isset($menu['parents'][$itemId])) {
-                    if (preg_match("/^http/", $menu['items'][$itemId]->link)) {
-                        $html .= "<li class='treeview'><a href='" . $menu['items'][$itemId]->link . "'>" . $icon . "<span>" . $menu['items'][$itemId]->nama_menu . "</span><i class='fa fa-angle-left pull-right'></i></a>";
+                    if (preg_match("/^http/", strtolower($menu['items'][$itemId]->link))) {
+                        $html .= "<li class='treeview'><a href='" . strtolower($menu['items'][$itemId]->link) . "'>" . $icon . "<span>" . $menu['items'][$itemId]->nama_menu . "</span><i class='fa fa-angle-left pull-right'></i></a>";
                     } else {
-                        $html .= "<li class='treeview'><a href='" . $menu['items'][$itemId]->link . "'>" . $icon . "<span>" . $menu['items'][$itemId]->nama_menu . "</span><i class='fa fa-angle-left pull-right'></i></a>";
+                        $html .= "<li class='treeview'><a href='" . strtolower($menu['items'][$itemId]->link) . "'>" . $icon . "<span>" . $menu['items'][$itemId]->nama_menu . "</span><i class='fa fa-angle-left pull-right'></i></a>";
                     }
                     $html .= self::buitlmenu($itemId, $menu);
                     $html .= "</li>";
