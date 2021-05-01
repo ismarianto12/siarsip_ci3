@@ -2,11 +2,11 @@
     <div class='col-sm-12'>
       <?= $this->session->userdata('message') ?>
       <div class='white-box'>
-        <h3 class='box-title m-b-0'><?= $judul ?></h3>
+       
         <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
         <div class='table-responsive'>  
             <a href="<?= base_url('arsip/pengajuan_arsip/add') ?>" class="btn btn-success">Tambah data</a>
-            <hr />
+            <br  /><br  />
      
      <?php 
      if ($form == 'n') { 
@@ -42,10 +42,10 @@
             <?php $jenis_file = substr($dt['file_arsip'], -4);
 
             if($jenis_file == '.jpg' || $jenis_file == '.png'):  ?>
-              <button href="<?= base_url('arsip/download_file_arip/'.$dt['id_pengajuan']) ?>" onclick="return tampil_data('<?= $dt['file_arsip'] ?>') "class="btn btn-primary  btn-xs"><?= $dt['file_arsip'] ?></button>
+              <button href="<?= base_url('arsip/download_file_arip/'.$dt['id_pengajuan']) ?>" onclick="return tampil_data('<?= $dt['file_arsip'] ?>') "class="btn bg-green btn-flat margin  btn-xs"><?= $dt['file_arsip'] ?></button>
               <?php else: ?>
 
-               <a href="<?= base_url('arsip/download_file_arip/'.$dt['id_pengajuan']) ?>" target="_blank" class="btn btn-primary"><i class="fa fa-list"></i>Download File</a>
+               <a href="<?= base_url('arsip/download_file_arip/'.$dt['id_pengajuan']) ?>" target="_blank" class="btn bg-green btn-flat margin"><i class="fa fa-list"></i>Download File</a>
 
              <?php endif; ?> 
 
@@ -131,7 +131,7 @@
 </div>
 
 <div class="form-group">
-  <div class="col-sm-3"><button type="submit" name="kirim" class="btn btn-primary"><i class="fa fa-disk"></i>Simpan</button> <button type="reset" name="kirim" class="btn btn-danger"><i class="fa fa-disk"></i>Batal</button></div>
+  <div class="col-sm-3"><button type="submit" name="kirim" class="btn bg-green btn-flat margin"><i class="fa fa-disk"></i>Simpan</button> <button type="reset" name="kirim" class="btn btn-danger"><i class="fa fa-disk"></i>Batal</button></div>
 </div>    
 </form>
 <?php }elseif($form == 'detail'){  ?>

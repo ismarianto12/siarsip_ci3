@@ -17,19 +17,19 @@
 <div class='row'>
   <div class='col-sm-12'>
     <div class='white-box'>
-      <h3 class='box-title m-b-0'><?= $judul ?></h3>
+
       <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
       <div class='table-responsive'>
         <?php if ($this->session->level != 'admin' and $this->session->level != 'staff') {
         } else {
-          echo '<button class="btn btn-primary btn-xs" to="' . base_url('tsuratmasuk/tambah') . '" id="tambah">Tambah</button>';
+          echo '<button class="btn bg-navy btn-flat margin" to="' . base_url('tsuratmasuk/tambah') . '" id="tambah">Tambah</button>';
         } ?>
 
         <div class="main_app"></div>
         <br /><br /><br /><br />
         <div class="col-md-5">
           <select class="form-control" name="disposisi" id="disposisi">
-            <option value="">Semua Jenis Surat :</option>
+            <option value="">Semua Jenis surat :</option>
             <?php
             $data = array('y' => 'Disposisi', 'n' => 'Belum Disposisi');
             foreach ($data as $dr => $val) : ?>
@@ -37,7 +37,7 @@
             <?php endforeach; ?>
           </select>
         </div>
-        <hr />
+        <br  /><br  />
         <?= $this->session->userdata('message') ?>
         <div id="notifikasi"></div>
         <table class="table" id="datatables">
@@ -97,8 +97,22 @@
               },
 
               dom: 'Bfrtip',
-              buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
+              buttons: [{
+                  extend: 'copyHtml5',
+                  className: 'btn btn-info btn-xs'
+                },
+                {
+                  extend: 'excelHtml5',
+                  className: 'btn btn-success btn-xs'
+                },
+                {
+                  extend: 'csvHtml5',
+                  className: 'btn bg-navy btn-flat margin'
+                },
+                {
+                  extend: 'pdfHtml5',
+                  className: 'btn btn-prirmay btn-xs'
+                }
               ],
 
               columns: [{
@@ -155,7 +169,7 @@
           });
 
           function hapus(n) {
-            swal({
+            Swal({
                 title: 'Konfirmasi Hapus',
                 text: 'Apakah Anda Yakin Untuk Menghapus Data Ini?',
                 type: 'warning',
@@ -165,7 +179,7 @@
                 closeOnConfirm: false
               },
               function() {
-                swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
+                Swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
                 $.ajax({
                   url: '<?= base_url('tsuratmasuk/hapus') ?>',
                   data: 'id_suratmasuk=' + n,
@@ -176,7 +190,7 @@
                     $('#notifikasi').html('<div class="alert alert-danger">Data berhasil di hapus</div>');
                   },
                   error: function(result) {
-                    // swal('Gagal ','Serer tidak dapat merespon','danger');
+                    // Swal('Gagal ','Serer tidak dapat merespon','danger');
                     alert('gagal');
                   }
                 });
@@ -187,7 +201,7 @@
           /*cetak data disposisi surat*/
 
           function cetak_disposisi(n) {
-            swal({
+            Swal({
                 title: 'Konfirmasi Cetak',
                 text: 'Anda Akan Mencetak disposisi surat ini ?',
                 type: 'warning',
@@ -216,7 +230,7 @@
                 $('#id_suratmasuk').html('<input type="hidden" name="id_surat" id="id_surat" value="' + n + '">');
               },
               error: function(data) {
-                swal('error ..', 'maaf server error response, silahkan coba kembali', 'error');
+                Swal('error ..', 'maaf server error response, silahkan coba kembali', 'error');
               }
             });
           }
@@ -256,7 +270,7 @@
                 type: 'post',
                 chace: false,
                 success: function(data) {
-                  swal('success..', 'surat berhasil di disposisi', 'success');
+                  Swal('success..', 'surat berhasil di disposisi', 'success');
                   $('#datatables').DataTable().ajax.reload();
                   kosongkan_form();
                   $('#tampilan_cari').modal('hide');
@@ -271,7 +285,7 @@
 
                 },
                 error: function(data) {
-                  swal('danger..', 'data tidak bisa di simpan', 'error');
+                  Swal('danger..', 'data tidak bisa di simpan', 'error');
                 }
               });
             });
@@ -314,7 +328,7 @@
             <div class="form-group">
               <label for="timestamp" class='control-label col-md-3'><b>Batas Waktu</b></label>
               <div class='col-md-9'>
-                <input type="date" class="form-control" name="batas_waktu" id="batas_waktu" placeholder="Batas Waktu.." value="" required/>
+                <input type="date" class="form-control" name="batas_waktu" id="batas_waktu" placeholder="Batas Waktu.." value="" required />
               </div>
             </div>
             <div class="form-group">

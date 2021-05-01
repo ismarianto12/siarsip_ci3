@@ -236,7 +236,7 @@ $pdf->AddPage();
 require('../htmlcolors.php');
 
 $textcolors = '<h1>HTML Text Colors</h1>';
-$bgcolors = '<hr /><h1>HTML Background Colors</h1>';
+$bgcolors = '<br  /><br  /><h1>HTML Background Colors</h1>';
 
 foreach($webcolor as $k => $v) {
 	$textcolors .= '<span color="#'.$v.'">'.$v.'</span> ';
@@ -252,7 +252,7 @@ $pdf->writeHTML($bgcolors, true, false, true, false, '');
 // Test word-wrap
 
 // create some HTML content
-$html = '<hr />
+$html = '<br  /><br  />
 <h1>Various tests</h1>
 <a href="#2">link to page 2</a><br />
 <font face="courier"><b>thisisaverylongword</b></font> <font face="helvetica"><i>thisisanotherverylongword</i></font> <font face="times"><b>thisisaverylongword</b></font> thisisanotherverylongword <font face="times">thisisaverylongword</font> <font face="courier"><b>thisisaverylongword</b></font> <font face="helvetica"><i>thisisanotherverylongword</i></font> <font face="times"><b>thisisaverylongword</b></font> thisisanotherverylongword <font face="times">thisisaverylongword</font> <font face="courier"><b>thisisaverylongword</b></font> <font face="helvetica"><i>thisisanotherverylongword</i></font> <font face="times"><b>thisisaverylongword</b></font> thisisanotherverylongword <font face="times">thisisaverylongword</font> <font face="courier"><b>thisisaverylongword</b></font> <font face="helvetica"><i>thisisanotherverylongword</i></font> <font face="times"><b>thisisaverylongword</b></font> thisisanotherverylongword <font face="times">thisisaverylongword</font> <font face="courier"><b>thisisaverylongword</b></font> <font face="helvetica"><i>thisisanotherverylongword</i></font> <font face="times"><b>thisisaverylongword</b></font> thisisanotherverylongword <font face="times">thisisaverylongword</font>';

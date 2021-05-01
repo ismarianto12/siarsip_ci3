@@ -16,7 +16,8 @@ class Tbl_surat_keluar_model extends CI_Model
     }
 
     // datatables
-    function json() {
+    function json()
+    {
         $this->datatables->select(' 
 
             a.id_surat,
@@ -39,12 +40,12 @@ class Tbl_surat_keluar_model extends CI_Model
  
             ');
         $this->datatables->from('tbl_surat_keluar a');
-        $this->datatables->join('jenis_surat b','b.id_jenis=a.id_jenis_surat','left');  
-        if($this->input->post('id_jenis') != ''):
-        $this->datatables->where('a.id_jenis_surat',$this->input->post('id_jenis')); 
-        endif; 
-         $this->datatables->add_column('data_file','<a href="'.base_url('assets/file_surat/$1').'" class="btn btn-info">Detail File</a>','file'); 
-        $this->datatables->add_column('action', anchor(site_url('tbl_surat_keluar/detail/$1'),'<i class="fa fa-book"></i>Read','class="btn btn-info btn-xs edit"')."  ".anchor(site_url('tbl_surat_keluar/edit/$1'),'<i class="fa fa-edit"></i> Update','class="btn btn-success btn-xs edit"')."<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id_surat');
+        $this->datatables->join('jenis_surat b', 'b.id_jenis=a.id_jenis_surat', 'left');
+        if ($this->input->post('id_jenis') != '') :
+            $this->datatables->where('a.id_jenis_surat', $this->input->post('id_jenis'));
+        endif;
+        $this->datatables->add_column('data_file', '<a href="' . base_url('assets/file_surat/$1') . '" class="btn bg-navy btn-flat margin btn-xs" target="_blank">Lihat file</a>', 'file');
+        $this->datatables->add_column('action', anchor(site_url('tbl_surat_keluar/detail/$1'), '<i class="fa fa-book"></i>Read', 'class="btn bg-green btn-flat btn-xs edit"') . "  " . anchor(site_url('tbl_surat_keluar/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn bg-red btn-flat btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id_surat');
         return $this->datatables->generate();
     }
 
@@ -61,9 +62,10 @@ class Tbl_surat_keluar_model extends CI_Model
         $this->db->where($this->id, $id);
         return $this->db->get($this->table)->row();
     }
-    
+
     // get total rows
-    function total_rows($q = NULL) {
+    function total_rows($q = NULL)
+    {
         $this->db->like('id_surat', $q);
         $this->db->or_like('no_agenda', $q);
         $this->db->or_like('tujuan', $q);
@@ -80,7 +82,8 @@ class Tbl_surat_keluar_model extends CI_Model
     }
 
     // get data with limit and search
-    function get_limit_data($limit, $start = 0, $q = NULL) {
+    function get_limit_data($limit, $start = 0, $q = NULL)
+    {
         $this->db->order_by($this->id, $this->order);
         $this->db->like('id_surat', $q);
         $this->db->or_like('no_agenda', $q);
@@ -116,6 +119,4 @@ class Tbl_surat_keluar_model extends CI_Model
         $this->db->where($this->id, $id);
         $this->db->delete($this->table);
     }
-
 }
-

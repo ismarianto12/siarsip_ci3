@@ -30,7 +30,7 @@ class Tsuratmasuk_model extends CI_Model
         if ($this->session->level != 'admin' and $this->session->level != 'staff') {
         } else {
             $this->datatables->add_column('action', anchor(site_url('tsuratmasuk/detail/$1'), '<i class="fa fa-book"></i>Read', 'class="btn btn-info btn-xs edit"') . "
-        <button id='edit' to='" . base_url('tsuratmasuk/edit/$1') . "' class='btn btn-warning btn-xs waning'><i class='fa fa-trash'></i> Edit</button>
+        <button id='edit' to='" . base_url('tsuratmasuk/edit/$1') . "' class='btn bg-navy btn-flat margin waning'><i class='fa fa-trash'></i> Edit</button>
         <a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>&nbsp; <a href='#' class='btn btn-info btn-xs' onclick='javasciprt: return set_disposisi($1)'><i class='fa fa-check'></i> Disposisi</a>", 'id_surat');
         }
         return $this->datatables->generate();

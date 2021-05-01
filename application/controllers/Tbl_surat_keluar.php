@@ -1,7 +1,15 @@
 <?php
 
+
+
 if (!defined('BASEPATH'))
   exit('No direct script access allowed');
+
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 class Tbl_surat_keluar extends CI_Controller
 {
@@ -32,6 +40,11 @@ class Tbl_surat_keluar extends CI_Controller
   public function detail($id)
   {
     $row = $this->Tbl_surat_keluar_model->get_by_id($id);
+
+    $data = $this->db->get_where('login', [
+      'id_user' => $row->id_user
+    ])->row_array();
+
     if ($row) {
       $data = array(
         'id_jenis_surat' => $row->id_jenis_surat,
@@ -46,7 +59,7 @@ class Tbl_surat_keluar extends CI_Controller
         'file' => $row->file,
         'keterangan' => $row->keterangan,
         'id_user' => $row->id_user,
-
+        'username' => $data->nama,
         'judul' => 'Detail :  Surat Keluar',
       );
       $this->template->load('template', 'tbl_surat_keluar/tbl_surat_keluar_read', $data);
@@ -85,6 +98,7 @@ class Tbl_surat_keluar extends CI_Controller
     if ($this->form_validation->run() == FALSE) {
       $this->tambah();
     } else {
+
       $tgl_surat = $this->input->post('tgl_surat');
       $tgl_catat = $this->input->post('tgl_catat');
 
@@ -96,10 +110,13 @@ class Tbl_surat_keluar extends CI_Controller
       $conf['upload_path'] = './assets/file_surat';
       $conf['allowed_types'] = 'pdf|doc|docx|xls|xlxs';
       $this->upload->initialize($conf);
+
+
+
       if ($this->upload->do_upload('file')) {
 
         $data = array(
-          'no_agenda' => $this->input->post('no_agenda', TRUE),
+          'no_agenda' => ($this->input->post('no_agenda', TRUE)) ? $this->input->post('no_agenda', TRUE) : 'null',
           'tujuan' => $this->input->post('tujuan', TRUE),
           'no_surat' => $this->input->post('no_surat', TRUE),
           'isi' => $this->input->post('isi', TRUE),
@@ -111,7 +128,7 @@ class Tbl_surat_keluar extends CI_Controller
           'keterangan' => $this->input->post('keterangan', TRUE),
           'id_user' => $this->session->id_user,
         );
-        $this->Tbl_surat_keluar_model->insert($data);
+        $this->db->insert('tbl_surat_keluar', $data);
         $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Data Berhasil Di Tambahkan.</div>');
         redirect(site_url('tbl_surat_keluar'));
       } else {
@@ -163,7 +180,7 @@ class Tbl_surat_keluar extends CI_Controller
 
       if ($_FILES['file']['name'] == '') {
         $data = array(
-          'no_agenda' => $this->input->post('no_agenda', TRUE),
+          'no_agenda' => ($this->input->post('no_agenda', TRUE)) ? $this->input->post('no_agenda', TRUE) : 'null',
           'tujuan' => $this->input->post('tujuan', TRUE),
           'no_surat' => $this->input->post('no_surat', TRUE),
           'isi' => $this->input->post('isi', TRUE),
@@ -173,7 +190,7 @@ class Tbl_surat_keluar extends CI_Controller
           'tgl_catat' => $f_tgl_catat,
 
           'id_jenis_surat' => $this->input->post('id_jenis_surat'),
-          'file' => $this->input->post('file', TRUE),
+          'file' => 'null',
           'keterangan' => $this->input->post('keterangan', TRUE),
           'id_user' => $this->session->id_user,
         );
@@ -182,13 +199,23 @@ class Tbl_surat_keluar extends CI_Controller
         $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
         redirect(site_url('tbl_surat_keluar'));
       } else {
+
+        $tgl_surat = $this->input->post('tgl_surat');
+        $tgl_catat = $this->input->post('tgl_catat');
+
+        $f_tgl_surat = date("Y-m-d", strtotime($tgl_surat));
+        $f_tgl_catat = date("Y-m-d", strtotime($tgl_catat));
+
+
         $conf['file_name'] = 'surat_keluar' . date('Y-m-d');
         $conf['upload_path'] = './assets/file_surat';
         $conf['allowed_types'] = 'pdf|doc|docx|xls|xlxs';
-        $this->upload->initalize($conf);
+        $this->upload->initialize($conf);
         if ($this->upload->do_upload('file')) {
+          $update = $this->db->get_where('tbl_surat_keluar', ['id_surat' => $this->input->post('id_surat', TRUE)])->row_array();
+          @unlink($conf['upload_path'], '/' . $update['file']);
           $data = array(
-            'no_agenda' => $this->input->post('no_agenda', TRUE),
+            'no_agenda' => ($this->input->post('no_agenda', TRUE)) ? $this->input->post('no_agenda', TRUE) : 'null',
             'tujuan' => $this->input->post('tujuan', TRUE),
             'no_surat' => $this->input->post('no_surat', TRUE),
             'isi' => $this->input->post('isi', TRUE),
@@ -200,9 +227,8 @@ class Tbl_surat_keluar extends CI_Controller
             'keterangan' => $this->input->post('keterangan', TRUE),
             'id_user' => $this->session->id_user,
           );
-
-          $this->Tbl_surat_keluar_model->update($this->input->post('id_surat', TRUE), $data);
-          $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Data Berhasil Di Tambahkan.</div>');
+          $this->db->update('tbl_surat_keluar', $data, ['id_surat' => $this->input->post('id_surat', TRUE)]);
+          $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Data Berhasil Di Edit.</div>');
           redirect(site_url('tbl_surat_keluar'));
         } else {
           $this->session->set_flashdata('message', $this->upload->display_errors('<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>', '</div>'));
@@ -258,7 +284,7 @@ class Tbl_surat_keluar extends CI_Controller
 
   public function _rules()
   {
-    $this->form_validation->set_rules('no_agenda', 'no agenda', 'trim|required');
+    // $this->form_validation->set_rules('no_agenda', 'no agenda', 'trim|required');
     $this->form_validation->set_rules('tujuan', 'tujuan', 'trim|required');
     $this->form_validation->set_rules('no_surat', 'no surat', 'trim|required');
     $this->form_validation->set_rules('isi', 'isi', 'trim|required');

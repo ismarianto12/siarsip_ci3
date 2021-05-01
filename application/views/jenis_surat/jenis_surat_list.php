@@ -1,14 +1,14 @@
 <div class='row'>
     <div class='col-sm-12'>
-        <div class="panel panel-info">
-            <div class="panel-heading">Surat keluar</div>
+        <div class="box-default">
+            <div class="panel-heading"><i class="fa fa-document"></i>Jenis Surat</div>
         </div>
         <?= $this->session->userdata('message') ?>
         <div class='white-box'>
-            <h3 class='box-title m-b-0'><?= $judul ?></h3>
+
             <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
             <div class='table-responsive'>
-                <?php echo anchor(site_url('jenis_surat/tambah'), 'Tambah Data', 'class="btn btn-primary"'); ?>
+                <?php echo anchor(site_url('jenis_surat/tambah'), 'Tambah Data', 'class="btn bg-green btn-flat margin"'); ?>
 
                 <br /><br />
                 <table class="table" id="datatables">
@@ -56,7 +56,7 @@
                             processing: true,
                             serverSide: true,
                             ajax: {
-                                "url": "jenis_surat/json",
+                                "url": "<?= base_url('jenis_surat/json') ?>",
                                 "type": "POST"
                             },
                             columns: [{
@@ -92,7 +92,7 @@
                     });
 
                     function hapus(n) {
-                        swal({
+                        Swal({
                                 title: 'Konfirmasi Hapus',
                                 text: 'Apakah Anda Yakin Untuk Menghapus Data Ini?',
                                 type: 'warning',
@@ -102,7 +102,7 @@
                                 closeOnConfirm: false
                             },
                             function() {
-                                swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
+                                Swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
                                 window.location.href = '<?= base_url('jenis_surat/hapus/') ?>' + n;
                             });
                     }

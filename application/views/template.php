@@ -24,23 +24,18 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/morris/morris.css">
     <!-- jvectormap -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-    <!-- Date Picker -->
+
 
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template/css/sweet-alert.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/datepicker/datepicker3.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/daterangepicker/daterangepicker-bs3.css">
-    <!-- bootstrap wysihtml5 - text editor -->
+
+
     <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
     <script src="<?= base_url() ?>/assets/template_lte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://fengyuanchen.github.io/datepicker/css/datepicker.css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
 </head>
 
 <script type="text/javascript">
@@ -52,14 +47,29 @@
     }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+<style>
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
 
-<style type="text/css">
+    ::-webkit-scrollbar-track {
+
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        width: 8px;
+        background: rgb(155, 154, 154);
+    }
+
     .dt-buttons {
         padding: 10px 10px 10px;
         background: #ddd;
         margin-bottom: 20px;
         margin-left: 10px;
-    } 
+    }
+
     div.dt-buttons {
         clear: both;
     }
@@ -197,10 +207,10 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="<?= base_url('profile') ?>" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="<?= base_url('profile') ?>" class="btn bg-red btn-flat margin btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="<?= base_url('logout') ?>" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="<?= base_url('logout') ?>" class="btn bg-red btn-flat margin btn-flat">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -269,8 +279,10 @@
                 <section class="content">
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="box" style="padding: 10px 10px 10px;">
-                                <?= $contents ?>
+                            <div class="box">
+                                <div class="box-body">
+                                    <?= $contents ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -284,16 +296,15 @@
             <div class="pull-right hidden-xs">
                 <b>Version</b> 2.3.0
             </div>
-            <strong>Copyright &copy; <?= date('Y') ?><a href="http://almsaeedstudio.com">Template By : Almsaeed Studio</a>.</strong> All rights reserved.
+
         </footer>
 
 
-    </div><!-- ./wrapper -->
+    </div>
 
-    <!-- jQuery 2.1.4 -->
-    <!-- jQuery UI 1.11.4 -->
+
+    <script src="https://fengyuanchen.github.io/datepicker/js/datepicker.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script src="<?= base_url() ?>assets/template/js/sweet-alert.js"></script>
 
     <script src="<?= base_url() ?>assets/template/plugins/components/datatables/jquery.dataTables.min.js"></script>

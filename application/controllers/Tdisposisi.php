@@ -78,7 +78,7 @@ class Tdisposisi extends CI_Controller
             $cek = $this->db->get_where('tbl_disposisi', array('id_surat' => $this->input->post('id_surat')));
             if ($cek->num_rows() > 0) :
                 $data = array(
-                    'tujuan' => $this->input->post('tujuan', TRUE),
+                    'tujuan' => ($this->input->post('tujuan', TRUE)) ? $this->input->post('tujuan', TRUE) : 'null',
                     'isi_disposisi' => $this->input->post('isi_disposisi', TRUE),
                     'sifat' => $this->input->post('sifat', TRUE),
                     'batas_waktu' => $this->input->post('batas_waktu', TRUE),
@@ -89,7 +89,7 @@ class Tdisposisi extends CI_Controller
                 $this->db->update('tbl_disposisi', $data, array('id_surat' => $this->input->post('id_surat')));
             else :
                 $data = array(
-                    'tujuan' => $this->input->post('tujuan', TRUE),
+                    'tujuan' => ($this->input->post('tujuan', TRUE)) ? $this->input->post('tujuan', TRUE) : 'null',
                     'isi_disposisi' => $this->input->post('isi_disposisi', TRUE),
                     'sifat' => $this->input->post('sifat', TRUE),
                     'batas_waktu' => $this->input->post('batas_waktu', TRUE),
@@ -136,7 +136,7 @@ class Tdisposisi extends CI_Controller
             $this->edit($this->input->post('id_disposisi', TRUE));
         } else {
             $data = array(
-                'tujuan' => $this->input->post('tujuan', TRUE),
+                'tujuan' => ($this->input->post('tujuan', TRUE)) ? $this->input->post('tujuan', TRUE) : 'null',
                 'isi_disposisi' => $this->input->post('isi_disposisi', TRUE),
                 'sifat' => $this->input->post('sifat', TRUE),
                 'batas_waktu' => $this->input->post('batas_waktu', TRUE),

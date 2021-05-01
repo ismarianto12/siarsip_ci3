@@ -70,7 +70,7 @@
       <label for="varchar">Favicon</label>
       <input type="file" class="form-control" name="favicon" id="inputFile2">
     </div>
-    <button type="submit" class="btn btn-primary shiny"><i class='fa fa-save'></i><?php echo $button ?></button>
+    <button type="submit" class="btn bg-green btn-flat margin shiny"><i class='fa fa-save'></i><?php echo $button ?></button>
     <a href="<?php echo site_url('instansi') ?>" class="btn btn-warning shiny"><i class='fa fa-share'></i>Cancel</a>
     </form>
   </div>

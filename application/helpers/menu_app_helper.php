@@ -1,35 +1,36 @@
-<?php 
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+if (!defined('BASEPATH')) exit('No direct script access allowed');
 ob_start();
 
 
 
-function creted_qr($nilai){
-  $CI =& get_instance();
-  $config['cacheable']    = true; 
-  $config['cachedir']     = './assets/'; 
-  $config['errorlog']     = './assets/'; 
-  $config['imagedir']     = './assets/img/qr_pengajuan'; 
+function creted_qr($nilai)
+{
+  $CI = &get_instance();
+  $config['cacheable']    = true;
+  $config['cachedir']     = './assets/';
+  $config['errorlog']     = './assets/';
+  $config['imagedir']     = './assets/img/qr_pengajuan';
   $config['quality']      = true;
-  $config['size']         = '1024';  
-  $config['black']        = array(224,255,255);  
-  $config['white']        = array(70,130,180); 
+  $config['size']         = '1024';
+  $config['black']        = array(224, 255, 255);
+  $config['white']        = array(70, 130, 180);
 
   $CI->ciqrcode->initialize($config);
-  $image_name=$nilai.'.png'; 
-  $params['data'] =$nilai; 
-  $params['level'] = 'H';  
+  $image_name = $nilai . '.png';
+  $params['data'] = $nilai;
+  $params['level'] = 'H';
   $params['size'] = 10;
-  $params['savename'] = FCPATH.$config['imagedir'].$image_name; 
-  $CI->ciqrcode->generate($params);  
-} 
+  $params['savename'] = FCPATH . $config['imagedir'] . $image_name;
+  $CI->ciqrcode->generate($params);
+}
 
 
 function identitas($param)
 {
-  $CI =& get_instance();
-  $hasil=$CI->db->get('instansi')->row_array();
-  return $hasil[$param]; 
+  $CI = &get_instance();
+  $hasil = $CI->db->get('instansi')->row_array();
+  return $hasil[$param];
 }
 
 
@@ -94,29 +95,29 @@ function identitas($param)
 
 
 function penomoran_surat()
-{ 
- $CI=& get_instance();
- $CI->db->select("max(id_surat) as no_surat");
- $CI->db->from("tbl_surat_keluar");
- $data=$CI->db->get()->row();
- if($data->no_surat == NULL){
-   $no_surat = 1; 
- }else{ 
-   $no_surat = $data->no_surat;
- }        
- return $no_surat;
+{
+  $CI = &get_instance();
+  $CI->db->select("max(id_surat) as no_surat");
+  $CI->db->from("tbl_surat_keluar");
+  $data = $CI->db->get()->row();
+  if ($data->no_surat == NULL) {
+    $no_surat = 1;
+  } else {
+    $no_surat = $data->no_surat;
+  }
+  return $no_surat;
 }
 
-function catat_log($id_user,$url,$aktivitas,$ip_address,$browser){
-  $CI =& get_instance();
-  $data =array(  
-    'id_user'=>$id_user,
-    'url'=>$url,
-    'aktivitasi'=>$aktivitas, 
-    'tanggal'=>date("y-m-d H:I:S"),
-    'ip_address'=>$ip_address,
-    'browser'=>$browser
-  );
-  $CI->db->insert('histori',$data); 
-
+function catat_log($id_user, $url, $aktivitas, $ip_address, $browser)
+{
+  // $CI = &get_instance();
+  // $data = array(
+  //   'id_user' => $id_user,
+  //   'url' => $url,
+  //   'aktivitasi' => $aktivitas,
+  //   'tanggal' => date("y-m-d H:I:S"),
+  //   'ip_address' => $ip_address,
+  //   'browser' => $browser
+  // );
+  // $CI->db->insert('histori', $data);
 }

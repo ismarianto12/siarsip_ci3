@@ -6,7 +6,7 @@
 <h3 class='box-title m-b-0'><?= $judul ?></h3>
 <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
 <div class='table-responsive'>  
-    <?php echo anchor(site_url('login/tambah'), 'Tambah Data', 'class="btn btn-primary"'); ?>
+    <?php echo anchor(site_url('login/tambah'), 'Tambah Data', 'class="btn bg-green btn-flat margin"'); ?>
 
     <br /><br />
     <table class="table" id="datatables">
@@ -80,7 +80,7 @@
         });
 
         function hapus(n){
-            swal({
+            Swal({
                 title: 'Konfirmasi Hapus',
                 text: 'Apakah Anda Yakin Untuk Menghapus Data Ini?',
                 type: 'warning',
@@ -90,7 +90,7 @@
                 closeOnConfirm: false
             },
             function(){
-               swal('Hapus Data', 'Data Berhasil Di Hapus', 'success'); 
+               Swal('Hapus Data', 'Data Berhasil Di Hapus', 'success'); 
                window.location.href='<?= base_url('login/hapus/') ?>'+n;
            });
         }

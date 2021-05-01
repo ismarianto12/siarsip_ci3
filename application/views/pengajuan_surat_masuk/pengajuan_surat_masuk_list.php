@@ -4,17 +4,17 @@
     <div class='col-sm-12'>
       <?= $this->session->userdata('message') ?>
       <div class='white-box'>
-        <h3 class='box-title m-b-0'><?= $judul ?></h3>
+       
         <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
         <div class='table-responsive'>  
             <a href="<?= base_url('pengajuan_arsip/add') ?>" class="btn btn-success">Tambah data</a>
-            <hr />
+            <br  /><br  />
             <table class="table table-bordered table-striped" id="datatables">
                 <thead>
                     <tr>
                         <th width="80px">No</th>
                         <th>No Agenda</th>
-                        <th>Jenis Surat</th>
+                        <th>jenis_surat</th>
                         <th>Tanggal Kirim</th>
                         <th>Tanggal Terima</th>
                         <th>No Surat</th>
@@ -82,7 +82,7 @@
                 });
                 
                 function hapus(n){
-                    swal({
+                    Swal({
                         title: 'Konfirmasi Hapus',
                         text: 'Apakah Anda Yakin Untuk Menghapus Data Ini?',
                         type: 'warning',
@@ -92,7 +92,7 @@
                         closeOnConfirm: false
                     },
                     function(){
-                       swal('Hapus Data', 'Data Berhasil Di Hapus', 'success'); 
+                       Swal('Hapus Data', 'Data Berhasil Di Hapus', 'success'); 
                        window.location.href='<?= base_url('pengajuan_surat_masuk/hapus/') ?>'+n;
                    });
                 }

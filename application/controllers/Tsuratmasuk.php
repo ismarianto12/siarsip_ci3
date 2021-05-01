@@ -86,7 +86,7 @@ class Tsuratmasuk extends CI_Controller
   public function tambah_data()
   {
     $this->_rules();
-    catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'Menambahkan surat masuk.', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
+    // catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'Menambahkan surat masuk.', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
     if ($this->form_validation->run() == FALSE) {
       $respon = array(
         'ket' => 2,
@@ -105,8 +105,7 @@ class Tsuratmasuk extends CI_Controller
       $conf['upload_path'] = 'assets/file_surat/';
       $conf['file_name']   = time() . 'file_surat';
       $this->upload->initialize($conf);
-      if ($this->upload->do_upload('file')) {
-
+      if ($this->upload->do_upload('file')) { 
         $data = array(
           'no_agenda' => $this->input->post('no_agenda', TRUE),
           'no_surat' => $this->input->post('no_surat', TRUE),
@@ -120,16 +119,29 @@ class Tsuratmasuk extends CI_Controller
           'keterangan' => $this->input->post('keterangan', TRUE),
           'id_user' => $this->session->id_user,
         );
-        $this->Tsuratmasuk_model->insert($data);
+        $this->db->insert('tbl_surat_masuk', $data);
         $respon = array(
           'ket' => 1,
           'respon' => 'data berhasil di tambahkan'
         );
         echo json_encode($respon);
       } else {
+        $data = array(
+          'no_agenda' => $this->input->post('no_agenda', TRUE),
+          'no_surat' => $this->input->post('no_surat', TRUE),
+          'asal_surat' => $this->input->post('asal_surat', TRUE),
+          'isi' => $this->input->post('isi', TRUE),
+          'kode' => $this->input->post('kode', TRUE),
+          'indeks' => $this->input->post('indeks', TRUE),
+          'tgl_surat' => $f_tgl_surat,
+          'tgl_diterima' => $f_tgl_catat,
+          'keterangan' => $this->input->post('keterangan', TRUE),
+          'id_user' => $this->session->id_user,
+        );
+        $this->db->insert('tbl_surat_masuk', $data);
         $respon = array(
-          'ket' => 2,
-          'respon' => 'server tidak dapat merespon'
+          'ket' => 1,
+          'respon' => 'data berhasil di tambahkan'
         );
         echo json_encode($respon);
       }

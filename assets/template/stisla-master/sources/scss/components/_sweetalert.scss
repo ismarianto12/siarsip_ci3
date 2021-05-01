@@ -1,0 +1,24 @@
+.Swal-button {
+  border-radius: 3px;
+  font-size: 16px;
+  &:focus {
+    box-shadow: none;
+  }
+  &.Swal-button--confirm {
+    @include button-shadow(primary);
+    background-color: color(primary);
+    &:focus {
+      opacity: .8;
+    }
+  }
+}
+
+.Swal-footer {
+  text-align: center;
+}
+
+.Swal-text {
+  text-align: center;
+  line-height: 24px;
+  font-weight: 500;
+}

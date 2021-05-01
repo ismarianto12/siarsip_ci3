@@ -1,9 +1,9 @@
 <div class='row'>
   <div class='col-sm-12'>
     <div class='white-box'>
-      <h3 class='box-title m-b-0'><?= $judul ?></h3>
+     
       <p class='text-muted m-b-30'>Laporan<?= $judul ?></p>
-      <hr />
+      <br  /><br  />
       <div class='table-responsive'>
 
         <div class="form-group">
@@ -19,7 +19,7 @@
             <input type="date" class="form-control" name="sampai" id="sampai" placeholder="Tujuan" value="" />
           </div>
         </div>
-        <hr />
+        <br  /><br  />
 
         <div id="notifikasi"></div>
         <table class="table" id="datatables">
@@ -35,7 +35,7 @@
             </tr>
           </thead>
         </table>
-        <hr />  
+        <br  /><br  />  
         <br /> 
         <script type="text/javascript">
           $(document).ready(function() {
@@ -79,10 +79,13 @@
                 },
               },
 
-              dom: 'Bfrtip',
-              buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-              ],
+               dom: 'Bfrtip',
+        buttons: [
+        {extend:'copyHtml5', className: 'btn btn-info btn-xs'},
+        {extend:'excelHtml5', className: 'btn btn-success btn-xs'},
+        {extend:'csvHtml5', className: 'btn bg-navy btn-flat margin'},
+        {extend:'pdfHtml5', className: 'btn btn-prirmay btn-xs'}
+        ],
 
               columns: [{
                   "data": "id_surat",
@@ -113,7 +116,7 @@
             });
             $('#sampai').change(function() {
               if ($('#dari').val() == '') {
-                swal('Keterangan', 'Tanggal awal tidak boleh kosong', 'error');
+                Swal('Keterangan', 'Tanggal awal tidak boleh kosong', 'error');
               } else {
                 table_data.draw();
                 table_data.ajax.reload();
@@ -123,7 +126,7 @@
 
 
           function cetak_disposisi(n) {
-            swal({
+            Swal({
                 title: 'Konfirmasi Cetak',
                 text: 'Anda Akan Mencetak disposisi surat ini ?',
                 type: 'warning',

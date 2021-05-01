@@ -43,7 +43,7 @@
             <input type="text" class="form-control" name="level" id="level" placeholder="Level" value="<?php echo $level; ?>" />
         </div>
 	    <input type="hidden" name="id_menu" value="<?php echo $id_menu; ?>" /> 
-	    <button type="submit" class="btn btn-primary shiny"><i class='fa fa-save'></i><?php echo $button ?></button> 
+	    <button type="submit" class="btn bg-green btn-flat margin shiny"><i class='fa fa-save'></i><?php echo $button ?></button> 
 	    <a href="<?php echo site_url('menu') ?>" class="btn btn-warning shiny"><i class='fa fa-share'></i>Cancel</a>
 	</form> 
 </div></div>

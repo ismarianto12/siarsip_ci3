@@ -4519,7 +4519,7 @@ wysihtml5.dom.getStyle = (function() {
           try {
                 return currentStyle[camelizedProperty];
           } catch(e) {
-            //ie will occasionally fail for unknown reasons. swallowing exception
+            //ie will occasionally fail for unknown reasons. Swallowing exception
           }
         }
 

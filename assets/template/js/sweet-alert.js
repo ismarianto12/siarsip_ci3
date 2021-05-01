@@ -203,7 +203,7 @@
    * Global sweetAlert function
    */
 
-  window.sweetAlert = window.swal = function() {
+  window.sweetAlert = window.Swal = function() {
     if (arguments[0] === undefined) {
       window.console.error('sweetAlert expects at least 1 attribute!');
       return false;
@@ -440,7 +440,7 @@
    * Set default params for each popup
    * @param {Object} userParams
    */
-  window.swal.setDefaults = function(userParams) {
+  window.Swal.setDefaults = function(userParams) {
     if (!userParams) {
       throw new Error('userParams is required');
     }
@@ -454,7 +454,7 @@
   /**
    * Closes the current modal
    */
-  window.swal.close = function() {
+  window.Swal.close = function() {
     closeModal();
   }
 

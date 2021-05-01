@@ -39,10 +39,10 @@
                         </div>
                        
                     </div> 
-                    <hr />
+                    <br  /><br  />
                     <div class="form-group"> 
             			 <div class="col-md-12"  style="margin-top: 20px">   
-                             <button name="kirim" type="submit" class="btn btn-primary"><i class="fa fa-search"></i>Cari Data</button>
+                             <button name="kirim" type="submit" class="btn bg-green btn-flat margin"><i class="fa fa-search"></i>Cari Data</button>
                              <button class="btn btn-warning" type="reset"><i class="fa fa-expand"></i>Batal</button> 
             		</div>
                     </div>
@@ -50,7 +50,7 @@
 
         </div>
         
-    <hr />
+    <br  /><br  />
     <br /><br /><br />
 
         <?php 
@@ -83,7 +83,7 @@
                     <td><?= $no ?></td>
                     <td><?= $dt['jenis_arsip'] ?></td>
                     <td><?= $dt['nama_arsip'] ?></td>
-                    <td><a href="<?= base_url('assets/arsip/'.$dt['file_arsip']) ?>" class="btn btn-primary btn-xs"><?= $dt['file_arsip'] ?></a></td>
+                    <td><a href="<?= base_url('assets/arsip/'.$dt['file_arsip']) ?>" class="btn bg-navy btn-flat margin"><?= $dt['file_arsip'] ?></a></td>
                     <td><?= $dt['jumlah'] ?></td>
                     <td><?= $dt['nama_satuan'] ?></td>
                     <td><?= $dt['nama_lokasi'] ?></td>

@@ -70,7 +70,7 @@
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <input type="hidden" name="id_user" value="<?php echo $id_user; ?>" />
-                            <button type="submit" class="btn btn-primary shiny"><i class='fa fa-save'></i><?php echo $button ?></button>
+                            <button type="submit" class="btn bg-green btn-flat margin shiny"><i class='fa fa-save'></i><?php echo $button ?></button>
                             <a href="<?php echo site_url('login') ?>" class="btn btn-warning shiny"><i class='fa fa-share'></i>Cancel</a>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
             var ext = $('#foto').val().split('.').pop().toLowerCase();
             //Allowed file types
             if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
-                swal('File Error', 'tidak bisa upload', 'warning');
+                Swal('File Error', 'tidak bisa upload', 'warning');
                 $('#foto').val('');
             } else {
                 readURL(this);

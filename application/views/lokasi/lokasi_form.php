@@ -27,7 +27,7 @@
         },
         success: function(data) {
           if (data.ket == 1) {
-            swal('Keterangan', 'Data berhasill di simpan', 'success');
+            Swal('Keterangan', 'Data berhasill di simpan', 'success');
             $('form').css("opacity", "");
             $("form").removeAttr("disabled");
             $('#datatables').DataTable().ajax.reload();
@@ -39,7 +39,7 @@
           }
         },
         error: function(data) {
-          swal('Keterangan', 'server belum bisa respon', 'warning');
+          Swal('Keterangan', 'server belum bisa respon', 'warning');
         }
       });
     });
@@ -49,8 +49,8 @@
 
 <div class='row'>
   <div class='col-md-12'>
-    <div class='panel panel-info'>
-      <div class='panel-heading'><?= ucfirst($judul) ?> Arsip.</div>
+    <div class='box-default'>
+      <div class='panel-heading'><i class="fa fa-document"></i><?= ucfirst($judul) ?> Arsip.</div>
       <div class='panel-wrapper collapse in' aria-expanded='true'>
         <div class='panel-body'>
           <form to="<?php echo $action; ?>" id="simpan" method="post">
@@ -60,8 +60,8 @@
             </div>
 
             <input type="hidden" name="id_lokasi" value="<?php echo $id_lokasi; ?>" />
-            <button type="submit" id="simpan" class="btn btn-primary btn-xs"><i class='fa fa-save'></i><?php echo $button ?></button>
-            <button id="batal" class="btn btn-warning btn-xs"><i class='fa fa-cancel'></i>Batal</button>
+            <button type="submit" id="simpan" class="btn bg-navy btn-flat margin"><i class='fa fa-save'></i><?php echo $button ?></button>
+            <button id="batal" class="btn bg-navy btn-flat margin"><i class='fa fa-cancel'></i>Batal</button>
 
           </form>
         </div>

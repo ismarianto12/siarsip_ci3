@@ -1,7 +1,7 @@
 <div class='row'>
     <div class='col-md-12'>
-        <div class='panel panel-info'>
-            <div class='panel-heading'><?= ucfirst($judul) ?></div>
+        <div class='box-default'>
+            <div class='panel-heading'><i class="fa fa-document"></i><?= ucfirst($judul) ?></div>
             <div class='panel-wrapper collapse in' aria-expanded='true'>
                 <div class='panel-body'>
                     <form action="<?php echo $action; ?>" method="post" class='form-horizontal form-bordered'>

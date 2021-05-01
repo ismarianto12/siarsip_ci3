@@ -16,9 +16,9 @@
 
            
            
-                <?php echo anchor(site_url('menu/tambah'), 'tambah', 'class="btn btn-primary"'); ?>
-		<?php echo anchor(site_url('menu/excel'), 'Excel', 'class="btn btn-primary"'); ?>
-		<?php echo anchor(site_url('menu/word'), 'Word', 'class="btn btn-primary"'); ?>
+                <?php echo anchor(site_url('menu/tambah'), 'tambah', 'class="btn bg-green btn-flat margin"'); ?>
+		<?php echo anchor(site_url('menu/excel'), 'Excel', 'class="btn bg-green btn-flat margin"'); ?>
+		<?php echo anchor(site_url('menu/word'), 'Word', 'class="btn bg-green btn-flat margin"'); ?>
 	    
  </div> 
 <div class='widget-body'>
@@ -95,7 +95,7 @@
             });
          
      function hapus(n){
-        swal({
+        Swal({
             title: 'Konfirmasi Hapus',
             text: 'Apakah Anda Yakin Untuk Menghapus Data Ini?',
             type: 'warning',
@@ -105,7 +105,7 @@
             closeOnConfirm: false
         },
         function(){
-           swal('Hapus Data', 'Data Berhasil Di Hapus', 'success'); 
+           Swal('Hapus Data', 'Data Berhasil Di Hapus', 'success'); 
            window.location.href='<?= base_url('menu/hapus/') ?>'+n;
          });
     }

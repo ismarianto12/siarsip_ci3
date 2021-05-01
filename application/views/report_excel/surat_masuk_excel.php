@@ -36,7 +36,7 @@ header("Pragma: public");
       <td><?= $masuk['tgl_diterima'] ?></td>
       <td><?= $masuk['no_surat'] ?></td>
       <td><?= ($masuk['disposisi'] == 'y') ? 'Disposisi' : 'Belum Disposisi' ?></td>  
-      <td><a href="<?= base_url('assets/file_surat/'.$masuk['file']) ?>" target="_blank" class="btn btn-primary">Detail File Surat.</a></td> 
+      <td><a href="<?= base_url('assets/file_surat/'.$masuk['file']) ?>" target="_blank" class="btn bg-green btn-flat margin">Detail File Surat.</a></td> 
     </tr>
     <?php $no++; endforeach ?>
   </tbody>

@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Jenis_surat_model extends CI_Model
+class jenis_surat_model extends CI_Model
 {
 
     public $table = 'jenis_surat';

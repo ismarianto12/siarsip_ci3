@@ -90,7 +90,7 @@ class Arsip_model extends CI_Model
         $this->datatables->add_column('qr_code', '<img src="' . base_url('assets/qrarsip/$1.png') . '" id="barcode" onError="this.onerror=null;this.src=\'' . base_url('assets/img/no_image.jpg') . '\';">', 'nama_arsip');
 
         $this->datatables->add_column('action', anchor(site_url('arsip/detail/$1'), '<i class="fa fa-book"></i>Read', 'class="btn btn-info btn-xs edit"') . "
-         <button to='" . base_url('arsip/edit/$1') . "' id='edit' class='btn btn-warning btn-xs edit'><i class='fa fa-trash'></i> Edit</button>
+         <button to='" . base_url('arsip/edit/$1') . "' id='edit' class='btn bg-navy btn-flat margin edit'><i class='fa fa-trash'></i> Edit</button>
         <a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id_arsip');
         return $this->datatables->generate();
     }

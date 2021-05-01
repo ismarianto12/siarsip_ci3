@@ -11,7 +11,7 @@
                 </div><!-- /.box-header -->
                 <div class="ibox-content">
                 
-                 <hr />
+                 <br  /><br  />
                    <input type="hidden" id="id">
                   <div class="dd" id="nestable">
                       <?php
@@ -81,7 +81,7 @@
                     <tr>
                       <td>
                         <div id="icon">
-                        <a data-toggle="modal" class="btn btn-primary" href="#modal-form">Pilih Icon</a>
+                        <a data-toggle="modal" class="btn bg-green btn-flat margin" href="#modal-form">Pilih Icon</a>
                          </div>
                             <div id="modal-form" class="modal fade" aria-hidden="true">
                                 <div class="modal-dialog">

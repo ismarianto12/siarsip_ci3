@@ -31,7 +31,7 @@
                         <input type="date" class="form-control" name="sampai" id="sampai" placeholder="Tujuan" value="" />
                     </div>
                 </div>
-                <hr />
+                <br  /><br  />
 
                 <table class="table" id="datatables">
                     <thead>
@@ -127,7 +127,7 @@
 
                         $('#sampai').change(function() {
                             if ($('#dari').val() == '') {
-                                swal('Keterangan', 'Tanggal awal tidak boleh kosong', 'error');
+                                Swal('Keterangan', 'Tanggal awal tidak boleh kosong', 'error');
                             } else {
                                 t.draw();
                                 t.ajax.reload();
@@ -136,7 +136,7 @@
                     });
 
                     function hapus(n) {
-                        swal({
+                        Swal({
                                 title: 'Konfirmasi Hapus',
                                 text: 'Apakah Anda Yakin Untuk Menghapus Data Ini?',
                                 type: 'warning',
@@ -146,7 +146,7 @@
                                 closeOnConfirm: false
                             },
                             function() {
-                                swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
+                                Swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
                                 window.location.href = '<?= base_url('histori/hapus/') ?>' + n;
                             });
                     }

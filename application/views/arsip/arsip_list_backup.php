@@ -18,8 +18,8 @@
             </div>
 
 
-            <?php echo anchor(site_url('arsip/tambah'), 'Tambah data arsip ', 'class="btn btn-primary"'); ?>&nbsp;
-            <?php echo anchor(site_url('laporan_arsip'), 'Excel', 'class="btn btn-primary"'); ?>&nbsp;
+            <?php echo anchor(site_url('arsip/tambah'), 'Tambah data arsip ', 'class="btn bg-green btn-flat margin"'); ?>&nbsp;
+            <?php echo anchor(site_url('laporan_arsip'), 'Excel', 'class="btn bg-green btn-flat margin"'); ?>&nbsp;
            
         </div> 
         <div class='widget-body'>
@@ -32,7 +32,7 @@
                 <?php endforeach; ?>
             </select>
         </div>
-        <hr />
+        <br  /><br  />
         <br />
 
 
@@ -46,9 +46,9 @@
         };
         ?>
 
-       <button class="btn btn-primary" id="cari"><i class="fa fa-save"></i>Terima pegajuan.</button>
+       <button class="btn bg-green btn-flat margin" id="cari"><i class="fa fa-save"></i>Terima pegajuan.</button>
        <br />
-       <hr />
+       <br  /><br  />
        <?= $this->session->flashdata('pesan') ?>
         <table class="table" id="datatables">
             <thead>
@@ -76,10 +76,10 @@
                       <?php $jenis_file = substr($dt['file_arsip'], -4);
 
                         if($jenis_file == '.jpg' || $jenis_file == '.png'):  ?>
-                        <button href="<?= base_url('arsip/download_file_arip/'.$dt['id_arsip']) ?>" onclick="return tampil_data('<?= $dt['file_arsip'] ?>') "class="btn btn-primary  btn-xs"><?= $dt['file_arsip'] ?></button>
+                        <button href="<?= base_url('arsip/download_file_arip/'.$dt['id_arsip']) ?>" onclick="return tampil_data('<?= $dt['file_arsip'] ?>') "class="btn bg-green btn-flat margin  btn-xs"><?= $dt['file_arsip'] ?></button>
                         <?php else: ?>
                       
-                       <a href="<?= base_url('arsip/download_file_arip/'.$dt['id_arsip']) ?>" target="_blank" class="btn btn-primary"><i class="fa fa-list"></i>Download File</a>
+                       <a href="<?= base_url('arsip/download_file_arip/'.$dt['id_arsip']) ?>" target="_blank" class="btn bg-green btn-flat margin"><i class="fa fa-list"></i>Download File</a>
 
                          <?php endif; ?> 
 
@@ -127,7 +127,7 @@
 
 
          function hapus(n){
-            swal({
+            Swal({
                 title: 'Konfirmasi Hapus',
                 text: 'Apakah Anda Yakin Untuk Menghapus Data Ini?',
                 type: 'warning',
@@ -137,7 +137,7 @@
                 closeOnConfirm: false
             },
             function(){
-               swal('Hapus Data', 'Data Berhasil Di Hapus', 'success'); 
+               Swal('Hapus Data', 'Data Berhasil Di Hapus', 'success'); 
                window.location.href='<?= base_url('arsip/hapus/') ?>'+n;
            });
         }
@@ -203,7 +203,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn bg-green btn-flat margin">Save</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -215,7 +215,7 @@
      $('.terima').click(function(){    
          var id = $(this).attr('id');   
          $.post("<?= base_url('arsip/insert_pengajuan') ?>", {id:id},function(data){
-         swal('Informasi','Data pengajuan arsip berhasil di terima','success');
+         Swal('Informasi','Data pengajuan arsip berhasil di terima','success');
          window.location.href='<?= base_url('arsip?jenis='.$jenis) ?>';
       });  
   });

@@ -626,7 +626,7 @@ class Arsip extends CI_Controller
                 ];
                 $cara = $this->db->insert('arsip', $data);
                 if ($cara) {
-                    $this->session->set_flashdata("pesan", "<script>swal('Informasi','Data pengajuan arsip berhasil di terima','success')</script>");
+                    $this->session->set_flashdata("pesan", "<script>Swal('Informasi','Data pengajuan arsip berhasil di terima','success')</script>");
                 } else {
                     echo "gagal";
                 }

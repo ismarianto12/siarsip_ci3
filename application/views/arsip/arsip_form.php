@@ -27,7 +27,7 @@
         },
         success: function(data) {
           if (data.ket == 1) {
-            swal('Keterangan', 'Data berhasill di simpan', 'success');
+            Swal('Keterangan', 'Data berhasill di simpan', 'success');
             $('form').css("opacity", "");
             $("form").removeAttr("disabled");
             $('.main_app').hide().slideUp();
@@ -40,7 +40,7 @@
           }
         },
         error: function(data) {
-          swal('Keterangan', 'server belum bisa respon', 'warning');
+          Swal('Keterangan', 'server belum bisa respon', 'warning');
         }
       });
     });
@@ -85,7 +85,7 @@
 
           <label for="varchar"><b>File Arsip <?php echo form_error('file_arsip') ?></b></label>
           <?php if ($aksi == 'edit') : ?>
-            <i>file yang di upload sebeumnya :</i> <a href="<?= base_url() ?>" class="btn btn-primary"> <?= $file_arsip ?></a>
+            <i>file yang di upload sebeumnya :</i> <a href="<?= base_url() ?>" class="btn bg-green btn-flat margin"> <?= $file_arsip ?></a>
             <div class="clearfix"></div>
           <?php else : ?>
 
@@ -125,7 +125,7 @@
         <?php error_reporting(0);
         if ($this->session->level == 'admin') : ?>
           <h3>Bidang Akses : </h3>
-          <hr />
+          <br  /><br  />
           <small>Bidang akses , menampilkan data arsip berdasarkan level akses</small>
           <?php
           $level = ['admin', 'user', 'staff'];
@@ -150,12 +150,12 @@
           <textarea class="form-control" rows="3" name="ket_isi" id="ket_isi" placeholder="Ket Isi"><?php echo $ket_isi; ?></textarea>
         </div>
         <input type="hidden" name="id_arsip" value="<?php echo $id_arsip; ?>" />
-        <button type="submit" id="simpan" class="btn btn-primary btn-xs shiny"><i class='fa fa-save'></i><?php echo $button ?></button>
-        <button class="btn btn-warning btn-xs shiny" id="batal"><i class='fa fa-share'></i>Cancel</button>
+        <button type="submit" id="simpan" class="btn bg-navy btn-flat margin shiny"><i class='fa fa-save'></i><?php echo $button ?></button>
+        <button class="btn bg-navy btn-flat margin shiny" id="batal"><i class='fa fa-share'></i>Cancel</button>
       </form>
     </div>
   </div>
 
 
-  <hr />
+  <br  /><br  />
   <br />

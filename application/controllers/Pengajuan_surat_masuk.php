@@ -166,7 +166,7 @@ class Pengajuan_surat_masuk extends CI_Controller
     public function _rules()
     {
         $this->form_validation->set_rules('no_agenda', 'no agenda', 'trim|required');
-        $this->form_validation->set_rules('jenis_surat', 'jenis surat', 'trim|required');
+        $this->form_validation->set_rules('jenis_surat', 'jenis_surat', 'trim|required');
         $this->form_validation->set_rules('tanggal_kirim', 'tanggal kirim', 'trim|required');
         $this->form_validation->set_rules('tanggal_terima', 'tanggal terima', 'trim|required');
         $this->form_validation->set_rules('no_surat', 'no surat', 'trim|required');
@@ -201,7 +201,7 @@ class Pengajuan_surat_masuk extends CI_Controller
         $kolomhead = 0;
         xlsWriteLabel($tablehead, $kolomhead++, "No");
         xlsWriteLabel($tablehead, $kolomhead++, "No Agenda");
-        xlsWriteLabel($tablehead, $kolomhead++, "Jenis Surat");
+        xlsWriteLabel($tablehead, $kolomhead++, "jenis_surat");
         xlsWriteLabel($tablehead, $kolomhead++, "Tanggal Kirim");
         xlsWriteLabel($tablehead, $kolomhead++, "Tanggal Terima");
         xlsWriteLabel($tablehead, $kolomhead++, "No Surat");

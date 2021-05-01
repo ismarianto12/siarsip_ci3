@@ -17,11 +17,11 @@
     <div class='col-sm-12'>
         <?= $this->session->userdata('message') ?>
         <div class='white-box'>
-            <h3 class='box-title m-b-0'><?= $judul ?></h3>
+           
             <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
             <div class='table-responsive'>
                 <button to="<?= base_url('M_satuan/tambah') ?>" id="tambah" class="btn btn-success btn-xs">Tambah data</button>
-                <hr />
+                <br  /><br  />
                 <div id="main_form"></div>
 
                 <table class="table" id="datatables">
@@ -98,7 +98,7 @@
                     });
 
                     function hapus(n) {
-                        swal({
+                        Swal({
                                 title: 'Konfirmasi Hapus',
                                 text: 'Apakah Anda Yakin Untuk Menghapus Data Ini?',
                                 type: 'warning',
@@ -108,7 +108,7 @@
                                 closeOnConfirm: false
                             },
                             function() {
-                                swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
+                                Swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
                                 window.location.href = '<?= base_url('m_satuan/hapus/') ?>' + n;
                             });
                     }

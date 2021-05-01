@@ -4,7 +4,7 @@
          <div class='white-box'>
              <p class='text-muted m-b-30'>Surat perjalanan dinas</p>
              <div class='table-responsive'>
-                 <?php echo anchor(site_url('sppd/tambah'), '<i class="fa fa-plus"></i> Tambah Data', 'class="btn btn-primary btn-xs"'); ?>
+                 <?php echo anchor(site_url('sppd/tambah'), '<i class="fa fa-plus"></i> Tambah Data', 'class="btn bg-navy btn-flat margin"'); ?>
                  <br /><br />
                  <table class="table" id="datatables">
                      <thead>
@@ -104,7 +104,7 @@
                      });
 
                      function hapus(n) {
-                         swal({
+                         Swal({
                                  title: 'Konfirmasi Hapus',
                                  text: 'Apakah Anda Yakin Untuk Menghapus Data Ini?',
                                  type: 'warning',
@@ -114,7 +114,7 @@
                                  closeOnConfirm: false
                              },
                              function() {
-                                 swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
+                                 Swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
                                  window.location.href = '<?= base_url('sppd/hapus/') ?>' + n;
                              });
                      }

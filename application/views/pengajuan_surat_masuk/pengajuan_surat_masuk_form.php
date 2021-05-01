@@ -15,8 +15,8 @@
             <input type="text" class="form-control" name="no_agenda" id="no_agenda" placeholder="No Agenda" value="<?php echo $no_agenda; ?>" />
         </div>
 	    <div class="form-group">
-            <label for="varchar">Jenis Surat <?php echo form_error('jenis_surat') ?></label>
-            <input type="text" class="form-control" name="jenis_surat" id="jenis_surat" placeholder="Jenis Surat" value="<?php echo $jenis_surat; ?>" />
+            <label for="varchar">jenis_surat <?php echo form_error('jenis_surat') ?></label>
+            <input type="text" class="form-control" name="jenis_surat" id="jenis_surat" placeholder="jenis_surat" value="<?php echo $jenis_surat; ?>" />
         </div>
 	    <div class="form-group">
             <label for="datetime">Tanggal Kirim <?php echo form_error('tanggal_kirim') ?></label>
@@ -43,7 +43,7 @@
             <input type="text" class="form-control" name="nama_file" id="nama_file" placeholder="Nama File" value="<?php echo $nama_file; ?>" />
         </div>
 	    <input type="hidden" name="id_pengajuan_s" value="<?php echo $id_pengajuan_s; ?>" /> 
-	    <button type="submit" class="btn btn-primary shiny"><i class='fa fa-save'></i><?php echo $button ?></button> 
+	    <button type="submit" class="btn bg-green btn-flat margin shiny"><i class='fa fa-save'></i><?php echo $button ?></button> 
 	    <a href="<?php echo site_url('pengajuan_surat_masuk') ?>" class="btn btn-warning shiny"><i class='fa fa-share'></i>Cancel</a>
 	</form> 
 </div></div>

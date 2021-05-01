@@ -45,8 +45,8 @@
 
 <div class='row'>
     <div class='col-md-12'>
-        <div class='panel panel-info'>
-            <div class='panel-heading'><?= ucfirst($judul) ?></div>
+        <div class='box-default'>
+            <div class='panel-heading'><i class="fa fa-document"></i><?= ucfirst($judul) ?></div>
             <div class='panel-wrapper collapse in' aria-expanded='true'>
                 <div class='panel-body'>
                     <form id="trsppd" action="<?= $action ?>" method="POST" class="form-horizontal">
@@ -223,11 +223,7 @@
                     if (data.response == 'y') {
                         redirect();
                     } else if (data.response == 'n') {
-                        swal({
-                            title: "Error",
-                            text: "Error :" + data.message,
-                            type: "error"
-                        })
+                        $('#notifikasi').html('<div class="callout callout-info"><ul style="display: grid;">' + data.message + '</ul></div>');
                     }
                 },
                 error: function(data, xhr, status) {
@@ -240,7 +236,7 @@
 
     ///after data clicked in button 
     function redirect() {
-        swal({
+        Swal({
                 title: 'Data berhasil di input ',
                 text: 'Anda kembali kembali kehalamn awal ? , Klik ok  untuk melanjutkan ?',
                 type: 'warning',
@@ -251,7 +247,7 @@
                 closeOnConfirm: false
             },
             function() {
-                swal('Mengalihkan .. ', 'Data Sedang di alihkan', 'success');
+                Swal('Mengalihkan .. ', 'Data Sedang di alihkan', 'success');
                 window.location.href = '<?= base_url('sppd') ?>';
             });
     }

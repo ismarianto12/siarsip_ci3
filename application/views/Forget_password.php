@@ -68,7 +68,7 @@
         <a href="<?= base_url() ?>">Kembali </a>
       </div>
       <div class="loginbox-submit">
-        <input type="submit" class="btn btn-primary btn-block" value="Login">
+        <input type="submit" class="btn bg-green btn-flat margin btn-block" value="Login">
       </div> 
     </form>
   </div>

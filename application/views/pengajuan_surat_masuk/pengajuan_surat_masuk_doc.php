@@ -5,7 +5,7 @@
             <tr>
                 <th>No</th>
 		<th>No Agenda</th>
-		<th>Jenis Surat</th>
+		<th>jenis_surat</th>
 		<th>Tanggal Kirim</th>
 		<th>Tanggal Terima</th>
 		<th>No Surat</th>

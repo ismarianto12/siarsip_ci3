@@ -15,7 +15,7 @@ echo $this->session->flashdata('pesan');
       </div><!-- /.box-header -->
       <div class="ibox-content">
 
-        <hr />
+        <br  /><br  />
         <input type="hidden" id="id">
         <div class="dd" id="nestable">
           <?php
@@ -102,20 +102,22 @@ echo $this->session->flashdata('pesan');
                     <div class="modal-content">
                       <div class="modal-body">
                         <h4>Favicon Menu</h4>
+                        <br  /><br  />
                         <div class="row">
+
+
                           <?php foreach ($icon as $key => $val) { ?>
 
-                            <div class="control-group">
-                              <div class="radio">
-                                <label>
-                                  <input class="icon_r" type="radio" value="fa <?= $key ?>">
-                                  <span class="text"><i class="<fa ?= $key ?>"></i><?= $key ?></span>
-                                </label>
+                            <div class="form-group">
+                              <label for="int" class='control-label col-md-4'> <span class="text"><?= $key ?></span></label>
+                              <div class='col-md-2'>
+                              <i class="fa <?= $key ?>"></i> <input class="icon_r" type="radio" value="fa <?= $key ?>">  
                               </div>
-
                             </div>
 
+
                           <?php } ?>
+
                         </div>
                       </div>
                     </div>
@@ -250,7 +252,7 @@ echo $this->session->flashdata('pesan');
               kosong();
             },
             error: function(xhr, status, error) {
-              swal('Tidak Dapat Memproses silahkan pilih icon terlebih dahulu.');
+              Swal('Tidak Dapat Memproses silahkan pilih icon terlebih dahulu.');
             },
           });
 
@@ -275,7 +277,7 @@ echo $this->session->flashdata('pesan');
             $("#load").hide();
           },
           error: function(xhr, status, error) {
-            swal('Tidak Dapat Merespon Data 404');
+            Swal('Tidak Dapat Merespon Data 404');
           },
         });
       });
@@ -294,14 +296,14 @@ echo $this->session->flashdata('pesan');
             $("#load").hide();
           },
           error: function(xhr, status, error) {
-            swal('Tidak Dapat Merespon Data 404');
+            Swal('Tidak Dapat Merespon Data 404');
           },
         });
       });
 
       $(document).on("click", ".del-button", function() {
         var id = $(this).attr('id');
-        swal({
+        Swal({
             title: 'Konfirmasi Hapus',
             text: 'Apakah Anda Yakin Untuk Menghapus Data Ini?',
             type: 'warning',

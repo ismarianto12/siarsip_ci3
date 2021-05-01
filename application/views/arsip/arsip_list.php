@@ -17,19 +17,19 @@
 <div class='row'>
 	<div class='col-xs-12 col-md-12'>
 		<div class='widget'>
-			<hr />
+			<br  /><br  />
 			<p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
-			<hr />
+			<br  /><br  />
 
 			<div class="main_app"></div>
-			<hr />
+			<br  /><br  />
 			<div class="clearfix"></div>
 			<div class='widget-header'>
 				<?php if ($this->session->level == 'admin') : ?>
-					<button class="btn btn-warning btn-xs" id="cari"><i class="fa fa-save"></i>Terima pegajuan.</button>
+					<button class="btn bg-navy btn-flat margin" id="cari"><i class="fa fa-save"></i>Terima pegajuan.</button>
 				<?php endif; ?>
-				<button class="btn btn-primary btn-xs" id="tambah">Tambah data</button>
-				<hr />
+				<button class="btn bg-navy btn-flat margin" id="tambah">Tambah data</button>
+				<br  /><br  />
 
 				<div class="col-md-5">
 					<select class="form-control" name="jenis_arsip" id="id_jenis">
@@ -52,7 +52,7 @@
 				<?php endif; ?>
 
 
-				<hr />
+				<br  /><br  />
 				<br />
 				<br />
 			</div>
@@ -198,14 +198,14 @@
 								dataType: 'json',
 								success: function(data) {
 									if (data.jenis_arsip == 'data') {
-										swal('Jenis arsip arsip', 'Jenis Arsip Yang Di Pilih Adalah', 'success');
+										Swal('Jenis arsip arsip', 'Jenis Arsip Yang Di Pilih Adalah', 'success');
 									} else {
-										swal('Jenis arsip', 'Jenis arsip yang anda pilih :' + data.jenis_arsip, 'success');
+										Swal('Jenis arsip', 'Jenis arsip yang anda pilih :' + data.jenis_arsip, 'success');
 									}
 
 								},
 								error: function(data) {
-									swal('Server not respon');
+									Swal('Server not respon');
 
 								}
 							});
@@ -284,7 +284,7 @@
 					});
 
 					function hapus(n) {
-						swal({
+						Swal({
 								title: 'Konfirmasi Hapus',
 								text: 'Apakah Anda Yakin Untuk Menghapus Data Ini?',
 								type: 'warning',
@@ -294,7 +294,7 @@
 								closeOnConfirm: false
 							},
 							function() {
-								swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
+								Swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
 								$.ajax({
 									url: '<?= base_url('Arsip/hapus') ?>',
 									data: 'id_arsip=' + n,
@@ -309,7 +309,7 @@
 										// $('#tampilan_cari').modal('hide');
 									},
 									error: function(result) {
-										swal('Error', 'Maaf data tidak dapat di proses', 'error');
+										Swal('Error', 'Maaf data tidak dapat di proses', 'error');
 										$('#datatables').DataTable().ajax.reload();
 
 									}
@@ -320,7 +320,7 @@
 					}
 					/*konfirmasi untuk penerimaan data arsip yang di ajukan */
 					function terima(id) {
-						swal({
+						Swal({
 								title: 'Konfirmasi terima arsip',
 								text: 'Apakah anda akan menerima arsip yang diajukan staff ?',
 								type: 'warning',
@@ -330,7 +330,7 @@
 								closeOnConfirm: false
 							},
 							function() {
-								swal('Proses', 'Sedang Memproses permintaan', 'success');
+								Swal('Proses', 'Sedang Memproses permintaan', 'success');
 								$.ajax({
 									url: '<?= base_url('Arsip/insert_pengajuan') ?>',
 									data: 'id_pengajuan=' + id,
@@ -344,7 +344,7 @@
 										$('#tampilan_cari').modal('hide');
 									},
 									error: function(data) {
-										swal('Error', 'Maaf data tidak dapat di proses', 'error');
+										Swal('Error', 'Maaf data tidak dapat di proses', 'error');
 									}
 								});
 							});

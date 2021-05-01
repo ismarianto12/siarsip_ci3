@@ -2,10 +2,10 @@
      <div class='col-sm-12'>
          <?= $this->session->userdata('message') ?>
          <div class='white-box'>
-             <h3 class='box-title m-b-0'><?= $judul ?></h3>
+            
              <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
              <div class='table-responsive'>
-                 <?php echo anchor(site_url('tmjabatan/tambah'), 'Tambah Data', 'class="btn btn-primary btn-xs"'); ?>
+                 <?php echo anchor(site_url('tmjabatan/tambah'), 'Tambah Data', 'class="btn bg-navy btn-flat margin"'); ?>
                  <?php echo anchor(site_url('tmjabatan/excel'), '<i class=\'fa fa-file-excel-o\'></i>Excel', 'class="btn btn-info btn-xs"'); ?>
                  <?php echo anchor(site_url('tmjabatan/word'), '<i class=\'fa fa-file-word-o\'></i>Word', 'class="btn btn-danger btn-xs"'); ?>
 
@@ -84,7 +84,7 @@
                      });
 
                      function hapus(n) {
-                         swal({
+                         Swal({
                                  title: 'Konfirmasi Hapus',
                                  text: 'Apakah Anda Yakin Untuk Menghapus Data Ini?',
                                  type: 'warning',
@@ -94,7 +94,7 @@
                                  closeOnConfirm: false
                              },
                              function() {
-                                 swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
+                                 Swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
                                  window.location.href = '<?= base_url('tmjabatan/hapus/') ?>' + n;
                              });
                      }

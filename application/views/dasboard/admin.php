@@ -55,7 +55,9 @@
         </div><!-- ./col -->
     </div><!-- /.row -->
     <!-- Main row -->
-    <div class="callout callout-info"> <marquee><i class="fa fa-info"></i>Hy  <?= ucfirst($this->session->nama) ?> Selamat datang kembali, silahkan gunakan menu disamping untuk menggukan aplikasi</marquee></div>
+    <div class="callout callout-info">
+        <marquee><i class="fa fa-info"></i>Hy <?= ucfirst($this->session->nama) ?> Selamat datang kembali, silahkan gunakan menu disamping untuk menggukan aplikasi</marquee>
+    </div>
 
     <div class="row">
         <!-- Left col -->
@@ -109,14 +111,14 @@
                     </ul>
                 </div><!-- /.box-body -->
                 <div class="box-footer clearfix no-border">
-                    <button class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+                    <button class="btn btn-default pull-right"><a href="<?= base_url('Tsuratmasuk') ?>"><i class="fa fa-plus"></i> Tambah</button></a>
                 </div>
             </div>
         </section><!-- right col -->
     </div><!-- /.row (main row) -->
 
 </section>
- <script>
+<script>
     <?php
     $arrType = [];
     foreach ($this->properti->getarsipByType(date('Y'))->result_array() as $char) {
@@ -149,16 +151,16 @@
             <?php
             foreach ($this->properti->getarsipByType(date('Y'))->result_array() as $char) {
                 $Adata = $this->properti->getDataArsip($char['id_jenis']);
-                ?> {
+            ?> {
                     type: 'column',
                     name: '<?= $char['jenis_arsip'] ?>',
                     data: [
                         <?php
-                            $no = 1;
-                            foreach ($Adata->result_array() as $dat) {
-                                echo $dat['count'] . ',';
-                                $no++;
-                            } ?>
+                        $no = 1;
+                        foreach ($Adata->result_array() as $dat) {
+                            echo $dat['count'] . ',';
+                            $no++;
+                        } ?>
                     ],
                 },
             <?php } ?> {
@@ -168,12 +170,13 @@
                     <?php
                     $no = 0;
                     foreach ($this->properti->getarsipByType(date('Y'))->result_array() as $char) {
-                        ?> {
+                    ?> {
                             name: '<?= $char['jenis_arsip'] ?>',
                             y: <?= ($char['jum']) ?>,
                             color: Highcharts.getOptions().colors[<?= $no ?>] // Jane's color
                         },
-                    <?php $no++; } ?>
+                    <?php $no++;
+                    } ?>
 
                 ],
                 center: [100, 80],

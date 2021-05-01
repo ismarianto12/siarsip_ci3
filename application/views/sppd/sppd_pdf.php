@@ -94,7 +94,7 @@
             </td>
         </tr>
     </table>
-    <hr />
+    <br  /><br  />
     <div class="child" style="font-size:18px">
         PERINTAH PERJALANAN DINAS <br />
         <b> (SPPD) </b>
@@ -269,7 +269,7 @@
             </td>
         </tr>
     </table>
-    <hr />
+    <br  /><br  />
 
 
     <div class="child" style="font-size:18px">

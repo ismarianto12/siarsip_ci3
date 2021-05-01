@@ -7,7 +7,7 @@
     height: auto;
     max-width: 300px;'><br />";
 	echo '<tt><h3>' . $nama_instansi . '</h3></tt>';
-	'<br />' . $alamat_instansi . '<hr /> </center>';
+	'<br />' . $alamat_instansi . '<br  /><br  /> </center>';
 
 else : endif; ?>
 

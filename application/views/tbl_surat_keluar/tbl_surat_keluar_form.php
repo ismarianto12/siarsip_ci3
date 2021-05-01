@@ -1,7 +1,7 @@
 <div class='row'>
     <div class='col-md-12'>
-        <div class='panel panel-info'>
-            <div class='panel-heading'><?= ucfirst($judul) ?></div>
+        <div class='box-default'>
+            <div class='panel-heading'><i class="fa fa-document"></i><?= ucfirst($judul) ?></div>
             <div class='panel-wrapper collapse in' aria-expanded='true'>
                 <div class='panel-body'>
                     <?= $this->session->flashdata('message') ?>
@@ -9,10 +9,27 @@
                         <div class='form-body'>
                             ** ) Harap Isikan data yang di butuhkan pada form.
                             <br /><br /><br /><br />
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="int" class='control-label col-md-3'><b>No Agenda<?php echo form_error('no_agenda') ?></b></label>
                                 <div class='col-md-9'>
                                     <input type="text" class="form-control" name="no_agenda" id="no_agenda" placeholder="No Agenda" value="<?php echo $no_agenda; ?>" />
+                                </div>
+                            </div> -->
+                            <div class="form-group">
+                                <label for="varchar" class='control-label col-md-3'><b>No Surat<?php echo form_error('no_surat') ?></b></label>
+                                <div class='col-md-9'>
+                                    <?php if ($this->uri->segment(2) == 'edit') : ?>
+                                        <div class="no_surat_show">
+                                            <input type="text" name="no_surat" class="form-control" value="<?php echo $no_surat; ?>">
+                                        </div>
+                                        <br />
+                                    <?php else : ?>
+                                        <div class="no_surat_show"></div>
+                                        <br />
+                                    <?php endif; ?>
+                                    <span class="btn btn-sm btn-primary" id="manual">Manual</span>
+                                    <span class="btn btn-sm btn-primary" id="otomatis">Otomatis</span>
+
                                 </div>
                             </div>
                             <div class="form-group">
@@ -21,9 +38,15 @@
                                     <input type="text" class="form-control" name="tujuan" id="tujuan" placeholder="Tujuan" value="<?php echo $tujuan; ?>" />
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="varchar" class='control-label col-md-3'><b>Kode<?php echo form_error('kode') ?></b></label>
+                                <div class='col-md-9'>
+                                    <input type="text" class="form-control" name="kode" id="kode" placeholder="Kode" value="<?php echo $kode; ?>" />
+                                </div>
+                            </div>
 
                             <div class="form-group">
-                                <label for="date" class='control-label col-md-3'><b>Jenis Surat<?php echo form_error('id_jenis_surat') ?></b></label>
+                                <label for="date" class='control-label col-md-3'><b>Jeinis surat<?php echo form_error('id_jenis_surat') ?></b></label>
                                 <div class='col-md-9'>
                                     <select class="form-control" name="id_jenis_surat" id="id_jenis_surat">
                                         <?php
@@ -36,42 +59,36 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="varchar" class='control-label col-md-3'><b>No Surat<?php echo form_error('no_surat') ?></b></label>
-                                <div class='col-md-9'>
-                                    <div class="no_surat_show"></div>
-                                </div>
-                            </div>
+
                             <div class="form-group">
                                 <label for="mediumtext" class='control-label col-md-3'><b>Isi<?php echo form_error('isi') ?></b></label>
                                 <div class='col-md-9'>
                                     <input type="text" class="form-control" name="isi" id="isi" placeholder="Isi ringkas .." value="<?php echo $isi; ?>" />
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="varchar" class='control-label col-md-3'><b>Kode<?php echo form_error('kode') ?></b></label>
-                                <div class='col-md-9'>
-                                    <input type="text" class="form-control" name="kode" id="kode" placeholder="Kode" value="<?php echo $kode; ?>" />
-                                </div>
-                            </div>
+
                             <div class="form-group">
                                 <label for="date" class='control-label col-md-3'><b>Tgl Surat<?php echo form_error('tgl_surat') ?></b></label>
                                 <div class='col-md-9'>
-                                    <input type="text" class="form-control" name="tgl_surat" id="datepicker1" placeholder="Tgl Surat" value="<?php echo $tgl_surat; ?>" />
+                                    <input type="date" class="form-control" name="tgl_surat" placeholder="Tgl Surat" value="<?php echo $tgl_surat; ?>" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class='control-label col-md-3'><b>Tgl Catat<?php echo form_error('tgl_catat') ?></b></label>
                                 <div class='col-md-9'>
-                                    <input type="text" class="datepikcer form-control" name="tgl_catat" id="datepicker2" placeholder="Tgl Catat" value="<?php echo $tgl_catat; ?>" />
+                                    <input type="date" class="datepikcer form-control" name="tgl_catat" placeholder="Tgl Catat" value="<?php echo $tgl_catat; ?>" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>File<?php echo form_error('file') ?></b></label>
                                 <div class='col-md-9'>
+                                    <tt>File yang boleh di terima pdf|doc|docx|xls|xlxs </tt>
+                                    <br /> <br />
                                     <?php if ($this->uri->segment(2) == 'edit') : ?>
-                                        <a href="<?= base_url('assets/file_surat/' . $file) ?>" class="btn btn-info"><i class="fa fa-list"></i>Detail file surat </a>
+                                        <a target="_blank" href="<?= base_url('assets/file_surat/' . $file) ?>" class="btn btn-info"><i class="fa fa-list"></i>Detail file surat </a>
+                                        <br />
                                         <small>*) Jika file surat tidak di upload silahkan dikosongkan saja.</small>
+                                        <br />
                                     <?php endif; ?>
                                     <input type="file" class="form-control" name="file" id="file" placeholder="File Surat ..." />
                                 </div>
@@ -124,7 +141,7 @@
     })
 
     $(function() {
-        $('.no_surat_show').html('<div class="callout callout-success">No surat akan muncul di sini</div>');
+        // $('.no_surat_show').html('<div class="callout callout-success">No surat akan muncul di sini</div>');
         $('#id_jenis_surat').change(function() {
             var id_jenis_surat = $(this).val();
             $.ajax({
@@ -134,15 +151,45 @@
                 chace: false,
                 dataType: 'json',
                 BeforeSend: function() {
-                    swal('progresss...', 'Harap bersabar sedang merandom no surat yang sesuai', 'info');
+                    Swal('progresss...', 'Harap bersabar sedang merandom no surat yang sesuai', 'info');
                 },
                 success: function(data) {
                     $('.no_surat_show').html('<input type="text" name="no_surat" class="form-control" value="' + data.no_surat + '" readonly="true">"' + data.keterangan + '"');
                 },
                 error: function(data) {
-                    swal('peringatan', 'server error response', 'error');
+                    Swal('peringatan', 'server error response', 'error');
                 }
             });
+        });
+        // otomatics and manual
+
+        $('#manual').on('click', function() {
+            $('.no_surat_show').html('<input type="text" name="no_surat" class="form-control" value="" > ');
+
+        });
+        $('#otomatis').on('click', function() {
+
+            var id_jenis_surat = $(this).val();
+            if ($('select[name="id_jenis_surat"]').val() == '' || $('#kode').val() == '') {
+                Swal('silahkan pilih jenis surat  dan isian kode , terlebih dahulu');
+            } else {
+                $.ajax({
+                    url: '<?= base_url('tbl_surat_keluar/check_no_surat') ?>',
+                    type: 'post',
+                    data: 'id_jenis_surat=' + id_jenis_surat,
+                    chace: false,
+                    dataType: 'json',
+                    BeforeSend: function() {
+                        Swal('progresss...', 'Harap bersabar sedang merandom no surat yang sesuai', 'info');
+                    },
+                    success: function(data) {
+                        $('.no_surat_show').html('<input type="text" name="no_surat" class="form-control" value="' + data.no_surat + '" readonly="true">"' + data.keterangan + '"');
+                    },
+                    error: function(data) {
+                        Swal('peringatan', 'server error response', 'error');
+                    }
+                });
+            }
         });
     });
 </script>

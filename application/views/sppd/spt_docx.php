@@ -92,7 +92,7 @@
         </td>
     </tr>
 </table>
-<hr />
+<br  /><br  />
 
 <div class="child">
     PERINTAH PERJALANAN DINAS <br />(SPPD)

@@ -1,5 +1,3 @@
- <br /><br /><br /><br />
-
  <script type="text/javascript">
      $(function() {
          $('#batal').click(function(e) {
@@ -32,11 +30,12 @@
                  },
                  success: function(data) {
                      if (data.ket == 1) {
-                         swal('Keterangan', 'Data berhasill di simpan', 'success');
+                         Swal('Keterangan', 'Data berhasill di simpan', 'success');
                          $('form').css("opacity", "");
                          $("form").removeAttr("disabled");
                          $('.main_app').hide().slideUp();
                          $('#datatables').DataTable().ajax.reload();
+                         $('#notifikasi').html('');
                      } else if (data.ket == 2) {
                          $('#notifikasi').html(data.respon);
                          $('form').css("opacity", "");
@@ -45,7 +44,7 @@
                      }
                  },
                  error: function(data) {
-                     swal('Keterangan', 'server belum bisa respon', 'warning');
+                     Swal('Keterangan', 'server belum bisa respon', 'warning');
                  }
              });
          });
@@ -55,8 +54,8 @@
 
  <div class='row'>
      <div class='col-md-12'>
-         <div class='panel panel-info'>
-             <div class='panel-heading'><?= ucfirst($judul) ?></div>
+         <div class='box-default'>
+             <div class='panel-heading'><i class="fa fa-document"></i><?= ucfirst($judul) ?></div>
              <br />
              <div class='panel-wrapper collapse in' aria-expanded='true'>
                  <div class='panel-body'>
@@ -64,7 +63,7 @@
                      <form to="<?php echo $action; ?>" id="simpan" method="post" class="form-horizontal" enctype="multipart/form-data">
                          <div class='form-body'>
                              ** ) Harap Isikan data yang di butuhkan pada form.
-                             <br /><br /><br /><br />
+
                              <div class="form-group">
                                  <label for="int" class='control-label col-md-3'><b>No Agenda<?php echo form_error('no_agenda') ?></b></label>
                                  <div class='col-md-9'>
@@ -72,7 +71,7 @@
                                  </div>
                              </div>
 
-                              <div class="form-group">
+                             <div class="form-group">
                                  <label for="varchar" class='control-label col-md-3'><b>No Surat<?php echo form_error('no_surat') ?></b></label>
                                  <div class='col-md-9'>
                                      <input type="text" class="form-control" name="no_surat" id="no_surat" placeholder="No Surat" value="<?php echo $no_surat; ?>" />
@@ -105,13 +104,13 @@
                              <div class="form-group">
                                  <label for="date" class='control-label col-md-3'><b>Tgl Surat<?php echo form_error('tgl_surat') ?></b></label>
                                  <div class='col-md-9'>
-                                     <input type="text" class="date-picker1 form-control" name="tgl_surat" id="tgl_surat" placeholder="Tgl Surat" value="<?php echo $tgl_surat; ?>" />
+                                     <input type="date" class="form-control" name="tgl_surat" id="tgl_surat" placeholder="Tgl Surat" value="<?php echo $tgl_surat; ?>" />
                                  </div>
                              </div>
                              <div class="form-group">
                                  <label for="date" class='control-label col-md-3'><b>Tgl Diterima<?php echo form_error('tgl_diterima') ?></b></label>
                                  <div class='col-md-9'>
-                                     <input type="text" class="date-picker2 form-control" name="tgl_diterima" id="tgl_diterima" placeholder="Tgl Diterima" value="<?php echo $tgl_diterima; ?>" />
+                                     <input type="date" class="form-control" name="tgl_diterima" id="tgl_diterima" placeholder="Tgl Diterima" value="<?php echo $tgl_diterima; ?>" />
                                  </div>
                              </div>
                              <div class="form-group">
@@ -140,8 +139,8 @@
                                          <div class='row'>
                                              <div class='col-md-offset-3 col-md-9'>
                                                  <br /><br />
-                                                 <button type="submit" id="simpan" class="btn btn-primary btn-xs shiny"><i class='fa fa-save'></i><?php echo $button ?></button>
-                                                 <button class="btn btn-warning btn-xs shiny" id="batal"><i class='fa fa-share'></i>Cancel</button>
+                                                 <button type="submit" id="simpan" class="btn bg-navy btn-flat margin shiny"><i class='fa fa-save'></i><?php echo $button ?></button>
+                                                 <button class="btn bg-navy btn-flat margin shiny" id="batal"><i class='fa fa-share'></i>Cancel</button>
                                              </div>
                                          </div>
                                      </div>
@@ -154,10 +153,11 @@
      </div>
  </div>
 
-
- <script type="text/javascript">
+ <script>
      $(function() {
-         $('.date-picker1').datepicker();
-         $('.date-picker2').datepicker();
+         $('[]').datepicker({
+             autoHide: true,
+             zIndex: 2048,
+         });
      });
  </script>

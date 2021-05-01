@@ -3,7 +3,7 @@
         <?= $this->session->userdata('message') ?>
         <div class='white-box'>
             <h4 class='text-muted m-b-30'><i class="fa fa-list"></i> Report Surat perjalanan dinas</h4>
-            <hr />
+            <br  /><br  />
             <div class='table-responsive'>
                 <div class="form-group">
                     <label for="varchar" class='control-label col-md-3'><b>Dari Tanggal</b></label>
@@ -18,7 +18,7 @@
                         <input type="date" class="form-control" name="sampai" id="sampai" placeholder="Tujuan" value="" />
                     </div>
                 </div>
-                <hr />
+                <br  /><br  />
 
                 <br /><br />
                 <table class="table" id="datatables">
@@ -125,7 +125,7 @@
 
                         $('#sampai').change(function() {
                             if ($('#dari').val() == '') {
-                                swal('Keterangan', 'Tanggal awal tidak boleh kosong', 'error');
+                                Swal('Keterangan', 'Tanggal awal tidak boleh kosong', 'error');
                             } else {
                                 table_data.draw();
                                 table_data.ajax.reload();

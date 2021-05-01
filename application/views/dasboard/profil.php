@@ -52,22 +52,22 @@
 
       if (password_lama =='') {
            $(".form-group").addClass("has-feedback has-error");
-           swal ( "Oops" ,  "Password Lama Tidak Boleh Kosong" ,  "error" );
+           Swal ( "Oops" ,  "Password Lama Tidak Boleh Kosong" ,  "error" );
       }else if(password_baru =='' && password_lama ==''){
            $(".form-group").addClass("has-feedback has-error"); 
-           swal ( "Oops" ,  "Semua Form Wajib Di Isi" ,  "error" );
+           Swal ( "Oops" ,  "Semua Form Wajib Di Isi" ,  "error" );
       }else if(password_baru != password_lama){
             $(".form-group").addClass("has-feedback has-error");
-            swal ( "Oops" ,  "Password Tidak Sama Silahkan Di Ulangi" ,  "error" );
+            Swal ( "Oops" ,  "Password Tidak Sama Silahkan Di Ulangi" ,  "error" );
       }else{
-          swal ( "Please Wait ..." ,  "Sedang Menyimpan Perubahan" ,  "success" );
+          Swal ( "Please Wait ..." ,  "Sedang Menyimpan Perubahan" ,  "success" );
           
           $.ajax({
            type :'POST',
            url : '<?= base_url('dasboard/ganti_password/simpan') ?>',
            data : 'password_baru='+password_baru,
            success:function(msg){
-              swal( "Profil Hasben Update" ,  "Password Berhasil Diganti" ,  "success" );
+              Swal( "Profil Hasben Update" ,  "Password Berhasil Diganti" ,  "success" );
            },
            error:function(msg){
              alert('error :');
