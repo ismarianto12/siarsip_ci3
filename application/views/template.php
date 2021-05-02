@@ -273,7 +273,7 @@
                 echo $contents;
             } else { ?>
                 <!-- Main content -->
-                <section class="content" id="pjax-container">
+                <section class="content">
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
@@ -297,7 +297,6 @@
 
 
     </div>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.pjax/1.9.6/jquery.pjax.min.js"></script>
 
 
     <script src="<?= base_url() ?>/assets/template_lte/plugins/pace/pace.js"></script>
@@ -316,7 +315,6 @@
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js"></script>
 
     <script type="text/javascript">
-        $(document).pjax('a', '#pjax-container');
         $(document).ajaxStart(function() {
             Pace.restart({
                 catchupTime: 100,
