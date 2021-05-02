@@ -100,7 +100,7 @@ class Tbl_surat_keluar extends CI_Controller
     } else {
 
       $tgl_surat = $this->input->post('tgl_surat');
-      $tgl_catat = $this->input->post('tgl_catat');
+      $tgl_catat = date('Y-m-d');
 
       $f_tgl_surat = date("Y-m-d", strtotime($tgl_surat));
       $f_tgl_catat = date("Y-m-d", strtotime($tgl_catat));
@@ -173,7 +173,7 @@ class Tbl_surat_keluar extends CI_Controller
     } else {
 
       $tgl_surat = $this->input->post('tgl_surat');
-      $tgl_catat = $this->input->post('tgl_catat');
+      $tgl_catat = date('Y-m-d');
 
       $f_tgl_surat = date("Y-m-d", strtotime($tgl_surat));
       $f_tgl_catat = date("Y-m-d", strtotime($tgl_catat));
@@ -201,7 +201,7 @@ class Tbl_surat_keluar extends CI_Controller
       } else {
 
         $tgl_surat = $this->input->post('tgl_surat');
-        $tgl_catat = $this->input->post('tgl_catat');
+        $tgl_catat = date('Y-m-d');
 
         $f_tgl_surat = date("Y-m-d", strtotime($tgl_surat));
         $f_tgl_catat = date("Y-m-d", strtotime($tgl_catat));

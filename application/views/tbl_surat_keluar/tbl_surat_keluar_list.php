@@ -38,7 +38,6 @@
                             <th>jenis_surat</th>
                             <th>Kode</th>
                             <th>Tgl Surat</th>
-                            <th>Tgl Catat</th>
                             <th>File</th>
                             <?php if ($this->session->level != 'admin' and $this->session->level != 'staff') {
                             } else {
@@ -104,8 +103,6 @@
                                     "data": "kode"
                                 }, {
                                     "data": "tgl_surat"
-                                }, {
-                                    "data": "tgl_catat"
                                 }, {
                                     "data": "data_file"
                                 },

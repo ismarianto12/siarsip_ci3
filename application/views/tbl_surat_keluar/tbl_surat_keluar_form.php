@@ -46,7 +46,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="date" class='control-label col-md-3'><b>Jeinis surat<?php echo form_error('id_jenis_surat') ?></b></label>
+                                <label for="date" class='control-label col-md-3'><b>Jenis surat<?php echo form_error('id_jenis_surat') ?></b></label>
                                 <div class='col-md-9'>
                                     <select class="form-control" name="id_jenis_surat" id="id_jenis_surat">
                                         <?php
@@ -73,12 +73,7 @@
                                     <input type="date" class="form-control" name="tgl_surat" placeholder="Tgl Surat" value="<?php echo $tgl_surat; ?>" />
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="date" class='control-label col-md-3'><b>Tgl Catat<?php echo form_error('tgl_catat') ?></b></label>
-                                <div class='col-md-9'>
-                                    <input type="date" class="datepikcer form-control" name="tgl_catat" placeholder="Tgl Catat" value="<?php echo $tgl_catat; ?>" />
-                                </div>
-                            </div>
+
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>File<?php echo form_error('file') ?></b></label>
                                 <div class='col-md-9'>
