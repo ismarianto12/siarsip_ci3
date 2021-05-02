@@ -105,7 +105,7 @@ class Tsuratmasuk extends CI_Controller
       $conf['upload_path'] = 'assets/file_surat/';
       $conf['file_name']   = time() . 'file_surat';
       $this->upload->initialize($conf);
-      if ($this->upload->do_upload('file')) { 
+      if ($this->upload->do_upload('file')) {
         $data = array(
           'no_agenda' => $this->input->post('no_agenda', TRUE),
           'no_surat' => $this->input->post('no_surat', TRUE),
@@ -118,6 +118,8 @@ class Tsuratmasuk extends CI_Controller
           'file' => $this->upload->file_name,
           'keterangan' => $this->input->post('keterangan', TRUE),
           'id_user' => $this->session->id_user,
+          'disposisi' => 'n',
+
         );
         $this->db->insert('tbl_surat_masuk', $data);
         $respon = array(
@@ -213,6 +215,7 @@ class Tsuratmasuk extends CI_Controller
             'file' => $this->upload->file_name,
             'keterangan' => $this->input->post('keterangan', TRUE),
             'id_user' => $this->session->id_user,
+            'disposisi' => 'n',
           );
           $this->Tsuratmasuk_model->update($this->input->post('id_surat', TRUE), $data);
           $respon = array(
@@ -305,5 +308,27 @@ class Tsuratmasuk extends CI_Controller
     $x['data'] = $this->db->get_where('tbl_surat_masuk', array('disposisi' => 'n'));
     $this->load->view('list_notifikasi', $x);
     //}
+  }
+  function check_no_surat()
+  {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $id_jenis_surat = $this->input->post('id_jenis_surat');
+      $data = $this->db->get_where('jenis_surat', array('id_jenis' => $id_jenis_surat));
+      $query = $data->row_array();
+      if ($query['kode_surat'] != '') :
+        $no_surat = $query['kode_surat'] . '-' . penomoran_surat_masuk();
+        $keterangan = '';
+      else :
+        $no_surat = penomoran_surat_masuk();
+        $keterangan = '<small>Kode untuk jenis surat ini belum di set sebelumnya.</small>';
+      endif;
+      if ($data->num_rows() > 0) {
+        $sql_data = array('no_surat' => $no_surat, 'keterangan' => $keterangan);
+        echo json_encode($sql_data);
+      } else {
+        $sql_data = array('no_surat' => $no_surat, 'keterangan' => $keterangan);
+        echo json_encode($sql_data);
+      }
+    }
   }
 }

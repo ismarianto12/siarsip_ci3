@@ -107,6 +107,20 @@ function penomoran_surat()
   }
   return $no_surat;
 }
+// masuk
+function penomoran_surat_masuk()
+{
+  $CI = &get_instance();
+  $CI->db->select("max(id_surat) as no_surat");
+  $CI->db->from("tbl_surat_masuk");
+  $data = $CI->db->get()->row();
+  if ($data->no_surat == NULL) {
+    $no_surat = 1;
+  } else {
+    $no_surat = $data->no_surat;
+  }
+  return $no_surat;
+}
 
 function catat_log($id_user, $url, $aktivitas, $ip_address, $browser)
 {
