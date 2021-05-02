@@ -29,6 +29,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="varchar" class='control-label col-md-3'><b>Kode Klasifikasi<?php echo form_error('kode') ?></b></label>
+                                <div class='col-md-9'>
+                                    <input type="text" class="form-control" name="kode" id="kode" placeholder="Kode" value="<?php echo $kode; ?>" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="int" class='control-label col-md-3'><b>No Surat<?php echo form_error('no_agenda') ?></b></label>
                                 <div class='col-md-9'>
                                     <input type="text" class="form-control" name="no_agenda" id="no_agenda" placeholder="No Agenda" value="<?php echo $no_agenda; ?>" />
@@ -38,12 +45,6 @@
                                 <label for="varchar" class='control-label col-md-3'><b>Tujuan<?php echo form_error('tujuan') ?></b></label>
                                 <div class='col-md-9'>
                                     <input type="text" class="form-control" name="tujuan" id="tujuan" placeholder="Tujuan" value="<?php echo $tujuan; ?>" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="varchar" class='control-label col-md-3'><b>Kode Klasifikasi<?php echo form_error('kode') ?></b></label>
-                                <div class='col-md-9'>
-                                    <input type="text" class="form-control" name="kode" id="kode" placeholder="Kode" value="<?php echo $kode; ?>" />
                                 </div>
                             </div>
 

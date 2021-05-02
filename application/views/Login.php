@@ -44,10 +44,15 @@
   <div class="col-md-8">
 
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4" style="
+    background: #fff;
+    height: 640px;
+    overflow: hidden;
+">
 
     <div class="login-box">
       <div class="login-logo">
+        <br />
         <center>
 
           <h3 class="box-title m-b-20">Aplikasi Sudikap <br />(Surat + Surat Dinas dan Kearsipan)</h3>
