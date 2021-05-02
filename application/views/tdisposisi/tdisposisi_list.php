@@ -4,15 +4,14 @@
          <div class='white-box'>
 
              <p class='text-muted m-b-30'>Histori Disposisi</p>
-             <div class='table-responsive'>
-
+             <div class='table-responsive'> 
                  <br /><br />
                  <table class="table" id="datatables">
                      <thead>
                          <tr>
                              <th width="80px">No</th>
-                             <th>No Agenda</th>
                              <th>No Surat</th>
+                             <th>No Agenda</th>
                              <th>Tujuan</th>
                              <th>Sifat</th>
                              <th>Batas Waktu</th>
@@ -78,9 +77,9 @@
                                  "data": "id_disposisi",
                                  "orderable": false
                              }, {
-                                 "data": "no_agenda"
-                             }, {
                                  "data": "no_surat"
+                             }, {
+                                 "data": "no_agenda"
                              }, {
                                  "data": "tujuan"
                              }, {
