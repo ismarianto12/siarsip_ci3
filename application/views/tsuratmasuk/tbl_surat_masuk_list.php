@@ -44,10 +44,9 @@
           <thead>
             <tr>
               <th width="80px">No</th>
-              <th>No Agenda</th>
               <th>No Surat</th>
+              <th>No Agenda</th>
               <th>Asal Surat</th>
-
               <th>Tgl Diterima</th>
               <th>File</th>
               <th>Disposisi</th>
@@ -119,9 +118,10 @@
                   "data": "id_surat",
                   "orderable": false
                 }, {
-                  "data": "no_agenda"
-                }, {
                   "data": "no_surat"
+                },
+                {
+                  "data": "no_agenda"
                 }, {
                   "data": "asal_surat"
                 }, {
