@@ -10,12 +10,12 @@
                         <div class='form-body'>
                             ** ) Harap Isikan data yang di butuhkan pada form.
                             <br /><br /><br /><br />
-                            <!-- <div class="form-group">
+                            <div class="form-group">
                                 <label for="int" class='control-label col-md-3'><b>No Agenda<?php echo form_error('no_agenda') ?></b></label>
                                 <div class='col-md-9'>
                                     <input type="text" class="form-control" name="no_agenda" id="no_agenda" placeholder="No Agenda" value="<?php echo $no_agenda; ?>" />
                                 </div>
-                            </div> -->
+                            </div>
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>No Surat<?php echo form_error('no_surat') ?></b></label>
                                 <div class='col-md-9'>
@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="varchar" class='control-label col-md-3'><b>Kode<?php echo form_error('kode') ?></b></label>
+                                <label for="varchar" class='control-label col-md-3'><b>Kode Klasifikasi<?php echo form_error('kode') ?></b></label>
                                 <div class='col-md-9'>
                                     <input type="text" class="form-control" name="kode" id="kode" placeholder="Kode" value="<?php echo $kode; ?>" />
                                 </div>
