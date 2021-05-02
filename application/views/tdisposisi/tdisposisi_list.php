@@ -2,20 +2,20 @@
      <div class='col-sm-12'>
          <?= $this->session->userdata('message') ?>
          <div class='white-box'>
-            
+
              <p class='text-muted m-b-30'>Histori Disposisi</p>
              <div class='table-responsive'>
- 
+
                  <br /><br />
                  <table class="table" id="datatables">
                      <thead>
                          <tr>
-                             <th width="80px">No</th> 
+                             <th width="80px">No</th>
                              <th>No Agenda</th>
-                             <th>No Surat</th> 
-                             <th>Tujuan</th> 
+                             <th>No Surat</th>
+                             <th>Tujuan</th>
                              <th>Sifat</th>
-                             <th>Batas Waktu</th> 
+                             <th>Batas Waktu</th>
                          </tr>
                      </thead>
 
@@ -55,22 +55,39 @@
                                  "url": "tdisposisi/json",
                                  "type": "POST"
                              },
-                             columns: [
+                             dom: 'Bfrtip',
+                             buttons: [{
+                                     extend: 'copyHtml5',
+                                     className: 'btn btn-info btn-xs'
+                                 },
                                  {
+                                     extend: 'excelHtml5',
+                                     className: 'btn btn-success btn-xs'
+                                 },
+                                 {
+                                     extend: 'csvHtml5',
+                                     className: 'btn btn-warning btn-xs'
+                                 },
+                                 {
+                                     extend: 'pdfHtml5',
+                                     className: 'btn btn-prirmay btn-xs'
+                                 }
+                             ],
+
+                             columns: [{
                                  "data": "id_disposisi",
                                  "orderable": false
-                             },  {
+                             }, {
                                  "data": "no_agenda"
                              }, {
                                  "data": "no_surat"
                              }, {
                                  "data": "tujuan"
-                             },  {
+                             }, {
                                  "data": "sifat"
                              }, {
                                  "data": "batas_waktu"
-                             }
-                             ],
+                             }],
                              order: [
                                  [0, 'desc']
                              ],

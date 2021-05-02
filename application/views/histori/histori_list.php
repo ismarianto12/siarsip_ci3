@@ -31,7 +31,7 @@
                         <input type="date" class="form-control" name="sampai" id="sampai" placeholder="Tujuan" value="" />
                     </div>
                 </div>
-                <br  /><br  />
+                <br /><br />
 
                 <table class="table" id="datatables">
                     <thead>
@@ -91,6 +91,25 @@
                                 },
 
                             },
+                            dom: 'Bfrtip',
+                            buttons: [{
+                                    extend: 'copyHtml5',
+                                    className: 'btn btn-info btn-xs'
+                                },
+                                {
+                                    extend: 'excelHtml5',
+                                    className: 'btn btn-success btn-xs'
+                                },
+                                {
+                                    extend: 'csvHtml5',
+                                    className: 'btn btn-warning btn-xs'
+                                },
+                                {
+                                    extend: 'pdfHtml5',
+                                    className: 'btn btn-prirmay btn-xs'
+                                }
+                            ],
+
                             columns: [{
                                     "data": "id_histori",
                                     "orderable": false
