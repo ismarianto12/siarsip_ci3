@@ -245,7 +245,7 @@
           $(function() {
             $('#simpan_disposisi').click(function(e) {
               e.preventDefault();
-              var tujuan = $('#tujuan').val();
+              var tujuan = $('input[name="tujuan"]').val();
               var id_surat = $('#id_surat').val();
               var isi_disposisi = $('#isi_disposisi').val();
               var batas_waktu = $('#batas_waktu').val();
@@ -263,7 +263,7 @@
                 sifat: sifat,
               };
               $.ajax({
-                url: '<?= base_url('Tdisposisi/tambah_data') ?>',
+                url: '<?= base_url('tdisposisi/tambah_data') ?>',
                 data: dataString,
                 type: 'post',
                 chace: false,
