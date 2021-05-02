@@ -5,6 +5,7 @@
             <div class='panel-wrapper collapse in' aria-expanded='true'>
                 <div class='panel-body'>
                     <?= $this->session->flashdata('message') ?>
+                    <div id="notifikasi"></div>
                     <form id="surat_keluar_form" method="post" class='form-horizontal form-bordered' enctype="multipart/form-data">
                         <div class='form-body'>
                             ** ) Harap Isikan data yang di butuhkan pada form.
@@ -199,15 +200,25 @@
                 cache: false,
                 contentType: false,
                 processData: false,
+                dataType: 'Json',
                 beforeSend: function() {
                     $('#cupdate').attr("disabled", "disabled");
                     $('#cupdate').css("opacity", ".5");
                 },
                 success: function(data) {
-                    Swal('Keterangan', 'Data Surat keluar berhasil di simpan', 'success');
-                    window.location.href = '<?= base_url('tbl_surat_keluar') ?>';
-                    $('#cupdate').css("opacity", "");
-                    $("#cupdate").removeAttr("disabled");
+                    if (data.status == 1) {
+                        Swal('Keterangan', 'Data Surat keluar berhasil di simpan', 'success');
+                        window.location.href = '<?= base_url('tbl_surat_keluar') ?>';
+                        $('#cupdate').css("opacity", "");
+                        $("#cupdate").removeAttr("disabled");
+                    } else {
+                        // Swal.close();
+                        $('#notifikasi').html('<div class="callout callout-danger"><ul><li>' + data.msg + '</ul></li></div>');
+                        // window.location.href = '<?= base_url('tbl_surat_keluar') ?>';
+                        $('#cupdate').css("opacity", "");
+                        $("#cupdate").removeAttr("disabled");
+                    }
+
                 },
                 error: function(data) {
                     Swal('Keterangan', 'Data Surat keluar gagal di simpan', 'error');

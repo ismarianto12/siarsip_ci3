@@ -125,8 +125,15 @@ class Tbl_surat_keluar extends CI_Controller
       );
       $this->db->insert('tbl_surat_keluar', $data);
       $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Data Berhasil Di Tambahkan.</div>');
+      echo json_encode([
+        'status' => 1,
+        'msg' => 'berhasil'
+      ]);
     } else {
-      $this->session->set_flashdata('message', $this->upload->display_errors('<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>', '</div>'));
+      echo json_encode([
+        'status' => 2,
+        'msg' => $this->upload->display_errors('<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>', '</div>')
+      ]);
     }
   }
 
