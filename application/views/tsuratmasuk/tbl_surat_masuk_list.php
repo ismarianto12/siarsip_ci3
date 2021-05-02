@@ -245,7 +245,7 @@
           $(function() {
             $('#simpan_disposisi').click(function(e) {
               e.preventDefault();
-              var tujuan = $('input[name="tujuan"]').val();
+              var tujuan = $('textarea[name="tujuan"]').val();
               var id_surat = $('#id_surat').val();
               var isi_disposisi = $('#isi_disposisi').val();
               var batas_waktu = $('#batas_waktu').val();
