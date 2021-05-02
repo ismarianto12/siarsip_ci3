@@ -210,8 +210,7 @@
                         $('#cupdate').css("opacity", "");
                         $("#cupdate").removeAttr("disabled");
                     } else {
-                        // Swal.close();
-                        $('#notifikasi').html('<div class="callout callout-danger"><ul><li>' + data.msg + '</ul></li></div>');
+                        $('#notifikasi').html(data.msg);
                         // window.location.href = '<?= base_url('tbl_surat_keluar') ?>';
                         $('#cupdate').css("opacity", "");
                         $("#cupdate").removeAttr("disabled");
