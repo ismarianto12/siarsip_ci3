@@ -10,14 +10,9 @@
                         <div class='form-body'>
                             ** ) Harap Isikan data yang di butuhkan pada form.
                             <br /><br /><br /><br />
+
                             <div class="form-group">
-                                <label for="int" class='control-label col-md-3'><b>No Agenda<?php echo form_error('no_agenda') ?></b></label>
-                                <div class='col-md-9'>
-                                    <input type="text" class="form-control" name="no_agenda" id="no_agenda" placeholder="No Agenda" value="<?php echo $no_agenda; ?>" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="varchar" class='control-label col-md-3'><b>No Surat<?php echo form_error('no_surat') ?></b></label>
+                                <label for="varchar" class='control-label col-md-3'><b>No Agenda<?php echo form_error('no_surat') ?></b></label>
                                 <div class='col-md-9'>
                                     <?php if ($this->uri->segment(2) == 'edit') : ?>
                                         <div class="no_surat_show">
@@ -31,6 +26,12 @@
                                     <span class="btn btn-sm btn-primary" id="manual">Manual</span>
                                     <span class="btn btn-sm btn-primary" id="otomatis">Otomatis</span>
 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="int" class='control-label col-md-3'><b>No Surat<?php echo form_error('no_agenda') ?></b></label>
+                                <div class='col-md-9'>
+                                    <input type="text" class="form-control" name="no_agenda" id="no_agenda" placeholder="No Agenda" value="<?php echo $no_agenda; ?>" />
                                 </div>
                             </div>
                             <div class="form-group">
