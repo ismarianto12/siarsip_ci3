@@ -105,14 +105,7 @@
                                  <div class='col-md-9'>
                                      <textarea class="form-control" name="isi" id="isi"><?php echo $isi; ?></textarea>
                                  </div>
-                             </div>
-
-                             <div class="form-group">
-                                 <label for="varchar" class='control-label col-md-3'><b>Indeks<?php echo form_error('indeks') ?></b></label>
-                                 <div class='col-md-9'>
-                                     <input type="text" class="form-control" name="indeks" id="indeks" placeholder="Indeks" value="<?php echo $indeks; ?>" />
-                                 </div>
-                             </div>
+                             </div> 
                              <div class="form-group">
                                  <label for="date" class='control-label col-md-3'><b>Tgl Surat<?php echo form_error('tgl_surat') ?></b></label>
                                  <div class='col-md-9'>
