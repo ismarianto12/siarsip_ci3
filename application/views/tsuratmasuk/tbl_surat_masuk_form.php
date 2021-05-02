@@ -198,7 +198,7 @@
              var id_jenis_surat = $(this).val();
 
              $.ajax({
-                 url: '<?= base_url('tbl_surat_masuk/check_no_surat') ?>',
+                 url: '<?= base_url('tsuratmasuk/check_no_surat') ?>',
                  type: 'post',
                  data: 'id_jenis_surat=' + id_jenis_surat,
                  chace: false,
