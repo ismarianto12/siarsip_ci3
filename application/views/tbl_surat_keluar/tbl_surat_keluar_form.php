@@ -166,26 +166,24 @@
         $('#otomatis').on('click', function() {
 
             var id_jenis_surat = $(this).val();
-            if ($('select[name="id_jenis_surat"]').val() == '' || $('#kode').val() == '') {
-                Swal('silahkan pilih jenis surat  dan isian kode , terlebih dahulu');
-            } else {
-                $.ajax({
-                    url: '<?= base_url('tbl_surat_keluar/check_no_surat') ?>',
-                    type: 'post',
-                    data: 'id_jenis_surat=' + id_jenis_surat,
-                    chace: false,
-                    dataType: 'json',
-                    BeforeSend: function() {
-                        Swal('progresss...', 'Harap bersabar sedang merandom no surat yang sesuai', 'info');
-                    },
-                    success: function(data) {
-                        $('.no_surat_show').html('<input type="text" name="no_surat" class="form-control" value="' + data.no_surat + '" readonly="true">"' + data.keterangan + '"');
-                    },
-                    error: function(data) {
-                        Swal('peringatan', 'server error response', 'error');
-                    }
-                });
-            }
+
+            $.ajax({
+                url: '<?= base_url('tbl_surat_keluar/check_no_surat') ?>',
+                type: 'post',
+                data: 'id_jenis_surat=' + id_jenis_surat,
+                chace: false,
+                dataType: 'json',
+                BeforeSend: function() {
+                    Swal('progresss...', 'Harap bersabar sedang merandom no surat yang sesuai', 'info');
+                },
+                success: function(data) {
+                    $('.no_surat_show').html('<input type="text" name="no_surat" class="form-control" value="' + data.no_surat + '" readonly="true">"' + data.keterangan + '"');
+                },
+                error: function(data) {
+                    Swal('peringatan', 'server error response', 'error');
+                }
+            });
+
         });
 
 
