@@ -34,6 +34,7 @@
                         <tr>
                             <th width="80px">No</th>
                             <th>Tujuan</th>
+                            <th>No Agenda</th>
                             <th>No Surat</th>
                             <th>jenis_surat</th>
                             <th>Kode</th>
@@ -95,6 +96,9 @@
                                     "orderable": false
                                 }, {
                                     "data": "tujuan"
+                                },
+                                {
+                                    "data": "no_agenda"
                                 }, {
                                     "data": "no_surat"
                                 }, {
