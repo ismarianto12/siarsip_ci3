@@ -425,7 +425,10 @@ class Arsip extends CI_Controller
 
     function  pengajuan_arsip($action = '', $id = '')
     {
-        catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'Akses pengajuan arsip.', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
+        if ($this->session->userdata('level') == 'admin') {
+            redirect('akses_tidak_bisa');
+        };
+        // catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'Akses pengajuan arsip.', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
         $q = $this->db->get_where('pengajuan_arsip', array('id_pengajuan' => $id))->row_array();
         if ($id) {
             $x['id_pengajuan'] = $q['id_pengajuan'];

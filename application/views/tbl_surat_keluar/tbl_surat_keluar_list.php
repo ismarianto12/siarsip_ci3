@@ -34,8 +34,8 @@
                         <tr>
                             <th width="80px">No</th>
                             <th>Tujuan</th>
-                            <th>No Agenda</th>
                             <th>No Surat</th>
+                            <th>No Agenda</th>
                             <th>jenis_surat</th>
                             <th>Kode</th>
                             <th>Tgl Surat</th>
@@ -81,6 +81,7 @@
                             oLanguage: {
                                 sProcessing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
                             },
+
                             processing: true,
                             serverSide: true,
                             ajax: {
@@ -91,6 +92,24 @@
                                     data.id_jenis = id_jenis;
                                 }
                             },
+                            dom: 'Bfrtip',
+                            buttons: [{
+                                    extend: 'copyHtml5',
+                                    className: 'btn btn-info btn-xs'
+                                },
+                                {
+                                    extend: 'excelHtml5',
+                                    className: 'btn btn-success btn-xs'
+                                },
+                                {
+                                    extend: 'csvHtml5',
+                                    className: 'btn btn-info btn-xs'
+                                },
+                                {
+                                    extend: 'pdfHtml5',
+                                    className: 'btn btn-prirmay btn-xs'
+                                }
+                            ],
                             columns: [{
                                     "data": "id_surat",
                                     "orderable": false
