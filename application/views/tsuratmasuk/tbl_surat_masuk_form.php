@@ -35,9 +35,9 @@
                          $("form").removeAttr("disabled");
                          $('.main_app').hide().slideUp();
                          $('#datatables').DataTable().ajax.reload();
-                         $('#notifikasi').html('');
+                         $('#notifikasif').html('');
                      } else if (data.ket == 2) {
-                         $('#notifikasi').html(data.respon);
+                         $('#notifikasif').html('<div class="callout callout-danger" style="display: grid;">' + data.respon + '</div>');
                          $('form').css("opacity", "");
                          $("form").removeAttr("disabled");
                          $('#datatables').DataTable().ajax.reload();
@@ -57,6 +57,7 @@
          <div class='box-default'>
              <div class='panel-heading'><i class="fa fa-document"></i><?= ucfirst($judul) ?></div>
              <br />
+             <div id="notifikasif" style="display: grid;"></div>
              <div class='panel-wrapper collapse in' aria-expanded='true'>
                  <div class='panel-body'>
                      <?= $this->session->flashdata('message') ?>
@@ -105,7 +106,7 @@
                                  <div class='col-md-9'>
                                      <textarea class="form-control" name="isi" id="isi"><?php echo $isi; ?></textarea>
                                  </div>
-                             </div> 
+                             </div>
                              <div class="form-group">
                                  <label for="date" class='control-label col-md-3'><b>Tgl Surat<?php echo form_error('tgl_surat') ?></b></label>
                                  <div class='col-md-9'>

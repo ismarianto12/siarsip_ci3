@@ -2,12 +2,12 @@
      <div class='col-sm-12'>
          <?= $this->session->userdata('message') ?>
          <div class='white-box'>
-            
+
              <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
              <div class='table-responsive'>
                  <?php echo anchor(site_url('pegawai/tambah'), 'Tambah Data', 'class="btn bg-navy btn-flat margin"'); ?>
-                 <?php echo anchor(site_url('pegawai/excel'), '<i class=\'fa fa-file-excel-o\'></i>Excel', 'class="btn btn-info btn-xs"'); ?>
-                 <?php echo anchor(site_url('pegawai/word'), '<i class=\'fa fa-file-word-o\'></i>Word', 'class="btn btn-danger btn-xs"'); ?>
+                 <?php echo anchor(site_url('pegawai/excel'), '<i class=\'fa fa-file-excel-o\'></i>Excel', 'class="btn bg-orange btn-flat margin"'); ?>
+                 <?php echo anchor(site_url('pegawai/word'), '<i class=\'fa fa-file-word-o\'></i>Word', 'class="btn bg-red btn-flat margin"'); ?>
 
                  <br /><br />
                  <table class="table" id="datatables">

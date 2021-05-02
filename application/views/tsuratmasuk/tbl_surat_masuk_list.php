@@ -296,12 +296,12 @@
 </div>
 
 <!-- modal set disposisi surat -->
-<div class="modal modal-primary" id="tampilan_cari">
+<div class="modal modal-default" id="tampilan_cari">
   <div class="modal-dialog" style="width: 80%">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Form desposisi surat masuk. Nomor Surat<div class="nama_judul"></div>
+        <h4 class="modal-title"><i class="fa fa-list"></i> Form desposisi surat masuk. Nomor Surat<div class="nama_judul"></div>
         </h4>
       </div>
       <div class="modal-body">
@@ -312,7 +312,7 @@
             <div class="form-group">
               <label for="varchar" class='control-label col-md-3'><b>Tujuan Disposisi</b></label>
               <div class='col-md-9'>
-                <textarea class="form-control" name="tujuan" cols="12" rows="10" required></textarea>
+                <textarea class="form-control" name="tujuan" required></textarea>
               </div>
             </div>
 
@@ -353,14 +353,11 @@
                   <div class='row'>
                     <div class='col-md-offset-3 col-md-9'>
                       <button id="simpan_disposisi" class="btn btn-info btn-xs">Simpan Disposisi<i class='fa fa-check'></i></button>
+                      <button id="hapus_disposisi" class="btn btn-danger btn-xs">Kosongkan Disposisi<i class='fa fa-delete'></i></button>
                     </div>
                   </div>
                   <br />
-                  <div class='row'>
-                    <div class='col-md-offset-3 col-md-9'>
-                      <button id="hapus_disposisi" class="btn btn-danger btn-xs">Hapus Disposisi<i class='fa fa-delete'></i></button>
-                    </div>
-                  </div>
+
                 </div>
               </div>
             </div>
