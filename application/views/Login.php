@@ -39,37 +39,44 @@
     background-size: cover;
     background-repeat: no-repeat;
 ">
-  <div class="login-box">
-    <div class="login-logo">
-      <center>
 
-        <h3 class="box-title m-b-20">Aplikasi Sudikap <br />(Surat + Surat Dinas dan Kearsipan)</h3>
-      </center>
-    </div><!-- /.login-logo -->
-    <div class="login-box-body">
-      <p class="login-box-msg">Login Akses Aplikasi</p>
 
-      <div id="notifikasi"></div>
-      <form id="clogin" action="#" method="post">
-        <div class="form-group has-feedback">
-          <input type="text" name="username" class="form-control" placeholder="Username ..">
-          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-        </div>
-        <div class="form-group has-feedback">
-          <input type="password" name="password" class="form-control" placeholder="Password">
-          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        </div>
-        <div class="row">
+  <div class="col-md-8">
 
-          <div class="col-xs-4">
-            <button type="submit" class="btn bg-green btn-flat margin btn-block btn-flat">Sign In</button>
-          </div><!-- /.col -->
-        </div>
-      </form>
+  </div>
+  <div class="col-md-4">
 
-    </div><!-- /.login-box-body -->
-  </div><!-- /.login-box -->
+    <div class="login-box">
+      <div class="login-logo">
+        <center>
 
+          <h3 class="box-title m-b-20">Aplikasi Sudikap <br />(Surat + Surat Dinas dan Kearsipan)</h3>
+        </center>
+      </div><!-- /.login-logo -->
+      <div class="login-box-body">
+        <p class="login-box-msg">Login Akses Aplikasi</p>
+
+        <div id="notifikasi"></div>
+        <form id="clogin" action="#" method="post">
+          <div class="form-group has-feedback">
+            <input type="text" name="username" class="form-control" placeholder="Username ..">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input type="password" name="password" class="form-control" placeholder="Password">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          <div class="row">
+
+            <div class="col-xs-4">
+              <button type="submit" class="btn bg-green btn-flat margin btn-block btn-flat">Sign In</button>
+            </div><!-- /.col -->
+          </div>
+        </form>
+
+      </div><!-- /.login-box-body -->
+    </div><!-- /.login-box -->
+  </div>
   <!-- jQuery 2.1.4 -->
   <script src="<?= base_url() ?>/assets/template_lte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
   <!-- Bootstrap 3.3.5 -->
