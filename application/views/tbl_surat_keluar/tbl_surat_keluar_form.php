@@ -5,7 +5,7 @@
             <div class='panel-wrapper collapse in' aria-expanded='true'>
                 <div class='panel-body'>
                     <?= $this->session->flashdata('message') ?>
-                    <form action="<?php echo $action; ?>" method="post" class='form-horizontal form-bordered' enctype="multipart/form-data">
+                    <form id="surat_keluar_form" method="post" class='form-horizontal form-bordered' enctype="multipart/form-data">
                         <div class='form-body'>
                             ** ) Harap Isikan data yang di butuhkan pada form.
                             <br /><br /><br /><br />
@@ -159,7 +159,7 @@
         // otomatics and manual
 
         $('#manual').on('click', function() {
-            $('.no_surat_show').html('<input type="text" name="no_surat" class="form-control" value="" > ');
+            $('.no_surat_show').html('<input type="text" name="no_surat" class="form-control" value="">');
 
         });
         $('#otomatis').on('click', function() {
@@ -186,5 +186,34 @@
                 });
             }
         });
+
+
+        // save 
+        $('#surat_keluar_form').on('submit', function(e) {
+            e.preventDefault();
+            var datastring = new FormData(this);
+            $.ajax({
+                url: '<?= $action ?>',
+                type: 'post',
+                data: datastring,
+                cache: false,
+                contentType: false,
+                processData: false,
+                beforeSend: function() {
+                    $('#cupdate').attr("disabled", "disabled");
+                    $('#cupdate').css("opacity", ".5");
+                },
+                success: function(data) {
+                    Swal('Keterangan', 'Data Surat keluar berhasil di simpan', 'success');
+                    window.location.href = '<?= base_url('tbl_surat_keluar') ?>';
+                    $('#cupdate').css("opacity", "");
+                    $("#cupdate").removeAttr("disabled");
+                },
+                error: function(data) {
+                    Swal('Keterangan', 'Data Surat keluar gagal di simpan', 'error');
+                }
+            });
+        });
+
     });
 </script>

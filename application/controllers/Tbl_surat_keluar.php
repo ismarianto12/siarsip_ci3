@@ -74,7 +74,7 @@ class Tbl_surat_keluar extends CI_Controller
     $data = array(
       'judul' => 'Tambah Tbl surat keluar',
       'button' => 'Create',
-      'action' => site_url('tbl_surat_keluar/tambah_data'),
+      'action' => site_url('tbl_surat_keluar/tambah_data_action'),
       'id_jenis_surat' => set_value('id_jenis_surat'),
       'id_surat' => set_value('id_surat'),
       'no_agenda' => set_value('no_agenda'),
@@ -91,51 +91,48 @@ class Tbl_surat_keluar extends CI_Controller
     $this->template->load('template', 'tbl_surat_keluar/tbl_surat_keluar_form', $data);
   }
 
+  public function tambah_data_action()
+  {
+    // print_r($_POST);
+    // exit;
+
+    $tgl_surat = $this->input->post('tgl_surat');
+    $tgl_catat = date('Y-m-d');
+
+    $f_tgl_surat = date("Y-m-d", strtotime($tgl_surat));
+    $f_tgl_catat = date("Y-m-d", strtotime($tgl_catat));
+
+
+    $conf['file_name'] = 'surat_keluar' . date('Y-m-d');
+    $conf['upload_path'] = './assets/file_surat';
+    $conf['allowed_types'] = 'pdf|doc|docx|xls|xlxs';
+    $this->upload->initialize($conf);
+
+    if ($this->upload->do_upload('file')) {
+
+      $data = array(
+        'no_agenda' => ($this->input->post('no_agenda', TRUE)) ? $this->input->post('no_agenda', TRUE) : 'null',
+        'tujuan' => $this->input->post('tujuan', TRUE),
+        'no_surat' => $this->input->post('no_surat', TRUE),
+        'isi' => $this->input->post('isi', TRUE),
+        'kode' => $this->input->post('kode', TRUE),
+        'tgl_surat' => $f_tgl_surat,
+        'tgl_catat' => $f_tgl_catat,
+        'id_jenis_surat' => $this->input->post('id_jenis_surat'),
+        'file' => $this->upload->file_name,
+        'keterangan' => $this->input->post('keterangan', TRUE),
+        'id_user' => $this->session->id_user,
+      );
+      $this->db->insert('tbl_surat_keluar', $data);
+      $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Data Berhasil Di Tambahkan.</div>');
+    } else {
+      $this->session->set_flashdata('message', $this->upload->display_errors('<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>', '</div>'));
+    }
+  }
+
   public function tambah_data()
   {
-    $this->_rules();
-
-    if ($this->form_validation->run() == FALSE) {
-      $this->tambah();
-    } else {
-
-      $tgl_surat = $this->input->post('tgl_surat');
-      $tgl_catat = date('Y-m-d');
-
-      $f_tgl_surat = date("Y-m-d", strtotime($tgl_surat));
-      $f_tgl_catat = date("Y-m-d", strtotime($tgl_catat));
-
-
-      $conf['file_name'] = 'surat_keluar' . date('Y-m-d');
-      $conf['upload_path'] = './assets/file_surat';
-      $conf['allowed_types'] = 'pdf|doc|docx|xls|xlxs';
-      $this->upload->initialize($conf);
-
-
-
-      if ($this->upload->do_upload('file')) {
-
-        $data = array(
-          'no_agenda' => ($this->input->post('no_agenda', TRUE)) ? $this->input->post('no_agenda', TRUE) : 'null',
-          'tujuan' => $this->input->post('tujuan', TRUE),
-          'no_surat' => $this->input->post('no_surat', TRUE),
-          'isi' => $this->input->post('isi', TRUE),
-          'kode' => $this->input->post('kode', TRUE),
-          'tgl_surat' => $f_tgl_surat,
-          'tgl_catat' => $f_tgl_catat,
-          'id_jenis_surat' => $this->input->post('id_jenis_surat'),
-          'file' => $this->upload->file_name,
-          'keterangan' => $this->input->post('keterangan', TRUE),
-          'id_user' => $this->session->id_user,
-        );
-        $this->db->insert('tbl_surat_keluar', $data);
-        $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Data Berhasil Di Tambahkan.</div>');
-        redirect(site_url('tbl_surat_keluar'));
-      } else {
-        $this->session->set_flashdata('message', $this->upload->display_errors('<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>', '</div>'));
-        redirect(site_url('tbl_surat_keluar/tambah'));
-      }
-    }
+    $this->tambah();
   }
 
   public function edit($id)
@@ -145,7 +142,7 @@ class Tbl_surat_keluar extends CI_Controller
       $data = array(
         'judul' => 'Edit data surat keluar',
         'button' => 'Update',
-        'action' => site_url('tbl_surat_keluar/edit_data'),
+        'action' => site_url('tbl_surat_keluar/edit_data_action'),
         'id_surat' => set_value('id_surat', $row->id_surat),
         'no_agenda' => set_value('no_agenda', $row->no_agenda),
         'tujuan' => set_value('tujuan', $row->tujuan),
@@ -165,11 +162,34 @@ class Tbl_surat_keluar extends CI_Controller
     }
   }
 
-  public function edit_data()
+  public function edit_data_action()
   {
-    $this->_rules();
-    if ($this->form_validation->run() == FALSE) {
-      $this->edit($this->input->post('id_surat', TRUE));
+    $tgl_surat = $this->input->post('tgl_surat');
+    $tgl_catat = date('Y-m-d');
+
+    $f_tgl_surat = date("Y-m-d", strtotime($tgl_surat));
+    $f_tgl_catat = date("Y-m-d", strtotime($tgl_catat));
+
+    if ($_FILES['file']['name'] == '') {
+      $data = array(
+        'no_agenda' => ($this->input->post('no_agenda', TRUE)) ? $this->input->post('no_agenda', TRUE) : 'null',
+        'tujuan' => $this->input->post('tujuan', TRUE),
+        'no_surat' => $this->input->post('no_surat', TRUE),
+        'isi' => $this->input->post('isi', TRUE),
+        'kode' => $this->input->post('kode', TRUE),
+
+        'tgl_surat' => $f_tgl_surat,
+        'tgl_catat' => $f_tgl_catat,
+
+        'id_jenis_surat' => $this->input->post('id_jenis_surat'),
+        'file' => 'null',
+        'keterangan' => $this->input->post('keterangan', TRUE),
+        'id_user' => $this->session->id_user,
+      );
+
+      $this->Tbl_surat_keluar_model->update($this->input->post('id_surat', TRUE), $data);
+      $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
+      redirect(site_url('tbl_surat_keluar'));
     } else {
 
       $tgl_surat = $this->input->post('tgl_surat');
@@ -178,62 +198,33 @@ class Tbl_surat_keluar extends CI_Controller
       $f_tgl_surat = date("Y-m-d", strtotime($tgl_surat));
       $f_tgl_catat = date("Y-m-d", strtotime($tgl_catat));
 
-      if ($_FILES['file']['name'] == '') {
+
+      $conf['file_name'] = 'surat_keluar' . date('Y-m-d');
+      $conf['upload_path'] = './assets/file_surat';
+      $conf['allowed_types'] = 'pdf|doc|docx|xls|xlxs';
+      $this->upload->initialize($conf);
+      if ($this->upload->do_upload('file')) {
+        $update = $this->db->get_where('tbl_surat_keluar', ['id_surat' => $this->input->post('id_surat', TRUE)])->row_array();
+        @unlink($conf['upload_path'], '/' . $update['file']);
         $data = array(
           'no_agenda' => ($this->input->post('no_agenda', TRUE)) ? $this->input->post('no_agenda', TRUE) : 'null',
           'tujuan' => $this->input->post('tujuan', TRUE),
           'no_surat' => $this->input->post('no_surat', TRUE),
           'isi' => $this->input->post('isi', TRUE),
           'kode' => $this->input->post('kode', TRUE),
-
           'tgl_surat' => $f_tgl_surat,
           'tgl_catat' => $f_tgl_catat,
-
           'id_jenis_surat' => $this->input->post('id_jenis_surat'),
-          'file' => 'null',
+          'file' => $this->upload->file_name,
           'keterangan' => $this->input->post('keterangan', TRUE),
           'id_user' => $this->session->id_user,
         );
-
-        $this->Tbl_surat_keluar_model->update($this->input->post('id_surat', TRUE), $data);
-        $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
+        $this->db->update('tbl_surat_keluar', $data, ['id_surat' => $this->input->post('id_surat', TRUE)]);
+        $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Data Berhasil Di Edit.</div>');
         redirect(site_url('tbl_surat_keluar'));
       } else {
-
-        $tgl_surat = $this->input->post('tgl_surat');
-        $tgl_catat = date('Y-m-d');
-
-        $f_tgl_surat = date("Y-m-d", strtotime($tgl_surat));
-        $f_tgl_catat = date("Y-m-d", strtotime($tgl_catat));
-
-
-        $conf['file_name'] = 'surat_keluar' . date('Y-m-d');
-        $conf['upload_path'] = './assets/file_surat';
-        $conf['allowed_types'] = 'pdf|doc|docx|xls|xlxs';
-        $this->upload->initialize($conf);
-        if ($this->upload->do_upload('file')) {
-          $update = $this->db->get_where('tbl_surat_keluar', ['id_surat' => $this->input->post('id_surat', TRUE)])->row_array();
-          @unlink($conf['upload_path'], '/' . $update['file']);
-          $data = array(
-            'no_agenda' => ($this->input->post('no_agenda', TRUE)) ? $this->input->post('no_agenda', TRUE) : 'null',
-            'tujuan' => $this->input->post('tujuan', TRUE),
-            'no_surat' => $this->input->post('no_surat', TRUE),
-            'isi' => $this->input->post('isi', TRUE),
-            'kode' => $this->input->post('kode', TRUE),
-            'tgl_surat' => $f_tgl_surat,
-            'tgl_catat' => $f_tgl_catat,
-            'id_jenis_surat' => $this->input->post('id_jenis_surat'),
-            'file' => $this->upload->file_name,
-            'keterangan' => $this->input->post('keterangan', TRUE),
-            'id_user' => $this->session->id_user,
-          );
-          $this->db->update('tbl_surat_keluar', $data, ['id_surat' => $this->input->post('id_surat', TRUE)]);
-          $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Data Berhasil Di Edit.</div>');
-          redirect(site_url('tbl_surat_keluar'));
-        } else {
-          $this->session->set_flashdata('message', $this->upload->display_errors('<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>', '</div>'));
-          redirect(site_url('tbl_surat_keluar/edit/' . $this->input->post('id_surat')));
-        }
+        $this->session->set_flashdata('message', $this->upload->display_errors('<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>', '</div>'));
+        redirect(site_url('tbl_surat_keluar/edit/' . $this->input->post('id_surat')));
       }
     }
   }
