@@ -119,10 +119,10 @@
                   "orderable": false
                 },
                 {
-                  "data": "no_agenda"
+                  "data": "no_surat"
                 },
                 {
-                  "data": "no_surat"
+                  "data": "no_agenda"
                 },
                 {
                   "data": "asal_surat"

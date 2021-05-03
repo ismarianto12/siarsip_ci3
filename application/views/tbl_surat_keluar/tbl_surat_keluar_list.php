@@ -125,7 +125,7 @@
                                 }, {
                                     "data": "kode"
                                 }, {
-                                    "data": "tgl_surat"
+                                    "data": "tgl_ind"
                                 }, {
                                     "data": "data_file"
                                 },

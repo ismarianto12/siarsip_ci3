@@ -36,7 +36,7 @@ class Tbl_surat_keluar_model extends CI_Model
             b.id_jenis,
             b.nama_jenis,
             b.id_user,
-            date_format(b.tanggal_create,"%y-M-d%") as tgl_ind 
+            date_format(b.tanggal_create,"%Y-%M-%d") as tgl_ind 
  
             ');
         $this->datatables->from('tbl_surat_keluar a');
