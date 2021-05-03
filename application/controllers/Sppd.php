@@ -66,7 +66,9 @@ class Sppd extends CI_Controller
 				echo 'response data null';
 				die;
 			}
+
 			$pdf = new Cpdf();
+			$pdf->showImageErrors = true;
 			$pdf->AddPage('P');
 
 			$render = [
