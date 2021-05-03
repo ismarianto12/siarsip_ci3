@@ -1,12 +1,11 @@
 <div class='col-lg-12'>
     <div class='widget'>
 
-        <div class="callout callout-success fade-in"><i class="fa fa-user"></i><?= $judul ?></div>
-
-
+        <h3><i class="fa fa-user"></i><?= $judul ?></h3>
         <div class="widget-body">
+            <div id="notifikasir"></div>
             <div id="horizontal-form">
-                <form class="form-horizontal" role="form" action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
+                <form class="form-horizontal" role="form" id="cupdate" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label class="col-sm-2 control-label no-padding-right">Username <?php echo form_error('username') ?></label>
                         <div class="col-sm-10">
@@ -48,7 +47,7 @@
                     <div class="form-group">
 
                         <center>
-                            <img src="<?= base_url('assets/img/foto/' . $foto) ?>" alt="" class="header-avatar" id="image_upload_preview" class="img-responsive" style="width: 100px;height: 100px">
+                            <img src="<?= base_url('assets/img/foto/' . $foto) ?>" alt="" class="header-avatar" id="image_upload_preview" class="img-responsive" style="width: 100px;height: 100px" onerror="this.onerror=null;this.src='<?= base_url('assets/img/no_image.jpg') ?>';">
                         </center>
                         <br />
                         <label class="col-sm-2 control-label no-padding-right">Foto Profil <?php echo form_error('foto') ?></label>
@@ -89,6 +88,8 @@
 
                 reader.onload = function(e) {
                     $('#image_upload_preview').attr('src', e.target.result);
+                    $('#image_2').attr('src', e.target.result);
+
                 }
                 reader.readAsDataURL(input.files[0]);
             }
@@ -102,6 +103,59 @@
                 $('#foto').val('');
             } else {
                 readURL(this);
+            }
+        });
+
+
+        $('#cupdate').submit(function(e) {
+            e.preventDefault();
+            var username = $('#username').val();
+            var password = $('#password').val();
+            var password_ul = $('#password_ul').val();
+            var nama = $('#nama').val();
+            var email = $('#email').val();
+            //   var foto = $('#foto').val();
+            if (username == '') {
+                Swal('Keterangan', 'Username tidak boleh kosong', 'error');
+            } else if (password == '') {
+                Swal('Keterangan', 'Password tidak boleh kosong', 'error');
+            } else if (password_ul == '') {
+                Swal('Keterangan', 'Ulangi Password tidak boleh kosong', 'error');
+            } else if (nama == '') {
+                Swal('Keterangan', 'Nama tidak boleh kosong', 'error');
+            } else if (email == '') {
+                Swal('Keterangan', 'email tidak boleh kosong', 'error');
+            } else {
+
+                var datastring = new FormData(this);
+                $.ajax({
+                    url: '<?= $action ?>',
+                    type: 'post',
+                    data: datastring,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    dataType: 'json',
+                    beforeSend: function() {
+                        $('#cupdate').attr("disabled", "disabled");
+                        $('#cupdate').css("opacity", ".5");
+                    },
+                    success: function(data) {
+                        if (data.status == 2) {
+                            $('#notifikasir').html('<div class="callout callout-danger">' + data.msg + '</div>');
+                            $('#cupdate').css("opacity", "");
+                            $("#cupdate").removeAttr("disabled");
+                        } else {
+                            Swal('Keterangan', 'Data User berhasil di tambah', 'success');
+                            $('#cupdate').css("opacity", "");
+                            $("#cupdate").removeAttr("disabled");
+                            window.location.href = '<?= base_url('login') ?>';
+                        }
+                    },
+                    error: function(data) {
+                        Swal('Keterangan', 'Data username dan password gagal di update', 'warning');
+                    }
+                });
             }
         });
     });

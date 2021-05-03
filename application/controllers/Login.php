@@ -58,7 +58,7 @@ class Login extends CI_Controller
     $data = array(
       'judul' => 'Tambah Login',
       'button' => 'Create',
-      'action' => site_url('login/tambah_data'),
+      'action' => site_url('login/tambah_data_action'),
       'id_user' => set_value('id_user'),
       'username' => set_value('username'),
       'password' => set_value('password'),
@@ -71,12 +71,16 @@ class Login extends CI_Controller
     $this->template->load('template', 'login/login_form', $data);
   }
 
-  public function tambah_data()
+  public function tambah_data_action()
   {
 
     $this->_rules();
     if ($this->form_validation->run() == FALSE) {
-      $this->tambah();
+
+      echo json_encode([
+        'status' => 2,
+        'msg' => validation_errors('<p>', '</p>')
+      ]);
     } else {
 
       $conf['file_name'] = 'foto' . time();
@@ -97,10 +101,15 @@ class Login extends CI_Controller
         );
         $this->Login_model->insert($data);
         $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Data Berhasil Di Tambahkan.</div>');
-        redirect(site_url('login'));
+        echo json_encode([
+          'status' => 1,
+          'msg' => 'dat berhasil di simpan'
+        ]);
       } else {
-        $this->session->set_flashdata('message', $this->upload->display_errors('<div class="callout callout-danger">', '</div>'));
-        redirect(site_url('login/tambah_data'));
+        echo json_encode([
+          'status' => 2,
+          'msg' => $this->upload->display_errors('<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>', '</div>')
+        ]);
       }
     }
   }
@@ -112,7 +121,7 @@ class Login extends CI_Controller
       $data = array(
         'judul' => 'Data LOGIN',
         'button' => 'Update',
-        'action' => site_url('login/edit_data'),
+        'action' => site_url('login/edit_data_action'),
         'id_user' => set_value('id_user', $row->id_user),
         'username' => set_value('username', $row->username),
         'password' => set_value('password', $row->password),
@@ -129,12 +138,15 @@ class Login extends CI_Controller
     }
   }
 
-  public function edit_data()
+  public function edit_data_action()
   {
     $this->_rules();
 
     if ($this->form_validation->run() == FALSE) {
-      $this->edit($this->input->post('id_user', TRUE));
+      echo json_encode([
+        'status' => 2,
+        'msg' => validation_errors('<p>', '</p>')
+      ]);
     } else {
       if ($_FILES['foto']['name'] != '') {
 
@@ -160,11 +172,13 @@ class Login extends CI_Controller
           );
           $this->Login_model->update($this->input->post('id_user', TRUE), $data);
           $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
-          catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'akses edit data login user.', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
-          redirect(site_url('login'));
+          // catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'akses edit data login user.', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
+          // redirect(site_url('login'));
         } else {
-          $this->session->set_flashdata('message', $this->upload->dislplay_errors('<div class="callout callout-danger">', '</div>'));
-          redirect(base_url('login'));
+          echo json_encode([
+            'status' => 1,
+            'msg' => 'update berhasil'
+          ]);
         }
       } else {
         $data = array(
@@ -179,7 +193,10 @@ class Login extends CI_Controller
 
         $this->Login_model->update($this->input->post('id_user', TRUE), $data);
         $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
-        redirect(site_url('login'));
+        echo json_encode([
+          'status' => 2,
+          'msg' => $this->upload->display_errors('<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>', '</div>')
+        ]);
       }
     }
   }
@@ -202,7 +219,7 @@ class Login extends CI_Controller
 
   public function _rules()
   {
-    $this->form_validation->set_rules('username', 'username', 'trim|required');
+    $this->form_validation->set_rules('username', 'username', 'trim|required|is_unique[login.username]');
     $this->form_validation->set_rules('password', 'password', 'trim|required');
     $this->form_validation->set_rules('nama', 'nama', 'trim|required');
     $this->form_validation->set_rules('level', 'level', 'trim|required');
