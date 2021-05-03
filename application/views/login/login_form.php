@@ -146,7 +146,7 @@
                             $('#cupdate').css("opacity", "");
                             $("#cupdate").removeAttr("disabled");
                         } else {
-                            Swal('Keterangan', 'Data User berhasil di tambah', 'success');
+                            Swal('Keterangan', 'Data User berhasil di simpan', 'success');
                             $('#cupdate').css("opacity", "");
                             $("#cupdate").removeAttr("disabled");
                             window.location.href = '<?= base_url('login') ?>';

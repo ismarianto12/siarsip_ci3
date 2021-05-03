@@ -143,6 +143,7 @@ class Login extends CI_Controller
     $this->_rules();
 
     if ($this->form_validation->run() == FALSE) {
+      // print()
       echo json_encode([
         'status' => 2,
         'msg' => validation_errors('<p>', '</p>')
@@ -191,11 +192,10 @@ class Login extends CI_Controller
           'active' => $this->input->post('active', TRUE),
         );
 
-        $this->Login_model->update($this->input->post('id_user', TRUE), $data);
-        $this->session->set_flashdata('message', '<div class="callout callout-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
+        $this->Login_model->update($this->input->post('id_user', TRUE), $data); 
         echo json_encode([
-          'status' => 2,
-          'msg' => $this->upload->display_errors('<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>', '</div>')
+          'status' => 1,
+          'msg' => 'data berhasil di update'
         ]);
       }
     }
@@ -216,6 +216,7 @@ class Login extends CI_Controller
       redirect(site_url('login'));
     }
   }
+
 
   public function _rules()
   {
