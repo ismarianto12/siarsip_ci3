@@ -227,7 +227,7 @@
                     }
                 },
                 error: function(data, xhr, status) {
-                    alert('data error boys' + error);
+                    alert('data error boy');
                 }
             });
         })

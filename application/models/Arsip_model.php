@@ -55,7 +55,7 @@ class Arsip_model extends CI_Model
 
         c.id_user,c.username,c.nama,c.level,c.email,c.log,
         d.id_satuan,d.nama_satuan,d.keterangan,
-        e.id_lokasi,e.nama_lokasi,e.tanggal  
+        e.id_lokasi,e.nama_lokasi,date_format(e.tanggal,"%Y-%M-%d") as tgl  
             ');
         $this->datatables->from('arsip a');
 
@@ -90,7 +90,7 @@ class Arsip_model extends CI_Model
         $this->datatables->add_column('qr_code', '<img src="' . base_url('assets/qrarsip/$1.png') . '" id="barcode" onError="this.onerror=null;this.src=\'' . base_url('assets/img/no_image.jpg') . '\';">', 'nama_arsip');
 
         $this->datatables->add_column('action', anchor(site_url('arsip/detail/$1'), '<i class="fa fa-book"></i>', 'class="btn btn-info btn-xs edit"') . "
-         <button to='" . base_url('arsip/edit/$1') . "' id='edit' class='btn btn-warning btn-xs'><i class='fa fa-trash'></i></button>
+         <button to='" . base_url('arsip/edit/$1') . "' id='edit' class='btn btn-warning btn-xs'><i class='fa fa-edit'></i></button>
         <a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i></a>", 'id_arsip');
         return $this->datatables->generate();
     }

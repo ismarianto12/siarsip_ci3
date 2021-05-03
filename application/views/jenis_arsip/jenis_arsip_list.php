@@ -15,11 +15,11 @@
     <div class='col-sm-12'>
         <?= $this->session->userdata('message') ?>
         <div class='white-box'>
-           
+
             <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
             <div class='table-responsive'>
                 <button to="<?= base_url('jenis_arsip/tambah') ?>" id="tambah" class="btn btn-success btn-xs">Tambah data</button>
-                <br  /><br  />
+                <br /><br />
 
                 <div id="main_form"></div>
                 <div class='widget-body'>

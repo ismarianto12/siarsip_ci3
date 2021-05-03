@@ -47,19 +47,26 @@
 
 
 <div class='row'>
-  <div class='col-md-12'>
+  <div class='col-md-2'>
+  </div>
+  <div class='col-md-8'>
     <div class='box-default'>
       <div class='panel-heading'><i class="fa fa-document"></i><?= ucfirst($judul) ?> Arsip.</div>
       <div class='panel-wrapper collapse in' aria-expanded='true'>
         <div class='panel-body'>
-          <form to="<?php echo $action; ?>" id="simpan" method="post">
+          <div id="notifikasi"></div>
+          <form to="<?php echo $action; ?>" id="simpan" method="post" class="form-horizontal">
             <div class="form-group">
-              <label for="varchar">Nama Satuan <?php echo form_error('nama_satuan') ?></label>
-              <input type="text" class="form-control" name="nama_satuan" id="nama_satuan" placeholder="Nama Satuan" value="<?php echo $nama_satuan; ?>" />
+              <label for="varchar" class="col-md-3">Nama Satuan <?php echo form_error('nama_satuan') ?></label>
+              <div class="col-md-9">
+                <input type="text" class="form-control" name="nama_satuan" id="nama_satuan" placeholder="Nama Satuan" value="<?php echo $nama_satuan; ?>" />
+              </div>
             </div>
             <div class="form-group">
-              <label for="varchar">Keterangan <?php echo form_error('keterangan') ?></label>
-              <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan" value="<?php echo $keterangan; ?>" />
+              <label for="varchar" class="col-md-3">Keterangan <?php echo form_error('keterangan') ?></label>
+              <div class="col-md-9">
+                <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan" value="<?php echo $keterangan; ?>" />
+              </div>
             </div>
             <input type="hidden" name="id_satuan" value="<?php echo $id_satuan; ?>" />
             <button type="submit" id="simpan" class="btn bg-navy btn-flat margin"><i class='fa fa-save'></i><?php echo $button ?></button>
@@ -70,3 +77,5 @@
     </div>
   </div>
 </div>
+
+<hr />

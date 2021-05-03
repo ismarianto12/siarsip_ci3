@@ -17,11 +17,11 @@
     <div class='col-sm-12'>
         <?= $this->session->userdata('message') ?>
         <div class='white-box'>
-           
+
             <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
             <div class='table-responsive'>
                 <button to="<?= base_url('M_satuan/tambah') ?>" id="tambah" class="btn btn-success btn-xs">Tambah data</button>
-                <br  /><br  />
+                <br /><br />
                 <div id="main_form"></div>
 
                 <table class="table" id="datatables">
@@ -109,7 +109,6 @@
                             },
                             function() {
                                 Swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
-                                window.location.href = '<?= base_url('m_satuan/hapus/') ?>' + n;
                             });
                     }
                 </script>

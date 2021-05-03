@@ -88,7 +88,7 @@ class Jenis_arsip extends CI_Controller
             );
             $this->Jenis_arsip_model->insert($data);
             $respon = array(
-                'ket' => 2,
+                'ket' => 1,
                 'respon' => 'Data berhasil di tambah'
             );
             echo json_encode($respon);
@@ -162,9 +162,9 @@ class Jenis_arsip extends CI_Controller
 
     public function _rules()
     {
-        $this->form_validation->set_rules('jenis_arsip', 'jenis arsip', 'trim|required');
+        $this->form_validation->set_rules('jenis_arsip', 'jenis arsip', 'trim|required|is_unique[jenis_arsip.jenis_arsip]');
         $this->form_validation->set_rules('id_jenis', 'id_jenis', 'trim');
-        $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+        $this->form_validation->set_error_delimiters('<span>', '</span>');
     }
 
     public function excel()

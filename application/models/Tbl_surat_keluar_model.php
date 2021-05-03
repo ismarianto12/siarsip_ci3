@@ -36,7 +36,7 @@ class Tbl_surat_keluar_model extends CI_Model
             b.id_jenis,
             b.nama_jenis,
             b.id_user,
-            b.tanggal_create 
+            date_format(b.tanggal_create,"%y-M-d%") as tgl_ind 
  
             ');
         $this->datatables->from('tbl_surat_keluar a');
@@ -45,7 +45,7 @@ class Tbl_surat_keluar_model extends CI_Model
             $this->datatables->where('a.id_jenis_surat', $this->input->post('id_jenis'));
         endif;
         $this->datatables->add_column('data_file', '<a href="' . base_url('assets/file_surat/$1') . '" class="btn bg-navy btn-flat margin btn-xs" target="_blank">Lihat file</a>', 'file');
-        $this->datatables->add_column('action', anchor(site_url('tbl_surat_keluar/detail/$1'), '<i class="fa fa-book"></i>Read', 'class="btn bg-green btn-flat btn-xs edit"') . "  " . anchor(site_url('tbl_surat_keluar/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn bg-red btn-flat btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id_surat');
+        $this->datatables->add_column('action', anchor(site_url('tbl_surat_keluar/detail/$1'), '<i class="fa fa-book"></i>Read', 'class="btn bg-green btn-flat btn-xs edit"') . "  " . anchor(site_url('tbl_surat_keluar/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-warning btn-xs edit"') . "<a href='#' class='btn bg-red btn-flat btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id_surat');
         return $this->datatables->generate();
     }
 

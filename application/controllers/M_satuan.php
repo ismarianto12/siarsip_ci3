@@ -64,7 +64,7 @@ class M_satuan extends CI_Controller
     {
         catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'menambahkan satuan arsip.', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
         $data = array(
-            'judul' => 'Tambah M satuan',
+            'judul' => 'Tambah satuan',
             'button' => 'Create',
             'action' => site_url('m_satuan/tambah_data'),
             'id_satuan' => set_value('id_satuan'),
@@ -166,11 +166,11 @@ class M_satuan extends CI_Controller
 
     public function _rules()
     {
-        $this->form_validation->set_rules('nama_satuan', 'nama satuan', 'trim|required');
+        $this->form_validation->set_rules('nama_satuan', 'nama satuan', 'trim|required|is_unique[m_satuan.nama_satuan]');
         $this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
 
         $this->form_validation->set_rules('id_satuan', 'id_satuan', 'trim');
-        $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+        $this->form_validation->set_error_delimiters('<span >', '</span>');
     }
 
     public function excel()

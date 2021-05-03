@@ -87,7 +87,7 @@ class Arsip extends CI_Controller
     public function tambah_data()
     {
 
-        catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'Menambahkan arsip', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
+        //catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'Menambahkan arsip', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
         $this->_rules();
 
         if ($this->session->level == 'admin') {
@@ -148,7 +148,7 @@ class Arsip extends CI_Controller
             } else {
                 $respon = array(
                     'ket' => 2,
-                    'respon' => 'gagal server tidak dapat merespon dengan baik'
+                    'respon' => $this->upload->display_errors('<li>', '</li>')
                 );
                 echo json_encode($respon);
             }
@@ -325,9 +325,8 @@ class Arsip extends CI_Controller
         $this->form_validation->set_rules('id_jenis', 'Jenis', 'trim|required');
         $this->form_validation->set_rules('nama_arsip', 'nama arsip', 'trim|required');
         $this->form_validation->set_rules('lokasi', 'Lokasi', 'trim|required');
-        $this->form_validation->set_rules('ket_isi', 'ket isi', 'trim|required');
         $this->form_validation->set_rules('id_arsip', 'id_arsip', 'trim');
-        $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+        $this->form_validation->set_error_delimiters('<span>', '</span>');
     }
 
     function cetak($id)
@@ -425,9 +424,9 @@ class Arsip extends CI_Controller
 
     function  pengajuan_arsip($action = '', $id = '')
     {
-        if ($this->session->userdata('level') == 'admin') {
-            redirect('akses_tidak_bisa');
-        };
+        // if ($this->session->userdata('level') == 'admin') {
+        //     redirect('akses_tidak_bisa');
+        // };
         // catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'Akses pengajuan arsip.', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
         $q = $this->db->get_where('pengajuan_arsip', array('id_pengajuan' => $id))->row_array();
         if ($id) {

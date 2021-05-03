@@ -145,6 +145,6 @@ class jenis_surat extends CI_Controller
   {
     $this->form_validation->set_rules('nama_jenis', 'nama jenis', 'trim|required');
     $this->form_validation->set_rules('id_jenis', 'id_jenis', 'trim');
-    $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+    $this->form_validation->set_error_delimiters('<span>', '</span>');
   }
 }

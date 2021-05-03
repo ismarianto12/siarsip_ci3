@@ -275,7 +275,6 @@ class Tsuratmasuk extends CI_Controller
     $this->form_validation->set_rules('asal_surat', 'asal surat', 'trim|required');
     $this->form_validation->set_rules('isi', 'isi', 'trim|required');
     $this->form_validation->set_rules('kode', 'kode', 'trim|required');
-    $this->form_validation->set_rules('indeks', 'indeks', 'trim|required');
     $this->form_validation->set_rules('tgl_surat', 'tgl surat', 'trim|required');
     $this->form_validation->set_rules('tgl_diterima', 'tgl diterima', 'trim|required');
     $this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');

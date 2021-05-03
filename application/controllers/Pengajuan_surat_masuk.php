@@ -175,7 +175,7 @@ class Pengajuan_surat_masuk extends CI_Controller
         $this->form_validation->set_rules('nama_file', 'nama file', 'trim|required');
 
         $this->form_validation->set_rules('id_pengajuan_s', 'id_pengajuan_s', 'trim');
-        $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+        $this->form_validation->set_error_delimiters('<span>', '</span>');
     }
 
     public function excel()

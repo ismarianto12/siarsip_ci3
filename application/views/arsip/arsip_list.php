@@ -17,19 +17,19 @@
 <div class='row'>
 	<div class='col-xs-12 col-md-12'>
 		<div class='widget'>
-			<br  /><br  />
+			<br /><br />
 			<p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
-			<br  /><br  />
+			<br /><br />
 
 			<div class="main_app"></div>
-			<br  /><br  />
+			<br /><br />
 			<div class="clearfix"></div>
 			<div class='widget-header'>
 				<?php if ($this->session->level == 'admin') : ?>
 					<button class="btn bg-navy btn-flat margin" id="cari"><i class="fa fa-save"></i>Terima pegajuan.</button>
 				<?php endif; ?>
 				<button class="btn bg-navy btn-flat margin" id="tambah">Tambah data</button>
-				<br  /><br  />
+				<br /><br />
 
 				<div class="col-md-5">
 					<select class="form-control" name="jenis_arsip" id="id_jenis">
@@ -52,7 +52,7 @@
 				<?php endif; ?>
 
 
-				<br  /><br  />
+				<br /><br />
 				<br />
 				<br />
 			</div>
@@ -109,6 +109,12 @@
 						};
 
 						var jenistable = $("#datatables").DataTable({
+							// columnDefs: [{
+							// 	targets: 9,
+							// 	render: function(data) {
+							// 		return moment(data).format('MMMM Do YYYY');
+							// 	}
+							// }],
 							//  "bSort":false,  
 							initComplete: function() {
 								var api = this.api();
@@ -164,7 +170,7 @@
 									"data": "qr_code",
 									"orderable": false
 								}, {
-									"data": "tanggal",
+									"data": "tgl",
 									"orderable": false
 								},
 								{

@@ -11,7 +11,7 @@
                          <tr>
                              <th width="80px">No</th>
                              <th>No SSPD</th>
-                             <th>Tanggal</th> 
+                             <th>Tanggal</th>
                              <th>Maksud</th>
                              <th>Pemberi Perintah</th>
                              <th>yang di perintah</th>

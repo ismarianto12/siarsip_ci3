@@ -94,7 +94,8 @@
             </td>
         </tr>
     </table>
-    <br  /><br  />
+    <hr />
+    <br /><br />
     <div class="child" style="font-size:18px">
         PERINTAH PERJALANAN DINAS <br />
         <b> (SPPD) </b>
@@ -124,10 +125,10 @@
 
     <br />
     <br />
-    
+
     <br />
     <br />
-    
+
     <br />
     <br />
     <table>
@@ -140,14 +141,14 @@
 
         <tr>
             <td>2. Nama Pegawai Yang Di Perintah </td>
-            <td>:</td> 
+            <td>:</td>
             <td><?= $sppd['pengikut'] ?></td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;a. Pangkat dan Golongan</td>
             <td>:</td>
             <td><?= $sppd['jabatan_pimpinan'] ?> / <?= $this->properti->golongan($sppd['golongan_pimpinan']) ?></td>
-            
+
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;b. Jabatan</td>
@@ -269,14 +270,16 @@
             </td>
         </tr>
     </table>
-    <br  /><br  />
+    <br /><br />
 
 
     <div class="child" style="font-size:18px">
-        SURAT PERINTAH TUGAS <br /> 
+        SURAT PERINTAH TUGAS <br />
     </div>
+    <hr />
+    <br /><br /><br />
     <b>NOMOR : <?= $sppd['code'] ?> </b>
-    <br />
+
 
 
     <table>
@@ -292,7 +295,7 @@
 
 
     <div class="center">
-       <b>  MEMERINTAHKAN </b>
+        <b> MEMERINTAHKAN </b>
     </div>
     <br /><br />
     <table>
@@ -302,39 +305,40 @@
             </td>
             <td>
 
-            <?php 
-              $no       = 1;
-              $sc       = $this->properti->parsing($sppd['nip']);
-              $pengikut = $this->Pegawai_model->getPengikut($sc);
-                  foreach($pengikut->result_array() as $listp){ 
-            ?>
-                <table style="margin-left: 30px;">
-                    <tr>
-                        <td><?= $no ?>. Nama</td>
-                        <td>:</td>
-                        <td><?= $listp['nama'] ?></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Pangkat / gol</td>
-                        <td> :</td>
-                        <td><?= $listp['jabatan'] ?> 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            NIP </td>
-                        <td>:</td>
-                        <td><?= $listp['nip'] ?></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Jabatan </td>
-                        <td>:</td>
-                        <td><?= $listp['jabatan'] ?></td>
-                    </tr>  
-                </table>
-                  <?php $no++; } ?>    
+                <?php
+                $no       = 1;
+                $sc       = $this->properti->parsing($sppd['nip']);
+                $pengikut = $this->Pegawai_model->getPengikut($sc);
+                foreach ($pengikut->result_array() as $listp) {
+                ?>
+                    <table style="margin-left: 30px;">
+                        <tr>
+                            <td><?= $no ?>. Nama</td>
+                            <td>:</td>
+                            <td><?= $listp['nama'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Pangkat / gol</td>
+                            <td> :</td>
+                            <td><?= $listp['jabatan'] ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                NIP </td>
+                            <td>:</td>
+                            <td><?= $listp['nip'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Jabatan </td>
+                            <td>:</td>
+                            <td><?= $listp['jabatan'] ?></td>
+                        </tr>
+                    </table>
+                <?php $no++;
+                } ?>
             </td>
         </tr>
 
@@ -362,8 +366,8 @@
         : <?= tgl_indonesia(date('Y-m-d')) ?>
         <br /><br />
         -
-        An. <?= strip_tags(strtoupper(identitas('jabatan'))); ?> 
-        <br /><br /> <br /><br /> 
+        An. <?= strip_tags(strtoupper(identitas('jabatan'))); ?>
+        <br /><br /> <br /><br />
         <?= strip_tags(strtoupper(identitas('nama_pejabat'))); ?> <br />
         <?= strip_tags(strtoupper(identitas('nip'))); ?>
 

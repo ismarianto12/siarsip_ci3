@@ -1,16 +1,30 @@
-<li>
-<div class='message-center'>
-    <?php if($data->num_rows() > 0){  foreach($data->result_array() as $data): ?> 
-    <a href='<?= base_url('tsuratmasuk') ?>'>
-      <div class='mail-contnet'>
-            <h5><?= $data['isi'] ?></h5>
-            <span class='mail-desc'>No Surat : <?= $data['no_surat'] ?></span>
-            <span class='time'><?= tgl_indonesia($data['tgl_diterima']) ?></span>
-        </div>
-    </a>
-    <?php endforeach; }else{ ?>
- 
- <div class="callout callout-danger">Tidak ada surat masuk terbaru</div>
-    <?php } ?> 
-</div>
-</li>
+ <?php if ($data->num_rows() > 0) {
+        foreach ($data->result_array() as $data) : ?>
+         <li>
+             <!-- start message -->
+             <a href="#">
+                 <div class="pull-left">
+                     <img src="<?= base_url('assets/img/' . icon()) ?>" class="img-circle" alt="User Image" style="width:30px;height:30px">
+                 </div>
+                 <h4>
+                     <h5><?= tgl_indonesia($data['tgl_diterima']) ?></h5>
+                     <small><i class="fa fa-clock-o"></i>No Surat : <?= $data['no_surat'] ?></small>
+                 </h4>
+                 <p>
+                     <?= $data['isi'] ?></p>
+             </a>
+         </li>
+     <?php endforeach;
+    } else { ?>
+
+     <li>
+
+         <a href="#">
+             <div class="pull-left">
+                 <img src="<?= base_url('assets/img/' . icon()) ?>" class="img-circle" alt="User Image" style="width:30px;height:30px">
+             </div>
+
+             <p> Tidak ada Surat Masuk terbaru</p>
+         </a>
+     </li>
+ <?php } ?>

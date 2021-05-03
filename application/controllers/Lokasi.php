@@ -161,7 +161,7 @@ class Lokasi extends CI_Controller
     {
         $this->form_validation->set_rules('nama_lokasi', 'nama lokasi', 'trim|required');
         $this->form_validation->set_rules('id_lokasi', 'id_lokasi', 'trim');
-        $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+        $this->form_validation->set_error_delimiters('<span>', '</span>');
     }
 
     public function excel()

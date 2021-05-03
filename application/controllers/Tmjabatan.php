@@ -150,7 +150,7 @@ class Tmjabatan extends CI_Controller
         $this->form_validation->set_rules('OtherString', 'otherstring', 'trim|required');
 
         $this->form_validation->set_rules('Id', 'Id', 'trim');
-        $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+        $this->form_validation->set_error_delimiters('<span>', '</span>');
     }
 
     public function excel()

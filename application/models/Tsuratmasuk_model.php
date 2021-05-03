@@ -18,7 +18,8 @@ class Tsuratmasuk_model extends CI_Model
     // datatables
     function json()
     {
-        $this->datatables->select('id_surat,no_agenda,no_surat,asal_surat,isi,kode,indeks,tgl_surat,tgl_diterima,file,keterangan,id_user,disposisi');
+        $this->datatables->select('id_surat,no_agenda,no_surat,asal_surat,isi,kode,indeks,tgl_surat,date_format(tgl_surat,"%Y-%M-%d") as tgl_ind 
+        ,tgl_diterima,file,keterangan,id_user,disposisi');
         $this->datatables->from('tbl_surat_masuk');
         //add this line for join
         if ($this->input->post('disposisi')) {

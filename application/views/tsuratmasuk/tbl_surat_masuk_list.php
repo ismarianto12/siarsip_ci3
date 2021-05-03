@@ -44,8 +44,8 @@
           <thead>
             <tr>
               <th width="80px">No</th>
-              <th>No Surat</th>
               <th>No Agenda</th>
+              <th>No Surat</th>
               <th>Asal Surat</th>
               <th>Tgl Diterima</th>
               <th>File</th>
@@ -117,15 +117,17 @@
               columns: [{
                   "data": "id_surat",
                   "orderable": false
-                }, {
-                  "data": "no_surat"
                 },
                 {
                   "data": "no_agenda"
-                }, {
+                },
+                {
+                  "data": "no_surat"
+                },
+                {
                   "data": "asal_surat"
                 }, {
-                  "data": "tgl_diterima"
+                  "data": "tgl_ind"
                 }, {
                   "data": "file_surat"
                 }, {

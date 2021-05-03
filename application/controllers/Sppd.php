@@ -1,5 +1,5 @@
 <?php
- 
+
 if (!defined('BASEPATH'))
 	exit('No direct script access allowed');
 class Sppd extends CI_Controller
@@ -38,7 +38,8 @@ class Sppd extends CI_Controller
 			die;
 		}
 		$data = $this->Sppd_model->cetak($id);
-		if ($data->num_rows() > 0) { } else {
+		if ($data->num_rows() > 0) {
+		} else {
 			echo 'response data null';
 			die;
 		}
@@ -60,7 +61,8 @@ class Sppd extends CI_Controller
 				die;
 			}
 			$data = $this->Sppd_model->cetak($id);
-			if ($data->num_rows() > 0) { } else {
+			if ($data->num_rows() > 0) {
+			} else {
 				echo 'response data null';
 				die;
 			}
@@ -223,6 +225,8 @@ class Sppd extends CI_Controller
 				'budget_from' => $this->input->post('budget_from'),
 				'description' => $this->input->post('description'),
 				'letter_content' => $this->input->post('letter_content'),
+				'datetime_insert' => date('Y-m-d H:i:s'),
+				'datetime_update' => date('Y-m-d H:i:s')
 			];
 			$this->Sppd_model->insert($data);
 			$data = [
@@ -337,6 +341,8 @@ class Sppd extends CI_Controller
 				'budget_from' => $this->input->post('budget_from'),
 				'description' => $this->input->post('description'),
 				'letter_content' => $this->input->post('letter_content'),
+				'datetime_insert' => date('Y-m-d H:i:s'),
+				'datetime_update' => date('Y-m-d H:i:s')
 			];
 			$this->Sppd_model->update($id, $data);
 			$data = [
@@ -379,6 +385,6 @@ class Sppd extends CI_Controller
 		$this->form_validation->set_rules('description', 'description', 'trim|required');
 		$this->form_validation->set_rules('letter_content', 'letter_content', 'trim|required');
 		$this->form_validation->set_rules('id', 'id', 'trim');
-		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+		$this->form_validation->set_error_delimiters('<span>', '</span>');
 	}
 }

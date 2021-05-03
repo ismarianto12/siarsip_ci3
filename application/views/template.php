@@ -10,7 +10,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="icon" href="https://www.jobstreet.co.id/assets/favicon.jobStreet.ico" />
+    <link rel="icon" href="<?= base_url('assets/img/' . icon()) ?>" />
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/dist/css/AdminLTE.min.css">
@@ -168,13 +168,23 @@
                         <li class="dropdown messages-menu" id="notifikasi_not">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope-o"></i>
-                                <span class="label label-success">Surat Masuk <div class="surat_notif"></div></span>
+                                <span class="label label-success">
+                                    <div class="surat_notif"></div>
+                                </span>
                             </a>
                             <ul class="dropdown-menu">
-                                <div id="surat_masuk_list"></div>
-                                <li class="footer"><a href="#">Lihat Semua</a></li>
+                                <li class="header">You have <div class="surat_notif"></div> messages</li>
+                                <li>
+                                    <!-- inner menu: contains the actual data -->
+                                    <ul class="menu">
+                                        <div id="surat_masuk_list" style="padding: 0px 20px;"></div>
+
+                                    </ul>
+                                </li>
+                                <li class="footer"><a href="#">See All Messages</a></li>
                             </ul>
                         </li>
+
                         <li class="dropdown notifications-menu">
                             <a href="javascript:void(0);" onclick="doGTranslate('id|id');return false;" title="Indonesian" class="gflag nturl dropdown-toggle waves-effect waves-light font-20" data-toggle="dropdown" href="javascript:void(0);">
                                 <img src="<?= base_url('assets/template/plugins/images/id.png') ?>" style="height:20px">

@@ -299,6 +299,6 @@ class Tbl_surat_keluar extends CI_Controller
     $this->form_validation->set_rules('tgl_catat', 'tgl catat', 'trim|required');
     $this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
     $this->form_validation->set_rules('id_surat', 'id_surat', 'trim');
-    $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+    $this->form_validation->set_error_delimiters('<span>', '</span>');
   }
 }

@@ -178,7 +178,7 @@ class Menu extends CI_Controller
 	$this->form_validation->set_rules('level', 'level', 'trim|required');
 
 	$this->form_validation->set_rules('id_menu', 'id_menu', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+	$this->form_validation->set_error_delimiters('<span>', '</span>');
     }
 
     public function excel()

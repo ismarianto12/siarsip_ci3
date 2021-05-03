@@ -176,7 +176,7 @@ class Tdisposisi extends CI_Controller
         $this->form_validation->set_rules('id_user', 'id user', 'trim|required');
 
         $this->form_validation->set_rules('id_disposisi', 'id_disposisi', 'trim');
-        $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+        $this->form_validation->set_error_delimiters('<span>', '</span>');
     }
 
     private function qrcode()

@@ -14,6 +14,7 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
+  <link rel="icon" href="<?= base_url('assets/img/' . icon()) ?>" />
   <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/dist/css/AdminLTE.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/iCheck/square/blue.css">
