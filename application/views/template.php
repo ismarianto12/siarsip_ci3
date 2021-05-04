@@ -28,7 +28,9 @@
 
     <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-    <script src="https://project.ptlmp.my.id/assets/js//2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/template_lte/plugins/datatables') ?>/dataTables.bootstrap.min.css">
+
+    <script src="<?= base_url('assets/template/plugins/components/jquery/dist/jquery.min.js') ?>"></script>
     <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://fengyuanchen.github.io/datepicker/css/datepicker.css">
 
@@ -173,7 +175,9 @@
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header">You have <div class="surat_notif"></div> messages</li>
+                                <li class="header" style="
+    display: flex;
+">You have <div class="surat_notif"></div> messages</li>
                                 <li>
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">

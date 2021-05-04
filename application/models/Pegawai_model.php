@@ -22,7 +22,7 @@ class Pegawai_model extends CI_Model
         $this->datatables->from('pegawai');
         //add this line for join
         //$this->datatables->join('table2', 'pegawai.field = table2.field');
-        $this->datatables->add_column('action', anchor(site_url('pegawai/detail/$1'), '<i class="fa fa-book"></i>Read', 'class="btn btn-info btn-xs edit"') . "  " . anchor(site_url('pegawai/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id');
+        $this->datatables->add_column('action', anchor(site_url('pegawai/detail/$1'), '<i class="fa fa-book"></i> ', 'class="btn btn-info btn-xs"') . "  " . anchor(site_url('pegawai/edit/$1'), '<i class="fa fa-edit"></i>  ', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i>  </a>", 'id');
         return $this->datatables->generate();
     }
 
@@ -128,7 +128,7 @@ class Pegawai_model extends CI_Model
     }
 
     function getPengikut($data)
-    { 
+    {
         return $this->db->query("SELECT * from pegawai where nip in($data)");
     }
 }

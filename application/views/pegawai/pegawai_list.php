@@ -19,8 +19,6 @@
                              <th>No Hp</th>
                              <th>Alamat</th>
                              <th>Tanggal Lahir</th>
-                             <th>Tempat Lahir</th>
-                             <th>Golongan</th>
                              <th>Jabatan</th>
                              <th width="200px">Action</th>
                          </tr>
@@ -75,10 +73,6 @@
                                      "data": "alamat"
                                  }, {
                                      "data": "tanggal_lahir"
-                                 }, {
-                                     "data": "tempat_lahir"
-                                 }, {
-                                     "data": "golongan"
                                  },
                                  {
                                      "data": "jabatan"
