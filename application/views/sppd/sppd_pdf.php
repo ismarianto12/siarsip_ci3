@@ -1,6 +1,27 @@
 <style type="text/css">
+    /* @media print { */
+    body {
+        height: 842px;
+        width: 595px;
+        /* to centre page on screen*/
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 12px;
+    }
+
+
+
+    table.sppd_table {
+         font-size: 12px;
+         margin-left: 30px;
+    }
+
+    table.sppd_table tr td {
+        padding: 10px;  */
+    }
+
     .body {
-        padding: 10px 10px 10px;
+        /* padding: 10px 10px 10px; */
     }
 
     p {
@@ -31,7 +52,7 @@
     }
 
     .header {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: bold;
     }
 
@@ -69,6 +90,23 @@
         width: 100%;
         font-size: 11px;
     }
+
+    /* table>tr>td {
+        font-size: 10px;
+    } */
+
+    #crossword {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #crossword td,
+    #crossword th {
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+        font-size: 11px;
+        padding: 5px;
+    }
 </style>
 
 <div class="body">
@@ -103,7 +141,7 @@
     <br />
 
 
-    <div style="float: right; width:  35%;text-align: center;">
+    <div style="float: right; width:  35%;text-align: center;" class="sppd_table">
         <table>
             <tr>
                 <td>Lembar Ke</td>
@@ -131,7 +169,7 @@
 
     <br />
     <br />
-    <table>
+    <table id="crossword">
 
         <tr>
             <td>1. Pejabat yang memberi perintah .</td>
@@ -244,10 +282,9 @@
         <?= strip_tags(strtoupper(identitas('nip'))); ?>
 
     </div>
-
-
     <pagebreak></pagebreak>
-    <table>
+
+    <table class="sppd_table">
         <tr>
             <td>
                 <?php
@@ -270,35 +307,27 @@
             </td>
         </tr>
     </table>
-    <br /><br />
+    <br />
 
 
     <div class="child" style="font-size:18px">
         SURAT PERINTAH TUGAS <br />
     </div>
     <hr />
-    <br /><br /><br />
-    <b>NOMOR : <?= $sppd['code'] ?> </b>
+    <br />
+    <p>NOMOR : <?= $sppd['code'] ?> </p>
 
 
+    <br /> <br />
+    <p>Dasar : </p>
 
-    <table>
-        <tr>
-            <td>Dasar </td>
-            <td>:</td>
-            <td></td>
-        </tr>
-    </table>
-    <br />
-    <br />
-    <br />
 
 
     <div class="center">
         <b> MEMERINTAHKAN </b>
     </div>
     <br /><br />
-    <table>
+    <table class="sppd_table">
         <tr>
             <td>
                 Kepada :
@@ -311,7 +340,7 @@
                 $pengikut = $this->Pegawai_model->getPengikut($sc);
                 foreach ($pengikut->result_array() as $listp) {
                 ?>
-                    <table style="margin-left: 30px;">
+                    <table style="margin-left: 30px;" class="sppd_table">
                         <tr>
                             <td><?= $no ?>. Nama</td>
                             <td>:</td>
@@ -344,7 +373,7 @@
 
     </table>
 
-    <table>
+    <table class="sppd_table">
         <tr>
             <td>
                 Untuk </td>

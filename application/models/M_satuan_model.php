@@ -23,7 +23,7 @@ class M_satuan_model extends CI_Model
         //add this line for join
         //$this->datatables->join('table2', 'm_satuan.field = table2.field');
         $this->datatables->add_column('action', anchor(site_url('m_satuan/detail/$1'), '<i class="fa fa-book"></i> ', 'class="btn btn-info btn-xs edit"') . " 
-        <a to='" . site_url('m_satuan/edit/$1') . "' id='edit' class='btn btn-info btn-xs'><i class='fa fa-edit'></i>  </a>
+        <a to='" . site_url('m_satuan/edit/$1') . "' id='edit' class='btn btn-warning btn-xs'><i class='fa fa-edit'></i>  </a>
         <a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i>  </a>", 'id_satuan');
         return $this->datatables->generate();
     }
