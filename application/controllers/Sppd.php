@@ -74,10 +74,10 @@ class Sppd extends CI_Controller
 			$render = [
 				'judul' => 'cetak data sspd',
 				'sppd'  => $data->row_array(),
-			]; 
-			$html = $this->load->view('sppd/sppd_pdf', $render, TRUE);  
+			];
+			$html = $this->load->view('sppd/sppd_pdf', $render, TRUE);
 
-			$pdf->SetTitle('Surat Perjalanan Dinas');
+			$pdf->SetTitle('Surat Perjalanan Dinas Nomor :' . $data->row()->code);
 			$pdf->WriteHTML($html);
 			$pdf->Output('Surat Perjalanan Dinas' . date('Y-m-d H:i:s') . '.pdf', 'I');
 			ob_end_flush();
