@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="varchar" class='control-label col-md-3'><b>Pendidikan Lulus<?php echo form_error('pendidikan_lulus') ?></b></label>
+                    <label for="varchar" class='control-label col-md-3'><b>Tahun Lulus<?php echo form_error('pendidikan_lulus') ?></b></label>
                     <div class='col-md-9'>
                         <input type="text" class="form-control" name="pendidikan_lulus" id="pendidikan_lulus" placeholder="Pendidikan Lulus" value="<?php echo $pendidikan_lulus; ?>" />
                     </div>
