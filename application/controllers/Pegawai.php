@@ -109,8 +109,8 @@ class Pegawai extends CI_Controller
 		$this->_rules();
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->tambah();
-			// print_r(validation_errors());
+			// $this->tambah();
+			print_r(validation_errors());
 		} else {
 			$data = array(
 				'nip' => $this->input->post('nip', TRUE),
@@ -238,15 +238,12 @@ class Pegawai extends CI_Controller
 		$this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
 		$this->form_validation->set_rules('tanggal_lahir', 'tanggal lahir', 'trim|required');
 		$this->form_validation->set_rules('tempat_lahir', 'tempat lahir', 'trim|required');
-		// $this->form_validation->set_rules('golongan', 'golongan', 'trim|required');
-		$this->form_validation->set_rules('golongan_tanggal', 'golongan tanggal', 'trim|required');
+		$this->form_validation->set_rules('golongan', 'golongan', 'trim|required');
+		// $this->form_validation->set_rules('golongan_tanggal', 'golongan tanggal', 'trim|required');
 		$this->form_validation->set_rules('jabatan', 'jabatan', 'trim|required');
 		$this->form_validation->set_rules('jabatan_tanggal', 'jabatan tanggal', 'trim|required');
-		$this->form_validation->set_rules('kerja_tahun', 'kerja tahun', 'trim|required');
-		$this->form_validation->set_rules('kerja_bulan', 'kerja bulan', 'trim|required');
-		// $this->form_validation->set_rules('latihan_jabatan', 'latihan jabatan', 'trim|required');
-		// $this->form_validation->set_rules('latihan_jabatan_tanggal', 'latihan jabatan tanggal', 'trim|required');
-		// $this->form_validation->set_rules('latihan_jabatan_jam', 'latihan jabatan jam', 'trim|required');
+		// $this->form_validation->set_rules('kerja_tahun', 'kerja tahun', 'trim|required');
+		// $this->form_validation->set_rules('kerja_bulan', 'kerja bulan', 'trim|required');
 		$this->form_validation->set_rules('pendidikan', 'pendidikan', 'trim|required');
 		$this->form_validation->set_rules('pendidikan_lulus', 'pendidikan lulus', 'trim|required');
 		$this->form_validation->set_rules('pendidikan_ijazah', 'pendidikan ijazah', 'trim|required');
