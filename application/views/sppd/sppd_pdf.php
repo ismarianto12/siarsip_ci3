@@ -12,12 +12,14 @@
 
 
     table.sppd_table {
-         font-size: 12px;
-         margin-left: 30px;
+        font-size: 12px;
+        margin-left: 30px;
+        text-align: left;
     }
 
     table.sppd_table tr td {
-        padding: 10px;  */
+        padding: 10px;
+        */
     }
 
     .body {
@@ -110,7 +112,7 @@
 </style>
 
 <div class="body">
-    <table>
+    <table class="sppd_table">
         <tr>
             <td>
                 <?php
@@ -124,6 +126,7 @@
                     <div class="header"><?= strip_tags(strtoupper(identitas('nama_instansi'))) ?>
                     </div>
                     <br />
+
                     <div class="child">
                         <?= strip_tags(strtoupper(identitas('alamat_lengkap'))) ?> <br />
                         <?= 'Tepl : ' . strip_tags(strtoupper(identitas('telp'))) . ', Fax : ' . strip_tags(strtoupper(identitas('fax'))) ?>
