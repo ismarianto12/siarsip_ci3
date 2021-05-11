@@ -12,14 +12,13 @@
 
 
     table.sppd_table {
-        font-size: 12px;
         margin-left: 30px;
         text-align: left;
     }
 
     table.sppd_table tr td {
         padding: 10px;
-        */
+
     }
 
     .body {
@@ -106,7 +105,7 @@
     #crossword th {
         border-bottom: 1px solid black;
         border-top: 1px solid black;
-        font-size: 11px;
+        font-size: 11.5px;
         padding: 5px;
     }
 </style>
@@ -330,62 +329,49 @@
         <b> MEMERINTAHKAN </b>
     </div>
     <br /><br />
-    <table class="sppd_table">
-        <tr>
-            <td>
-                Kepada :
-            </td>
-            <td>
+    <b> Kepada :</b>
 
-                <?php
-                $no       = 1;
-                $sc       = $this->properti->parsing($sppd['nip']);
-                $pengikut = $this->Pegawai_model->getPengikut($sc);
-                foreach ($pengikut->result_array() as $listp) {
-                ?>
-                    <table style="margin-left: 30px;" class="sppd_table">
-                        <tr>
-                            <td><?= $no ?>. Nama</td>
-                            <td>:</td>
-                            <td><?= $listp['nama'] ?></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Pangkat / gol</td>
-                            <td> :</td>
-                            <td><?= $listp['jabatan'] ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                NIP </td>
-                            <td>:</td>
-                            <td><?= $listp['nip'] ?></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Jabatan </td>
-                            <td>:</td>
-                            <td><?= $listp['jabatan'] ?></td>
-                        </tr>
-                    </table>
-                <?php $no++;
-                } ?>
-            </td>
-        </tr>
 
+    <table style="margin-left: 90px;" class="sppd_table">
+
+        <?php
+        $no       = 1;
+        $sc       = $this->properti->parsing($sppd['nip']);
+        $pengikut = $this->Pegawai_model->getPengikut($sc);
+        foreach ($pengikut->result_array() as $listp) {
+        ?>
+
+            <tr style="border-top: 1px solid #000;">
+                <td><?= $no ?>. Nama</td>
+                <td>:</td>
+                <td><?= $listp['nama'] ?></td>
+            </tr>
+            <tr>
+                <td>
+                    Pangkat / gol</td>
+                <td> :</td>
+                <td><?= $listp['jabatan'] ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    NIP </td>
+                <td>:</td>
+                <td><?= $listp['nip'] ?></td>
+            </tr>
+            <tr>
+                <td>
+                    Jabatan </td>
+                <td>:</td>
+                <td><?= $listp['jabatan'] ?></td>
+            </tr>
+
+        <?php $no++;
+        } ?>
     </table>
 
-    <table class="sppd_table">
-        <tr>
-            <td>
-                Untuk </td>
-            <td style="
-    padding: 14px;">:</td>
-            <td style="
-    padding: 14px;"> <?= $sppd['purpose'] ?></td>
-        </tr>
-    </table>
+
+    <p>Tujuan / Untuk : <?= $sppd['purpose'] ?></p>
     <br />
     <br />
 
