@@ -1,4 +1,3 @@
-
 <div class='row'>
     <div class='col-md-12'>
         <div class='box-default'>
@@ -12,7 +11,7 @@
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>Nip<?php echo form_error('nip') ?></b></label>
                                 <div class='col-md-9'>
-                                    <input type="text" class="form-control" name="nip" id="nip" placeholder="Nip" value="<?php echo $nip; ?>" />
+                                    <input type="number" class="form-control" name="nip" id="nip" placeholder="Nip" value="<?php echo $nip; ?>" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -24,25 +23,25 @@
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>No Hp<?php echo form_error('no_hp') ?></b></label>
                                 <div class='col-md-9'>
-                                    <input type="text" class="form-control" name="no_hp" id="no_hp" placeholder="No Hp" value="<?php echo $no_hp; ?>" />
+                                    <input type="number" class="form-control" name="no_hp" id="no_hp" placeholder="No Hp" value="<?php echo $no_hp; ?>" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>Alamat<?php echo form_error('alamat') ?></b></label>
                                 <div class='col-md-9'>
-                                    <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat" value="<?php echo $alamat; ?>" />
+                                    <textarea class="form-control" name="alamat" id="alamat"><?= $alamat ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="date" class='control-label col-md-3'><b>Tanggal Lahir<?php echo form_error('tanggal_lahir') ?></b></label>
                                 <div class='col-md-9'>
-                                    <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" placeholder="Tanggal Lahir" value="<?php echo $tanggal_lahir; ?>" />
+                                    <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" placeholder="Tanggal Lahir" value="<?php echo $tanggal_lahir; ?>" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>Tempat Lahir<?php echo form_error('tempat_lahir') ?></b></label>
                                 <div class='col-md-9'>
-                                    <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir" value="<?php echo $tempat_lahir; ?>" />
+                                <textarea class="form-control" name="tempat_lahir" id="tempat_lahir"><?= $tempat_lahir ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -51,7 +50,7 @@
                                     <select name="golongan" class="form-control">
                                         <?php foreach ($this->properti->tmjabatan()->result_array() as $data) {
                                             $check = ($data['id'] == $golongan) ? 'selected' : ''; ?>
-                                            <option value="<?= $data['id'] ?>" <?= $check ?>> <?= $data['Description'] ?></option> 
+                                            <option value="<?= $data['id'] ?>" <?= $check ?>> <?= $data['Description'] ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -143,7 +142,7 @@
                                     <div class='col-md-12'>
                                         <div class='row'>
                                             <div class='col-md-offset-3 col-md-9'>
-                                                <button type="submit" class="btn btn-info"><i class='fa fa-check'></i><?php echo $button ?></button>
+                                                <button type="submit" class="btn btn-primary"><i class='fa fa-save'></i>Simpan Data</button>
                                                 <a href="<?php echo site_url('pegawai') ?>" class="btn btn-default"><i class='fa fa-share'></i>Cancel</a>
 
 
@@ -158,3 +157,4 @@
         </div>
     </div>
 </div>
+<br /><br /><br />

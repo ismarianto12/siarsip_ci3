@@ -166,7 +166,7 @@ class M_satuan extends CI_Controller
 
     public function _rules()
     {
-        $this->form_validation->set_rules('nama_satuan', 'nama satuan', 'trim|required|is_unique[m_satuan.nama_satuan]');
+        $this->form_validation->set_rules('nama_satuan', 'nama satuan', 'required|is_unique[m_satuan.nama_satuan]');
         $this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
 
         $this->form_validation->set_rules('id_satuan', 'id_satuan', 'trim');

@@ -110,6 +110,7 @@ class Pegawai extends CI_Controller
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->tambah();
+			// print_r(validation_errors());
 		} else {
 			$data = array(
 				'nip' => $this->input->post('nip', TRUE),
@@ -183,6 +184,7 @@ class Pegawai extends CI_Controller
 		$this->_rules();
 
 		if ($this->form_validation->run() == FALSE) {
+
 			$this->edit($this->input->post('id', TRUE));
 		} else {
 			$data = array(
@@ -230,13 +232,13 @@ class Pegawai extends CI_Controller
 
 	public function _rules()
 	{
-		$this->form_validation->set_rules('nip', 'nip', 'trim|required|unique[pegawai:nip]');
+		$this->form_validation->set_rules('nip', 'nip', 'trim|required|is_unique[pegawai.nip]');
 		$this->form_validation->set_rules('nama', 'nama', 'trim|required');
 		$this->form_validation->set_rules('no_hp', 'no hp', 'trim|required');
 		$this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
 		$this->form_validation->set_rules('tanggal_lahir', 'tanggal lahir', 'trim|required');
 		$this->form_validation->set_rules('tempat_lahir', 'tempat lahir', 'trim|required');
-		$this->form_validation->set_rules('golongan', 'golongan', 'trim|required');
+		// $this->form_validation->set_rules('golongan', 'golongan', 'trim|required');
 		$this->form_validation->set_rules('golongan_tanggal', 'golongan tanggal', 'trim|required');
 		$this->form_validation->set_rules('jabatan', 'jabatan', 'trim|required');
 		$this->form_validation->set_rules('jabatan_tanggal', 'jabatan tanggal', 'trim|required');
@@ -350,7 +352,7 @@ class Pegawai extends CI_Controller
 		foreach ($data->result_array() as $list) {
 			$row[] = ['val' => $list['nip'], 'text' => $list['nama'] . '-' . $list['nip']];
 		}
-		echo json_encode($row,JSON_PRETTY_PRINT);
+		echo json_encode($row, JSON_PRETTY_PRINT);
 	}
 
 	public function word()
