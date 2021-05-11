@@ -52,7 +52,6 @@
                                  "iTotalPages": Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
                              };
                          };
-
                          var t = $("#datatables").DataTable({
                              //  "bSort":false,  
                              initComplete: function() {
@@ -129,13 +128,14 @@
                                  var index = page * length + (iDisplayIndex + 1);
                                  $('td:eq(0)', row).html(index);
                              }
+
                          });
                          $('#sampai').change(function() {
                              if ($('#dari').val() == '') {
                                  Swal('Keterangan', 'Tanggal awal tidak boleh kosong', 'error');
                              } else {
-                                 $('#datatables').DataTable().ajax.reload();
-                                 $('#datatables').DataTable().ajax.draw();
+                                 t.ajax.reload();
+                                 t.ajax.draw();
                              }
                          });
                      });

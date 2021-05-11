@@ -1,33 +1,35 @@
-<?php 
+<?php
 
- /**
-  * 
-  */
- class Laporan_surat_Model extends CI_Model
- {
+/**
+ * 
+ */
+class Laporan_surat_Model extends CI_Model
+{
 
- 	public $tsuratkeluar = 'tbl_surat_keluar';
- 	public $tsuratmasuk = 'tbl_surat_masuk';
+   public $tsuratkeluar = 'tbl_surat_keluar';
+   public $tsuratmasuk = 'tbl_surat_masuk';
 
-  function laporan_json_masuk(){
-     $dari = $this->input->post('dari');
-     $sampai = $this->input->post('sampai');
+   function laporan_json_masuk()
+   {
+      $dari = $this->input->post('dari');
+      $sampai = $this->input->post('sampai');
 
-     $this->datatables->select('id_surat,no_agenda,no_surat,asal_surat,isi,kode,indeks,tgl_surat,tgl_diterima,file,keterangan,id_user,disposisi');
-     $this->datatables->from('tbl_surat_masuk');
-        //add this line for join
-     if($dari != '' AND $sampai !=''){
-       $this->datatables->where('tgl_diterima >=',$dari);
-       $this->datatables->where('tgl_diterima <=',$sampai);	 
-     } 
-     return $this->datatables->generate();
-  }
+      $this->datatables->select('id_surat,no_agenda,no_surat,asal_surat,isi,kode,indeks,tgl_surat,tgl_diterima,file,keterangan,id_user,disposisi');
+      $this->datatables->from('tbl_surat_masuk');
+      //add this line for join
+      if ($dari != '' and $sampai != '') {
+         $this->datatables->where('tgl_diterima >=', $dari);
+         $this->datatables->where('tgl_diterima <=', $sampai);
+      }
+      return $this->datatables->generate();
+   }
 
-  function laporan_json_keluar(){
-	$dari = $this->input->post('dari');
-	$sampai = $this->input->post('sampai');
+   function laporan_json_keluar()
+   {
+      $dari = $this->input->post('dari');
+      $sampai = $this->input->post('sampai');
 
-       $this->datatables->select(' 
+      $this->datatables->select(' 
             a.id_surat,
             a.no_agenda,
             a.id_jenis_surat,
@@ -46,14 +48,13 @@
             b.id_user,
             b.tanggal_create 
             ');
-       $this->datatables->from('tbl_surat_keluar a');
-       $this->datatables->join('jenis_surat b','b.id_jenis=a.id_jenis_surat','left');
-       
-       if($dari != '' AND $sampai !=''){
-       	$this->datatables->where('tgl_diterima >=',$dari);
-       	$this->datatables->where('tgl_diterima <=',$sampai);	 
-       }
-       return $this->datatables->generate(); 
-  }
+      $this->datatables->from('tbl_surat_keluar a');
+      $this->datatables->join('jenis_surat b', 'b.id_jenis=a.id_jenis_surat', 'left');
 
- }
+      if ($dari != '' and $sampai != '') {
+         $this->datatables->where('tgl_surat >=', $dari);
+         $this->datatables->where('tgl_surat <=', $sampai);
+      }
+      return $this->datatables->generate();
+   }
+}

@@ -33,7 +33,8 @@
     <script src="<?= base_url('assets/template/plugins/components/jquery/dist/jquery.min.js') ?>"></script>
     <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://fengyuanchen.github.io/datepicker/css/datepicker.css">
-
+    <script src="<?= base_url() ?>assets/template/plugins/components/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url() ?>assets/template_lte/plugins/datatables/dataTables.bootstrap.min.js"></script>
 
 </head>
 
@@ -142,6 +143,12 @@
                     $('#surat_masuk_list').html(data);
                 }
             });
+        })
+
+        // get detail clik
+        $('#detailss').on('click', function() {
+            link = $(this).attr('to');
+            window.location.href = link;
         })
     });
 </script>
@@ -318,8 +325,7 @@
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script src="<?= base_url() ?>assets/template/js/sweet-alert.js"></script>
 
-    <script src="<?= base_url() ?>assets/template/plugins/components/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?= base_url() ?>assets/template_lte/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.flash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
