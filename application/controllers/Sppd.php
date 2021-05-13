@@ -88,24 +88,28 @@ class Sppd extends CI_Controller
 
 		$templateProcessor->setValue('nama_diperintah', $data->row()->pengikut);
 		$templateProcessor->setValue('jabatan_pimpinan', $data->row()->jabatan_pimpinan);
-		$templateProcessor->setValue('golongan_pimpinan', $this->properti->golongan($data->row()->golongan_pimpinan));
 
+		$templateProcessor->setValue('jabatan_pimpinan', $data->row()->jabatan_pimpinan);
 
+		$templateProcessor->setValue('nik_pimpinan', $data->row()->nik);
+
+		$templateProcessor->setValue('golongan_pimpinan', $this->properti->golongan($data->row()->golongan_pimpinan)); 
 		$templateProcessor->setValue('nippengikut', $data->row()->nip);
 
 
 		// end 
 
-		$tanggal = tgl_indonesia(date('y-m-d'));
+		$tanggal = tgl_indonesia(date('Y-m-d'));
 		$templateProcessor->setValue('purpose', $data->row()->purpose);
+		$templateProcessor->setValue('daerah', 'Kota Sabang');
+
+
 		$templateProcessor->setValue('description', $data->row()->purpose);
 		$templateProcessor->setValue('government', $data->row()->purpose);
 		$templateProcessor->setValue('date_back', $data->row()->purpose);
 		$templateProcessor->setValue('date_go', $data->row()->purpose);
 		$templateProcessor->setValue('length_journey', $data->row()->purpose);
-		$templateProcessor->setValue('place_to', $data->row()->purpose);
-
-
+		$templateProcessor->setValue('place_to', $data->row()->purpose); 
 		$templateProcessor->setValue('sekda', $data->row()->purpose);
 
 		$templateProcessor->setValue('nomor_surat', $data->row()->code);
@@ -115,7 +119,6 @@ class Sppd extends CI_Controller
 		$templateProcessor->setValue('kepala_bagian', strip_tags(strtoupper(identitas('jabatan'))));
 
 		$templateProcessor->setValue('kepala_bagian', $data->row()->purpose);
-
 
 		header("Content-Disposition: attachment; filename=$namaFile.docx");
 		$templateProcessor->saveAs('php://output');
