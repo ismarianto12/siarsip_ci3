@@ -82,18 +82,30 @@ class Sppd extends CI_Controller
 		}
 		//the head section
 		$logo = (file_exists("./assets/img/" . logo())) ? "assets/img/" . logo() : "assets/img/no_image.png";
-		$templateProcessor->setImageValue('CompanyLogo', $logo); 
+		$templateProcessor->setImageValue('CompanyLogo', $logo);
 
 		$templateProcessor->setValue('nama_pemberi', $data->row()->pimpinan);
-	 
+
 		$templateProcessor->setValue('nama_diperintah', $data->row()->pengikut);
-		$templateProcessor->setValue('nik_pengikut', $data->row()->nip);
-	 
+		$templateProcessor->setValue('jabatan_pimpinan', $data->row()->jabatan_pimpinan);
+		$templateProcessor->setValue('golongan_pimpinan', $this->properti->golongan($data->row()->golongan_pimpinan));
+
+
+		$templateProcessor->setValue('nippengikut', $data->row()->nip);
+
 
 		// end 
 
 		$tanggal = tgl_indonesia(date('y-m-d'));
 		$templateProcessor->setValue('purpose', $data->row()->purpose);
+		$templateProcessor->setValue('description', $data->row()->purpose);
+		$templateProcessor->setValue('government', $data->row()->purpose);
+		$templateProcessor->setValue('date_back', $data->row()->purpose);
+		$templateProcessor->setValue('date_go', $data->row()->purpose);
+		$templateProcessor->setValue('length_journey', $data->row()->purpose);
+		$templateProcessor->setValue('place_to', $data->row()->purpose);
+
+
 		$templateProcessor->setValue('sekda', $data->row()->purpose);
 
 		$templateProcessor->setValue('nomor_surat', $data->row()->code);
