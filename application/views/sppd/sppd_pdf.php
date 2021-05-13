@@ -323,8 +323,6 @@
     <br /> <br />
     <p>Dasar : </p>
 
-
-
     <div class="center">
         <b> MEMERINTAHKAN </b>
     </div>

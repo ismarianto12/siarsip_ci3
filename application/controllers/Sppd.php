@@ -51,38 +51,119 @@ class Sppd extends CI_Controller
 	}
 
 
+	private function printdocx($id, $key = NULL)
+	{
+		$data = $this->Sppd_model->cetak($id);
+		$render = [
+			'judul' => 'cetak data sspd',
+			'sppd'  => $data->row_array(),
+		];
+		$namaFile = 'Surat Perjalanan Dinas Nomor : ' . $data->row()->code;
+
+		$html = $this->load->view('sppd/sppd_pdf', $render, TRUE);
+		require_once 'vendor/autoload.php';
+		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('assets/template/doc/sspd.docx');
+
+		$no       = 1;
+		$sc       = $this->properti->parsing($data->row()->nip);
+		$pengikut = $this->Pegawai_model->getPengikut($sc);
+
+		$no = 1;
+
+		foreach ($pengikut->result_array() as $listp) {
+			$replacements[] = array(
+				'no' => $no,
+				'nama' => $listp['nama'],
+				'golongan_pengikut' => $listp['golongan_pengikut'],
+				'nip' => $listp['nip'],
+				'jabatan_pengikut' => $listp['jabatan'],
+			);
+			$no++;
+		}
+		//the head section
+		$logo = (file_exists("./assets/img/" . logo())) ? "assets/img/" . logo() : "assets/img/no_image.png";
+		$templateProcessor->setImageValue('CompanyLogo', $logo); 
+
+		$templateProcessor->setValue('nama_pemberi', $data->row()->pimpinan);
+	 
+		$templateProcessor->setValue('nama_diperintah', $data->row()->pengikut);
+		$templateProcessor->setValue('nik_pengikut', $data->row()->nip);
+	 
+
+		// end 
+
+		$tanggal = tgl_indonesia(date('y-m-d'));
+		$templateProcessor->setValue('purpose', $data->row()->purpose);
+		$templateProcessor->setValue('sekda', $data->row()->purpose);
+
+		$templateProcessor->setValue('nomor_surat', $data->row()->code);
+		$templateProcessor->setValue('tanggal', $tanggal);
+		$templateProcessor->cloneBlock('block_name', 0, true, false, $replacements);
+
+		$templateProcessor->setValue('kepala_bagian', strip_tags(strtoupper(identitas('jabatan'))));
+
+		$templateProcessor->setValue('kepala_bagian', $data->row()->purpose);
+
+
+		header("Content-Disposition: attachment; filename=$namaFile.docx");
+		$templateProcessor->saveAs('php://output');
+	}
+
 	public function printdata($id, $key = NULL)
 	{
-		if ($key == $this->properti->key($id)) {
-
-			ob_start();
-			if ($id == '' || $id == 0) {
-				echo 'response data null';
-				die;
-			}
-			$data = $this->Sppd_model->cetak($id);
-			if ($data->num_rows() > 0) {
-			} else {
-				echo 'response data null';
-				die;
-			}
-
-			$pdf = new Cpdf();
-			$pdf->showImageErrors = true;
-			$pdf->AddPage('P');
-
-			$render = [
-				'judul' => 'cetak data sspd',
-				'sppd'  => $data->row_array(),
-			];
-			$html = $this->load->view('sppd/sppd_pdf', $render, TRUE);
-
-			$pdf->SetTitle('Surat Perjalanan Dinas Nomor :' . $data->row()->code);
-			$pdf->WriteHTML($html);
-			$pdf->Output('Surat Perjalanan Dinas' . date('Y-m-d H:i:s') . '.pdf', 'I');
-			ob_end_flush();
+		$data = $this->Sppd_model->cetak($id);
+		if ($data->num_rows() > 0) {
 		} else {
-			echo 'data tidak terparsing dengan baik : ' . $this->properti->key($id);
+			echo 'response data null';
+			die;
+		}
+
+		$action = isset($_GET['action']) ? $_GET['action'] : '';
+		if ($action == 'rtf') {
+			$this->printdocx($id, $key);
+			// $namaFile = 'Surat Perjalanan Dinas Nomor : ' . $data->row()->code . '.rtf';
+			// header("Pragma: public");
+			// header("Expires: 0");
+			// header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
+			// header("Content-Type: application/force-download");
+			// header("Content-Type: application/octet-stream");
+			// header("Content-Type: application/download");
+			// header("Content-Disposition: attachment;filename=" . $namaFile . "");
+			// header("Content-Transfer-Encoding: binary ");
+
+			// $render = [
+			// 	'judul' => 'cetak data sspd',
+			// 	'sppd'  => $data->row_array(),
+			// ];
+			// $html = $this->load->view('sppd/sppd_pdf', $render);
+		} else {
+			if ($key == $this->properti->key($id)) {
+
+				ob_start();
+				if ($id == '' || $id == 0) {
+					echo 'response data null';
+					die;
+				}
+
+
+				$pdf = new Cpdf();
+				$pdf->showImageErrors = true;
+				$pdf->AddPage('P');
+
+				$render = [
+					'judul' => 'cetak data sspd',
+					'sppd'  => $data->row_array(),
+				];
+				$html = $this->load->view('sppd/sppd_pdf', $render, TRUE);
+
+				$pdf->SetTitle('Surat Perjalanan Dinas Nomor :' . $data->row()->code);
+				$pdf->WriteHTML($html);
+				$pdf->Output('Surat Perjalanan Dinas' . date('Y-m-d H:i:s') . '.pdf', 'I');
+
+				ob_end_flush();
+			} else {
+				echo 'data tidak terparsing dengan baik : ' . $this->properti->key($id);
+			}
 		}
 	}
 

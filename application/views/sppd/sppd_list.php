@@ -118,7 +118,46 @@
                                  window.location.href = '<?= base_url('sppd/hapus/') ?>' + n;
                              });
                      }
+
+                     $(function() {
+                         $("#datatables").on('click', '#konfirmasi', function() {
+                             $('#myModal').modal('show');
+
+                             var url = $(this).attr('to');
+                             var urlnya = $(this).attr('to') + '?action=rtf';
+                             $('#pdf').html("<a href='" + url + "' class='btn btn-primary' target='_blank'><i class='fa fa-print'>Print Data PDF</a>");
+                             $('#rtf').html("<a href='" + urlnya + "' class='btn btn-warning' target='_blank'><i class='fa fa-print'>Print Data DOCX</a>");
+
+                         });
+                     });
                  </script>
+             </div>
+         </div>
+     </div>
+ </div>
+
+
+ <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <h4 class="modal-title" id="exampleModalLabel">
+                     Konfirmasi Cetak Dokument
+                 </h4>
+             </div>
+             <div class="modal-body">
+                 <hr />
+                 Piliih Salah satu dokumen untuk cetak hasil
+                 <p>
+                 <div style="display: flex;">
+                     <div id="pdf"></div>
+                     <div id="rtf"></div>
+                 </div>
+                 </p>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
              </div>
          </div>
      </div>
