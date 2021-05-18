@@ -62,7 +62,7 @@ class Sppd extends CI_Controller
 
 		$html = $this->load->view('sppd/sppd_pdf', $render, TRUE);
 		require_once 'vendor/autoload.php';
-		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('assets/template/doc/sspd.docx');
+		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('assets/template/doc/template.docx');
 
 		$no       = 1;
 		$sc       = $this->properti->parsing($data->row()->nip);
