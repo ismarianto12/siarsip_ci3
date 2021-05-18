@@ -120,7 +120,7 @@ class Sppd extends CI_Controller
 
 		$templateProcessor->setValue('kepala_bagian', $data->row()->purpose);
 
-		header("Content-Disposition: attachment; filename=$namaFile.docx");
+		header("Content-Disposition: attachment; filename=$namaFile.odt");
 		$templateProcessor->saveAs('php://output');
 	}
 

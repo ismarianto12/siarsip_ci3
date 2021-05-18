@@ -83,7 +83,7 @@
         buttons: [
         {extend:'copyHtml5', className: 'btn btn-info btn-xs'},
         {extend:'excelHtml5', className: 'btn btn-success btn-xs'},
-        {extend:'csvHtml5', className: 'btn bg-navy btn-flat margin'},
+        {extend:'csvHtml5', className: 'btn btn-prirmay btn-xs'},
         {extend:'pdfHtml5', className: 'btn btn-prirmay btn-xs'}
         ],
 

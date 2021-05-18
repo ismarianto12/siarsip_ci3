@@ -2,7 +2,7 @@
         foreach ($data->result_array() as $data) : ?>
          <li>
              <!-- start message -->
-             <a href="<?= base_url('tsuratmasuk/detail/' . $data['id_surat']) ?>" to="<?= base_url('tsuratmasuk/detail/' . $data['id_surat']) ?>" id="detailss">
+             <a href="#" onclick="return detailData(<?= $data['id_surat'] ?>)" id="detailss">
                  <div class="pull-left">
                      <img src="<?= base_url('assets/img/' . icon()) ?>" class="img-circle" alt="User Image" style="width:30px;height:30px" onerror="this.onerror=null;this.src='<?= base_url('assets/img/no_image.jpg') ?>';">
                  </div>

@@ -36,6 +36,9 @@
     <script src="<?= base_url() ?>assets/template/plugins/components/datatables/jquery.dataTables.min.js"></script>
     <script src="<?= base_url() ?>assets/template_lte/plugins/datatables/dataTables.bootstrap.min.js"></script>
 
+    <!-- notif that show -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 </head>
 
 <script type="text/javascript">
@@ -143,14 +146,27 @@
                     $('#surat_masuk_list').html(data);
                 }
             });
-        })
+        });
 
         // get detail clik
-        $('#detailss').on('click', function() {
+        $('#detailss').on('click', function(e) {
+            e.preventDefault();
             link = $(this).attr('to');
-            window.location.href = link;
+            alert(link);
+
         })
     });
+
+    function detailData(n) {  
+        $.dialog({
+            title: 'Detail surat masuk',
+            content: 'url:<?= base_url('tsuratmasuk/pagedata'); ?>/' + n,
+            animation: 'scale',
+            columnClass: 'large',
+            closeAnimation: 'scale',
+            backgroundDismiss: true,
+        });
+    }
 </script>
 
 <?php $data = $this->properti->user($this->session->id_user); ?>

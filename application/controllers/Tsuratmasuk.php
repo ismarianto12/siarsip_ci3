@@ -330,4 +330,28 @@ class Tsuratmasuk extends CI_Controller
       }
     }
   }
+
+  public function pagedata($id)
+  {
+    $row = $this->Tsuratmasuk_model->get_by_id($id);
+    if ($row) {
+      $user = $this->db->get_where('login', ['id_user' => $row->id_user])->row();
+      $data = array(
+        'id_surat' => $row->id_surat,
+        'no_agenda' => $row->no_agenda,
+        'no_surat' => $row->no_surat,
+        'asal_surat' => $row->asal_surat,
+        'isi' => $row->isi,
+        'kode' => $row->kode,
+        'indeks' => $row->indeks,
+        'tgl_surat' => $row->tgl_surat,
+        'tgl_diterima' => $row->tgl_diterima,
+        'file' => $row->file,
+        'keterangan' => $row->keterangan,
+        'id_user' => $user->nama,
+        'judul' => 'Detail surat masuk',
+      );
+      $this->load->view('tsuratmasuk/tbl_surat_masuk_notif', $data);
+    }
+  }
 }

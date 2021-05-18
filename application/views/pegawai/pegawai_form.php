@@ -9,8 +9,7 @@
         <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
     </ul>
 
-    <form action="<?php echo $action; ?>" method="post" class='form-horizontal form-bordered'>
-
+    <form action="<?= $action ?>" method="post" class='form-horizontal form-bordered'>
         <div class="tab-content">
             <div class="tab-pane active" id="umum">
                 <div class="form-group">
@@ -148,3 +147,32 @@
         </div><!-- /.tab-content -->
     </form>
 </div>
+
+
+<script>
+    // $(function() {
+    //     $('#pegawai_form').on('submit', function(e) {
+    //         e.preventDefault();
+    //         $.ajax({
+    //             url: '<?php echo $action; ?>',
+    //             data: $(this).serialize(),
+    //             chace: false,
+    //             asych: false,
+    //             success: function(data) {
+    //                 $.alert({
+    //                     title: false,
+    //                     content: 'url:<?= $action ?>',
+    //                     contentLoaded: function(data, status, xhr) {
+    //                         // when content is fetched
+    //                         alert(status);
+    //                     }
+    //                 });
+    //             },
+    //             error: function(data) {
+    //                 $.alert(data);
+
+    //             }
+    //         })
+    //     });
+    // });
+</script>
