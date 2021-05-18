@@ -80,7 +80,7 @@
             <div class="box box-primary">
                 <div class="box-header">
                     <i class="ion ion-clipboard"></i>
-                    <h3 class="box-title">Data Surat Baru Ini</h3>
+                    <h3 class="box-title">Data Arsip Baru Ini</h3>
 
                 </div><!-- /.box-header -->
                 <div class="box-body">
@@ -90,21 +90,25 @@
                         foreach ($this->properti->archiveType(date('Y'), 10)->result_array() as $tr) {
                             $warna = ($i % 2) ? 'warning' : 'success';  ?>
                             <li>
-                                <!-- drag handle -->
-                                <span class="handle">
-                                    <i class="fa fa-ellipsis-v"></i>
-                                    <i class="fa fa-ellipsis-v"></i>
-                                </span>
-                                <!-- checkbox -->
-                                <input type="checkbox" value="" name="">
-                                <!-- todo text -->
-                                <span class="text"><?= $tr['nama_arsip'] ?></span>
-                                <!-- Emphasis label -->
-                                <small class="label label-<?= $warna ?>"><i class="fa fa-clock-o"></i><?= tgl_indonesia($tr['tanggal']) ?></small>
-                                <!-- General tools such as edit or delete-->
-                                <div class="tools">
-                                    <i class="fa fa-edit"></i>
-                                </div>
+                                <a href="" onclick="return arsipDetail(<?= $tr['id_arsip'] ?>)">
+
+                                    <!-- drag handle -->
+                                    <span class="handle">
+                                        <i class="fa fa-ellipsis-v"></i>
+                                        <i class="fa fa-ellipsis-v"></i>
+                                    </span>
+                                    <!-- checkbox -->
+                                    <input type="checkbox" value="" name="">
+                                    <!-- todo text -->
+                                    <span class="text"><?= $tr['nama_arsip'] ?></span>
+                                    <!-- Emphasis label -->
+                                    <small class="label label-<?= $warna ?>"><i class="fa fa-clock-o"></i><?= tgl_indonesia($tr['tanggal']) ?></small>
+                                    <!-- General tools such as edit or delete-->
+                                    <div class="tools">
+                                        <i class="fa fa-edit"></i>
+                                    </div>
+                                </a>
+
                             </li>
                         <?php $i++;
                         } ?>
@@ -188,4 +192,16 @@
             }
         ]
     });
+
+    function arsipDetail(n) {
+        event.preventDefault();
+        $.dialog({
+            title: 'Detail data arsip',
+            content: 'url:<?= base_url('arsip/detaiarsip'); ?>/' + n,
+            animation: 'scale',
+            columnClass: 'large',
+            closeAnimation: 'scale',
+            backgroundDismiss: true,
+        });
+    }
 </script>

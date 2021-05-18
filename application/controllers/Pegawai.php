@@ -109,8 +109,8 @@ class Pegawai extends CI_Controller
 		$this->_rules();
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->tambah();
-			// print_r(validation_errors());
+			// $this->tambah();
+			print_r(validation_errors());
 		} else {
 			$data = array(
 				'nip' => $this->input->post('nip', TRUE),

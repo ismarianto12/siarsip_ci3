@@ -106,7 +106,7 @@ class properti
     public function archiveType($tahun, $limit)
     {
         if ($limit != '') {
-            $data = $this->ci->db->select('a.id_jenis,a.nama_arsip, b.jenis_arsip,c.nama,a.tanggal,a.lokasi')->from('arsip a')
+            $data = $this->ci->db->select('a.id_arsip,a.id_jenis,a.nama_arsip, b.jenis_arsip,c.nama,a.tanggal,a.lokasi')->from('arsip a')
                 ->join('jenis_arsip b', 'a.id_jenis=b.id_jenis', 'left outer')
                 ->join('login c', 'a.id_pejabat=c.id_user', 'left')
                 ->where('date_format(tanggal,"%Y")', $tahun)

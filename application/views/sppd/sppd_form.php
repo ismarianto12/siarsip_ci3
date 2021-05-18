@@ -17,6 +17,12 @@
             });
             return retval;
         }
+
+        $("#an_nip").tinyselect({
+            dataUrl: "<?= base_url('pegawai/json_select') ?>",
+            dataParser: dataParserB
+        });
+
         $("#nip_pejabat").tinyselect({
             dataUrl: "<?= base_url('pegawai/json_select') ?>",
             dataParser: dataParserB
@@ -175,6 +181,21 @@
                                 <div class='col-md-9'>
                                     <input type="text" name="description" id="description" value="<?= $description ?>" class="form-control" placeholder="Keterangn Lain">
 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="varchar" class='control-label col-md-3'><b>Bidan Atas nama (A/N)<?php echo form_error('description') ?></b></label>
+                                <div class='col-md-9'>
+                                    <?php if ($this->uri->segment(2) == 'edit') {
+                                        $sc       = $this->properti->parsing($nip_pejabat);
+                                        $pengikut = $this->Pegawai_model->getPengikut($sc);
+                                        foreach ($pengikut->result_array() as $listp) {
+                                            echo '<span class="label label-success">' . $listp['nama'] . '-' . $listp['nip'] . '</span> <br />';
+                                        }
+                                    } ?>
+                                    <br />
+                                    <select id="an_nip" name="nip_pejabat" class="form-control">
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">

@@ -656,6 +656,39 @@ class Arsip extends CI_Controller
         catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'Mendownload file arsip', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
     }
 
+
+    public function detaiarsip($id)
+    {
+        if ($this->input->is_ajax_request()) { {
+                $row = $this->Arsip_model->data_arsip(addslashes($id));
+                if ($row->num_rows() != 1) {
+                    redirect(base_url('arsip'));
+                } else {
+                    if ($row) {
+                        $data = $row->row();
+                        $data = array(
+                            'print' => '',
+                            'id_arsip' => $data->id_arsip,
+                            'jenis_arsip' => $data->jenis_arsip,
+                            'nama_arsip' => $data->nama_arsip,
+                            'file_arsip' => $data->file_arsip,
+                            'lokasi' => $data->nama_lokasi,
+                            'nama' => $data->nama,
+                            'ket_isi' => $data->ket_isi,
+                            'tanggal' => $data->tanggal,
+                            'judul' => 'Detail :  Arsip - ' . $data->jenis_arsip,
+                        );
+                        $this->load->view('arsip/arsip_read', $data);
+                    } else {
+                        $this->session->set_flashdata('message', '<div class="callout callout-warniing fade-in">Data Tidak Di Temukan.</div>');
+                        redirect(site_url('arsip'));
+                    }
+                }
+            }
+        }
+    }
+
+
     /*end bagian system information*/
 
     function cari_jenis_arsip()
