@@ -69,51 +69,45 @@ class Sppd extends CI_Controller
 				'nama' => $listp['nama'],
 				'golongan_pengikut' => $listp['golongan_pengikut'],
 				'nip' => $listp['nip'],
-				'jabatan_pengikut' => $listp['jabatan'],
-				'place_to' => $listp['place_to'],
-				'length_journey' => $listp['length_journey'],
-				'date_go' => $listp['date_go'],
-				'date_back' => $listp['date_back'],
-				'government' => $listp['government'],
-				'description' => $listp['description'],
-				// border data display
-				'letter_code' => $listp['letter_code'],
-				'letter_subject' => $listp['letter_subject'],
-				'letter_about' => $listp['letter_about'],
-				'letter_from' => $listp['letter_from'],
-				'letter_content' => $listp['letter_content'],
-				'letter_date' => $listp['letter_date'],
-				'code' => $listp['code'],
-				'date' => $listp['date'],
-				'nip_pejabat' => $listp['nip_pejabat'],
-				'nip_leader' => $listp['nip_leader'],
-				'rate_travel' => $listp['rate_travel'],
-				'nip' => $listp['nip'],
-				'purpose' => $listp['purpose'],
-				'transport' => $listp['transport'],
-				'place_from' => $listp['place_from'],
-				'place_to' => $listp['place_to'],
-				'length_journey' => $listp['length_journey'],
-				'date_go' => $listp['date_go'],
-				'date_back' => $listp['date_back'],
-				'government' => $listp['government'],
-				'budget' => $listp['budget'],
-				'budget_from' => $listp['budget_from'],
-				'description' => $listp['description'],
-				'result_date' => $listp['result_date'],
-				'result' => $listp['result'],
-				'result_username' => $listp['result_username'],
-				'file' => $listp['file'],
-				'file_update' => $listp['file_update'],
-				'status' => $listp['status'],
-				'username' => $listp['username'],
-				'username_update' => $listp['username_update'],
-				'datetime_insert' => $listp['datetime_insert']
+				'jabatan_pengikut' => $listp['jabatan']
 			);
 			$no++;
 		}
 		//the head section
 		$logo = (file_exists("./assets/img/" . logo())) ? "assets/img/" . logo() : "assets/img/no_image.png";
+
+		$templateProcessor->setImageValue('letter_code', $data->row()->letter_code);
+		$templateProcessor->setImageValue('letter_subject', $data->row()->letter_subject);
+		$templateProcessor->setImageValue('letter_about', $data->row()->letter_about);
+		$templateProcessor->setImageValue('letter_from', $data->row()->letter_from);
+		$templateProcessor->setImageValue('letter_content', $data->row()->letter_content);
+		$templateProcessor->setImageValue('letter_date', $data->row()->letter_date);
+		$templateProcessor->setImageValue('code', $data->row()->code);
+		$templateProcessor->setImageValue('date', $data->row()->date);
+		$templateProcessor->setImageValue('nip_pejabat', $data->row()->nip_pejabat);
+		$templateProcessor->setImageValue('nip_leader', $data->row()->nip_leader);
+		$templateProcessor->setImageValue('rate_travel', $data->row()->rate_travel);
+		$templateProcessor->setImageValue('nip', $data->row()->nip);
+		$templateProcessor->setImageValue('purpose', $data->row()->purpose);
+		$templateProcessor->setImageValue('transport', $data->row()->transport);
+		$templateProcessor->setImageValue('place_from', $data->row()->place_from);
+		$templateProcessor->setImageValue('place_to', $data->row()->place_to);
+		$templateProcessor->setImageValue('length_journey', $data->row()->length_journey);
+		$templateProcessor->setImageValue('date_go', $data->row()->date_go);
+		$templateProcessor->setImageValue('date_back', $data->row()->date_back);
+		$templateProcessor->setImageValue('government', $data->row()->government);
+		$templateProcessor->setImageValue('budget', $data->row()->budget);
+		$templateProcessor->setImageValue('budget_from', $data->row()->budget_from);
+		$templateProcessor->setImageValue('description', $data->row()->description);
+		$templateProcessor->setImageValue('result_date', $data->row()->result_date);
+		$templateProcessor->setImageValue('result', $data->row()->result);
+		$templateProcessor->setImageValue('result_username', $data->row()->result_username);
+		$templateProcessor->setImageValue('file', $data->row()->file);
+		$templateProcessor->setImageValue('file_update', $data->row()->file_update);
+		$templateProcessor->setImageValue('status', $data->row()->status);
+		$templateProcessor->setImageValue('username', $data->row()->username);
+		$templateProcessor->setImageValue('username_update', $data->row()->username_update);
+
 		$templateProcessor->setImageValue('CompanyLogo', $logo);
 
 		$templateProcessor->setValue('nama_pemberi', $data->row()->pimpinan);
