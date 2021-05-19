@@ -8,7 +8,6 @@ class Sppd extends CI_Controller
 	{
 		parent::__construct();
 		login_access();
-		// hak_akses(); 
 		$this->load->model(['Sppd_model', 'Pegawai_model']);
 		$this->load->library(['form_validation', 'datatables', 'Cpdf']);
 	}

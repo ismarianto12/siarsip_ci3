@@ -81,7 +81,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="varchar" class='control-label col-md-3'><b>Alat Angkut yang dipergunakan<?php echo form_error('letter_about') ?></b></label>
+                                <label for="varchar" class='control-label col-md-3'><b>Alat Angkut yang dipergunakan<?php echo form_error('transport') ?></b></label>
                                 <div class='col-md-9'>
                                     <input type="text" value="<?= $transport ?>" name="transport" id="transport" class="form-control sc-input-required" placeholder="Alat Angkut yang dipergunakan">
 
