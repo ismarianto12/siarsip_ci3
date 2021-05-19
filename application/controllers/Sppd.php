@@ -76,47 +76,41 @@ class Sppd extends CI_Controller
 		//the head section
 		$logo = (file_exists("./assets/img/" . logo())) ? "assets/img/" . logo() : "assets/img/no_image.png";
 
-		$templateProcessor->setImageValue('letter_code', $data->row()->letter_code);
-		$templateProcessor->setImageValue('letter_subject', $data->row()->letter_subject);
-		$templateProcessor->setImageValue('letter_about', $data->row()->letter_about);
-		$templateProcessor->setImageValue('letter_from', $data->row()->letter_from);
-		$templateProcessor->setImageValue('letter_content', $data->row()->letter_content);
-		$templateProcessor->setImageValue('letter_date', $data->row()->letter_date);
-		$templateProcessor->setImageValue('code', $data->row()->code);
-		$templateProcessor->setImageValue('date', $data->row()->date);
-		$templateProcessor->setImageValue('nip_pejabat', $data->row()->nip_pejabat);
-		$templateProcessor->setImageValue('nip_leader', $data->row()->nip_leader);
-		$templateProcessor->setImageValue('rate_travel', $data->row()->rate_travel);
-		$templateProcessor->setImageValue('nip', $data->row()->nip);
-		$templateProcessor->setImageValue('purpose', $data->row()->purpose);
-		$templateProcessor->setImageValue('transport', $data->row()->transport);
-		$templateProcessor->setImageValue('place_from', $data->row()->place_from);
-		$templateProcessor->setImageValue('place_to', $data->row()->place_to);
-		$templateProcessor->setImageValue('length_journey', $data->row()->length_journey);
-		$templateProcessor->setImageValue('date_go', $data->row()->date_go);
-		$templateProcessor->setImageValue('date_back', $data->row()->date_back);
-		$templateProcessor->setImageValue('government', $data->row()->government);
-		$templateProcessor->setImageValue('budget', $data->row()->budget);
-		$templateProcessor->setImageValue('budget_from', $data->row()->budget_from);
-		$templateProcessor->setImageValue('description', $data->row()->description);
-		$templateProcessor->setImageValue('result_date', $data->row()->result_date);
-		$templateProcessor->setImageValue('result', $data->row()->result);
-		$templateProcessor->setImageValue('result_username', $data->row()->result_username);
-		$templateProcessor->setImageValue('file', $data->row()->file);
-		$templateProcessor->setImageValue('file_update', $data->row()->file_update);
-		$templateProcessor->setImageValue('status', $data->row()->status);
-		$templateProcessor->setImageValue('username', $data->row()->username);
-		$templateProcessor->setImageValue('username_update', $data->row()->username_update);
-
-		$templateProcessor->setImageValue('CompanyLogo', $logo);
-
-		$templateProcessor->setValue('nama_pemberi', $data->row()->pimpinan);
-
+		$templateProcessor->setValue('letter_code', $data->row()->letter_code);
+		$templateProcessor->setValue('letter_subject', $data->row()->letter_subject);
+		$templateProcessor->setValue('letter_about', $data->row()->letter_about);
+		$templateProcessor->setValue('letter_from', $data->row()->letter_from);
+		$templateProcessor->setValue('letter_content', $data->row()->letter_content);
+		$templateProcessor->setValue('letter_date', $data->row()->letter_date);
+		$templateProcessor->setValue('code', $data->row()->code);
+		$templateProcessor->setValue('date', $data->row()->date);
+		$templateProcessor->setValue('nip_pejabat', $data->row()->nip_pejabat);
+		$templateProcessor->setValue('nip_leader', $data->row()->nip_leader);
+		$templateProcessor->setValue('rate_travel', $data->row()->rate_travel);
+		$templateProcessor->setValue('nip', $data->row()->nip);
+		$templateProcessor->setValue('purpose', $data->row()->purpose);
+		$templateProcessor->setValue('transport', $data->row()->transport);
+		$templateProcessor->setValue('place_from', $data->row()->place_from);
+		$templateProcessor->setValue('place_to', $data->row()->place_to);
+		$templateProcessor->setValue('length_journey', $data->row()->length_journey);
+		$templateProcessor->setValue('date_go', $data->row()->date_go);
+		$templateProcessor->setValue('date_back', $data->row()->date_back);
+		$templateProcessor->setValue('government', $data->row()->government);
+		$templateProcessor->setValue('budget', $data->row()->budget);
+		$templateProcessor->setValue('budget_from', $data->row()->budget_from);
+		$templateProcessor->setValue('description', $data->row()->description);
+		$templateProcessor->setValue('result_date', $data->row()->result_date);
+		$templateProcessor->setValue('result', $data->row()->result);
+		$templateProcessor->setValue('result_username', $data->row()->result_username);
+		$templateProcessor->setValue('file', $data->row()->file);
+		$templateProcessor->setValue('file_update', $data->row()->file_update);
+		$templateProcessor->setValue('status', $data->row()->status);
+		$templateProcessor->setValue('username', $data->row()->username);
+		$templateProcessor->setValue('username_update', $data->row()->username_update); 
+		$templateProcessor->setValue('nama_pemberi', $data->row()->pimpinan); 
 		$templateProcessor->setValue('nama_diperintah', $data->row()->pengikut);
 		$templateProcessor->setValue('jabatan_pimpinan', $data->row()->jabatan_pimpinan);
-
-		$templateProcessor->setValue('jabatan_pimpinan', $data->row()->jabatan_pimpinan);
-
+		$templateProcessor->setValue('jabatan_pimpinan', $data->row()->jabatan_pimpinan); 
 		$templateProcessor->setValue('nik_pimpinan', $data->row()->nik);
 
 		$templateProcessor->setValue('golongan_pimpinan', $this->properti->golongan($data->row()->golongan_pimpinan));
