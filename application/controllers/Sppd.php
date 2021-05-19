@@ -27,12 +27,6 @@ class Sppd extends CI_Controller
 
 	function cetakdta($id)
 	{
-		// $this->load->library('odf');
-		// $odf = new odf('assets/odt/surat_sppd.odt');
-		// $odf->setVars('d_pengesahan', 'cucok');
-		// $odf->setVars('nama_pejabat', 'cucok');
-
-		// $odf->exportAsAttachedFile('ss' . '_' . 'ss' . '.odt');
 		if ($id == '' || $id == 0) {
 			echo 'response data null';
 			die;
@@ -77,6 +71,45 @@ class Sppd extends CI_Controller
 				'golongan_pengikut' => $listp['golongan_pengikut'],
 				'nip' => $listp['nip'],
 				'jabatan_pengikut' => $listp['jabatan'],
+				'place_to' => $listp['place_to'],
+				'length_journey' => $listp['length_journey'],
+				'date_go' => $listp['date_go'],
+				'date_back' => $listp['date_back'],
+				'government' => $listp['government'],
+				'description' => $listp['description'],
+				// border data display
+				'letter_code' => $listp['letter_code'],
+				'letter_subject' => $listp['letter_subject'],
+				'letter_about' => $listp['letter_about'],
+				'letter_from' => $listp['letter_from'],
+				'letter_content' => $listp['letter_content'],
+				'letter_date' => $listp['letter_date'],
+				'code' => $listp['code'],
+				'date' => $listp['date'],
+				'nip_pejabat' => $listp['nip_pejabat'],
+				'nip_leader' => $listp['nip_leader'],
+				'rate_travel' => $listp['rate_travel'],
+				'nip' => $listp['nip'],
+				'purpose' => $listp['purpose'],
+				'transport' => $listp['transport'],
+				'place_from' => $listp['place_from'],
+				'place_to' => $listp['place_to'],
+				'length_journey' => $listp['length_journey'],
+				'date_go' => $listp['date_go'],
+				'date_back' => $listp['date_back'],
+				'government' => $listp['government'],
+				'budget' => $listp['budget'],
+				'budget_from' => $listp['budget_from'],
+				'description' => $listp['description'],
+				'result_date' => $listp['result_date'],
+				'result' => $listp['result'],
+				'result_username' => $listp['result_username'],
+				'file' => $listp['file'],
+				'file_update' => $listp['file_update'],
+				'status' => $listp['status'],
+				'username' => $listp['username'],
+				'username_update' => $listp['username_update'],
+				'datetime_insert' => $listp['datetime_insert']
 			);
 			$no++;
 		}
@@ -93,12 +126,10 @@ class Sppd extends CI_Controller
 
 		$templateProcessor->setValue('nik_pimpinan', $data->row()->nik);
 
-		$templateProcessor->setValue('golongan_pimpinan', $this->properti->golongan($data->row()->golongan_pimpinan)); 
+		$templateProcessor->setValue('golongan_pimpinan', $this->properti->golongan($data->row()->golongan_pimpinan));
 		$templateProcessor->setValue('nippengikut', $data->row()->nip);
 
-
 		// end 
-
 		$tanggal = tgl_indonesia(date('Y-m-d'));
 		$templateProcessor->setValue('purpose', $data->row()->purpose);
 		$templateProcessor->setValue('daerah', 'Kota Sabang');
@@ -109,7 +140,7 @@ class Sppd extends CI_Controller
 		$templateProcessor->setValue('date_back', $data->row()->purpose);
 		$templateProcessor->setValue('date_go', $data->row()->purpose);
 		$templateProcessor->setValue('length_journey', $data->row()->purpose);
-		$templateProcessor->setValue('place_to', $data->row()->purpose); 
+		$templateProcessor->setValue('place_to', $data->row()->purpose);
 		$templateProcessor->setValue('sekda', $data->row()->purpose);
 
 		$templateProcessor->setValue('nomor_surat', $data->row()->code);
@@ -136,21 +167,6 @@ class Sppd extends CI_Controller
 		$action = isset($_GET['action']) ? $_GET['action'] : '';
 		if ($action == 'rtf') {
 			$this->printdocx($id, $key);
-			// $namaFile = 'Surat Perjalanan Dinas Nomor : ' . $data->row()->code . '.rtf';
-			// header("Pragma: public");
-			// header("Expires: 0");
-			// header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
-			// header("Content-Type: application/force-download");
-			// header("Content-Type: application/octet-stream");
-			// header("Content-Type: application/download");
-			// header("Content-Disposition: attachment;filename=" . $namaFile . "");
-			// header("Content-Transfer-Encoding: binary ");
-
-			// $render = [
-			// 	'judul' => 'cetak data sspd',
-			// 	'sppd'  => $data->row_array(),
-			// ];
-			// $html = $this->load->view('sppd/sppd_pdf', $render);
 		} else {
 			if ($key == $this->properti->key($id)) {
 
@@ -170,7 +186,6 @@ class Sppd extends CI_Controller
 					'sppd'  => $data->row_array(),
 				];
 				$html = $this->load->view('sppd/sppd_pdf', $render, TRUE);
-
 				$pdf->SetTitle('Surat Perjalanan Dinas Nomor :' . $data->row()->code);
 				$pdf->WriteHTML($html);
 				$pdf->Output('Surat Perjalanan Dinas' . date('Y-m-d H:i:s') . '.pdf', 'I');

@@ -1,5 +1,6 @@
 <?php
 // by ismarianto 
+
 use function PHPSTORM_META\override;
 
 class properti
@@ -7,6 +8,7 @@ class properti
 
     function  __construct()
     {
+        
         $this->ci = &get_instance();
     }
 
