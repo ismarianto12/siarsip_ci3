@@ -8,6 +8,7 @@ class Sppd extends CI_Controller
 	{
 		parent::__construct();
 		login_access();
+		// hak_akses(); 
 		$this->load->model(['Sppd_model', 'Pegawai_model']);
 		$this->load->library(['form_validation', 'datatables', 'Cpdf']);
 	}
@@ -69,12 +70,19 @@ class Sppd extends CI_Controller
 				'nama' => $listp['nama'],
 				'golongan_pengikut' => $listp['golongan_pengikut'],
 				'nip' => $listp['nip'],
-				'jabatan_pengikut' => $listp['jabatan']
+				'jabatan_pengikut' => $listp['jabatan'],
+				'place_to' => $listp['place_to'],
+				'length_journey' => $listp['length_journey'],
+				'date_go' => $listp['date_go'],
+				'date_back' => $listp['date_back'],
+				'government' => $listp['government'],
+				'description' => $listp['description']
 			);
 			$no++;
 		}
 		//the head section
 		$logo = (file_exists("./assets/img/" . logo())) ? "assets/img/" . logo() : "assets/img/no_image.png";
+		$templateProcessor->setImageValue('CompanyLogo', $logo);
 
 		$templateProcessor->setValue('letter_code', $data->row()->letter_code);
 		$templateProcessor->setValue('letter_subject', $data->row()->letter_subject);
@@ -106,17 +114,29 @@ class Sppd extends CI_Controller
 		$templateProcessor->setValue('file_update', $data->row()->file_update);
 		$templateProcessor->setValue('status', $data->row()->status);
 		$templateProcessor->setValue('username', $data->row()->username);
-		$templateProcessor->setValue('username_update', $data->row()->username_update); 
-		$templateProcessor->setValue('nama_pemberi', $data->row()->pimpinan); 
+		$templateProcessor->setValue('username_update', $data->row()->username_update);
+		$templateProcessor->setValue('nama_pemberi', $data->row()->pimpinan);
 		$templateProcessor->setValue('nama_diperintah', $data->row()->pengikut);
 		$templateProcessor->setValue('jabatan_pimpinan', $data->row()->jabatan_pimpinan);
-		$templateProcessor->setValue('jabatan_pimpinan', $data->row()->jabatan_pimpinan); 
+		$templateProcessor->setValue('jabatan_pimpinan', $data->row()->jabatan_pimpinan);
+		$templateProcessor->setValue('nik_pimpinan', $data->row()->nik);
+
+
+		$templateProcessor->setValue('nama_pemberi', $data->row()->pimpinan);
+
+		$templateProcessor->setValue('nama_diperintah', $data->row()->pengikut);
+		$templateProcessor->setValue('jabatan_pimpinan', $data->row()->jabatan_pimpinan);
+
+		$templateProcessor->setValue('jabatan_pimpinan', $data->row()->jabatan_pimpinan);
+
 		$templateProcessor->setValue('nik_pimpinan', $data->row()->nik);
 
 		$templateProcessor->setValue('golongan_pimpinan', $this->properti->golongan($data->row()->golongan_pimpinan));
 		$templateProcessor->setValue('nippengikut', $data->row()->nip);
 
+
 		// end 
+
 		$tanggal = tgl_indonesia(date('Y-m-d'));
 		$templateProcessor->setValue('purpose', $data->row()->purpose);
 		$templateProcessor->setValue('daerah', 'Kota Sabang');
@@ -173,6 +193,7 @@ class Sppd extends CI_Controller
 					'sppd'  => $data->row_array(),
 				];
 				$html = $this->load->view('sppd/sppd_pdf', $render, TRUE);
+
 				$pdf->SetTitle('Surat Perjalanan Dinas Nomor :' . $data->row()->code);
 				$pdf->WriteHTML($html);
 				$pdf->Output('Surat Perjalanan Dinas' . date('Y-m-d H:i:s') . '.pdf', 'I');
