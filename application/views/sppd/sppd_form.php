@@ -52,7 +52,7 @@
 <div class='row'>
     <div class='col-md-12'>
         <div class='box-default'>
-            <div class='panel-heading'><i class="fa fa-document"></i><?= ucfirst($judul) ?></div>
+            <div class='panel-heading'><i class="fa fa fa-folder-open-o"></i><?= ucfirst($judul) ?></div>
             <div class='panel-wrapper collapse in' aria-expanded='true'>
                 <div class='panel-body'>
                     <div id="notifikasi"></div>

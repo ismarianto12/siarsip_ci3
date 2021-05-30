@@ -136,15 +136,12 @@ class Sppd extends CI_Controller
 		$templateProcessor->setImageValue('CompanyLogo', $logo);
 		$templateProcessor->cloneBlock('block_name', 0, true, false, $replacements);
 
-		$val = $this->_datasppd($id)->row_array();
-
-		// get  nama pemberi tugas 
-
+		$val = $this->_datasppd($id)->row_array(); 
+		// get  nama pemberi tugas  
 		$perintah  = $this->db->get_where('pegawai', ['nip' => $val['nip_pejabat']])->row_array();
 		$diperintah  = $this->db->get_where('pegawai', ['nip' => $val['nip_leader']])->row_array();
 		$jsurat  = $this->db->get_where('jenis_surat', ['id_jenis' => $val['jenis_surat_id']])->row_array();
 		$jenissuratnya = explode('~', $jsurat['nama_jenis']);
-
 		// var_dump($jenissuratnya);
 		// exit();
 		// custom value at document name

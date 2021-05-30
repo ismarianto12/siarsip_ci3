@@ -2,7 +2,7 @@
      <div class='col-sm-12'>
          <?= $this->session->userdata('message') ?>
          <div class='white-box'>
-             <p class='text-muted m-b-30'>Surat perjalanan dinas</p>
+             <p class='text-muted m-b-30'><i class="fa fa-file"></i> perjalanan dinas</p>
              <div class='table-responsive'>
                  <?php echo anchor(site_url('sppd/tambah'), '<i class="fa fa-plus"></i> Tambah Data', 'class="btn bg-navy btn-flat margin"'); ?>
                  <br /><br />
@@ -81,6 +81,25 @@
                                      data.jenisppd_id = jenisppd_id;
                                  }
                              },
+                             dom: 'Bfrtip',
+                             buttons: [{
+                                     extend: 'copyHtml5',
+                                     className: 'btn btn-info btn-xs'
+                                 },
+                                 {
+                                     extend: 'excelHtml5',
+                                     className: 'btn btn-success btn-xs'
+                                 },
+                                 {
+                                     extend: 'csvHtml5',
+                                     className: 'btn btn-warning btn-xs'
+                                 },
+                                 {
+                                     extend: 'pdfHtml5',
+                                     className: 'btn btn-prirmay btn-xs'
+                                 }
+                             ],
+
                              columns: [{
                                      "data": "sppd_id",
                                      "orderable": false
