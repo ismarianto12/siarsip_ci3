@@ -6,6 +6,25 @@
              <div class='table-responsive'>
                  <?php echo anchor(site_url('sppd/tambah'), '<i class="fa fa-plus"></i> Tambah Data', 'class="btn bg-navy btn-flat margin"'); ?>
                  <br /><br />
+                 <form id="filter" method="POST" class="filter_by">
+                     <div class="card-body">
+                         <div class="form-group row">
+                             <label for="name" class="col-md-2 text-left"> Jenis SPPD <span class="required-label">*</span></label>
+                             <div class="col-md-4">
+                                 <select id="jenisppd_id" name="jenisppd_id" class="form-control">
+                                     <option value="">Semua data</option>
+                                     <?php foreach ($sppdjenis->result() as $sptjeniss) :
+                                            $sppd = explode('~', $sptjeniss->name);
+                                            $ket = str_replace('SPPD', 'SPT ', $sptjeniss->name);
+                                        ?>
+                                         <option bdata="<?= $ket ?>" value="<?= $sptjeniss->id ?>"> SPPD - <?= $sppd[1]; ?></option>
+                                     <?php endforeach; ?>
+                                 </select>
+                             </div>
+                         </div>
+                     </div>
+                 </form>
+                 <hr />
                  <table class="table" id="datatables">
                      <thead>
                          <tr>
@@ -38,7 +57,7 @@
                              };
                          };
 
-                         var t = $("#datatables").dataTable({
+                         $("#datatables").DataTable({
                              initComplete: function() {
                                  var api = this.api();
                                  $('#datatables input')
@@ -56,7 +75,11 @@
                              serverSide: true,
                              ajax: {
                                  "url": "<?= base_url('sppd/json') ?>",
-                                 "type": "POST"
+                                 "type": "POST",
+                                 "data": function(data) {
+                                     var jenisppd_id = $('#jenisppd_id').val();
+                                     data.jenisppd_id = jenisppd_id;
+                                 }
                              },
                              columns: [{
                                      "data": "sppd_id",
@@ -100,6 +123,10 @@
                                  var index = page * length + (iDisplayIndex + 1);
                                  $('td:eq(0)', row).html(index);
                              }
+                         });
+                         //event selected data
+                         $('#jenisppd_id').change(function() {
+                             $("#datatables").DataTable().ajax.reload();
                          });
                      });
 
@@ -151,7 +178,6 @@
                  Piliih Salah satu dokumen untuk cetak hasil
                  <p>
                  <div style="display: flex;">
-                     <div id="pdf"></div>
                      <div id="rtf"></div>
                  </div>
                  </p>

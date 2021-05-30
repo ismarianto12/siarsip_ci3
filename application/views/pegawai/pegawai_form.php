@@ -11,6 +11,7 @@
 
     <form action="<?= $action ?>" method="post" class='form-horizontal form-bordered'>
         <div class="tab-content">
+            <br /><br />
             <div class="tab-pane active" id="umum">
                 <div class="form-group">
                     <label for="varchar" class='control-label col-md-3'><b>Nip<?php echo form_error('nip') ?></b></label>
@@ -68,15 +69,21 @@
                         <input type="text" class="form-control" name="pendidikan_ijazah" id="pendidikan_ijazah" placeholder="Pendidikan Ijazah" value="<?php echo $pendidikan_ijazah; ?>" />
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="catatan_mutasi" class='control-label col-md-3'><b>Catatan Mutasi<?php echo form_error('catatan_mutasi') ?></b></label>
 
-                    <div class='col-md-9'>
-                        <textarea class="form-control" rows="3" name="catatan_mutasi" id="catatan_mutasi" placeholder="Catatan Mutasi"><?php echo $catatan_mutasi; ?></textarea>
-                    </div>
-                </div>
             </div>
             <div class="tab-pane" id="jabatan">
+                <div class="form-group">
+                    <label for="varchar" class='control-label col-md-3'><b> Pangkat<?php echo form_error('pangkat') ?></b></label>
+                    <div class='col-md-9'>
+                        <input type="text" class="form-control" name="pangkat" id="pangkat" placeholder="pangkat" value="<?php echo $pangkat; ?>" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="varchar" class='control-label col-md-3'><b> Golongan<?php echo form_error('golongan') ?></b></label>
+                    <div class='col-md-9'>
+                        <input type="text" class="form-control" name="golongan" id="golongan" placeholder="Data Golongan" value="<?php echo $golongan; ?>" />
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="varchar" class='control-label col-md-3'><b> Jabatan<?php echo form_error('latihan_jabatan') ?></b></label>
                     <div class='col-md-9'>
@@ -96,12 +103,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="varchar" class='control-label col-md-3'><b> Golongan<?php echo form_error('latihan_jabatan') ?></b></label>
+                    <label for="catatan_mutasi" class='control-label col-md-3'><b>Catatan Mutasi<?php echo form_error('catatan_mutasi') ?></b></label>
                     <div class='col-md-9'>
-                        <input type="text" class="form-control" name="golongan" id="golongan" placeholder="Data Golongan" value="<?php echo $golongan; ?>" />
+                        <textarea class="form-control" rows="3" name="catatan_mutasi" id="catatan_mutasi" placeholder="Catatan Mutasi"><?php echo $catatan_mutasi; ?></textarea>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label for="keterangan" class='control-label col-md-3'><b>Keterangan<?php echo form_error('keterangan') ?></b></label>
 

@@ -87,6 +87,7 @@ class Pegawai extends CI_Controller
 			'tanggal_lahir' => set_value('tanggal_lahir'),
 			'tempat_lahir' => set_value('tempat_lahir'),
 			'golongan' => set_value('golongan'),
+			'pangkat' => set_value('pangkat'),
 			'golongan_tanggal' => set_value('golongan_tanggal'),
 			'jabatan' => set_value('jabatan'),
 			'jabatan_tanggal' => set_value('jabatan_tanggal'),
@@ -134,6 +135,7 @@ class Pegawai extends CI_Controller
 				'catatan_mutasi' => $this->input->post('catatan_mutasi', TRUE),
 				'keterangan' => $this->input->post('keterangan', TRUE),
 				'username' => $this->input->post('username', TRUE),
+				'pangkat' => $this->input->post('pangkat', true)
 			);
 			$this->Pegawai_model->insert($data);
 			$this->session->set_flashdata('message', '<div class="alert alert-success fade-in"><i class="fa fa-check"></i>Data Berhasil Di Tambahkan.</div>');
@@ -143,8 +145,7 @@ class Pegawai extends CI_Controller
 
 	public function edit($id)
 	{
-		$row = $this->Pegawai_model->get_by_id($id);
-
+		$row = $this->db->get_where('pegawai', ['id' => $id])->row();
 		if ($row) {
 			$data = array(
 				'judul' => 'Data PEGAWAI',
@@ -158,6 +159,7 @@ class Pegawai extends CI_Controller
 				'tanggal_lahir' => set_value('tanggal_lahir', $row->tanggal_lahir),
 				'tempat_lahir' => set_value('tempat_lahir', $row->tempat_lahir),
 				'golongan' => set_value('golongan', $row->golongan),
+				'pangkat' => set_value('pangkat', $row->pangkat),
 				'golongan_tanggal' => set_value('golongan_tanggal', $row->golongan_tanggal),
 				'jabatan' => set_value('jabatan', $row->jabatan),
 				'jabatan_tanggal' => set_value('jabatan_tanggal', $row->jabatan_tanggal),
@@ -208,6 +210,8 @@ class Pegawai extends CI_Controller
 				'pendidikan_ijazah' => $this->input->post('pendidikan_ijazah', TRUE),
 				'catatan_mutasi' => $this->input->post('catatan_mutasi', TRUE),
 				'keterangan' => $this->input->post('keterangan', TRUE),
+				'pangkat' => $this->input->post('pangkat', true)
+
 			);
 
 			$this->Pegawai_model->update($this->input->post('id', TRUE), $data);

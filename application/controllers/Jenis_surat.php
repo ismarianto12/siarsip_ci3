@@ -130,14 +130,29 @@ class jenis_surat extends CI_Controller
   public function hapus($id)
   {
     $row = $this->jenis_surat_model->get_by_id($id);
-    catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'Hapus jenis surat.', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
-    if ($row) {
-      $this->jenis_surat_model->delete($id);
-      $this->session->set_flashdata('message', '<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>Data Berhasil Di Hapus</div>');
+    // permtions denied
+    $arr = [
+      '9',
+      '10',
+      '11',
+      '12',
+      '13',
+      '14',
+
+    ];
+    if (in_array($id, $arr)) {
+      $this->session->set_flashdata('message', '<div class="callout callout-warniing fade-in">beberapa kode surat memang tidak bisa di hapus : :\'</div>');
       redirect(site_url('jenis_surat'));
     } else {
-      $this->session->set_flashdata('message', '<div class="callout callout-warniing fade-in">Ops Something Went Wrong Please Contact Administrator.</div>');
-      redirect(site_url('jenis_surat'));
+      catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'Hapus jenis surat.', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
+      if ($row) {
+        $this->jenis_surat_model->delete($id);
+        $this->session->set_flashdata('message', '<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>Data Berhasil Di Hapus</div>');
+        redirect(site_url('jenis_surat'));
+      } else {
+        $this->session->set_flashdata('message', '<div class="callout callout-warniing fade-in">Ops Something Went Wrong Please Contact Administrator.</div>');
+        redirect(site_url('jenis_surat'));
+      }
     }
   }
 
