@@ -168,11 +168,15 @@
                      $(function() {
                          $("#datatables").on('click', '#konfirmasi', function() {
                              $('#myModal').modal('show');
+                             let judul = $(this).data('judul');
+                             var id = $(this).data('id');
+                             var idp = $(this).data('idp');
+                             var url1 = base_url() + 'sppdprint/printdata/' + idp + '/sppd' + id + '/sppd';
+                             var url2 = base_url() + 'sppdprint/printdata/' + idp + '/spt' + id + '/spt';
 
-                             var url = $(this).attr('to');
-                             var urlnya = $(this).attr('to') + '?action=rtf';
-                             $('#pdf').html("<a href='" + url + "' class='btn btn-primary' target='_blank'><i class='fa fa-print'>Print Data PDF</a>");
-                             $('#rtf').html("<a href='" + urlnya + "' class='btn btn-warning' target='_blank'><i class='fa fa-print'>Print Data DOCX</a>");
+                             $('#judul').html('<h4>Cetak Surat SPPD ' + judul + '</h4> <br />');
+                             $('#sppd').html("<a href='" + url1 + "' class='btn btn-primary' target='_blank'><i class='fa fa-print'>Print Surat SPPD</a>");
+                             $('#spt').html("<a href='" + url2 + "' class='btn btn-warning' target='_blank'><i class='fa fa-print'>Print Data SPT</a>");
 
                          });
                      });
@@ -196,8 +200,11 @@
                  <hr />
                  Piliih Salah satu dokumen untuk cetak hasil
                  <p>
+                 <div id="judul"></div>
                  <div style="display: flex;">
-                     <div id="rtf"></div>
+                     <div id="sppd"></div>
+                     <div id="spt"></div>
+
                  </div>
                  </p>
              </div>

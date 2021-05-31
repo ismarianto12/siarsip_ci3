@@ -18,15 +18,31 @@
             return retval;
         }
 
-        $("#an_nip").tinyselect({
+        $("#pimpinanan_nip").tinyselect({
             dataUrl: "<?= base_url('pegawai/json_select') ?>",
             dataParser: dataParserB
         });
 
         $("#nip_pejabat").tinyselect({
-            dataUrl: "<?= base_url('pegawai/json_select') ?>",
+            dataUrl: "<?= base_url('pegawai/json_select/' . $nip_pejabat) ?>",
             dataParser: dataParserB
         });
+
+        // pimpinan
+        $("#pimpinan").tinyselect({
+            dataUrl: "<?= base_url('pegawai/json_select/' . $pimpinan) ?>",
+        });
+        //kabag
+        $("#kabag").tinyselect({
+            dataUrl: "<?= base_url('pegawai/json_select/' . $kabag) ?>",
+            dataParser: dataParserB
+        });
+        //kasubag
+        $("#kasubag").tinyselect({
+            dataUrl: "<?= base_url('pegawai/json_select/' . $kasubag) ?>",
+            dataParser: dataParserB
+        });
+
         $("#nip_diperintah").tinyselect({
             dataUrl: "<?= base_url('pegawai/json_select') ?>",
             dataParser: dataParserB
@@ -47,8 +63,6 @@
     }
 </style>
 
-
-
 <div class='row'>
     <div class='col-md-12'>
         <div class='box-default'>
@@ -66,10 +80,11 @@
                                     <div class='col-md-7'>
                                         <select id="sspdjeniss_id" name="sspdjeniss_id" class="form-control">
                                             <?php foreach ($sppdjenis->result() as $sptjeniss) :
-                                                            $namespd = str_replace('~', ' ', $sptjeniss->name);
-                                                            $ket     = str_replace('SPPD', 'SPT ', $sptjeniss->name);
+                                                $namespd = str_replace('~', ' ', $sptjeniss->name);
+                                                $ket     = str_replace('SPPD', 'SPT ', $namespd);
+
                                             ?>
-                                                <option bdata="<?= $namespd ?>" value="<?= $sptjeniss->id ?>"><?= $namespd ?></option>
+                                                <option bdata="<?= $ket ?>" value="<?= $sptjeniss->id ?>"><?= $namespd ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -126,7 +141,7 @@
                                     <label for="letter_content" class='control-label col-md-4'><b>Tempat Tujuan<?php echo form_error('letter_content') ?></b></label>
 
                                     <div class='col-md-7'>
-                                        <textarea class="form-control" rows="3" name="place_to" id="place_to" placeholder="Letter Content"><?php echo $place_to; ?></textarea>
+                                        <textarea class="form-control" rows="3" name="place_to" id="place_to" placeholder="Tempat Tujuan"><?php echo $place_to; ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -137,6 +152,36 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
+
+                                <h4><i class="fa fa fa-files"></i>Data Tambahan Tebusan Surat</h4>
+                                <hr />
+
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Pimpinan (Walikota ,Sekda, Wakil Walikota)<?php echo form_error('pimpinan') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <select name="pimpinan" id="pimpinan" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Kepala Bagian UMUM<?php echo form_error('kabag') ?></b></label>
+                                    <div class='col-md-7'>
+
+                                        <select name="kabag" id="kabag" class="form-control">
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Kepala sub bagian<?php echo form_error('kasubag') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <select name="kasubag" id="kasubag" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
                                 Surat Perintah tugas(SPT)
                                 <hr />
                                 <div class="form-group">
@@ -146,9 +191,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Tgl Berangkat<?php echo form_error('code') ?></b></label>
+                                    <label for="varchar" class='control-label col-md-4'><b>Tgl Berangkat<?php echo form_error('date_go') ?></b></label>
                                     <div class='col-md-7'>
-                                        <input type="date" class="form-control" name="date_go" id="date_go" placeholder="Code" value="<?php echo $code; ?>" />
+                                        <input type="date" class="form-control" name="date_go" id="date_go" placeholder="Code" value="<?php echo $date_go; ?>" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -175,9 +220,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Lama Perjalanan<?php echo form_error('rate_travel') ?></b></label>
+                                    <label for="varchar" class='control-label col-md-4'><b>Lama Perjalanan<?php echo form_error('length_journey') ?></b></label>
                                     <div class='col-md-7'>
-                                        <input type="number" class="form-control" name="length_journey" id="length_journey" placeholder="Lama jalan" value="<?php echo $rate_travel; ?>" style="
+                                        <input type="number" class="form-control" name="length_journey" id="length_journey" placeholder="Lama jalan" value="<?php echo $length_journey; ?>" style="
     width: 60px;
     display: inline-flex;
 "> / Hari
@@ -240,6 +285,7 @@
 
                                     </div>
                                 </div>
+
                             </div>
 
                         </div>
@@ -247,7 +293,9 @@
                         <div class="card-action">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input class="btn btn-success" type="submit" value="Simpan">
+                                    <hr />
+                                    <button class="btn btn-success" type="submit"><i class="fa fa-save"></i>Simpan</button>
+                                    <a href="<?= base_url('sppd') ?>" class="btn btn-info"><i class="fa fa-list"></i>Back </a>
                                     <button class="btn btn-danger" type="reset">Batal</button>
                                 </div>
                             </div>
@@ -275,11 +323,11 @@
                     if (data.response == 'y') {
                         redirect();
                     } else if (data.response == 'n') {
-                        $('#notifikasi').html('<div class="callout callout-info"><ul style="display: grid;">' + data.message + '</ul></div>');
+                        $('#notifikasi').html('<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><ul style="display: grid;">' + data.message + '</ul></div>');
                     }
                 },
                 error: function(data, xhr, status) {
-                    alert('data error boy');
+                    swal.fire('Keterangan', 'data tidak response dengan baik' + status, 'error');
                 }
             });
         })
@@ -290,11 +338,15 @@
             $('input[name="jenisspt_id"]').val(data);
 
         });
+
+        $(".js-example-basic-single").select2();
     })
 
 
     ///after data clicked in button 
     function redirect() {
+
+
         Swal({
                 title: 'Data berhasil di input ',
                 text: 'Anda kembali kembali kehalamn awal ? , Klik ok  untuk melanjutkan ?',

@@ -17,18 +17,18 @@ class Sppd_model extends CI_Model
 
 	function json()
 	{
- 
-		$this->datatables->select('sppd.id as sppd_id,a.nip , b.nip, sppd.nip,a.nama as pimpinan,b.nama as pengikut, letter_code,letter_subject,letter_about,letter_from,letter_content,letter_date,code,date,nip_leader,rate_travel,purpose,transport,place_from,place_to,length_journey,date_go,date_back,government,budget,budget_from,description,result_date,result,result_username,file,file_update,status,jenis_surat_id');
+
+		$this->datatables->select('sppd.id as sppd_id,a.nip , b.nip, sppd.nip,a.nama as pimpinan,b.nama as pengikut, letter_code,letter_subject,letter_about,letter_from,letter_content,letter_date,code,date,nip_leader,rate_travel,purpose,transport,place_from,place_to,length_journey,date_go,date_back,government,budget,budget_from,description,result_date,result,result_username,file,file_update,status,jenis_surat_id,c.parameter,c.nama_jenis');
 		$this->datatables->from('sppd');
 		// //add this line for join
 		$this->datatables->join('pegawai a', 'a.nip = sppd.nip_pejabat', 'left outer');
 		$this->datatables->join('pegawai b', 'b.nip = sppd.nip_leader', 'left outer');
-
+		$this->datatables->join('jenis_surat c', 'sppd.jenis_surat_id = c.id_jenis', 'left outer');
 		$jenis_sppd = $this->input->post('jenisppd_id');
 		if ($jenis_sppd != '') {
 			$this->datatables->where('sppd.jenis_surat_id', $jenis_sppd);
 		}
-		$this->datatables->add_column('action',  "<a href='#' to='" . site_url('sppd/printdata/$1/' . sha1('ismarianto_zayed' . md5('$1'))) . "' class='btn btn-info btn-xs delete' id='konfirmasi'><i class='fa fa-print'></i> Print</a>" . "" . anchor(site_url('sppd/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'sppd_id');
+		$this->datatables->add_column('action',  "<a href='#' data-id='$2' data-judul='" . strtoupper('$2') . "' data-idp='$1' class='btn btn-info btn-xs delete' id='konfirmasi'><i class='fa fa-print'></i> Print</a>" . "" . anchor(site_url('sppd/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'sppd_id,parameter');
 		return $this->datatables->generate();
 	}
 

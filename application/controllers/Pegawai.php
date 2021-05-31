@@ -346,12 +346,18 @@ class Pegawai extends CI_Controller
 	}
 
 
-	public function json_select()
+	public function json_select($id_pegawai = null)
 	{
+
+
+
 		$data = $this->db->get('pegawai');
 		$row = [];
 		foreach ($data->result_array() as $list) {
-			$row[] = ['val' => $list['nip'], 'text' => $list['nama'] . '-' . $list['nip']];
+			if ($id_pegawai != '') {
+				$selected = $list['nip'] == $id_pegawai ? 'selected' : '';
+			}
+			$row[] = ['val' => $list['nip'], 'text' => $list['nama'] . '-' . $list['nip'], $selected];
 		}
 		echo json_encode($row, JSON_PRETTY_PRINT);
 	}

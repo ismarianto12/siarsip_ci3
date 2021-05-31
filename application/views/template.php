@@ -42,6 +42,10 @@
 </head>
 
 <script type="text/javascript">
+    function base_url() {
+        return '<?= base_url() ?>';
+    }
+
     function googleTranslateElementInit2() {
         new google.translate.TranslateElement({
             pageLanguage: 'id',
@@ -157,7 +161,7 @@
         })
     });
 
-    function detailData(n) {  
+    function detailData(n) {
         $.dialog({
             title: 'Detail surat masuk',
             content: 'url:<?= base_url('tsuratmasuk/pagedata'); ?>/' + n,

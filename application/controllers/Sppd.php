@@ -8,7 +8,6 @@ class Sppd extends CI_Controller
 	{
 		parent::__construct();
 		login_access();
-		// hak_akses(); 
 		$this->load->model(['Sppd_model', 'Pegawai_model']);
 		$this->load->library(['form_validation', 'datatables', 'Cpdf']);
 	}
@@ -16,7 +15,7 @@ class Sppd extends CI_Controller
 	public function index()
 	{
 		$x['judul'] = 'Data : Sppd';
-		$x['sppdjenis'] = $this->db->select('nama_jenis as name, id_jenis as  id')->from('jenis_surat')->where('parameter', 'SPPD')->get();
+		$x['sppdjenis'] = $this->db->select('nama_jenis as name, id_jenis as  id')->from('jenis_surat')->where('kode_surat', 'SPPD')->get();
 		$this->template->load('template', 'sppd/sppd_list', $x);
 	}
 
@@ -45,189 +44,6 @@ class Sppd extends CI_Controller
 		$this->load->view('sppd/sppd_pdf', $render);
 	}
 
-	private function _datasppd($id)
-	{
-		return $this->db->select('
-		sppd.id, 
-		sppd.letter_code, 
-		sppd.letter_subject, 
-		sppd.letter_about, 
-		sppd.letter_from, 
-		sppd.jenis_surat_id, 
-		sppd.city, 
-		sppd.basic, 
-		sppd.datetime_update, 
-		sppd.datetime_insert, 
-		sppd.username_update, 
-		sppd.username, 
-		sppd.`status`, 
-		sppd.file_update, 
-		sppd.file, 
-		sppd.nip, 
-		sppd.place_from, 
-		sppd.place_to, 
-		sppd.length_journey, 
-		sppd.date_go, 
-		sppd.date_back, 
-		sppd.government, 
-		sppd.budget, 
-		sppd.budget_from, 
-		sppd.description, 
-		sppd.result_date, 
-		sppd.result, 
-		sppd.purpose, 
-		sppd.transport, 
-		sppd.result_username, 
-		sppd.code, 
-		sppd.date, 
-		sppd.nip_pejabat, 
-		sppd.nip_leader, 
-		sppd.rate_travel, 
-		sppd.letter_content, 
-		sppd.letter_date, 
-		jenis_surat.nama_jenis
-		
-		')
-			->from('sppd')
-			->join('jenis_surat', 'sppd.jenis_surat_id = jenis_surat.id_jenis')
-			->where('sppd.id', $id)
-			->get();
-	}
-
-
-	private function printdocx($id, $key = NULL)
-	{
-		$data = $this->Sppd_model->cetak($id);
-		$render = [
-			'judul' => 'cetak data sspd',
-			'sppd'  => $data->row_array(),
-		];
-		$namaFile = 'Surat Perjalanan Dinas Nomor : ' . $data->row()->code;
-
-		$html = $this->load->view('sppd/sppd_pdf', $render, TRUE);
-		require_once 'vendor/autoload.php';
-		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('assets/template/doc/template_surat.docx');
-
-		$no       = 1;
-		$sc       = $this->properti->parsing($data->row()->nip);
-		$pengikut = $this->Pegawai_model->getPengikut($sc);
-
-		$no = 1;
-
-
-		foreach ($pengikut->result_array() as $listp) {
-			$replacements[] = array(
-				'no' => $no,
-				'nama' => $listp['nama'],
-				'golongan_pengikut' => $listp['golongan_pengikut'],
-				'nip' => $listp['nip'],
-				'jabatan_pengikut' => $listp['jabatan'],
-				'place_to' => $listp['place_to'],
-				'length_journey' => $listp['length_journey'],
-				'date_go' => $listp['date_go'],
-				'date_back' => $listp['date_back'],
-				'government' => $listp['government'],
-				'description' => $listp['description']
-			);
-			$no++;
-		}
-		//the head section
-		$logo = (file_exists("./assets/img/" . logo())) ? "assets/img/" . logo() : "assets/img/no_image.png";
-		$templateProcessor->setImageValue('CompanyLogo', $logo);
-		$templateProcessor->cloneBlock('block_name', 0, true, false, $replacements);
-
-		$val = $this->_datasppd($id)->row_array(); 
-		// get  nama pemberi tugas  
-		$perintah  = $this->db->get_where('pegawai', ['nip' => $val['nip_pejabat']])->row_array();
-		$diperintah  = $this->db->get_where('pegawai', ['nip' => $val['nip_leader']])->row_array();
-		$jsurat  = $this->db->get_where('jenis_surat', ['id_jenis' => $val['jenis_surat_id']])->row_array();
-		$jenissuratnya = explode('~', $jsurat['nama_jenis']);
-		// var_dump($jenissuratnya);
-		// exit();
-		// custom value at document name
-		$templateProcessor->setValue('jenis_surat', strtoupper($jenissuratnya[1]));
-		$templateProcessor->setValue('letter_code', $val['letter_code']);
-		$templateProcessor->setValue('basic', $val['basic']);
-		$templateProcessor->setValue('date_go', tgl_indonesia($val['date_go']));
-		$templateProcessor->setValue('date_back', tgl_indonesia($val['date_back']));
-		$templateProcessor->setValue('nama_kota', $val['city']);
-
-		$templateProcessor->setValue('purpose', $val['purpose']);
-		$templateProcessor->setValue('date_back', tgl_indonesia($val['date_back']));
-		$templateProcessor->setValue('city', $val['city']); //menyatakan dari mana surat itu di keluarkan
-		$templateProcessor->setValue('basic', $val['basic']);
-		$templateProcessor->setValue('letter_date', tgl_indonesia(date('Y-m-md')));
-		$templateProcessor->setValue('nama_pemberi_tugas', $perintah['nama']);
-		$templateProcessor->setValue('pangkat_pemberi_tugas', $perintah['jabatan']);
-		$templateProcessor->setValue('nip_pemberi_tugas', $perintah['nip']);
-		$templateProcessor->setValue('jabatan_pemberi_tugas',  $perintah['jabatan']);
-		$templateProcessor->setValue('nama_pegawai_yang_diperintah', $diperintah['nama']);
-		$templateProcessor->setValue('nip_pegawai_yang_diperintah', $diperintah['nip']);
-		$templateProcessor->setValue('jabatan_pegawai_yang_diperintah', $diperintah['jabatan']);
-		$templateProcessor->setValue('pangkat_gol_pegawai_yang_diperintah', $diperintah['golongan']);
-		$templateProcessor->setValue('kota_asal', $diperintah['place_from']);
-		$templateProcessor->setValue('kota_tujuan', $diperintah['place_to']);
-		$templateProcessor->setValue('transpotasi', $val['transport']);
-		$templateProcessor->setValue('lama_hari', $val['length_journey']);
-		$templateProcessor->setValue('tgl_perjalanan', $val['date_go']);
-		$templateProcessor->setValue('purpose', $val['purpose']);
-		$templateProcessor->setValue('atas_beban', $val['budget_from']);
-		$templateProcessor->setValue('rekening', $val['rekening']);
-		$templateProcessor->setValue('nama_penandatangan_sppd', $perintah['nama']);
-		$templateProcessor->setValue('pangkat_penandatangan_sppd', $perintah['jabatan']);
-		$templateProcessor->setValue('no_nip_penandatangan_sppd', $perintah['nip']);
-		$templateProcessor->setValue('tgl_hari_ini', tgl_indonesia(date('Y-m-d')));
-
-		// exit(); 
-		header("Content-Disposition: attachment; filename=$namaFile.docx");
-
-		$templateProcessor->saveAs('php://output');
-	}
-
-	public function printdata($id, $key = NULL)
-	{
-		$data = $this->Sppd_model->cetak($id);
-		if ($data->num_rows() > 0) {
-		} else {
-			echo 'response data null';
-			die;
-		}
-
-		$this->printdocx($id, $key);
-
-		// $action = isset($_GET['action']) ? $_GET['action'] : '';
-		// if ($action == 'rtf') {
-		// 	$this->printdocx($id, $key);
-		// } else {
-		// 	if ($key == $this->properti->key($id)) {
-
-		// 		ob_start();
-		// 		if ($id == '' || $id == 0) {
-		// 			echo 'response data null';
-		// 			die;
-		// 		}
-
-
-		// 		$pdf = new Cpdf();
-		// 		$pdf->showImageErrors = true;
-		// 		$pdf->AddPage('P');
-
-		// 		$render = [
-		// 			'judul' => 'cetak data sspd',
-		// 			'sppd'  => $data->row_array(),
-		// 		];
-		// 		$html = $this->load->view('sppd/sppd_pdf', $render, TRUE);
-
-		// 		$pdf->SetTitle('Surat Perjalanan Dinas Nomor :' . $data->row()->code);
-		// 		$pdf->WriteHTML($html);
-		// 		$pdf->Output('Surat Perjalanan Dinas' . date('Y-m-d H:i:s') . '.pdf', 'I');
-
-		// 		ob_end_flush();
-		// 	} else {
-		// 		echo 'data tidak terparsing dengan baik : ' . $this->properti->key($id);
-		// 	}
-		// }
-	}
 
 	public function detail($id)
 	{
@@ -282,7 +98,7 @@ class Sppd extends CI_Controller
 	public function tambah()
 	{
 
-		$sppdjenis = $this->db->select('nama_jenis as name, id_jenis as  id')->from('jenis_surat')->where('parameter', 'SPPD')->get();
+		$sppdjenis = $this->db->select('nama_jenis as name, id_jenis as  id')->from('jenis_surat')->where('kode_surat', 'SPPD')->get();
 		$letter_code = $this->properti->getCode();
 		$data = array(
 			'sppdjenis' => $sppdjenis,
@@ -327,6 +143,9 @@ class Sppd extends CI_Controller
 			'datetime_update' => set_value('datetime_update'),
 			'city' => set_value('city'),
 			'rekening' => set_value('rekening'),
+			'pimpinan' => set_value('pimpinan'),
+			'kabag' => set_value('kabag'),
+			'kasubag' => set_value('kasubag'),
 
 		);
 		$this->template->load('template', 'sppd/sppd_form', $data);
@@ -382,7 +201,13 @@ class Sppd extends CI_Controller
 				'datetime_insert' => date('Y-m-d H:i:s'),
 				'datetime_update' => date('Y-m-d H:i:s'),
 				'jenis_surat_id' => $this->input->post('sspdjeniss_id'),
-				'rekening' => $this->input->post('rekening')
+				'rekening' => $this->input->post('rekening'),
+				// add element data
+				'pimpinan' => $this->input->post('pimpinan'),
+				'kabag' => $this->input->post('kabag'),
+				'kasubag' => $this->input->post('kasubag'),
+
+
 			];
 			$this->Sppd_model->insert($data);
 			$data = [
@@ -397,7 +222,7 @@ class Sppd extends CI_Controller
 	public function edit($id)
 	{
 		$row = $this->Sppd_model->get_by_id($id);
-		$sppdjenis = $this->db->select('nama_jenis as name, id_jenis as  id')->from('jenis_surat')->where('parameter', 'SPPD')->get();
+		$sppdjenis = $this->db->select('nama_jenis as name, id_jenis as  id')->from('jenis_surat')->where('kode_surat', 'SPPD')->get();
 		if ($row) {
 			$data = array(
 				'judul' => 'Data SPPD',
@@ -442,7 +267,9 @@ class Sppd extends CI_Controller
 				'basic' => set_value('basic', $row->basic),
 				'city' => set_value('city', $row->city),
 				'rekening' => set_value('rekening', $row->rekening),
-
+				'pimpinan' => set_value('pimpinan', $row->pimpinan),
+				'kabag' => set_value('kabag', $row->kabag),
+				'kasubag' => set_value('kasubag', $row->kasubag),
 			);
 			$this->template->load('template', 'sppd/sppd_form', $data);
 		} else {
@@ -505,7 +332,10 @@ class Sppd extends CI_Controller
 				'jenis_surat_id' => $this->input->post('sspdjeniss_id'),
 				'datetime_insert' => date('Y-m-d H:i:s'),
 				'datetime_update' => date('Y-m-d H:i:s'),
-				'rekening' => $this->input->post('rekening')
+				'rekening' => $this->input->post('rekening'),
+				'pimpinan' => $this->input->post('pimpinan'),
+				'kabag' => $this->input->post('kabag'),
+				'kasubag' => $this->input->post('kasubag')
 
 			];
 			$this->Sppd_model->update($id, $data);
@@ -533,9 +363,25 @@ class Sppd extends CI_Controller
 
 	public function _rules()
 	{
-		$this->form_validation->set_rules('nip_pejabat', 'nip_pejabat', 'trim|required');
-		$this->form_validation->set_rules('purpose', 'purpose', 'trim|required');
-		$this->form_validation->set_rules('transport', 'transport', 'trim|required');
+		$this->form_validation->set_rules(
+			'nip_pejabat',
+			'nip_pejabat',
+			'trim|required',
+			array('required' => 'Nip pegawai wajib di isi')
+
+		);
+		$this->form_validation->set_rules(
+			'purpose',
+			'purpose',
+			'trim|required',
+			array('required' => 'Maksud Perjalanan Dinas Wajib di isi')
+		);
+		$this->form_validation->set_rules(
+			'transport',
+			'transport',
+			'trim|required',
+			array('required' => 'Transportasi wajib Di isi')
+		);
 		$this->form_validation->set_rules('place_from', 'place_from', 'trim|required');
 		$this->form_validation->set_rules('place_to', 'place_to', 'trim|required');
 		$this->form_validation->set_rules('length_journey', 'length_journey', 'trim|required');

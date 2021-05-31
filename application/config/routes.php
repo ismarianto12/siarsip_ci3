@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -52,5 +52,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['cetak_lembar_disposisi/(:any)'] = 'tdisposisi/cetak_lembar_disposisi/$1';
 $route['logout'] = 'dasboard/logout';
+
+// print doc
+$route['print/(:any)/(:any)'] = 'Sppdprint/printdata/$1/$2';
+$route['print/(:any)/(:any)'] = 'Sppdprint/printdata/$1/$2';
+
+
+
 $route['404_override'] = 'dasboard/_404';
 $route['translate_uri_dashes'] = FALSE;
