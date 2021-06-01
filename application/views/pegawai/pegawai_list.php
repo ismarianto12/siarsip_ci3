@@ -5,11 +5,7 @@
 
              <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
              <div class='table-responsive'>
-                 <?php echo anchor(site_url('pegawai/tambah'), 'Tambah Data', 'class="btn bg-navy btn-flat margin"'); ?>
-                 <?php echo anchor(site_url('pegawai/excel'), '<i class=\'fa fa-file-excel-o\'></i>Excel', 'class="btn bg-orange btn-flat margin"'); ?>
-                 <?php echo anchor(site_url('pegawai/word'), '<i class=\'fa fa-file-word-o\'></i>Word', 'class="btn bg-red btn-flat margin"'); ?>
 
-                 <br /><br />
                  <table class="table" id="datatables">
                      <thead>
                          <tr>
@@ -57,9 +53,28 @@
                              processing: true,
                              serverSide: true,
                              ajax: {
-                                 "url": "pegawai/json",
+                                 "url": "<?= base_url('pegawai/json') ?>",
                                  "type": "POST"
                              },
+                             dom: 'Bfrtip',
+                             buttons: [{
+                                     extend: 'copyHtml5',
+                                     className: 'btn btn-info btn-xs'
+                                 },
+                                 {
+                                     extend: 'excelHtml5',
+                                     className: 'btn btn-success btn-xs'
+                                 },
+                                 {
+                                     extend: 'csvHtml5',
+                                     className: 'btn btn-warning btn-xs'
+                                 },
+                                 {
+                                     extend: 'pdfHtml5',
+                                     className: 'btn btn-prirmay btn-xs'
+                                 }
+                             ],
+
                              columns: [{
                                      "data": "id",
                                      "orderable": false

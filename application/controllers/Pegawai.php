@@ -110,8 +110,11 @@ class Pegawai extends CI_Controller
 		$this->_rules();
 
 		if ($this->form_validation->run() == FALSE) {
-			// $this->tambah();
-			print_r(validation_errors());
+			echo json_encode([
+				'status' => 2,
+				'msg' => validation_errors('<li><b>', '</b></li>'),
+			]);
+			// print_r(validation_errors());
 		} else {
 			$data = array(
 				'nip' => $this->input->post('nip', TRUE),
@@ -139,7 +142,10 @@ class Pegawai extends CI_Controller
 			);
 			$this->Pegawai_model->insert($data);
 			$this->session->set_flashdata('message', '<div class="alert alert-success fade-in"><i class="fa fa-check"></i>Data Berhasil Di Tambahkan.</div>');
-			redirect(site_url('pegawai'));
+			echo json_encode([
+				'status' => 1,
+				'msg' => 'data berhasil di simpan',
+			]);
 		}
 	}
 
@@ -186,8 +192,10 @@ class Pegawai extends CI_Controller
 		$this->_rules();
 
 		if ($this->form_validation->run() == FALSE) {
-
-			$this->edit($this->input->post('id', TRUE));
+			echo json_encode([
+				'status' => 2,
+				'msg' => validation_errors('<li><b>', '</b></li>'),
+			]);
 		} else {
 			$data = array(
 				'nip' => $this->input->post('nip', TRUE),
@@ -216,7 +224,10 @@ class Pegawai extends CI_Controller
 
 			$this->Pegawai_model->update($this->input->post('id', TRUE), $data);
 			$this->session->set_flashdata('message', '<div class="alert alert-success fade-in"><i class="fa fa-check"></i>Edit Data Berhasil.</div>');
-			redirect(site_url('pegawai'));
+			echo json_encode([
+				'status' => 1,
+				'msg' => 'data berhasil di simpan',
+			]);
 		}
 	}
 

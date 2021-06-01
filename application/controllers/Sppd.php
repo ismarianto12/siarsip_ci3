@@ -270,6 +270,7 @@ class Sppd extends CI_Controller
 				'pimpinan' => set_value('pimpinan', $row->pimpinan),
 				'kabag' => set_value('kabag', $row->kabag),
 				'kasubag' => set_value('kasubag', $row->kasubag),
+				'sspdjeniss_id' => set_value('sspdjeniss_id', $row->sspdjeniss_id)
 			);
 			$this->template->load('template', 'sppd/sppd_form', $data);
 		} else {
@@ -388,7 +389,6 @@ class Sppd extends CI_Controller
 		$this->form_validation->set_rules('date_go', 'date_go', 'trim|required');
 		$this->form_validation->set_rules('date_back', 'date_back', 'trim|required');
 		$this->form_validation->set_rules('nip_leader', 'nip_leader', 'trim|required');
-		// $this->form_validation->set_rules('rate_travel', 'rate_travel', 'trim|required');
 		$this->form_validation->set_rules('nip[]', 'nip', 'trim|required');
 		$this->form_validation->set_rules('government', 'government', 'trim|required');
 		$this->form_validation->set_rules('budget_from', 'budget_from', 'trim|required');

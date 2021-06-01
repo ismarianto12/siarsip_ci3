@@ -9,7 +9,7 @@
         <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
     </ul>
 
-    <form action="<?= $action ?>" method="post" class='form-horizontal form-bordered'>
+    <form method="post" id="pegawai_form" class='form-horizontal form-bordered'>
         <div class="tab-content">
             <br /><br />
             <div class="tab-pane active" id="umum">
@@ -60,13 +60,13 @@
                 <div class="form-group">
                     <label for="varchar" class='control-label col-md-3'><b>Tahun Lulus<?php echo form_error('pendidikan_lulus') ?></b></label>
                     <div class='col-md-9'>
-                        <input type="text" class="form-control" name="pendidikan_lulus" id="pendidikan_lulus" placeholder="Pendidikan Lulus" value="<?php echo $pendidikan_lulus; ?>" />
+                        <input type="date" data-date-format="YYYY" class="form-control" name="pendidikan_lulus" id="pendidikan_lulus" value="<?php echo $pendidikan_lulus; ?>" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="varchar" class='control-label col-md-3'><b>Pendidikan Ijazah<?php echo form_error('pendidikan_ijazah') ?></b></label>
+                    <label for="varchar" class='control-label col-md-3'><b>Tahun Ijazah<?php echo form_error('pendidikan_ijazah') ?></b></label>
                     <div class='col-md-9'>
-                        <input type="text" class="form-control" name="pendidikan_ijazah" id="pendidikan_ijazah" placeholder="Pendidikan Ijazah" value="<?php echo $pendidikan_ijazah; ?>" />
+                        <input type="text" class="form-control" name="pendidikan_ijazah" id="pendidikan_ijazah" placeholder="Tahun Ijazah" value="<?php echo $pendidikan_ijazah; ?>" />
                     </div>
                 </div>
 
@@ -156,29 +156,55 @@
 
 
 <script>
-    // $(function() {
-    //     $('#pegawai_form').on('submit', function(e) {
-    //         e.preventDefault();
-    //         $.ajax({
-    //             url: '<?php echo $action; ?>',
-    //             data: $(this).serialize(),
-    //             chace: false,
-    //             asych: false,
-    //             success: function(data) {
-    //                 $.alert({
-    //                     title: false,
-    //                     content: 'url:<?= $action ?>',
-    //                     contentLoaded: function(data, status, xhr) {
-    //                         // when content is fetched
-    //                         alert(status);
-    //                     }
-    //                 });
-    //             },
-    //             error: function(data) {
-    //                 $.alert(data);
-
-    //             }
-    //         })
-    //     });
-    // });
+    $(function() {
+        $('#pegawai_form').on('submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: '<?= $action; ?>',
+                data: $(this).serialize(),
+                method: 'POST',
+                dataType: 'json',
+                chace: false,
+                asych: false,
+                success: function(data) {
+                    // alert(data.status);
+                    if (data.status == 1) {
+                        window.location.href = '<?= base_url('pegawai') ?>';
+                    } else if (data.status == 2) {
+                        $('#myModal').modal('show');
+                        $('#showval').html('<h3> Terdapat kesalahan berikut : </h3><ol>' + data.msg + '</ol>');
+                    }
+                },
+                error: function(data) {
+                    Swal('sistem tidak bisa response');
+                }
+            })
+        });
+    });
 </script>
+
+
+
+
+
+<!-- show modal alert -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Keterangan</h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="showval"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
