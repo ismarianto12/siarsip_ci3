@@ -57,6 +57,21 @@
             dataParser: dataParserB
         });
 
+        // pimpinan
+        $("#pimpinan_spt").tinyselect({
+            dataUrl: "<?= base_url('pegawai/json_select/' . $pimpinan) ?>",
+        });
+        //kabag
+        $("#kabag_spt").tinyselect({
+            dataUrl: "<?= base_url('pegawai/json_select/' . $kabag) ?>",
+            dataParser: dataParserB
+        });
+        //kasubag
+        $("#kasubag_spt").tinyselect({
+            dataUrl: "<?= base_url('pegawai/json_select/' . $kasubag) ?>",
+            dataParser: dataParserB
+        });
+
         $("#nip_diperintah").tinyselect({
             dataUrl: "<?= base_url('pegawai/json_select') ?>",
             dataParser: dataParserB
@@ -86,7 +101,182 @@
                     <form id="trsppd" action="<?= $action ?>" method="POST" class="form-horizontal">
                         <div class="card-body">
                             <div class="col-md-6">
-                                Surat Peritah Perjalanan dinas
+                                <label for="varchar" class='control-label col-md-4'><b>JENIS SURAT <?php echo form_error('sspdjeniss_id') ?></b></label>
+                                <div class='col-md-7'>
+                                    <select id="sspdjeniss_id" name="sspdjeniss_id" class="form-control">
+                                        <option value="">Pilih Jenis Surat</option>
+
+                                        <?php foreach ($sppdjenis->result() as $sptjeniss) :
+
+                                            $selected = ($sptjeniss->id == $sspdjeniss_id) ? "selected" : "";
+
+                                            $namespd = str_replace('~', ' ', $sptjeniss->name);
+                                            $ket     = str_replace('SPPD', 'SPT ', $namespd);
+
+                                        ?>
+                                            <option bdata="<?= $ket ?>" jsppd="<?= $namespd ?>" value="<?= $sptjeniss->id ?>"><?= $namespd ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+
+                                <br /> <br />
+                                <br />
+
+                                <div class="clearfix"></div>
+                                <div class="callout callout-info">
+                                    Surat Perintah tugas(SPT)
+                                </div>
+                                <hr />
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Nomor Surat Perintah Tugas<?php echo form_error('no_spt') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <input type="text" name="no_spt" id="no_spt" class="form-control sc-input-required" placeholder="Nomor Surat Perintah Tugas" value="<?= $letter_code ?>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Jenis SPT <?php echo form_error('letter_code') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <input type="text" name="jenisspt_id" name="jenisspt_id" class="form-control" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Tgl Berangkat<?php echo form_error('date_go') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <input type="date" class="form-control" name="date_go" id="date_go" placeholder="Code" value="<?php echo $date_go; ?>" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="date" class='control-label col-md-4'><b>Tgl Kembali<?php echo form_error('date') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <input type="date" class="form-control" name="date_back" id="date_back" placeholder="Date" value="<?php echo $date; ?>" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Pejabat yang di perintah<?php echo form_error('nip_pejabat') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <?php
+                                        if ($this->uri->segment(3) == 'edit') {
+                                            $nip_leader  = $this->properti->parsing($nip_leader);
+                                            $ldiperintah = $this->Pegawai_model->getPengikut($nip_leader);
+                                            $lnama       = $ldiperintah->row()->nama;
+                                            $lnip        = $ldiperintah->row()->nip;
+                                            echo 'pejabat yang di perintah sebelumnya . <br /><span class="label label-success">' . $lnama . '-' . $lnip . '</span> <br />';
+                                        }
+                                        ?>
+                                        <br />
+                                        <select id="nip_diperintah" name="nip_leader" class="form-control">
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Lama Perjalanan<?php echo form_error('length_journey') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <input type="number" class="form-control" name="length_journey" id="length_journey" placeholder="Lama jalan" value="<?php echo $length_journey; ?>" style="
+    width: 60px;
+    display: inline-flex;
+"> / Hari
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Pengikut<?php echo form_error('nip') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <?php if ($this->uri->segment(2) == 'edit') {
+                                            echo '
+                                        Data pengikut yang di pilih sebelum nya .<ol>';
+                                            $sc       = $this->properti->parsing($nip);
+                                            $pengikut = $this->Pegawai_model->getPengikut($sc);
+                                            foreach ($pengikut->result_array() as $listp) {
+                                                echo '<li><span class="label label-success">' . $listp['nama'] . '-' . $listp['nip'] . '</span><br /><br /></li>';
+                                            }
+                                            echo '</ol>';
+                                        } ?>
+
+                                        <select name="nip[]" class="js-example-basic-multiple form-control" multiple="multiple">
+                                            <?php foreach ($this->db->get('pegawai')->result_array() as $list) { ?>
+                                                <option value="<?= $list['nip'] ?>"><?= $list['nama'] ?> - <?= $list['nip'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nip" class='control-label col-md-4'><b>Instansi (Pembebanan Anggaran)<?php echo form_error('nip') ?></b></label>
+
+                                    <div class='col-md-7'>
+                                        <input type="text" name="government" id="government" class="form-control sc-input-required" placeholder="Instansi (Pembebanan Anggaran)" value="<?= $government ?>">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="nip" class='control-label col-md-4'><b>Rekening Anggaran<?php echo form_error('rekening') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <input type="text" name="rekening" id="rekening" class="form-control sc-input-required" placeholder="" value="<?= $rekening ?>">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="budget_from" class='control-label col-md-4'><b>Mata Aggaran<?php echo form_error('budget_from') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <input type="text" name="budget_from" id="budget_from" class="form-control sc-input-required" placeholder="Mata Aggaran" value="<?= $budget_from ?>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Keterangan<?php echo form_error('description') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <input type="text" name="description" id="description" value="<?= $description ?>" class="form-control" placeholder="Keterangn Lain">
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Dasar Surat<?php echo form_error('place_from') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <input type="text" name="letter_content" id="letter_content" class="form-control  sc-input-required" placeholder="Dasar Surat" value="<?= $letter_content ?>">
+
+                                    </div>
+                                </div>
+
+
+                                <h4><i class="fa fa fa-files"></i>Data Tambahan Tebusan Surat</h4>
+                                <hr />
+
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Pimpinan (Walikota ,Sekda, Wakil Walikota)<?php echo form_error('pimpinan_spt') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <select name="pimpinan_spt" id="pimpinan_spt" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Kepala Bagian UMUM<?php echo form_error('kabag') ?></b></label>
+                                    <div class='col-md-7'>
+
+                                        <select name="kabag_spt" id="kabag_spt" class="form-control">
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Kepala sub bagian<?php echo form_error('kasubag') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <select name="kasubag_spt" id="kasubag_spt" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <br /> <br />
+                                <br />
+
+                                <div class="callout callout-info">
+                                    Surat Peritah Perjalanan dinas</div>
                                 <hr />
                                 <div class="form-group">
 
@@ -96,23 +286,14 @@
                                             <input type="text" name="letter_code" id="letter_code" class="form-control sc-input-required" placeholder="Nomor Surat Perjalanan Dinas" value="<?= $letter_code ?>">
                                         </div>
                                     </div>
-                                    <label for="varchar" class='control-label col-md-4'><b>Jenis SSPD <?php echo form_error('sspdjeniss_id') ?></b></label>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>JENIS SPPD</b></label>
                                     <div class='col-md-7'>
-                                        <select id="sspdjeniss_id" name="sspdjeniss_id" class="form-control">
-                                            <?php foreach ($sppdjenis->result() as $sptjeniss) :
-
-                                                $selected = ($sptjeniss->id == $sspdjeniss_id) ? "selected" : "";
-
-                                                $namespd = str_replace('~', ' ', $sptjeniss->name);
-                                                $ket     = str_replace('SPPD', 'SPT ', $namespd);
-
-                                            ?>
-                                                <option bdata="<?= $ket ?>" value="<?= $sptjeniss->id ?>"><?= $namespd ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
+                                        <input type="text" name="jenisspdata" value="" class="form-control" readonly>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Pejabat yang memberi perintah<?php echo form_error('nip_pejabat') ?></b></label>
                                     <div class='col-md-7'>
@@ -198,149 +379,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                Surat Perintah tugas(SPT)
-                                <hr />
-                                <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Nomor Surat Perintah Tugas<?php echo form_error('no_spt') ?></b></label>
-                                    <div class='col-md-7'>
-                                        <input type="text" name="no_spt" id="no_spt" class="form-control sc-input-required" placeholder="Nomor Surat Perintah Tugas" value="<?= $letter_code ?>">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Jenis SPT <?php echo form_error('letter_code') ?></b></label>
-                                    <div class='col-md-7'>
-                                        <input type="text" name="jenisspt_id" name="jenisspt_id" class="form-control" readonly>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Tgl Berangkat<?php echo form_error('date_go') ?></b></label>
-                                    <div class='col-md-7'>
-                                        <input type="date" class="form-control" name="date_go" id="date_go" placeholder="Code" value="<?php echo $date_go; ?>" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="date" class='control-label col-md-4'><b>Tgl Kembali<?php echo form_error('date') ?></b></label>
-                                    <div class='col-md-7'>
-                                        <input type="date" class="form-control" name="date_back" id="date_back" placeholder="Date" value="<?php echo $date; ?>" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Pejabat yang di perintah<?php echo form_error('nip_pejabat') ?></b></label>
-                                    <div class='col-md-7'>
-                                        <?php
-                                        if ($this->uri->segment(3) == 'edit') {
-                                            $nip_leader  = $this->properti->parsing($nip_leader);
-                                            $ldiperintah = $this->Pegawai_model->getPengikut($nip_leader);
-                                            $lnama       = $ldiperintah->row()->nama;
-                                            $lnip        = $ldiperintah->row()->nip;
-                                            echo 'pejabat yang di perintah sebelumnya . <br /><span class="label label-success">' . $lnama . '-' . $lnip . '</span> <br />';
-                                        }
-                                        ?>
-                                        <br />
-                                        <select id="nip_diperintah" name="nip_leader" class="form-control">
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Lama Perjalanan<?php echo form_error('length_journey') ?></b></label>
-                                    <div class='col-md-7'>
-                                        <input type="number" class="form-control" name="length_journey" id="length_journey" placeholder="Lama jalan" value="<?php echo $length_journey; ?>" style="
-    width: 60px;
-    display: inline-flex;
-"> / Hari
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Pengikut<?php echo form_error('nip') ?></b></label>
-                                    <div class='col-md-7'>
-                                        <?php if ($this->uri->segment(2) == 'edit') {
-                                            echo '
-                                        Data pengikut yang di pilih sebelum nya .<ol>';
-                                            $sc       = $this->properti->parsing($nip);
-                                            $pengikut = $this->Pegawai_model->getPengikut($sc);
-                                            foreach ($pengikut->result_array() as $listp) {
-                                                echo '<li><span class="label label-success">' . $listp['nama'] . '-' . $listp['nip'] . '</span><br /><br /></li>';
-                                            }
-                                            echo '</ol>';
-                                        } ?>
-
-                                        <select name="nip[]" class="js-example-basic-multiple form-control" multiple="multiple">
-                                            <?php foreach ($this->db->get('pegawai')->result_array() as $list) { ?>
-                                                <option value="<?= $list['nip'] ?>"><?= $list['nama'] ?> - <?= $list['nip'] ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="nip" class='control-label col-md-4'><b>Instansi (Pembebanan Anggaran)<?php echo form_error('nip') ?></b></label>
-
-                                    <div class='col-md-7'>
-                                        <input type="text" name="government" id="government" class="form-control sc-input-required" placeholder="Instansi (Pembebanan Anggaran)" value="<?= $government ?>">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="nip" class='control-label col-md-4'><b>Rekening Anggaran<?php echo form_error('rekening') ?></b></label>
-                                    <div class='col-md-7'>
-                                        <input type="text" name="rekening" id="rekening" class="form-control sc-input-required" placeholder="" value="<?= $rekening ?>">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="budget_from" class='control-label col-md-4'><b>Mata Aggaran<?php echo form_error('budget_from') ?></b></label>
-                                    <div class='col-md-7'>
-                                        <input type="text" name="budget_from" id="budget_from" class="form-control sc-input-required" placeholder="Mata Aggaran" value="<?= $budget_from ?>">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Keterangan<?php echo form_error('description') ?></b></label>
-                                    <div class='col-md-7'>
-                                        <input type="text" name="description" id="description" value="<?= $description ?>" class="form-control" placeholder="Keterangn Lain">
-
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Dasar Surat<?php echo form_error('place_from') ?></b></label>
-                                    <div class='col-md-7'>
-                                        <input type="text" name="letter_content" id="letter_content" class="form-control  sc-input-required" placeholder="Dasar Surat" value="<?= $letter_content ?>">
-
-                                    </div>
-                                </div>
-
-
-                                <h4><i class="fa fa fa-files"></i>Data Tambahan Tebusan Surat</h4>
-                                <hr />
-
-                                <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Pimpinan (Walikota ,Sekda, Wakil Walikota)<?php echo form_error('pimpinan') ?></b></label>
-                                    <div class='col-md-7'>
-                                        <select name="pimpinan" id="pimpinan" class="form-control">
-                                        </select>
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Kepala Bagian UMUM<?php echo form_error('kabag') ?></b></label>
-                                    <div class='col-md-7'>
-
-                                        <select name="kabag" id="kabag" class="form-control">
-                                        </select>
-
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Kepala sub bagian<?php echo form_error('kasubag') ?></b></label>
-                                    <div class='col-md-7'>
-                                        <select name="kasubag" id="kasubag" class="form-control">
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
 
@@ -388,8 +426,11 @@
         // if event click on selected leetter of name category
         $('#sspdjeniss_id').on('change', function() {
             data = $('option:selected', this).attr('bdata');
-            // alert(data);
+            namespd = $('option:selected', this).attr('jsppd');
+
             $('input[name="jenisspt_id"]').val(data);
+            $('input[name="jenisspdata"]').val(namespd);
+
 
         });
 

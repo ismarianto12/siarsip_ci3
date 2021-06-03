@@ -146,7 +146,9 @@ class Sppd extends CI_Controller
 			'pimpinan' => set_value('pimpinan'),
 			'kabag' => set_value('kabag'),
 			'kasubag' => set_value('kasubag'),
-
+			'pimpinan_spt' => set_value('pimpinan_spt'),
+			'kabag_spt' => set_value('kabag_spt'),
+			'kasubag_spt' => set_value('kasubag_spt')
 		);
 		$this->template->load('template', 'sppd/sppd_form', $data);
 	}
@@ -206,8 +208,9 @@ class Sppd extends CI_Controller
 				'pimpinan' => $this->input->post('pimpinan'),
 				'kabag' => $this->input->post('kabag'),
 				'kasubag' => $this->input->post('kasubag'),
-
-
+				'pimpinan_spt' => $this->input->post('pimpinan_spt'),
+				'kabag_spt' => $this->input->post('kabag_spt'),
+				'kasubag_spt' => $this->input->post('kasubag_spt')
 			];
 			$this->Sppd_model->insert($data);
 			$data = [
@@ -270,7 +273,10 @@ class Sppd extends CI_Controller
 				'pimpinan' => set_value('pimpinan', $row->pimpinan),
 				'kabag' => set_value('kabag', $row->kabag),
 				'kasubag' => set_value('kasubag', $row->kasubag),
-				'sspdjeniss_id' => set_value('sspdjeniss_id', $row->sspdjeniss_id)
+				'sspdjeniss_id' => set_value('sspdjeniss_id', $row->sspdjeniss_id),
+				'pimpinan_spt' => set_value('pimpinan_spt', $row->pimpinan_spt),
+				'kabag_spt' => set_value('kabag_spt', $row->kabag_spt),
+				'kasubag_spt' => set_value('kasubag_spt', $row->kasubag_spt)
 			);
 			$this->template->load('template', 'sppd/sppd_form', $data);
 		} else {
@@ -336,7 +342,10 @@ class Sppd extends CI_Controller
 				'rekening' => $this->input->post('rekening'),
 				'pimpinan' => $this->input->post('pimpinan'),
 				'kabag' => $this->input->post('kabag'),
-				'kasubag' => $this->input->post('kasubag')
+				'kasubag' => $this->input->post('kasubag'),
+				'pimpinan_spt' => $this->input->post('pimpinan_spt'),
+				'kabag_spt' => $this->input->post('kabag_spt'),
+				'kasubag_spt' => $this->input->post('kasubag_spt')
 
 			];
 			$this->Sppd_model->update($id, $data);
