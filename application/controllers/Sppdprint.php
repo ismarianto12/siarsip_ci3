@@ -190,22 +190,23 @@ class Sppdprint extends CI_Controller
         // exit();  
 
         //data untuk spt
-        $templateProcessor->setValue('nama_pimpinan', $sptpimpinan['nama']);
-        $templateProcessor->setValue('nama_kabag', $sptkabag['nama']);
-        $templateProcessor->setValue('nama_kasubag', $sptkasubag['nama']);
-        $templateProcessor->setValue('pangkat_pimpinan', $sptpimpinan['pangkat']);
-        $templateProcessor->setValue('pangkat_kabag', $sptkabag['pangkat']);
-        $templateProcessor->setValue('pangkat_kasubag', $sptkasubag['pangkat']);
-        $templateProcessor->setValue('jabatan_pimpinan', $sptpimpinan['jabatan']);
-        $templateProcessor->setValue('jabatan_kabag', $sptkabag['jabatan']);
-        $templateProcessor->setValue('jabatan_kasubag', $sptkasubag['jabatan']);
-        $templateProcessor->setValue('nip_pimpinan', $sptpimpinan['nip']);
-        $templateProcessor->setValue('nip_kabag', $sptkabag['nip']);
-        $templateProcessor->setValue('nip_kasubag', $sptkasubag['nip']);
-        $templateProcessor->setValue('golongan_pimpinan', $sptpimpinan['nip']);
-        $templateProcessor->setValue('golongan_kabag', $sptkabag['nip']);
-        $templateProcessor->setValue('golongan_kasubag', $sptkasubag['nip']);
+        $templateProcessor->setValue('nama_pimpinan_spt', $sptpimpinan['nama']);
+        $templateProcessor->setValue('nama_kabag_spt', $sptkabag['nama']);
+        $templateProcessor->setValue('nama_kasubag_spt', $sptkasubag['nama']);
+        $templateProcessor->setValue('pangkat_pimpinan_spt', $sptpimpinan['pangkat']);
+        $templateProcessor->setValue('pangkat_kabag_spt', $sptkabag['pangkat']);
+        $templateProcessor->setValue('pangkat_kasubag_spt', $sptkasubag['pangkat']);
+        $templateProcessor->setValue('jabatan_pimpinan_spt', $sptpimpinan['jabatan']);
+        $templateProcessor->setValue('jabatan_kabag_spt', $sptkabag['jabatan']);
+        $templateProcessor->setValue('jabatan_kasubag_spt', $sptkasubag['jabatan']);
+        $templateProcessor->setValue('nip_pimpinan_spt', $sptpimpinan['nip']);
+        $templateProcessor->setValue('nip_kabag_spt', $sptkabag['nip']);
+        $templateProcessor->setValue('nip_kasubag_spt', $sptkasubag['nip']);
+        $templateProcessor->setValue('golongan_pimpinan_spt', $sptpimpinan['nip']);
+        $templateProcessor->setValue('golongan_kabag_spt', $sptkabag['nip']);
+        $templateProcessor->setValue('golongan_kasubag_spt', $sptkasubag['nip']);
         //end data spt
+        $templateProcessor->setValue('letter_code_spt', $val['letter_code_spt']);
 
         header("Content-Disposition: attachment; filename=$donwloadfl.docx");
 

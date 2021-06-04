@@ -210,7 +210,9 @@ class Sppd extends CI_Controller
 				'kasubag' => $this->input->post('kasubag'),
 				'pimpinan_spt' => $this->input->post('pimpinan_spt'),
 				'kabag_spt' => $this->input->post('kabag_spt'),
-				'kasubag_spt' => $this->input->post('kasubag_spt')
+				'kasubag_spt' => $this->input->post('kasubag_spt'),
+				'letter_code_spt' => $this->input->post('no_spt')
+
 			];
 			$this->Sppd_model->insert($data);
 			$data = [
@@ -345,7 +347,8 @@ class Sppd extends CI_Controller
 				'kasubag' => $this->input->post('kasubag'),
 				'pimpinan_spt' => $this->input->post('pimpinan_spt'),
 				'kabag_spt' => $this->input->post('kabag_spt'),
-				'kasubag_spt' => $this->input->post('kasubag_spt')
+				'kasubag_spt' => $this->input->post('kasubag_spt'),
+				'letter_code_spt' => $this->input->post('no_spt')
 
 			];
 			$this->Sppd_model->update($id, $data);
