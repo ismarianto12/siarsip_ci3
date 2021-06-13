@@ -324,12 +324,9 @@ class Sppdprint extends CI_Controller
         $templateProcessor->setValue('golongan_kabag_spt', $sptkabag['nip']);
         $templateProcessor->setValue('golongan_kasubag_spt', $sptkasubag['nip']);
         //end data spt
-        $templateProcessor->setValue('letter_code_spt', $val['letter_code_spt']);  
-        // var_dump($templateProcessor);
-        // exit(); 
+        $templateProcessor->setValue('letter_code_spt', $val['letter_code_spt']);
         $filedownload = 'SPT' . date('Y-m-d H:i:s');
         header("Content-Disposition: attachment; filename=$filedownload.docx");
-
         $templateProcessor->saveAs('php://output');
     }
     // action print

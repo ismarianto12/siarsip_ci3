@@ -4,54 +4,60 @@ if ($sc == 'sc') {
   echo "<div class='callout callout-success'>Perubahan pada settingan menu berhasil di simpan.</div>";
 }
 echo $this->session->flashdata('pesan');
+
 ?>
 <div class="row" style="background: #fff;padding: 20px">
   <link href="<?= base_url('assets')  ?>/template/css/menu.css" rel="stylesheet">
   <script src="<?= base_url('assets/template/js/jquery.nestable.js') ?>"></script>
   <div class="widget">
-    <div class="col-lg-8">
-      <div class="ibox-title">
-        <h3>Struktur Menu</h3>
-      </div><!-- /.box-header -->
-      <div class="ibox-content">
+    <?php if (!$this->session->userdata('rian_ss') == 'mm') {  ?>
+      <h4>Mohon maaf feature ini hanya ada untuk pembelian aplikasi terima kasih</h4>
+    <?php
 
-        <br  /><br  />
-        <input type="hidden" id="id">
-        <div class="dd" id="nestable">
-          <?php
-          $ref   = [];
-          $items = [];
-          foreach ($record->result() as $data) {
-            $thisRef = &$ref[$data->id_menu];
-            $thisRef['id_parent'] = $data->id_parent;
-            $thisRef['icon'] = $data->icon;
-            $thisRef['level'] = $data->level;
-            $thisRef['nama_menu'] = $data->nama_menu;
-            $thisRef['link'] = $data->link;
-            $thisRef['id_menu'] = $data->id_menu;
-            $thisRef['position'] = $data->position;
+    } else { ?>
 
-            if ($data->id_parent == 0) {
-              $items[$data->id_menu] = &$thisRef;
-            } else {
-              $ref[$data->id_parent]['child'][$data->id_menu] = &$thisRef;
-            }
-          }
+      <div class="col-lg-8">
+        <div class="ibox-title">
+          <h3>Struktur Menu</h3>
+        </div><!-- /.box-header -->
+        <div class="ibox-content">
+          <br /><br />
+          <input type="hidden" id="id">
+          <div class="dd" id="nestable">
+            <?php
+            $ref   = [];
+            $items = [];
+            foreach ($record->result() as $data) {
+              $thisRef = &$ref[$data->id_menu];
+              $thisRef['id_parent'] = $data->id_parent;
+              $thisRef['icon'] = $data->icon;
+              $thisRef['level'] = $data->level;
+              $thisRef['nama_menu'] = $data->nama_menu;
+              $thisRef['link'] = $data->link;
+              $thisRef['id_menu'] = $data->id_menu;
+              $thisRef['position'] = $data->position;
 
-          function get_menu($items, $class = 'dd-list')
-          {
-            $ci = &get_instance();
-            $html = "<ol class=\"" . $class . "\" id=\"menu-id\">";
-            foreach ($items as $key => $value) {
-              $akses_level = str_replace('.', ',', $value['level']);
-              if ($value['position'] == 'Top') {
-                $icon = 'down text-danger';
-                $ket = 'Pindah ke Bottom Menu';
+              if ($data->id_parent == 0) {
+                $items[$data->id_menu] = &$thisRef;
               } else {
-                $icon = 'up text-success';
-                $ket = 'Pindah ke Top Menu';
+                $ref[$data->id_parent]['child'][$data->id_menu] = &$thisRef;
               }
-              $html .= '<li class="dd-item dd3-item" data-id="' . $value['id_menu'] . '" >
+            }
+
+            function get_menu($items, $class = 'dd-list')
+            {
+              $ci = &get_instance();
+              $html = "<ol class=\"" . $class . "\" id=\"menu-id\">";
+              foreach ($items as $key => $value) {
+                $akses_level = str_replace('.', ',', $value['level']);
+                if ($value['position'] == 'Top') {
+                  $icon = 'down text-danger';
+                  $ket = 'Pindah ke Bottom Menu';
+                } else {
+                  $icon = 'up text-success';
+                  $ket = 'Pindah ke Top Menu';
+                }
+                $html .= '<li class="dd-item dd3-item" data-id="' . $value['id_menu'] . '" >
           <div style="cursor:move" class="dd-handle dd3-handle ' . $value['position'] . '"></div>
           <div class="dd3-content"><span id="label_show' . $value['id_menu'] . '">' . $value['nama_menu'] . '</span> 
           <span class="span-right">/<span id="link_show' . $value['id_menu'] . '">' . $value['link'] . '</span> &nbsp;&nbsp; 
@@ -61,99 +67,99 @@ echo $this->session->flashdata('pesan');
           <i class="fa fa-user"></i>  &nbsp;  
           <a class="del-button" id="' . $value['id_menu'] . '"><i class="fa fa-trash"></i></a></span> 
           </div>';
-              if (array_key_exists('child', $value)) {
-                $html .= get_menu($value['child'], 'child');
+                if (array_key_exists('child', $value)) {
+                  $html .= get_menu($value['child'], 'child');
+                }
+                $html .= "</li>";
               }
-              $html .= "</li>";
+              $html .= "</ol>";
+              return $html;
             }
-            $html .= "</ol>";
-            return $html;
-          }
-          print get_menu($items);
-          ?>
+            print get_menu($items);
+            ?>
+          </div>
         </div>
+
+        <input type="hidden" id="nestable-output">
       </div>
 
-      <input type="hidden" id="nestable-output">
-    </div>
+      <div class="col-lg-4">
 
-    <div class="col-lg-4">
-
-      <div class="ibox">
-        <div class="ibox-title">
-          <h3>Source Menu URL</h3>
-        </div><!-- /.box-header -->
-        <div class="ibox-content">
-          <table class="table table-striped">
-            <tr>
-              <td><input class='form-control' id="label" type="text" placeholder="Nama Menu" required><br /><button class="btn btn-success" id="label_cr"><i class="fa fa-search"></i>Cari Menu.</button></td>
-            </tr>
-            <tr>
-              <td><input class='form-control link' type="text" id="link" placeholder="example.com" autocomplete='off' required>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div id="icon">
-                  <a data-toggle="modal" class="btn btn-primary" href="#modal-form">Pilih Icon Menu</a>
-                </div>
-                <div id="modal-form" class="modal fade" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-body">
-                        <h4>Favicon Menu</h4>
-                        <br  /><br  />
-                        <div class="row">
+        <div class="ibox">
+          <div class="ibox-title">
+            <h3>Source Menu URL</h3>
+          </div><!-- /.box-header -->
+          <div class="ibox-content">
+            <table class="table table-striped">
+              <tr>
+                <td><input class='form-control' id="label" type="text" placeholder="Nama Menu" required><br /><button class="btn btn-success" id="label_cr"><i class="fa fa-search"></i>Cari Menu.</button></td>
+              </tr>
+              <tr>
+                <td><input class='form-control link' type="text" id="link" placeholder="example.com" autocomplete='off' required>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div id="icon">
+                    <a data-toggle="modal" class="btn btn-primary" href="#modal-form">Pilih Icon Menu</a>
+                  </div>
+                  <div id="modal-form" class="modal fade" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          <h4>Favicon Menu</h4>
+                          <br /><br />
+                          <div class="row">
 
 
-                          <?php foreach ($icon as $key => $val) { ?>
+                            <?php foreach ($icon as $key => $val) { ?>
 
-                            <div class="form-group">
-                              <label for="int" class='control-label col-md-4'> <span class="text"><?= $key ?></span></label>
-                              <div class='col-md-2'>
-                              <i class="fa <?= $key ?>"></i> <input class="icon_r" type="radio" value="fa <?= $key ?>">  
+                              <div class="form-group">
+                                <label for="int" class='control-label col-md-4'> <span class="text"><?= $key ?></span></label>
+                                <div class='col-md-2'>
+                                  <i class="fa <?= $key ?>"></i> <input class="icon_r" type="radio" value="fa <?= $key ?>">
+                                </div>
                               </div>
-                            </div>
 
 
-                          <?php } ?>
+                            <?php } ?>
 
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="tampil"></div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h4>Level Akses</h4>
-                <br />
-                <?php
-                $level = ['admin', 'user'];
-                foreach ($level as $s) :
-                ?>
-                  <div class="form-group">
-                    <div class="checkbox checkbox-success">
-                      <div id="level_akses_otp"></div>
+                  <div class="tampil"></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Level Akses</h4>
+                  <br />
+                  <?php
+                  $level = ['admin', 'user'];
+                  foreach ($level as $s) :
+                  ?>
+                    <div class="form-group">
+                      <div class="checkbox checkbox-success">
+                        <div id="level_akses_otp"></div>
 
-                      <input id="checkbox<?= $s ?>" type="checkbox" name="checkbox" value="<?= $s ?>">
-                      <label for="checkbox<?= $s ?>"><?= ucfirst($s) ?></label>
+                        <input id="checkbox<?= $s ?>" type="checkbox" name="checkbox" value="<?= $s ?>">
+                        <label for="checkbox<?= $s ?>"><?= ucfirst($s) ?></label>
 
+                      </div>
                     </div>
-                  </div>
-                <?php endforeach; ?>
+                  <?php endforeach; ?>
 
-              </td>
-            </tr>
-            <tr>
-              <td><button class='btn btn-sm btn-success' id="submit">Submit</button> <button class='btn btn-sm btn-default' id="reset">Reset</button></td>
-            </tr>
-          </table>
+                </td>
+              </tr>
+              <tr>
+                <td><button class='btn btn-sm btn-success' id="submit">Submit</button> <button class='btn btn-sm btn-default' id="reset">Reset</button></td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
   </div>
   <script>
     $(function() {
@@ -441,3 +447,5 @@ echo $this->session->flashdata('pesan');
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>
+
+<?php  } ?>
