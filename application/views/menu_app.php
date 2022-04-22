@@ -10,11 +10,7 @@ echo $this->session->flashdata('pesan');
   <link href="<?= base_url('assets')  ?>/template/css/menu.css" rel="stylesheet">
   <script src="<?= base_url('assets/template/js/jquery.nestable.js') ?>"></script>
   <div class="widget">
-    <?php if (!$this->session->userdata('rian_ss') == 'mm') {  ?>
-      <h4>Mohon maaf feature ini hanya ada untuk pembelian aplikasi terima kasih</h4>
-    <?php
-
-    } else { ?>
+  
 
       <div class="col-lg-8">
         <div class="ibox-title">
@@ -447,5 +443,4 @@ echo $this->session->flashdata('pesan');
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>
-
-<?php  } ?>
+ 

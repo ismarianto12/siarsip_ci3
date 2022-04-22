@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/template_lte/plugins/datatables') ?>/dataTables.bootstrap.min.css">
 
     <script src="<?= base_url('assets/template/plugins/components/jquery/dist/jquery.min.js') ?>"></script>
+
     <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://fengyuanchen.github.io/datepicker/css/datepicker.css">
     <script src="<?= base_url() ?>assets/template/plugins/components/datatables/jquery.dataTables.min.js"></script>
@@ -39,21 +40,17 @@
     <!-- notif that show -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+ 
+    <!-- aplikasi js -->
+
 </head>
 
 <script type="text/javascript">
     function base_url() {
         return '<?= base_url() ?>';
     }
-
-    function googleTranslateElementInit2() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'id',
-            autoDisplay: false
-        }, 'google_translate_element2');
-    }
 </script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+
 <style>
     ::-webkit-scrollbar {
         width: 8px;
@@ -81,50 +78,6 @@
         clear: both;
     }
 </style>
-
-
-<script type="text/javascript">
-    function GTranslateGetCurrentLang() {
-        var keyValue = document['cookie'].match('(^|;) ?googtrans=([^;]*)(;|$)');
-        return keyValue ? keyValue[2].split('/')[2] : null;
-    }
-
-    function GTranslateFireEvent(element, event) {
-        try {
-            if (document.createEventObject) {
-                var evt = document.createEventObject();
-                element.fireEvent('on' + event, evt)
-            } else {
-                var evt = document.createEvent('HTMLEvents');
-                evt.initEvent(event, true, true);
-                element.dispatchEvent(evt)
-            }
-        } catch (e) {}
-    }
-
-    function doGTranslate(lang_pair) {
-        if (lang_pair.value) lang_pair = lang_pair.value;
-        if (lang_pair == '') return;
-        var lang = lang_pair.split('|')[1];
-        if (GTranslateGetCurrentLang() == null && lang == lang_pair.split('|')[0]) return;
-        var teCombo;
-        var sel = document.getElementsByTagName('select');
-        for (var i = 0; i < sel.length; i++)
-            if (/goog-te-combo/.test(sel[i].className)) {
-                teCombo = sel[i];
-                break;
-            } if (document.getElementById('google_translate_element2') == null || document.getElementById('google_translate_element2').innerHTML.length == 0 || teCombo.length == 0 || teCombo.innerHTML.length == 0) {
-            setTimeout(function() {
-                doGTranslate(lang_pair)
-            }, 500)
-        } else {
-            teCombo.value = lang;
-            GTranslateFireEvent(teCombo, 'change');
-            GTranslateFireEvent(teCombo, 'change')
-        }
-    }
-</script>
-
 <script type="text/javascript">
     $(function() {
         // $('.callout').fadeOut();
@@ -175,7 +128,7 @@
 
 <?php $data = $this->properti->user($this->session->id_user); ?>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue fixed sidebar-mini">
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
@@ -216,16 +169,6 @@
                             </ul>
                         </li>
 
-                        <li class="dropdown notifications-menu">
-                            <a href="javascript:void(0);" onclick="doGTranslate('id|id');return false;" title="Indonesian" class="gflag nturl dropdown-toggle waves-effect waves-light font-20" data-toggle="dropdown" href="javascript:void(0);">
-                                <img src="<?= base_url('assets/template/plugins/images/id.png') ?>" style="height:20px">
-                            </a>
-                        </li>
-                        <li class="dropdown tasks-menu">
-                            <a href="javascript:void(0);" onclick="doGTranslate('id|en');return false;" title="English" class="gflag nturl dropdown-toggle waves-effect waves-light font-20" data-toggle="dropdown" href="javascript:void(0);">
-                                <img src="<?= base_url('assets/template/plugins/images/en.png') ?>" style="height:20px">
-                            </a>
-                        </li>
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -318,7 +261,8 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
-                                <div class="box-body">
+                                <div class="box-body" id="pjax-container">
+
                                     <?= $contents ?>
                                 </div>
                             </div>
@@ -328,23 +272,18 @@
             <?php } ?>
             <!-- /.content -->
         </div><!-- /.content-wrapper -->
-        <footer class="main-footer">
 
-            <div id="google_translate_element2"></div>
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 2.3.0
-            </div>
-        </footer>
 
 
     </div>
+    <script src="<?= base_url('assets/template/js/jquery.pjax.js') ?>"></script>
 
 
     <script src="<?= base_url() ?>/assets/template_lte/plugins/pace/pace.js"></script>
     <script src="https://fengyuanchen.github.io/datepicker/js/datepicker.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script src="<?= base_url() ?>assets/template/js/sweet-alert.js"></script>
-
+    <script src="<?= base_url('assets/template/js/jquery.slimscroll.js') ?>"></script>
 
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.flash.min.js"></script>
@@ -355,6 +294,17 @@
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js"></script>
 
     <script type="text/javascript">
+        $(function() {
+
+            if ($.support.pjax) {
+
+                console.log('pjax active')
+
+                $(document).pjax('a', '#pjax-container')
+
+            }
+
+        });
         $(document).ajaxStart(function() {
             Pace.restart({
                 catchupTime: 100,
@@ -383,17 +333,24 @@
                 }
             })
 
+            // 
+
 
         });
     </script>
     <script src="<?= base_url() ?>/assets/template_lte/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+ 
 
     <script src="<?= base_url() ?>/assets/template_lte/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?= base_url() ?>/assets/template_lte/dist/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url() ?>/assets/template_lte/dist/js/demo.js"></script>
+
+    <script src="<?= base_url('assets/template/js/aplikasi.js') ?>"></script>
+ 
+
 </body>
 
 </html>

@@ -91,8 +91,13 @@
 
             <?php endif; ?>
 
-            <input type="file" class="form-control" name="file_arsip" id="file_arsip" placeholder="File Arsip" value="<?= $file_arsip ?>" />
+            <input type="text" class="form-control" name="file_arsipxx" id="file_arsipxx" placeholder="File Arsip" value="" />
             <br />
+
+            <div id="preview"></div>
+            <br />
+            <br />
+              
             <span class="callout callout-danger">
               <i class="fa fa-info"></i>
               *** File yang dapat di upload docx Zip,gif,jpg,png,jpeg,PNG,pdf,PDF,doc,docx,mp4,mp3,MP3;
@@ -173,8 +178,7 @@
               <div class='row'>
                 <div class='col-md-offset-3 col-md-9'>
                   <button type="submit" class="btn btn-info"><i class='fa fa-check'></i><?php echo $button ?></button>
-                  <a href="<?php echo site_url('arsip') ?>" class="btn btn-default"><i class='fa fa-share'></i>Cancel</a>
-
+                  <button type="reset" class="btn btn-default"><i class='fa fa-share'></i>Cancel</button>
                 </div>
               </div>
             </div>
@@ -187,3 +191,34 @@
 </div>
 
 <hr />
+
+<!-- file -->
+
+<div id="tampil_cmodal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myLargeModalLabel">Data menu dan modul akses</h4>
+      </div>
+      <div class="modal-body" id="urlnya">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    $('#file_arsipxx').on('click', function() {
+      event.preventDefault();
+      $('#urlnya').html('<iframe width="100%" height="500px" src="<?= base_url('fm/') ?>/filemanager/dialog.php?type=2&field_id=file_arsipxx\'&fldr=" frameborder="0"  style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; "></iframe>');
+      $('#tampil_cmodal').modal('show');
+
+      var link = $('#file_arsipxx').val();
+      $('#preview').html('<a id="file_arsipxx" href="' + link + '" class="btn btn-primary btn-sm">Preview</a>');
+
+    });
+  });
+</script>
