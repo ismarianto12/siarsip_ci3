@@ -330,8 +330,10 @@ class Sppdprint extends CI_Controller
         $templateProcessor->saveAs('php://output');
     }
     // action print
-    public function printdata($id, $jenis_spt, $jen)
+    public function printdata($id = '', $jenis_spt = '', $jen = '')
     {
+
+        // if($)
         if ($id != '' and $jenis_spt != '' and $jen != '') {
 
             $arr = [
@@ -353,6 +355,10 @@ class Sppdprint extends CI_Controller
             } else if ($jenis == 'spt') {
                 $this->printspt($id, $namaFile);
             }
+        } else {
+            echo  json_encode([
+                'status' => 'parmeter mismatch'
+            ]);
         }
     }
 }

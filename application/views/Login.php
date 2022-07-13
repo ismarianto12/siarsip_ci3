@@ -36,7 +36,7 @@
 </head>
 
 <body class="hold-transition login-page" style="
-    background: url('https://fbc-canyon.org/wp-content/uploads/2018/02/coloured-working-scene_1009-224.jpg');
+    background: url('https://img.freepik.com/free-vector/coloured-working-scene_1009-224.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 ">

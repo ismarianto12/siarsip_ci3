@@ -101,7 +101,7 @@
                     <form id="trsppd" action="<?= $action ?>" method="POST" class="form-horizontal">
                         <div class="card-body">
                             <div class="col-md-6">
-                                <label for="varchar" class='control-label col-md-4'><b>JENIS SURAT <?php echo form_error('sspdjeniss_id') ?></b></label>
+                                <label for="varchar" class='control-label col-md-4'><b>Kategori  <?php echo form_error('sspdjeniss_id') ?></b></label>
                                 <div class='col-md-7'>
                                     <select id="sspdjeniss_id" name="sspdjeniss_id" class="form-control">
                                         <option value="">Pilih Jenis Surat</option>
@@ -170,7 +170,7 @@
                                     </div>
 
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Lama Perjalanan<?php echo form_error('length_journey') ?></b></label>
                                     <div class='col-md-7'>
                                         <input type="number" class="form-control" name="length_journey" id="length_journey" placeholder="Lama jalan" value="<?php echo $length_journey; ?>" style="
@@ -178,7 +178,7 @@
     display: inline-flex;
 "> / Hari
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Pengikut<?php echo form_error('nip') ?></b></label>
                                     <div class='col-md-7'>

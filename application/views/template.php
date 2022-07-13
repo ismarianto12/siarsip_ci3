@@ -261,7 +261,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
-                                <div class="box-body" id="pjax-container">
+                                <div class="box-body">
 
                                     <?= $contents ?>
                                 </div>
@@ -276,7 +276,7 @@
 
 
     </div>
-    <script src="<?= base_url('assets/template/js/jquery.pjax.js') ?>"></script>
+    <!-- <script src="<?= base_url('assets/template/js/jquery.pjax.js') ?>"></script> -->
 
 
     <script src="<?= base_url() ?>/assets/template_lte/plugins/pace/pace.js"></script>
@@ -294,49 +294,8 @@
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js"></script>
 
     <script type="text/javascript">
-        $(function() {
-
-            if ($.support.pjax) {
-
-                console.log('pjax active')
-
-                $(document).pjax('a', '#pjax-container')
-
-            }
-
-        });
-        $(document).ajaxStart(function() {
-            Pace.restart({
-                catchupTime: 100,
-                initialRate: .03,
-                minTime: 250,
-                ghostTime: 100,
-                maxProgressPerFrame: 20,
-                easeFactor: 1.25,
-                startOnPageLoad: true,
-                restartOnPushState: true,
-                restartOnRequestAfter: 500,
-                target: 'body',
-                elements: {
-                    checkInterval: 100,
-                    selectors: ['body']
-                },
-                eventLag: {
-                    minSamples: 10,
-                    sampleCount: 3,
-                    lagThreshold: 3
-                },
-                ajax: {
-                    trackMethods: ['GET'],
-                    trackWebSockets: true,
-                    ignoreURLs: []
-                }
-            })
-
-            // 
-
-
-        });
+       
+        
     </script>
     <script src="<?= base_url() ?>/assets/template_lte/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
