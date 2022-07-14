@@ -91,7 +91,7 @@ class jenis_surat extends CI_Controller
     catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'Edit jenis surat.', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
     if ($row) {
       $data = array(
-        'judul' => 'Data jenis_surat',
+        'judul' => 'Master Jenis Surat',
         'button' => 'Update',
         'action' => site_url('jenis_surat/edit_data'),
         'id_jenis' => set_value('id_jenis', $row->id_jenis),

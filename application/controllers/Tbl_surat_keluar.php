@@ -72,7 +72,7 @@ class Tbl_surat_keluar extends CI_Controller
   public function tambah()
   {
     $data = array(
-      'judul' => 'Tambah Tbl surat keluar',
+      'judul' => 'Tambah surat keluar',
       'button' => 'Create',
       'action' => site_url('tbl_surat_keluar/tambah_data_action'),
       'id_jenis_surat' => set_value('id_jenis_surat'),

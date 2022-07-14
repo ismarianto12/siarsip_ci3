@@ -2,39 +2,26 @@
      <div class='col-sm-12'>
          <?= $this->session->userdata('message') ?>
          <div class='white-box'>
-
-
+             <h3 class='box-title m-b-0'><?= $judul ?></h3>
+             <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
              <div class='table-responsive'>
-                 <div class="text-right">
-                     <a href="<?= base_url('pegawai/tambah') ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
-                 </div>
-                 <form class="form-horizontal" method="POST">
-                     <div class="form-group row">
-                         <label class="col-md-3 form-label">Satuan Kerja</label>
-                         <div class="col-md-4">
-                             <select class="form-control" name="satker_id" id="satker_id">
-                                 <?php
-                                    foreach ($this->properti->satker() as $key) {   ?>
+                 <?php echo anchor(site_url('sikd_satker/tambah'), 'Tambah Data', 'class="btn btn-primary"'); ?>
+                 <?php echo anchor(site_url('sikd_satker/excel'), '<i class=\'fa fa-file-excel-o\'></i>Excel', 'class="btn btn-info"'); ?>
+                 <?php echo anchor(site_url('sikd_satker/word'), '<i class=\'fa fa-file-word-o\'></i>Word', 'class="btn btn-danger"'); ?>
 
-                                     <option value="<?= $key->id ?>"><?= $key->nama ?></option>
-
-                                 <?php }
-                                    ?>
-                             </select>
-                         </div>
-                     </div>
-                 </form>
-
+                 <br /><br />
                  <table class="table" id="datatables">
                      <thead>
                          <tr>
                              <th width="80px">No</th>
-                             <th>Nip</th>
+                             <th>Kode</th>
                              <th>Nama</th>
-                             <th>No Hp</th>
-                             <th>Alamat</th>
-                             <th>Tanggal Lahir</th>
-                             <th>Jabatan</th>
+                             <th>Singkatan</th>
+                             <th>Nama Kepala Satker</th>
+                             <th>Klasifikasi</th>
+
+
+
                              <th width="200px">Action</th>
                          </tr>
                      </thead>
@@ -55,7 +42,7 @@
                              };
                          };
 
-                         var t = $("#datatables").DataTable({
+                         var t = $("#datatables").dataTable({
                              initComplete: function() {
                                  var api = this.api();
                                  $('#datatables input')
@@ -72,47 +59,22 @@
                              processing: true,
                              serverSide: true,
                              ajax: {
-                                 "url": "<?= base_url('pegawai/json') ?>",
-                                 "type": "POST",
-                                 "data": function(data) {
-                                     data.satker_id = $('#satker_id').val();
-                                 }
+                                 "url": "sikd_satker/json",
+                                 "type": "POST"
                              },
-                             dom: 'Bfrtip',
-                             buttons: [{
-                                     extend: 'copyHtml5',
-                                     className: 'btn btn-info btn-xs'
-                                 },
-                                 {
-                                     extend: 'excelHtml5',
-                                     className: 'btn btn-success btn-xs'
-                                 },
-                                 {
-                                     extend: 'csvHtml5',
-                                     className: 'btn btn-warning btn-xs'
-                                 },
-                                 {
-                                     extend: 'pdfHtml5',
-                                     className: 'btn btn-prirmay btn-xs'
-                                 }
-                             ],
-
                              columns: [{
                                      "data": "id",
                                      "orderable": false
                                  }, {
-                                     "data": "nip"
+                                     "data": "kode"
                                  }, {
                                      "data": "nama"
                                  }, {
-                                     "data": "no_hp"
+                                     "data": "singkatan"
                                  }, {
-                                     "data": "alamat"
+                                     "data": "nm_ka_satker"
                                  }, {
-                                     "data": "tanggal_lahir"
-                                 },
-                                 {
-                                     "data": "jabatan"
+                                     "data": "klasifikasi"
                                  },
                                  {
                                      "data": "action",
@@ -133,13 +95,8 @@
                          });
                      });
 
-                     $('#satker_id').on('change', function() {
-                         e.preventDefault();
-                         $("#datatables").DataTable().ajax.reload();
-                     });
-
                      function hapus(n) {
-                         Swal({
+                         swal({
                                  title: 'Konfirmasi Hapus',
                                  text: 'Apakah Anda Yakin Untuk Menghapus Data Ini?',
                                  type: 'warning',
@@ -149,8 +106,8 @@
                                  closeOnConfirm: false
                              },
                              function() {
-                                 Swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
-                                 window.location.href = '<?= base_url('pegawai/hapus/') ?>' + n;
+                                 swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
+                                 window.location.href = '<?= base_url('sikd_satker/hapus/') ?>' + n;
                              });
                      }
                  </script>

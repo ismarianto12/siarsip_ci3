@@ -8,7 +8,7 @@ class properti
 
     function  __construct()
     {
-        
+
         $this->ci = &get_instance();
     }
 
@@ -217,5 +217,10 @@ class properti
                 return 'Kosong';
             }
         }
+    }
+    public function satker()
+    {
+        $CI = &get_instance();
+        return $CI->db->select('*')->from('sikd_satker')->get()->result();
     }
 }
