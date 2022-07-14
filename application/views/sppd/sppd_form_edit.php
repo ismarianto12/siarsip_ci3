@@ -1,7 +1,6 @@
 <script src="<?= base_url('assets/template/js/tinyselect.js') ?>"></script>
 <link rel="stylesheet" href="<?= base_url('assets/template/css/tinyselect.css') ?>">
 
-<!--  -->
 <link href="<?= base_url() ?>/assets/template_lte/plugins/select2/select2.min.css" rel="stylesheet" />
 <script src="<?= base_url() ?>/assets/template_lte/plugins/select2/select2.min.js"></script>
 
@@ -21,6 +20,11 @@
         return retval;
     }
     $(function() {
+        // $('[] option[value="<?= $row->bawahan ?>"]').attr('selected', 'selected');
+        $("select[name='bawahan'] option[value='<?= $row->bawahan ?>']").attr('selected', 'selected');
+
+        // $("select option[value='B']").attr("selected","selected");
+
         function dataParserB(data, selected) {
             retval = [{
                 val: "-1",
@@ -32,15 +36,18 @@
             return retval;
         }
 
-        $("#pimpinanan_nip").tinyselect({
+        $("#pimpinanan").tinyselect({
             dataUrl: "<?= base_url('pegawai/json_select') ?>",
             dataParser: dataParserB
         });
+        $('#pimpinanan option[value="<?= $row->pimpinan ?>"]').attr('selected', 'selected');
 
-        $("#nip_pejabat").tinyselect({
-            dataUrl: "<?= base_url('pegawai/json_select/' . $nip_pejabat) ?>",
-            dataParser: dataParserNip
-        });
+        // $("#bawahan").tinyselect({
+        //     dataUrl: "<?= base_url('pegawai/json_select/' . $nip_pejabat) ?>",
+        //     dataParser: dataParserNip
+        // });
+
+
 
         // pimpinan
         $("#pimpinan").tinyselect({
@@ -103,18 +110,24 @@
                             <div class="col-md-6">
                                 <label for="varchar" class='control-label col-md-4'><b>Kategori <?php echo form_error('sspdjeniss_id') ?></b></label>
                                 <div class='col-md-7'>
+                                    <?php
+                                    // var_dump($sppdjenis);
+                                    // die;
+                                    ?>
+
                                     <select id="sspdjeniss_id" name="sspdjeniss_id" class="form-control">
                                         <option value="">Pilih Jenis Surat</option>
 
-                                        <?php foreach ($sppdjenis->result() as $sptjeniss) :
+                                        <?php
 
-                                            $selected = ($sptjeniss->id == $sspdjeniss_id) ? "selected" : "";
+                                        foreach ($sppdjenis->result() as $sptjeniss) :
+
+                                            $selected = ($sptjeniss->id == $row->jenis_surat_id) ? "selected" : "";
 
                                             $namespd = str_replace('~', ' ', $sptjeniss->name);
                                             $ket     = str_replace('SPPD', 'SPT ', $namespd);
-
                                         ?>
-                                            <option bdata="<?= $ket ?>" jsppd="<?= $namespd ?>" value="<?= $sptjeniss->id ?>"><?= $namespd ?></option>
+                                            <option bdata="<?= $ket ?>" jsppd="<?= $namespd ?>" value="<?= $sptjeniss->id ?>" <?= $selected ?>><?= $namespd ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -136,7 +149,7 @@
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Jenis SPT <?php echo form_error('letter_code') ?></b></label>
                                     <div class='col-md-7'>
-                                        <input type="text" name="jenisspt_id" name="jenisspt_id" class="form-control" readonly>
+                                        <input type="text" name="jenisspt_id" name="jenisspt_id" value="<?= $this->properti->getjenis($row->jenis_surat_id) ?>" class="form-control" readonly>
                                     </div>
                                 </div>
 
@@ -153,19 +166,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Pejabat yang di perintah<?php echo form_error('nip_pejabat') ?></b></label>
+                                    <label for="varchar" class='control-label col-md-4'><b>Pejabat yang di perintah<?php echo form_error('bawahan') ?></b></label>
                                     <div class='col-md-7'>
-                                        <?php
-                                        if ($this->uri->segment(3) == 'edit') {
-                                            $nip_leader  = $this->properti->parsing($nip_leader);
-                                            $ldiperintah = $this->Pegawai_model->getPengikut($nip_leader);
-                                            $lnama       = $ldiperintah->row()->nama;
-                                            $lnip        = $ldiperintah->row()->nip;
-                                            echo 'pejabat yang di perintah sebelumnya . <br /><span class="label label-success">' . $lnama . '-' . $lnip . '</span> <br />';
-                                        }
-                                        ?>
-                                        <br />
-                                        <select id="nip_diperintah" name="nip_leader" class="form-control">
+                                        <select id="bawahan" name="bawahan" class="form-control">
                                         </select>
                                     </div>
 
@@ -182,18 +185,7 @@
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Pengikut<?php echo form_error('nip') ?></b></label>
                                     <div class='col-md-7'>
-                                        <?php if ($this->uri->segment(2) == 'edit') {
-                                            echo '
-                                        Data pengikut yang di pilih sebelum nya .<ol>';
-                                            $sc       = $this->properti->parsing($nip);
-                                            $pengikut = $this->Pegawai_model->getPengikut($sc);
-                                            foreach ($pengikut->result_array() as $listp) {
-                                                echo '<li><span class="label label-success">' . $listp['nama'] . '-' . $listp['nip'] . '</span><br /><br /></li>';
-                                            }
-                                            echo '</ol>';
-                                        } ?>
-
-                                        <select name="nip[]" class="js-example-basic-multiple form-control" multiple="multiple">
+                                        <select name="pengikut_nip[]" class="js-example-basic-multiple form-control" multiple="multiple">
                                             <?php foreach ($this->db->get('pegawai')->result_array() as $list) { ?>
                                                 <option value="<?= $list['nip'] ?>"><?= $list['nama'] ?> - <?= $list['nip'] ?></option>
                                             <?php } ?>
@@ -291,21 +283,15 @@
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>JENIS SPPD</b></label>
                                     <div class='col-md-7'>
-                                        <input type="text" name="jenisspdata" value="" class="form-control" readonly>
+                                        <input type="text" name="jenisspdata" class="form-control" value="<?= $this->properti->getjenis($row->jenis_surat_id) ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Pejabat yang memberi perintah<?php echo form_error('nip_pejabat') ?></b></label>
                                     <div class='col-md-7'>
-                                        <?php if ($this->uri->segment(2) == 'edit') {
-                                            $sc       = $this->properti->parsing($nip_pejabat);
-                                            $pengikut = $this->Pegawai_model->getPengikut($sc);
-                                            foreach ($pengikut->result_array() as $listp) {
-                                                echo '<span class="label label-success">' . $listp['nama'] . '-' . $listp['nip'] . '</span> <br />';
-                                            }
-                                        } ?>
+
                                         <br />
-                                        <select id="nip_pejabat" name="nip_pejabat" class="form-control">
+                                        <select id="nip_pejabat" name="nip_leader" class="form-control">
                                         </select>
                                     </div>
                                 </div>

@@ -153,19 +153,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Pejabat yang di perintah<?php echo form_error('nip_pejabat') ?></b></label>
+                                    <label for="varchar" class='control-label col-md-4'><b>Pejabat yang di perintah<?php echo form_error('bawahan') ?></b></label>
                                     <div class='col-md-7'>
-                                        <?php
-                                        if ($this->uri->segment(3) == 'edit') {
-                                            $nip_leader  = $this->properti->parsing($nip_leader);
-                                            $ldiperintah = $this->Pegawai_model->getPengikut($nip_leader);
-                                            $lnama       = $ldiperintah->row()->nama;
-                                            $lnip        = $ldiperintah->row()->nip;
-                                            echo 'pejabat yang di perintah sebelumnya . <br /><span class="label label-success">' . $lnama . '-' . $lnip . '</span> <br />';
-                                        }
-                                        ?>
-                                        <br />
-                                        <select id="nip_diperintah" name="nip_leader" class="form-control">
+                                        
+                                        <select id="bawahan" name="bawahan" class="form-control">
                                         </select>
                                     </div>
 
@@ -180,20 +171,10 @@
                                     </div>
                                 </div> -->
                                 <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Pengikut<?php echo form_error('nip') ?></b></label>
-                                    <div class='col-md-7'>
-                                        <?php if ($this->uri->segment(2) == 'edit') {
-                                            echo '
-                                        Data pengikut yang di pilih sebelum nya .<ol>';
-                                            $sc       = $this->properti->parsing($nip);
-                                            $pengikut = $this->Pegawai_model->getPengikut($sc);
-                                            foreach ($pengikut->result_array() as $listp) {
-                                                echo '<li><span class="label label-success">' . $listp['nama'] . '-' . $listp['nip'] . '</span><br /><br /></li>';
-                                            }
-                                            echo '</ol>';
-                                        } ?>
+                                    <label for="varchar" class='control-label col-md-4'><b>Pengikut<?php echo form_error('pengikut_nip') ?></b></label>
+                                    <div class='col-md-7'> 
 
-                                        <select name="nip[]" class="js-example-basic-multiple form-control" multiple="multiple">
+                                        <select name="pengikut_nip[]" class="js-example-basic-multiple form-control" multiple="multiple">
                                             <?php foreach ($this->db->get('pegawai')->result_array() as $list) { ?>
                                                 <option value="<?= $list['nip'] ?>"><?= $list['nama'] ?> - <?= $list['nip'] ?></option>
                                             <?php } ?>
@@ -295,17 +276,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Pejabat yang memberi perintah<?php echo form_error('nip_pejabat') ?></b></label>
+                                    <label for="varchar" class='control-label col-md-4'><b>Pejabat yang memberi perintah<?php echo form_error('atasan') ?></b></label>
                                     <div class='col-md-7'>
-                                        <?php if ($this->uri->segment(2) == 'edit') {
-                                            $sc       = $this->properti->parsing($nip_pejabat);
-                                            $pengikut = $this->Pegawai_model->getPengikut($sc);
-                                            foreach ($pengikut->result_array() as $listp) {
-                                                echo '<span class="label label-success">' . $listp['nama'] . '-' . $listp['nip'] . '</span> <br />';
-                                            }
-                                        } ?>
-                                        <br />
-                                        <select id="nip_pejabat" name="nip_pejabat" class="form-control">
+                                        
+                                        <select id="atasan" name="atasan" class="form-control">
                                         </select>
                                     </div>
                                 </div>

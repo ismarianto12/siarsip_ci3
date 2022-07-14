@@ -18,11 +18,55 @@ class Sppd_model extends CI_Model
 	function json()
 	{
 
-		$this->datatables->select('sppd.id as sppd_id,a.nip , b.nip, sppd.nip,a.nama as pimpinan,b.nama as pengikut, letter_code,letter_subject,letter_about,letter_from,letter_content,letter_date,code,date,nip_leader,rate_travel,purpose,transport,place_from,place_to,length_journey,date_go,date_back,government,budget,budget_from,description,result_date,result,result_username,file,file_update,status,jenis_surat_id,c.parameter,c.nama_jenis');
+		$this->datatables->select('sppd.id as sppd_id,
+		sppd.pimpinan,
+		sppd.letter_code,
+		sppd.letter_subject,
+		sppd.letter_about,
+		sppd.letter_from,
+		sppd.letter_content,
+		sppd.letter_date,
+		sppd.code,
+		sppd.date,
+		sppd.bawahan,
+		sppd.atasan,
+		sppd.rate_travel,
+		sppd.pengikut_nip,
+		sppd.purpose,
+		sppd.transport,
+		sppd.place_from,
+		sppd.place_to,
+		sppd.length_journey,
+		sppd.date_go,
+		sppd.date_back,
+		sppd.government,
+		sppd.budget,
+		sppd.budget_from,
+		sppd.description,
+		sppd.result_date,
+		sppd.result,
+		sppd.result_username,
+		sppd.file,
+		sppd.jenis_surat_id,
+		sppd.file_update,
+		sppd.status,
+		sppd.username,
+		sppd.username_update,
+		sppd.datetime_insert,
+		sppd.datetime_update,
+		sppd.basic,
+		sppd.city,
+		sppd.rekening,
+		sppd.kabag,
+		sppd.kasubag,
+		sppd.pimpinan_spt,
+		sppd.kabag_spt,
+		sppd.kasubag_spt,
+		sppd.letter_code_spt');
 		$this->datatables->from('sppd');
 		// //add this line for join
-		$this->datatables->join('pegawai a', 'a.nip = sppd.nip_pejabat', 'left outer');
-		$this->datatables->join('pegawai b', 'b.nip = sppd.nip_leader', 'left outer');
+		$this->datatables->join('pegawai a', 'a.nip = sppd.bawahan', 'left outer');
+		$this->datatables->join('pegawai b', 'b.nip = sppd.pimpinan', 'left outer');
 		$this->datatables->join('jenis_surat c', 'sppd.jenis_surat_id = c.id_jenis', 'left outer');
 		$jenis_sppd = $this->input->post('jenisppd_id');
 		if ($jenis_sppd != '') {

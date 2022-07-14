@@ -223,4 +223,12 @@ class properti
         $CI = &get_instance();
         return $CI->db->select('*')->from('sikd_satker')->get()->result();
     }
+    public function getJenis($jenis_id)
+    {
+        $CI = &get_instance();
+        $data =   $CI->db->get_where('jenis_surat', [
+            'id_jenis' => $jenis_id
+        ])->row_array();
+        return isset($data['nama_jenis']) ? str_replace('~', ' ', $data['nama_jenis']) : 'Kosong';
+    }
 }

@@ -337,12 +337,9 @@ class Sppdprint extends CI_Controller
         if ($id != '' and $jenis_spt != '' and $jen != '') {
 
             $arr = [
-                'sptwalikota' => ['file' => 'walikota/SPT_WALIKOTA', 'params' => 'spt'],
-                'sppdwalikota' => ['file' => 'walikota/SPPD_WALIKOTA', 'params' => 'sppd'],
-                'sppdwawako' => ['file' => 'wakilwali/SPPD_WAWAKO', 'params' => 'sppd'],
-                'sptwawako' => ['file' => 'wakilwali/SPT_WAWAKO', 'params' => 'spt'],
-                'sppdsekda' => ['file' => 'setda/SPPD_SETDA', 'params' => 'sppd'],
-                'sptsekda' => ['file' => 'setda/SPT_SETDA', 'params' => 'spt'],
+                'luarkota' => ['file' => 'walikota/SPT_OUTIN', 'params' => 'spt'],
+                'dalamkota' => ['file' => 'walikota/SPPD_OUTIN', 'params' => 'sppd'],
+
             ];
             // var_dump($arr[$jenis_spt]['file']);
             // var_dump($arr[$jenis_spt]['params']);

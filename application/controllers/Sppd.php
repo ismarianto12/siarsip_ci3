@@ -168,7 +168,7 @@ class Sppd extends CI_Controller
 			die;
 		} else {
 			$data = [
-				'nip_pejabat' => $this->input->post('nip_pejabat'),
+				'bawahan' => $this->input->post('bawahan'),
 				'code' => $letter_code,
 				'letter_code' => ($this->input->post('letter_code')) ? $this->input->post('letter_code') : 0,
 				'letter_subject' => ($this->input->post('letter_subject')) ? $this->input->post('letter_subject') : 0,
@@ -183,9 +183,9 @@ class Sppd extends CI_Controller
 				'length_journey' => (int) $this->input->post('length_journey'),
 				'date_go' => ($this->input->post('date_go')) ? $this->input->post('date_go') : date('Y-m-d'),
 				'date_back' => $this->input->post('date_back'),
-				'nip_leader' => $this->input->post('nip_leader'),
+				'ataasan' => $this->input->post('nip_leader'),
 				'rate_travel' => $this->input->post('rate_travel'),
-				'nip' => $diperintah,
+				'pengikut_nip' => $diperintah,
 				'date' => date('Y-m-d'),
 				'result_date' => date('Y-m-d'),
 				'result' => ($this->input->post('result')) ? $this->input->post('result') : 0,
@@ -230,6 +230,7 @@ class Sppd extends CI_Controller
 		$sppdjenis = $this->db->select('nama_jenis as name, id_jenis as  id')->from('jenis_surat')->where('kode_surat', 'SPPD')->get();
 		if ($row) {
 			$data = array(
+				'row' => $row,
 				'judul' => 'Data SPPD',
 				'sppdjenis' => $sppdjenis,
 				'button' => 'Update',
@@ -280,7 +281,7 @@ class Sppd extends CI_Controller
 				'kabag_spt' => set_value('kabag_spt', $row->kabag_spt),
 				'kasubag_spt' => set_value('kasubag_spt', $row->kasubag_spt)
 			);
-			$this->template->load('template', 'sppd/sppd_form', $data);
+			$this->template->load('template', 'sppd/sppd_form_edit', $data);
 		} else {
 			$this->session->set_flashdata('message', '<div class="callout callout-info fade-in">Data Tidak Di Temukan.</div>');
 			redirect(site_url('sppd'));
@@ -309,7 +310,8 @@ class Sppd extends CI_Controller
 
 			$diperintah = implode(',', $this->input->post('nip'));
 			$data = [
-				'nip_pejabat' => $this->input->post('nip_pejabat'),
+				'bawahan' => $this->input->post('bawahan'),
+				'code' => $letter_code,
 				'letter_code' => ($this->input->post('letter_code')) ? $this->input->post('letter_code') : 0,
 				'letter_subject' => ($this->input->post('letter_subject')) ? $this->input->post('letter_subject') : 0,
 				'letter_about' => ($this->input->post('letter_about')) ? $this->input->post('letter_about') : 0,
@@ -323,10 +325,10 @@ class Sppd extends CI_Controller
 				'length_journey' => (int) $this->input->post('length_journey'),
 				'date_go' => ($this->input->post('date_go')) ? $this->input->post('date_go') : date('Y-m-d'),
 				'date_back' => $this->input->post('date_back'),
-				'date' => date('Y-m-d'),
-				'nip_leader' => $this->input->post('nip_leader'),
+				'ataasan' => $this->input->post('nip_leader'),
 				'rate_travel' => $this->input->post('rate_travel'),
-				'nip' => $diperintah,
+				'pengikut_nip' => $diperintah,
+				'date' => date('Y-m-d'),
 				'result_date' => date('Y-m-d'),
 				'result' => ($this->input->post('result')) ? $this->input->post('result') : 0,
 				'result_username' => ($this->input->post('result_username')) ? $this->input->post('result_username') : 0,
@@ -337,11 +339,14 @@ class Sppd extends CI_Controller
 				'government' => $this->input->post('government'),
 				'budget_from' => $this->input->post('budget_from'),
 				'description' => $this->input->post('description'),
+				'basic' => $this->input->post('basic'),
+				'city' => $this->input->post('city'),
 				'letter_content' => $this->input->post('letter_content'),
-				'jenis_surat_id' => $this->input->post('sspdjeniss_id'),
 				'datetime_insert' => date('Y-m-d H:i:s'),
 				'datetime_update' => date('Y-m-d H:i:s'),
+				'jenis_surat_id' => $this->input->post('sspdjeniss_id'),
 				'rekening' => $this->input->post('rekening'),
+				// add element data
 				'pimpinan' => $this->input->post('pimpinan'),
 				'kabag' => $this->input->post('kabag'),
 				'kasubag' => $this->input->post('kasubag'),
