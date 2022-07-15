@@ -82,6 +82,8 @@ class Sppdprint extends CI_Controller
         ];
         $donwloadfl = 'SPPD-' . $data->row()->code;
         require_once 'vendor/autoload.php';
+        var_dump($namaFile.'.doc');die;
+
         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('assets/template/doc/' . $namaFile . '.doc');
 
         // var_dump($templateProcessor);

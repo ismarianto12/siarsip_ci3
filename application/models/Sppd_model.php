@@ -19,7 +19,12 @@ class Sppd_model extends CI_Model
 	{
 
 		$this->datatables->select('sppd.id as sppd_id,
+		( 	 
+			SELECT GROUP_CONCAT(pegawai.nama) from pegawai where FIND_IN_SET(pegawai.nip,sppd.pengikut_nip) > 0
+			
+			) AS pengikut,
 		sppd.pimpinan,
+		a.nama,
 		sppd.letter_code,
 		sppd.letter_subject,
 		sppd.letter_about,

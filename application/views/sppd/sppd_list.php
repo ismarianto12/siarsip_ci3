@@ -112,7 +112,7 @@
                                      "data": "purpose"
                                  },
                                  {
-                                     'data': 'pimpinan'
+                                     'data': 'nama'
                                  },
                                  {
                                      'data': 'pengikut'
