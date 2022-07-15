@@ -1,5 +1,10 @@
 <?php
 
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 class Sppdprint extends CI_Controller
@@ -15,51 +20,47 @@ class Sppdprint extends CI_Controller
     private function _datasppd($id)
     {
         return $this->db->select('
+        sppd.id,
         sppd.pimpinan,
+        sppd.letter_code,
+        sppd.letter_subject,
+        sppd.letter_about,
+        sppd.letter_from,
+        sppd.letter_content,
+        sppd.letter_date,
+        sppd.code,
+        sppd.date,
+        sppd.bawahan,
+        sppd.atasan,
+        sppd.rate_travel,
+        sppd.pengikut_nip,
+        sppd.purpose,
+        sppd.transport,
+        sppd.place_from,
+        sppd.place_to,
+        sppd.length_journey,
+        sppd.date_go,
+        sppd.date_back,
+        sppd.government,
+        sppd.budget,
+        sppd.budget_from,
+        sppd.description,
+        sppd.result_date,
+        sppd.result,
+        sppd.result_username,
+        sppd.file,
+        sppd.jenis_surat_id,
+        sppd.file_update,
+        sppd.status,
+        sppd.username,
+        sppd.username_update,
+        sppd.datetime_insert,
+        sppd.datetime_update,
+        sppd.basic,
+        sppd.city,
+        sppd.rekening,
         sppd.kabag,
-        sppd.kasubag, 
-        sppd.letter_code_spt,
-
-
-		sppd.id, 
-		sppd.letter_code, 
-		sppd.letter_subject, 
-		sppd.letter_about, 
-		sppd.letter_from, 
-		sppd.jenis_surat_id, 
-		sppd.city, 
-		sppd.basic, 
-		sppd.datetime_update, 
-		sppd.datetime_insert, 
-		sppd.username_update, 
-		sppd.username, 
-		sppd.`status`, 
-		sppd.file_update, 
-		sppd.file, 
-		sppd.nip, 
-		sppd.place_from, 
-		sppd.place_to, 
-		sppd.length_journey, 
-		sppd.date_go, 
-		sppd.date_back, 
-		sppd.government, 
-		sppd.budget, 
-		sppd.budget_from, 
-		sppd.description, 
-		sppd.result_date, 
-		sppd.result, 
-		sppd.purpose, 
-		sppd.transport, 
-		sppd.result_username, 
-		sppd.code, 
-		sppd.date, 
-		sppd.nip_pejabat, 
-		sppd.nip_leader, 
-		sppd.rate_travel, 
-		sppd.letter_content, 
-		sppd.letter_date, 
-		jenis_surat.nama_jenis,
-
+        sppd.kasubag,
         sppd.pimpinan_spt,
         sppd.kabag_spt,
         sppd.kasubag_spt,
@@ -81,7 +82,7 @@ class Sppdprint extends CI_Controller
         ];
         $donwloadfl = 'SPPD-' . $data->row()->code;
         require_once 'vendor/autoload.php';
-        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('assets/template/doc/' . $namaFile . '.docx');
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('assets/template/doc/' . $namaFile . '.doc');
 
         // var_dump($templateProcessor);
         $no       = 1;
@@ -334,6 +335,8 @@ class Sppdprint extends CI_Controller
     {
 
         // if($)
+
+        // var_dump($id = '', $jenis_spt = '', $jen = '');
         if ($id != '' and $jenis_spt != '' and $jen != '') {
 
             $arr = [
@@ -347,10 +350,14 @@ class Sppdprint extends CI_Controller
             $jenis = $arr[$jenis_spt]['params'];
             $namaFile = $arr[$jenis_spt]['file'];
 
-            if ($jenis == 'sppd') {
-                $this->printsppd($id, $namaFile);
-            } else if ($jenis == 'spt') {
-                $this->printspt($id, $namaFile);
+            if ($jen == 'sppd') {
+                $this->printsppd($id, 'SPPD_OUTIN');
+            } else if ($jen == 'spt') {
+                $this->printspt($id, 'SPT_OUTIN');
+            } else {
+                echo  json_encode([
+                    'status' => 'parmeter mismatch'
+                ]);
             }
         } else {
             echo  json_encode([

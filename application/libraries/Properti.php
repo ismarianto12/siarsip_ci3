@@ -77,7 +77,7 @@ class properti
                 $html .= '<ul class="treeview-menu">';
             }
             foreach ($menu['parents'][$parent] as $itemId) {
-                $icon = ($menu['items'][$itemId]->icon) ? '<i class="' . $menu['items'][$itemId]->icon . '"></i>' : '<i class="fa fa-list"></i>';
+                $icon = ($menu['items'][$itemId]->icon) ? '<i class="' . $menu['items'][$itemId]->icon . '"></i>' : '<i class="fa fa-bars"></i>';
 
                 if (!isset($menu['parents'][$itemId])) {
                     if (preg_match("/^http/", strtolower($menu['items'][$itemId]->link))) {

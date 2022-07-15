@@ -205,10 +205,10 @@ class Sppd_model extends CI_Model
 		a.golongan as golongan_pimpinan,
 		b.golongan as golongan_pengikut,  
 
-		b.nip, sppd.nip,a.nama as pimpinan,b.nama as pengikut, letter_code,letter_subject,letter_about,letter_from,letter_content,letter_date,code,date,nip_leader,rate_travel,purpose,transport,place_from,place_to,length_journey,date_go,date_back,government,budget,budget_from,description,result_date,result,result_username,file,file_update,status');
+		b.nip, sppd.pengikut_nip,a.nama as pimpinan,b.nama as pengikut, letter_code,letter_subject,letter_about,letter_from,letter_content,letter_date,code,date,atasan,rate_travel,purpose,transport,place_from,place_to,length_journey,date_go,date_back,government,budget,budget_from,description,result_date,result,result_username,file,file_update,status');
 		$this->db->from('sppd');
-		$this->db->join('pegawai a', 'a.nip = sppd.nip_pejabat', 'left outer');
-		$this->db->join('pegawai b', 'b.nip = sppd.nip_leader', 'left outer');
+		$this->db->join('pegawai a', 'a.nip = sppd.pengikut_nip', 'left outer');
+		$this->db->join('pegawai b', 'b.nip = sppd.atasan', 'left outer');
 		$this->db->where('sppd.id', $id);
 		return $this->db->get();
 	}

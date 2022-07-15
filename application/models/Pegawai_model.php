@@ -18,10 +18,45 @@ class Pegawai_model extends CI_Model
     // datatables
     function json()
     {
-        $this->datatables->select('id,nip,nama,no_hp,alamat,tanggal_lahir,tempat_lahir,golongan,golongan_tanggal,jabatan,jabatan_tanggal,kerja_tahun,kerja_bulan,latihan_jabatan,latihan_jabatan_tanggal,latihan_jabatan_jam,pendidikan,pendidikan_lulus,pendidikan_ijazah,catatan_mutasi,keterangan,username,username_update,datetime_insert,datetime_update,status_deleted');
+        $id_satker = $this->input->get_post('sikd_satker_id');
+        $this->datatables->select('
+        pegawai.id,
+        pegawai.sikd_satker_id,
+        pegawai.nip,
+        pegawai.nama,
+        pegawai.no_hp,
+        pegawai.alamat,
+        pegawai.tanggal_lahir,
+        pegawai.tempat_lahir,
+        pegawai.golongan,
+        pegawai.golongan_tanggal,
+        pegawai.jabatan,
+        pegawai.jabatan_tanggal,
+        pegawai.kerja_tahun,
+        pegawai.kerja_bulan,
+        pegawai.latihan_jabatan,
+        pegawai.latihan_jabatan_tanggal,
+        pegawai.latihan_jabatan_jam,
+        pegawai.pendidikan,
+        pegawai.pendidikan_lulus,
+        pegawai.pendidikan_ijazah,
+        pegawai.catatan_mutasi,
+        pegawai.keterangan,
+        pegawai.username,
+        pegawai.username_update,
+        pegawai.datetime_insert,
+        pegawai.datetime_update,
+        pegawai.status_deleted,
+        pegawai.pangkat,
+        
+        sikd_satker.kode,
+        sikd_satker.nama
+        ');
         $this->datatables->from('pegawai');
-        //add this line for join
-        //$this->datatables->join('table2', 'pegawai.field = table2.field');
+        if ($this->input->get_post('sikd_satker_id')) {
+            $this->datatables->where('pegawai.sikd_satker_id', $id_satker);
+        }
+        $this->datatables->join('sikd_satker', 'pegawai.sikd_satker_id = sikd_satker.id', 'left outer');
         $this->datatables->add_column('action', anchor(site_url('pegawai/detail/$1'), '<i class="fa fa-book"></i> ', 'class="btn btn-info btn-xs"') . "  " . anchor(site_url('pegawai/edit/$1'), '<i class="fa fa-edit"></i>  ', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i>  </a>", 'id');
         return $this->datatables->generate();
     }

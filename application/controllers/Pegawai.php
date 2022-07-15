@@ -138,7 +138,8 @@ class Pegawai extends CI_Controller
 				'catatan_mutasi' => $this->input->post('catatan_mutasi', TRUE),
 				'keterangan' => $this->input->post('keterangan', TRUE),
 				'username' => $this->input->post('username', TRUE),
-				'pangkat' => $this->input->post('pangkat', true)
+				'pangkat' => $this->input->post('pangkat', true),
+				'sikd_satker_id' => $this->input->post('sikd_satker_id'),
 			);
 			$this->Pegawai_model->insert($data);
 			$this->session->set_flashdata('message', '<div class="alert alert-success fade-in"><i class="fa fa-check"></i>Data Berhasil Di Tambahkan.</div>');
@@ -218,7 +219,9 @@ class Pegawai extends CI_Controller
 				'pendidikan_ijazah' => $this->input->post('pendidikan_ijazah', TRUE),
 				'catatan_mutasi' => $this->input->post('catatan_mutasi', TRUE),
 				'keterangan' => $this->input->post('keterangan', TRUE),
-				'pangkat' => $this->input->post('pangkat', true)
+				'pangkat' => $this->input->post('pangkat', true),
+				'sikd_satker_id' => $this->input->post('sikd_satker_id')
+
 
 			);
 

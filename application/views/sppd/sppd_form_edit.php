@@ -20,10 +20,7 @@
         return retval;
     }
     $(function() {
-        // $('[] option[value="<?= $row->bawahan ?>"]').attr('selected', 'selected');
-        $("select[name='bawahan'] option[value='<?= $row->bawahan ?>']").attr('selected', 'selected');
-
-        // $("select option[value='B']").attr("selected","selected");
+        // $("select[name='bawahan'] option[value='<?= $row->bawahan ?>']").attr('selected', 'selected');
 
         function dataParserB(data, selected) {
             retval = [{
