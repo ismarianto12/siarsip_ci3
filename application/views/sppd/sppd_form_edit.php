@@ -6,13 +6,24 @@
 
 <script>
     $(function() {
-        $('.js-example-basic-multiple').select2();
+
 
         $('#bawahan').select2();
         $('#atasan').select2();
 
+        $('.js-example-basic-multiple').select2();
+
+
+        $('#bawahan').html(`<option value="<?= $row->bawahan ?>" selected><?= $this->properti->getField($row->bawahan) ?></option>`);
+
+
+
+
+
         var url = '<?= base_url() ?>/sppd/selectPegawai';
-        option = "<option value='0'>--Semua Data--</option>";
+        option = `<option value="<?= $row->atasan ?>" selected><?= $this->properti->getField($row->atasan) ?></option>`;
+
+
         $.get(url, {
             atasan: $(this).val()
         }, function(data) {

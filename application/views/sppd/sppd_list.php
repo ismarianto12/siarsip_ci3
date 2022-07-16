@@ -104,7 +104,7 @@
                                      "data": "sppd_id",
                                      "orderable": false
                                  }, {
-                                     "data": "code"
+                                     "data": "letter_code"
                                  }, {
                                      "data": "date"
                                  },
