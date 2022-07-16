@@ -147,23 +147,32 @@
                          $('#jenisppd_id').change(function() {
                              $("#datatables").DataTable().ajax.reload();
                          });
+
+                         $("#datatables").on('click', '#delete', function() {
+                             var id = $(this).data('id');
+                             Swal({
+                                     title: 'Konfirmasi Hapus',
+                                     text: 'Apakah Anda Yakin Untuk Menghapus Data Ini?',
+                                     type: 'warning',
+                                     showCancelButton: true,
+                                     confirmButtonClass: 'btn-danger',
+                                     confirmButtonText: 'Ya',
+                                     closeOnConfirm: false
+                                 },
+                                 function() {
+                                     $.get('<?= base_url('sppd/hapus/') ?>/' + id, function(data) {
+                                         $.each(data, function(index, value) {
+
+                                         });
+
+                                     }, 'JSON');
+                                     Swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
+                                     $("#datatables").DataTable().ajax.reload();
+                                 });
+                         });
                      });
 
-                     function hapus(n) {
-                         Swal({
-                                 title: 'Konfirmasi Hapus',
-                                 text: 'Apakah Anda Yakin Untuk Menghapus Data Ini?',
-                                 type: 'warning',
-                                 showCancelButton: true,
-                                 confirmButtonClass: 'btn-danger',
-                                 confirmButtonText: 'Ya',
-                                 closeOnConfirm: false
-                             },
-                             function() {
-                                 Swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
-                                 window.location.href = '<?= base_url('sppd/hapus/') ?>' + n;
-                             });
-                     }
+
 
                      $(function() {
                          $("#datatables").on('click', '#konfirmasi', function() {

@@ -77,7 +77,7 @@ class Sppd_model extends CI_Model
 		if ($jenis_sppd != '') {
 			$this->datatables->where('sppd.jenis_surat_id', $jenis_sppd);
 		}
-		$this->datatables->add_column('action',  "<a href='#' data-id='$2' data-judul='" . strtoupper('$2') . "' data-idp='$1' class='btn btn-info btn-xs delete' id='konfirmasi'><i class='fa fa-print'></i> Print</a>" . "" . anchor(site_url('sppd/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'sppd_id,parameter');
+		$this->datatables->add_column('action',  "<a href='#' data-id='$2' data-judul='" . strtoupper('$2') . "' data-idp='$1' class='btn btn-info btn-xs delete' id='konfirmasi'><i class='fa fa-print'></i> Print</a>" . "" . anchor(site_url('sppd/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' id='delete' data-id='$1'><i class='fa fa-trash'></i> Delete</a>", 'sppd_id,parameter');
 		return $this->datatables->generate();
 	}
 

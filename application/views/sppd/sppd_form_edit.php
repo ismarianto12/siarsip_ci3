@@ -17,7 +17,7 @@
             atasan: $(this).val()
         }, function(data) {
             $.each(data, function(index, value) {
-                option += "<option value='" + value.id + "'>" + value.nama + "</option>";
+                option += "<option value='" + value.nip + "'>" + value.nama + "</option>";
             });
             $('#atasan').html(option);
         }, 'JSON');
@@ -31,7 +31,7 @@
                 },
                 function(data) {
                     $.each(data, function(index, value) {
-                        ll += "<option value='" + value.id + "'>" + value.nama + "</option>";
+                        ll += "<option value='" + value.nip + "'>" + value.nama + "</option>";
                     });
                     $('#bawahan').html(ll);
                     $('#j_pengikut').html(ll);

@@ -167,52 +167,53 @@ class Sppd extends CI_Controller
 			echo $this->properti->json($data);
 			die;
 		} else {
+			$diperintah = implode(',', $this->input->post('pengikut_nip'));
 			$data = [
+				'pimpinan' => $this->input->post('pimpinan'),
+				'letter_code' => $this->input->post('letter_code'),
+				'letter_subject' => $this->input->post('letter_subject'),
+				'letter_about' => $this->input->post('letter_about'),
+				'letter_from' => $this->input->post('letter_from'),
+				'letter_content' => $this->input->post('letter_content'),
+				'letter_date' => $this->input->post('letter_date'),
+				'code' => $this->input->post('letter_code'),
+				'date' => $this->input->post('date'),
 				'bawahan' => $this->input->post('bawahan'),
-				'code' => $letter_code,
-				'letter_code' => ($this->input->post('letter_code')) ? $this->input->post('letter_code') : 0,
-				'letter_subject' => ($this->input->post('letter_subject')) ? $this->input->post('letter_subject') : 0,
-				'letter_about' => ($this->input->post('letter_about')) ? $this->input->post('letter_about') : 0,
-				'letter_from' => ($this->input->post('letter_from')) ? $this->input->post('letter_from') : 0,
-				'letter_content' => ($this->input->post('letter_content')) ? $this->input->post('letter_content') : 0,
-				'letter_date' => ($this->input->post('letter_date')) ? $this->input->post('letter_date') : 0,
+				'atasan' => $this->input->post('atasan'),
+				'rate_travel' => $this->input->post('rate_travel'),
+				'pengikut_nip' => $diperintah,
 				'purpose' => $this->input->post('purpose'),
 				'transport' => $this->input->post('transport'),
 				'place_from' => $this->input->post('place_from'),
 				'place_to' => $this->input->post('place_to'),
-				'length_journey' => (int) $this->input->post('length_journey'),
-				'date_go' => ($this->input->post('date_go')) ? $this->input->post('date_go') : date('Y-m-d'),
-				'date_back' => $this->input->post('date_back'),
-				'ataasan' => $this->input->post('nip_leader'),
-				'rate_travel' => $this->input->post('rate_travel'),
-				'pengikut_nip' => $diperintah,
+				'length_journey' => $this->input->post('length_journey'),
+				'date_go' => $this->input->post('date_go'),
 				'date' => date('Y-m-d'),
-				'result_date' => date('Y-m-d'),
-				'result' => ($this->input->post('result')) ? $this->input->post('result') : 0,
-				'result_username' => ($this->input->post('result_username')) ? $this->input->post('result_username') : 0,
-				'username_update' => ($this->input->post('username_update')) ? $this->input->post('username_update') : 0,
-				'username' => $this->session->username,
-				'file_update' => ($this->input->post('file_update')) ? $this->input->post('file_update') : 0,
-				'file' => ($this->input->post('file')) ? $this->input->post('file') : 0,
+				'date_back' => $this->input->post('date_back'),
 				'government' => $this->input->post('government'),
+				'budget' => $this->input->post('budget'),
 				'budget_from' => $this->input->post('budget_from'),
 				'description' => $this->input->post('description'),
+				'result_date' => $this->input->post('result_date'),
+				'result' => $this->input->post('result'),
+				'result_username' => $this->input->post('result_username'),
+				'file' => $this->input->post('file'),
+				'jenis_surat_id' => $this->input->post('jenis_surat_id'),
+				'file_update' => $this->input->post('file_update'),
+				'status' => $this->input->post('status'),
+				'username' => $this->input->post('username'),
+				'username_update' => $this->input->post('username_update'),
+				'datetime_insert' => $this->input->post('datetime_insert'),
+				'datetime_update' => $this->input->post('datetime_update'),
 				'basic' => $this->input->post('basic'),
 				'city' => $this->input->post('city'),
-				'letter_content' => $this->input->post('letter_content'),
-				'datetime_insert' => date('Y-m-d H:i:s'),
-				'datetime_update' => date('Y-m-d H:i:s'),
-				'jenis_surat_id' => $this->input->post('sspdjeniss_id'),
 				'rekening' => $this->input->post('rekening'),
-				// add element data
-				'pimpinan' => $this->input->post('pimpinan'),
 				'kabag' => $this->input->post('kabag'),
 				'kasubag' => $this->input->post('kasubag'),
 				'pimpinan_spt' => $this->input->post('pimpinan_spt'),
 				'kabag_spt' => $this->input->post('kabag_spt'),
 				'kasubag_spt' => $this->input->post('kasubag_spt'),
-				'letter_code_spt' => $this->input->post('no_spt')
-
+				'letter_code_spt' => $this->input->post('letter_code_spt'), 
 			];
 			$this->Sppd_model->insert($data);
 			$data = [
@@ -308,52 +309,55 @@ class Sppd extends CI_Controller
 			die;
 		} else {
 
-			$diperintah = implode(',', $this->input->post('nip'));
+			$diperintah = implode(',', $this->input->post('pengikut_nip'));
 			$data = [
-				'bawahan' => $this->input->post('bawahan'),
+				'pimpinan' => $this->input->post('pimpinan'),
+				'letter_code' => $this->input->post('letter_code'),
 				'code' => $this->input->post('letter_code'),
-				'letter_code' => ($this->input->post('letter_code')) ? $this->input->post('letter_code') : 0,
-				'letter_subject' => ($this->input->post('letter_subject')) ? $this->input->post('letter_subject') : 0,
-				'letter_about' => ($this->input->post('letter_about')) ? $this->input->post('letter_about') : 0,
-				'letter_from' => ($this->input->post('letter_from')) ? $this->input->post('letter_from') : 0,
-				'letter_content' => ($this->input->post('letter_content')) ? $this->input->post('letter_content') : 0,
-				'letter_date' => ($this->input->post('letter_date')) ? $this->input->post('letter_date') : 0,
+
+				'letter_subject' => $this->input->post('letter_subject'),
+				'letter_about' => $this->input->post('letter_about'),
+				'letter_from' => $this->input->post('letter_from'),
+				'letter_content' => $this->input->post('letter_content'),
+				'letter_date' => $this->input->post('letter_date'),
+				'code' => $this->input->post('code'),
+				'date' => $this->input->post('date'),
+				'bawahan' => $this->input->post('bawahan'),
+				'atasan' => $this->input->post('atasan'),
+				'rate_travel' => $this->input->post('rate_travel'),
+				'pengikut_nip' => $diperintah,
 				'purpose' => $this->input->post('purpose'),
 				'transport' => $this->input->post('transport'),
 				'place_from' => $this->input->post('place_from'),
 				'place_to' => $this->input->post('place_to'),
-				'length_journey' => (int) $this->input->post('length_journey'),
-				'date_go' => ($this->input->post('date_go')) ? $this->input->post('date_go') : date('Y-m-d'),
-				'date_back' => $this->input->post('date_back'),
-				'ataasan' => $this->input->post('nip_leader'),
-				'rate_travel' => $this->input->post('rate_travel'),
-				'pengikut_nip' => $diperintah,
+				'length_journey' => $this->input->post('length_journey'),
+				'date_go' => $this->input->post('date_go'),
 				'date' => date('Y-m-d'),
-				'result_date' => date('Y-m-d'),
-				'result' => ($this->input->post('result')) ? $this->input->post('result') : 0,
-				'result_username' => ($this->input->post('result_username')) ? $this->input->post('result_username') : 0,
-				'username_update' => ($this->input->post('username_update')) ? $this->input->post('username_update') : 0,
-				'username' => $this->session->username,
-				'file_update' => ($this->input->post('file_update')) ? $this->input->post('file_update') : 0,
-				'file' => ($this->input->post('file')) ? $this->input->post('file') : 0,
+				'date_back' => $this->input->post('date_back'),
 				'government' => $this->input->post('government'),
+				'budget' => $this->input->post('budget'),
 				'budget_from' => $this->input->post('budget_from'),
 				'description' => $this->input->post('description'),
+				'result_date' => $this->input->post('result_date'),
+				'result' => $this->input->post('result'),
+				'result_username' => $this->input->post('result_username'),
+				'file' => $this->input->post('file'),
+				'jenis_surat_id' => $this->input->post('jenis_surat_id'),
+				'file_update' => $this->input->post('file_update'),
+				'status' => $this->input->post('status'),
+				'username' => $this->input->post('username'),
+				'username_update' => $this->input->post('username_update'),
+				'datetime_insert' => $this->input->post('datetime_insert'),
+				'datetime_update' => $this->input->post('datetime_update'),
 				'basic' => $this->input->post('basic'),
 				'city' => $this->input->post('city'),
-				'letter_content' => $this->input->post('letter_content'),
-				'datetime_insert' => date('Y-m-d H:i:s'),
-				'datetime_update' => date('Y-m-d H:i:s'),
-				'jenis_surat_id' => $this->input->post('sspdjeniss_id'),
 				'rekening' => $this->input->post('rekening'),
-				// add element data
-				'pimpinan' => $this->input->post('pimpinan'),
 				'kabag' => $this->input->post('kabag'),
 				'kasubag' => $this->input->post('kasubag'),
 				'pimpinan_spt' => $this->input->post('pimpinan_spt'),
 				'kabag_spt' => $this->input->post('kabag_spt'),
 				'kasubag_spt' => $this->input->post('kasubag_spt'),
-				'letter_code_spt' => $this->input->post('no_spt')
+				'letter_code_spt' => $this->input->post('letter_code_spt'),
 
 			];
 			$this->Sppd_model->update($id, $data);
@@ -374,10 +378,9 @@ class Sppd extends CI_Controller
 			$this->db->where('id !=', $atasan);
 		}
 
-		 
+
 		$data = $this->db->get()->result_array();
-		// var_dump($data->db->last_query());
-		// die;
+
 		echo json_encode($data);
 	}
 
@@ -388,48 +391,46 @@ class Sppd extends CI_Controller
 		if ($row) {
 			$this->Sppd_model->delete($id);
 			$this->session->set_flashdata('message', '<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>Data Berhasil Di Hapus</div>');
-			redirect(site_url('sppd'));
+			// redirect(site_url('sppd'));
 		} else {
 			$this->session->set_flashdata('message', '<div class="callout callout-warniing fade-in">Ops Something Went Wrong Please Contact Administrator.</div>');
-			redirect(site_url('sppd'));
+			// redirect(site_url('sppd'));
 		}
 	}
 
 	public function _rules()
 	{
-		// $this->form_validation->set_rules(
-		// 	'nip_pejabat',
-		// 	'nip_pejabat',
-		// 	'trim|required',
-		// 	array('required' => 'Nip pegawai wajib di isi')
+		$this->form_validation->set_rules(
+			'pimpinan',
+			'pimpinan',
+			'trim|required',
+			array('required' => 'Pimpinan pegawai wajib di isi')
 
-		// );
-		// $this->form_validation->set_rules(
-		// 	'purpose',
-		// 	'purpose',
-		// 	'trim|required',
-		// 	array('required' => 'Maksud Perjalanan Dinas Wajib di isi')
-		// );
-		// $this->form_validation->set_rules(
-		// 	'transport',
-		// 	'transport',
-		// 	'trim|required',
-		// 	array('required' => 'Transportasi wajib Di isi')
-		// );
-		// $this->form_validation->set_rules('place_from', 'place_from', 'trim|required');
-		// $this->form_validation->set_rules('place_to', 'place_to', 'trim|required');
+		);
+		$this->form_validation->set_rules(
+			'purpose',
+			'purpose',
+			'trim|required',
+			array('required' => 'Maksud Perjalanan Dinas Wajib di isi')
+		);
+		$this->form_validation->set_rules(
+			'transport',
+			'transport',
+			'trim|required',
+			array('required' => 'Transportasi wajib Di isi')
+		);
+		$this->form_validation->set_rules('place_from', 'place_from', 'trim|required');
+		$this->form_validation->set_rules('place_to', 'place_to', 'trim|required');
 		// $this->form_validation->set_rules('length_journey', 'length_journey', 'trim|required');
-		// $this->form_validation->set_rules('date_go', 'date_go', 'trim|required');
-		// $this->form_validation->set_rules('date_back', 'date_back', 'trim|required');
-		// $this->form_validation->set_rules('nip_leader', 'nip_leader', 'trim|required');
-		// $this->form_validation->set_rules('nip[]', 'nip', 'trim|required');
-		// $this->form_validation->set_rules('government', 'government', 'trim|required');
-		// $this->form_validation->set_rules('budget_from', 'budget_from', 'trim|required');
-		// $this->form_validation->set_rules('description', 'description', 'trim|required');
-		// $this->form_validation->set_rules('letter_content', 'letter_content', 'trim|required');
-		// $this->form_validation->set_rules('id', 'id', 'trim');
-		// $this->form_validation->set_error_delimiters('<span>', '</span>');
-
-
+		$this->form_validation->set_rules('date_go', 'date_go', 'trim|required');
+		$this->form_validation->set_rules('date_back', 'date_back', 'trim|required', array('required' => 'Tanggal  Kembali Di isi'));
+		$this->form_validation->set_rules('pimpinan', 'pimpinan', 'trim|required');
+		$this->form_validation->set_rules('pengikut_nip[]', 'pengikut_nip', 'trim|required');
+		$this->form_validation->set_rules('government', 'government', 'trim|required');
+		$this->form_validation->set_rules('budget_from', 'budget_from', 'trim|required');
+		$this->form_validation->set_rules('description', 'description', 'trim|required');
+		$this->form_validation->set_rules('letter_content', 'letter_content', 'trim|required');
+		$this->form_validation->set_rules('id', 'id', 'trim');
+		$this->form_validation->set_error_delimiters('<span>', '</span>');
 	}
 }
