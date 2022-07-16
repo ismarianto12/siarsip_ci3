@@ -1,10 +1,5 @@
 <?php
-
-/*developed by ismarianto putra
-  you can visit my site in ismarianto.com
-  for more complain anda more information.  
-*/
-
+ 
 if (!defined('BASEPATH'))
 	exit('No direct script access allowed');
 
@@ -88,6 +83,7 @@ class Pegawai extends CI_Controller
 			'tempat_lahir' => set_value('tempat_lahir'),
 			'golongan' => set_value('golongan'),
 			'pangkat' => set_value('pangkat'),
+			'sikd_satker_id' => set_value('sikd_satker_id'),
 			'golongan_tanggal' => set_value('golongan_tanggal'),
 			'jabatan' => set_value('jabatan'),
 			'jabatan_tanggal' => set_value('jabatan_tanggal'),
@@ -118,6 +114,7 @@ class Pegawai extends CI_Controller
 		} else {
 			$data = array(
 				'nip' => $this->input->post('nip', TRUE),
+				'sikd_satker_id' => $this->input->post('sikd_satker_id', TRUE),
 				'nama' => $this->input->post('nama', TRUE),
 				'no_hp' => $this->input->post('no_hp', TRUE),
 				'alamat' => $this->input->post('alamat', TRUE),
@@ -163,6 +160,7 @@ class Pegawai extends CI_Controller
 				'nama' => set_value('nama', $row->nama),
 				'no_hp' => set_value('no_hp', $row->no_hp),
 				'alamat' => set_value('alamat', $row->alamat),
+				'sikd_satker_id' => set_value('sikd_satker_id', $row->sikd_satker_id),
 				'tanggal_lahir' => set_value('tanggal_lahir', $row->tanggal_lahir),
 				'tempat_lahir' => set_value('tempat_lahir', $row->tempat_lahir),
 				'golongan' => set_value('golongan', $row->golongan),
@@ -220,7 +218,8 @@ class Pegawai extends CI_Controller
 				'catatan_mutasi' => $this->input->post('catatan_mutasi', TRUE),
 				'keterangan' => $this->input->post('keterangan', TRUE),
 				'pangkat' => $this->input->post('pangkat', true),
-				'sikd_satker_id' => $this->input->post('sikd_satker_id')
+				'sikd_satker_id' => $this->input->post('sikd_satker_id'),
+ 
 
 
 			);
@@ -256,8 +255,7 @@ class Pegawai extends CI_Controller
 		$this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
 		$this->form_validation->set_rules('tanggal_lahir', 'tanggal lahir', 'trim|required');
 		$this->form_validation->set_rules('tempat_lahir', 'tempat lahir', 'trim|required');
-		$this->form_validation->set_rules('golongan', 'golongan', 'trim|required');
-		// $this->form_validation->set_rules('golongan_tanggal', 'golongan tanggal', 'trim|required');
+		$this->form_validation->set_rules('golongan', 'golongan', 'trim|required'); 
 		$this->form_validation->set_rules('jabatan', 'jabatan', 'trim|required');
 		$this->form_validation->set_rules('jabatan_tanggal', 'jabatan tanggal', 'trim|required');
 		// $this->form_validation->set_rules('kerja_tahun', 'kerja tahun', 'trim|required');

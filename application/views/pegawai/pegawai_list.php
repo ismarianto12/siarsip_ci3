@@ -13,6 +13,7 @@
                          <label class="col-md-3 form-label">Satuan Kerja</label>
                          <div class="col-md-4">
                              <select class="form-control" name="satker_id" id="satker_id">
+                                 <option value="">Semua </option>
                                  <?php
                                     foreach ($this->properti->satker() as $key) {   ?>
 
@@ -31,7 +32,7 @@
                              <th width="80px">No</th>
                              <th>Nip</th>
                              <th>Nama</th>
-                             <th>No Hp</th>
+                             <th>Bidang</th>
                              <th>Alamat</th>
                              <th>Tanggal Lahir</th>
                              <th>Jabatan</th>
@@ -105,7 +106,7 @@
                                  }, {
                                      "data": "nama"
                                  }, {
-                                     "data": "no_hp"
+                                     "data": "namasatker"
                                  }, {
                                      "data": "alamat"
                                  }, {
@@ -131,12 +132,13 @@
                                  $('td:eq(0)', row).html(index);
                              }
                          });
+                         $('#satker_id').on('change', function(e) {
+                             e.preventDefault();
+                             $("#datatables").DataTable().ajax.reload();
+                         });
                      });
 
-                     $('#satker_id').on('change', function() {
-                         e.preventDefault();
-                         $("#datatables").DataTable().ajax.reload();
-                     });
+
 
                      function hapus(n) {
                          Swal({

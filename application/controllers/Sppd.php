@@ -365,6 +365,22 @@ class Sppd extends CI_Controller
 		}
 	}
 
+	public function selectPegawai()
+	{
+		$atasan = $this->input->get_post('atasan');
+
+		$this->db->select('*')->from('pegawai');
+		if ($atasan != '') {
+			$this->db->where('id !=', $atasan);
+		}
+
+		 
+		$data = $this->db->get()->result_array();
+		// var_dump($data->db->last_query());
+		// die;
+		echo json_encode($data);
+	}
+
 	public function hapus($id)
 	{
 		$row = $this->Sppd_model->get_by_id($id);
@@ -381,37 +397,39 @@ class Sppd extends CI_Controller
 
 	public function _rules()
 	{
-		$this->form_validation->set_rules(
-			'nip_pejabat',
-			'nip_pejabat',
-			'trim|required',
-			array('required' => 'Nip pegawai wajib di isi')
+		// $this->form_validation->set_rules(
+		// 	'nip_pejabat',
+		// 	'nip_pejabat',
+		// 	'trim|required',
+		// 	array('required' => 'Nip pegawai wajib di isi')
 
-		);
-		$this->form_validation->set_rules(
-			'purpose',
-			'purpose',
-			'trim|required',
-			array('required' => 'Maksud Perjalanan Dinas Wajib di isi')
-		);
-		$this->form_validation->set_rules(
-			'transport',
-			'transport',
-			'trim|required',
-			array('required' => 'Transportasi wajib Di isi')
-		);
-		$this->form_validation->set_rules('place_from', 'place_from', 'trim|required');
-		$this->form_validation->set_rules('place_to', 'place_to', 'trim|required');
-		$this->form_validation->set_rules('length_journey', 'length_journey', 'trim|required');
-		$this->form_validation->set_rules('date_go', 'date_go', 'trim|required');
-		$this->form_validation->set_rules('date_back', 'date_back', 'trim|required');
-		$this->form_validation->set_rules('nip_leader', 'nip_leader', 'trim|required');
-		$this->form_validation->set_rules('nip[]', 'nip', 'trim|required');
-		$this->form_validation->set_rules('government', 'government', 'trim|required');
-		$this->form_validation->set_rules('budget_from', 'budget_from', 'trim|required');
-		$this->form_validation->set_rules('description', 'description', 'trim|required');
-		$this->form_validation->set_rules('letter_content', 'letter_content', 'trim|required');
-		$this->form_validation->set_rules('id', 'id', 'trim');
-		$this->form_validation->set_error_delimiters('<span>', '</span>');
+		// );
+		// $this->form_validation->set_rules(
+		// 	'purpose',
+		// 	'purpose',
+		// 	'trim|required',
+		// 	array('required' => 'Maksud Perjalanan Dinas Wajib di isi')
+		// );
+		// $this->form_validation->set_rules(
+		// 	'transport',
+		// 	'transport',
+		// 	'trim|required',
+		// 	array('required' => 'Transportasi wajib Di isi')
+		// );
+		// $this->form_validation->set_rules('place_from', 'place_from', 'trim|required');
+		// $this->form_validation->set_rules('place_to', 'place_to', 'trim|required');
+		// $this->form_validation->set_rules('length_journey', 'length_journey', 'trim|required');
+		// $this->form_validation->set_rules('date_go', 'date_go', 'trim|required');
+		// $this->form_validation->set_rules('date_back', 'date_back', 'trim|required');
+		// $this->form_validation->set_rules('nip_leader', 'nip_leader', 'trim|required');
+		// $this->form_validation->set_rules('nip[]', 'nip', 'trim|required');
+		// $this->form_validation->set_rules('government', 'government', 'trim|required');
+		// $this->form_validation->set_rules('budget_from', 'budget_from', 'trim|required');
+		// $this->form_validation->set_rules('description', 'description', 'trim|required');
+		// $this->form_validation->set_rules('letter_content', 'letter_content', 'trim|required');
+		// $this->form_validation->set_rules('id', 'id', 'trim');
+		// $this->form_validation->set_error_delimiters('<span>', '</span>');
+
+
 	}
 }

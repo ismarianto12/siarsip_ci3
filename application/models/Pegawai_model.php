@@ -18,7 +18,7 @@ class Pegawai_model extends CI_Model
     // datatables
     function json()
     {
-        $id_satker = $this->input->get_post('sikd_satker_id');
+        $id_satker = $this->input->get_post('satker_id');
         $this->datatables->select('
         pegawai.id,
         pegawai.sikd_satker_id,
@@ -50,10 +50,10 @@ class Pegawai_model extends CI_Model
         pegawai.pangkat,
         
         sikd_satker.kode,
-        sikd_satker.nama
+        sikd_satker.nama as namasatker
         ');
         $this->datatables->from('pegawai');
-        if ($this->input->get_post('sikd_satker_id')) {
+        if ($this->input->get_post('satker_id')) {
             $this->datatables->where('pegawai.sikd_satker_id', $id_satker);
         }
         $this->datatables->join('sikd_satker', 'pegawai.sikd_satker_id = sikd_satker.id', 'left outer');

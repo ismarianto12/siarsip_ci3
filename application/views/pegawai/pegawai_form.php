@@ -1,3 +1,14 @@
+<link href="<?= base_url() ?>/assets/template_lte/plugins/select2/select2.min.css" rel="stylesheet" />
+<script src="<?= base_url() ?>/assets/template_lte/plugins/select2/select2.min.js"></script>
+
+<script>
+    $(function() {
+        $('select').select2({
+            width: '100%'
+        })
+    });
+</script>
+
 <div class="nav-tabs-custom">
     <ul class="nav nav-tabs">
         <li class="active"><a href="#umum" data-toggle="tab"><i class="fa fa-user"></i> Umum</a></li>
@@ -85,11 +96,31 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="varchar" class='control-label col-md-3'><b> Jabatan<?php echo form_error('latihan_jabatan') ?></b></label>
+                    <label for="varchar" class='control-label col-md-3'><b> Jabatan<?php echo form_error('jabatan') ?></b></label>
                     <div class='col-md-9'>
-                        <input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="Jabatan" value="<?php echo $latihan_jabatan; ?>" />
+                        <select name="sikd_satker_id" class="form-control select2" required>
+                            <?php foreach ($this->db->get('tmjabatan')->result_array() as $lk) {
+                                $selected = $lk['Id'] == $jabatan ? 'seleted' : '';
+                            ?>
+                                <option value="<?= $lk['Id'] ?>" <?= $selected ?>> <?= ucfirst($lk['Description']) ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="varchar" class='control-label col-md-3'><b> Bidang<?php echo form_error('sppd_id') ?></b></label>
+                    <div class='col-md-9'>
+                        <select name="sikd_satker_id" class="form-control select2" required>
+                            <?php foreach ($this->db->get('sikd_satker')->result_array() as $list) {
+                                $selected = $list['id'] == $sikd_satker_id ? 'seleted' : '';
+                            ?>
+                                <option value="<?= $list['id'] ?>" <?= $selected ?>> <?= $list['nama'] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="date" class='control-label col-md-3'><b>Tanggal Serah Terima Jabatan <?php echo form_error('latihan_jabatan_tanggal') ?></b></label>
                     <div class='col-md-9'>

@@ -1,37 +1,44 @@
+<!--  -->
 <link href="<?= base_url() ?>/assets/template_lte/plugins/select2/select2.min.css" rel="stylesheet" />
 <script src="<?= base_url() ?>/assets/template_lte/plugins/select2/select2.min.js"></script>
 
+
+
 <script>
-    function dataParserNip(data, selected) {
-        retval = [{
-            val: "<?= $nip_pejabat ?>",
-            text: "<?= $nip_pejabat ?>"
-        }];
-
-        data.forEach(function(v) {
-            if (selected == "-1" && v.val == 3)
-                v.selected = true;
-            retval.push(v);
-        });
-
-        return retval;
-    }
     $(function() {
-
-        $('.select2').select2();
-
-        function dataParserB(data, selected) {
-            retval = [{
-                val: "-1",
-                text: "---"
-            }];
-            data.forEach(function(v) {
-                retval.push(v);
-            });
-            return retval;
-        }
         $('.js-example-basic-multiple').select2();
+
+        $('#bawahan').select2();
+        $('#atasan').select2();
+
+        var url = '<?= base_url() ?>/sppd/selectPegawai';
+        option = "<option value='0'>--Semua Data--</option>";
+        $.get(url, {
+            atasan: $(this).val()
+        }, function(data) {
+            $.each(data, function(index, value) {
+                option += "<option value='" + value.id + "'>" + value.nama + "</option>";
+            });
+            $('#atasan').html(option);
+        }, 'JSON');
+
+
+        $('#atasan').on('change', function() {
+            ll = "<option value='0'>--Semua Data--</option>";
+            var atasan = $('#atasan option:selected').val();
+            $.get(url, {
+                    atasan: atasan
+                },
+                function(data) {
+                    $.each(data, function(index, value) {
+                        ll += "<option value='" + value.id + "'>" + value.nama + "</option>";
+                    });
+                    $('#bawahan').html(ll);
+                    $('#j_pengikut').html(ll);
+                }, 'JSON');
+        });
     });
+    // });
 </script>
 
 
@@ -57,7 +64,6 @@
                             <div class="col-md-6">
                                 <label for="varchar" class='control-label col-md-4'><b>Kategori <?php echo form_error('sspdjeniss_id') ?></b></label>
                                 <div class='col-md-7'>
-
                                     <select id="sspdjeniss_id" name="sspdjeniss_id" class="form-control">
                                         <option value="">Pilih Jenis Surat</option>
 
@@ -90,7 +96,6 @@
                                     </div>
                                 </div>
 
-
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Tgl Berangkat<?php echo form_error('date_go') ?></b></label>
                                     <div class='col-md-7'>
@@ -106,27 +111,26 @@
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Pejabat yang di perintah<?php echo form_error('bawahan') ?></b></label>
                                     <div class='col-md-7'>
-                                        <select class="form-control select2" name="bawahan">
-                                            <?php foreach ($this->properti->getPegawai()->result_array() as $list) {  ?>
-                                                <option value="<?= $list['nip'] ?>" <?= $list['nip'] == $row->bawahan ? 'selected' : '' ?>><?= $list['nama'] ?></option>
-                                            <?php } ?>
+
+                                        <select id="bawahan" name="bawahan" class="form-control">
                                         </select>
                                     </div>
 
                                 </div>
-                                <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Lama Perjalanan<?php echo form_error('length_journey') ?></b></label>
-                                    <div class='col-md-7'>
-                                        <input type="number" class="form-control" name="length_journey" id="length_journey" placeholder="Lama jalan" value="<?php echo $length_journey; ?>" style="
-    width: 60px;
-    display: inline-flex;
+                                <!-- <div class="form-group">
+                                   <label for="varchar" class='control-label col-md-4'><b>Lama Perjalanan<?php echo form_error('length_journey') ?></b></label>
+                                   <div class='col-md-7'>
+                                       <input type="number" class="form-control" name="length_journey" id="length_journey" placeholder="Lama jalan" value="<?php echo $length_journey; ?>" style="
+   width: 60px;
+   display: inline-flex;
 "> / Hari
-                                    </div>
-                                </div>
+                                   </div>
+                               </div> -->
                                 <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Pengikut<?php echo form_error('nip') ?></b></label>
+                                    <label for="varchar" class='control-label col-md-4'><b>Pengikut<?php echo form_error('pengikut_nip') ?></b></label>
                                     <div class='col-md-7'>
-                                        <select name="pengikut_nip[]" class="js-example-basic-multiple form-control" multiple="multiple">
+
+                                        <select name="pengikut_nip[]" class="js-example-basic-multiple form-control" id="j_pengikut" multiple="multiple">
                                             <?php foreach ($this->db->get('pegawai')->result_array() as $list) {
                                                 if (strpos($row->pengikut_nip, $list['nip']) !== false) {
                                                     $selected = 'selected'; // stop on first true result
@@ -177,8 +181,6 @@
                                 </div>
 
 
-
-
                             </div>
 
 
@@ -200,15 +202,17 @@
                                     </div>
 
                                 </div>
-
+                                <!-- <div class="form-group">
+                                   <label for="varchar" class='control-label col-md-4'><b>JENIS SPPD</b></label>
+                                   <div class='col-md-7'>
+                                       <input type="text" name="jenisspdata" value="" class="form-control" readonly>
+                                   </div>
+                               </div> -->
                                 <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Pejabat yang memberi perintah<?php echo form_error('pimpinan') ?></b></label>
+                                    <label for="varchar" class='control-label col-md-4'><b>Pejabat yang memberi perintah<?php echo form_error('atasan') ?></b></label>
                                     <div class='col-md-7'>
-                                        <select name="pimpinan" class="form-control select2">
-                                            <?php foreach ($this->properti->getPegawai()->result_array() as $list) {  ?>
 
-                                                <option value="<?= $list['nip'] ?>" <?= $list['nip'] == $pimpinan ? 'selected' : '' ?>> <?= $list['nama'] ?></option>
-                                            <?php } ?>
+                                        <select id="atasan" name="atasan" class="form-control">
                                         </select>
                                     </div>
                                 </div>
@@ -252,63 +256,63 @@
                                         <input type="text" class="form-control" name="city" id="city" placeholder="Kota asal" value="<?php echo $city; ?>" />
                                     </div>
                                 </div>
-                                <div class="row col-md-12">
 
-                                    <div class="callout callout-warning">
-                                        <i class="fa fa-copy"></i>Data Tambahan Tebusan Surat
-                                    </div>
+                            </div>
 
+                            <div class="row col-md-12">
 
-                                    <div class="form-group">
-                                        <label for="varchar" class='control-label col-md-4'><b>Pimpinan (Walikota ,Sekda, Wakil Walikota)<?php echo form_error('pimpinan') ?></b></label>
-                                        <div class='col-md-7'>
-                                            <select class="form-control select2" name="pimpinan">
-                                                <?php foreach ($this->properti->getPegawai()->result_array() as $list) {  ?>
-                                                    <option value="<?= $list['nip'] ?>" <?= $list['nip'] == $row->pimpinan ? 'selected' : '' ?>><?= $list['nama'] ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
+                                <div class="callout callout-warning">
+                                    <i class="fa fa-copy"></i>Data Tambahan Tebusan Surat
+                                </div>
 
 
-                                    <div class="form-group">
-                                        <label for="varchar" class='control-label col-md-4'><b>Kepala Bagian UMUM<?php echo form_error('kabag') ?></b></label>
-                                        <div class='col-md-7'>
-
-                                            <select name="kabag" class="form-control select2">
-                                                <?php foreach ($this->properti->getPegawai()->result_array() as $list) {  ?>
-                                                    <option value="<?= $list['nip'] ?>" <?= $list['nip'] == $row->kabag ? 'selected' : '' ?>><?= $list['nama'] ?></option>
-                                                <?php } ?>
-                                            </select>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="varchar" class='control-label col-md-4'><b>Kepala sub bagian<?php echo form_error('kasubag') ?></b></label>
-                                        <div class='col-md-7'>
-                                            <select name="kasubag" id="kasubag" class="form-control select2">
-                                                <?php foreach ($this->properti->getPegawai()->result_array() as $list) {  ?>
-                                                    <option value="<?= $list['nip'] ?>" <?= $list['nip'] == $row->kasubag ? 'selected' : '' ?>><?= $list['nama'] ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Pimpinan (Walikota ,Sekda, Wakil Walikota)<?php echo form_error('pimpinan') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <select class="form-control select2" name="pimpinan">
+                                            <?php foreach ($this->properti->getPegawai()->result_array() as $list) {  ?>
+                                                <option value="<?= $list['nip'] ?>" <?= $list['nip'] == $row->pimpinan ? 'selected' : '' ?>><?= $list['nama'] ?></option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
 
-                            </div>
-                        </div>
 
-                        <div class="card-action">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <hr />
-                                    <button class="btn btn-success" type="submit"><i class="fa fa-save"></i>Edit</button>
-                                    <a href="<?= base_url('sppd') ?>" class="btn btn-info"><i class="fa fa-list"></i>Back </a>
-                                    <button class="btn btn-danger" type="reset">Batal</button>
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Kepala Bagian UMUM<?php echo form_error('kabag') ?></b></label>
+                                    <div class='col-md-7'>
+
+                                        <select name="kabag" class="form-control select2">
+                                            <?php foreach ($this->properti->getPegawai()->result_array() as $list) {  ?>
+                                                <option value="<?= $list['nip'] ?>" <?= $list['nip'] == $row->kabag ? 'selected' : '' ?>><?= $list['nama'] ?></option>
+                                            <?php } ?>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="varchar" class='control-label col-md-4'><b>Kepala sub bagian<?php echo form_error('kasubag') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <select name="kasubag" id="kasubag" class="form-control select2">
+                                            <?php foreach ($this->properti->getPegawai()->result_array() as $list) {  ?>
+                                                <option value="<?= $list['nip'] ?>" <?= $list['nip'] == $row->kasubag ? 'selected' : '' ?>><?= $list['nama'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
+                            <div class="card-action">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <hr />
+                                        <button class="btn btn-success" type="submit"><i class="fa fa-save"></i>Simpan</button>
+                                        <a href="<?= base_url('sppd') ?>" class="btn btn-info"><i class="fa fa-list"></i>Back </a>
+                                        <button class="btn btn-danger" type="reset">Batal</button>
+                                    </div>
+                                </div>
+                            </div>
                     </form>
                 </div>
             </div>
