@@ -311,7 +311,7 @@ class Sppd extends CI_Controller
 			$diperintah = implode(',', $this->input->post('nip'));
 			$data = [
 				'bawahan' => $this->input->post('bawahan'),
-				'code' => $letter_code,
+				'code' => $this->input->post('letter_code'),
 				'letter_code' => ($this->input->post('letter_code')) ? $this->input->post('letter_code') : 0,
 				'letter_subject' => ($this->input->post('letter_subject')) ? $this->input->post('letter_subject') : 0,
 				'letter_about' => ($this->input->post('letter_about')) ? $this->input->post('letter_about') : 0,

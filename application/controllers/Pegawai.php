@@ -362,9 +362,6 @@ class Pegawai extends CI_Controller
 
 	public function json_select($id_pegawai = null)
 	{
-
-
-
 		$data = $this->db->get('pegawai');
 		$row = [];
 		foreach ($data->result_array() as $list) {

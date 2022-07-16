@@ -111,7 +111,7 @@ class properti
             $data = $this->ci->db->select('a.id_arsip,a.id_jenis,a.nama_arsip, b.jenis_arsip,c.nama,a.tanggal,a.lokasi')->from('arsip a')
                 ->join('jenis_arsip b', 'a.id_jenis=b.id_jenis', 'left outer')
                 ->join('login c', 'a.id_pejabat=c.id_user', 'left')
-                ->where('date_format(tanggal,"%Y")', $tahun)
+                // ->where('date_format(tanggal,"%Y")', $tahun)
                 ->order_by('a.id_arsip')
                 ->limit($limit)
                 ->get();
@@ -120,7 +120,7 @@ class properti
             $data = $this->ci->db->select('a.id_jenis,a.nama_arsip, b.jenis_arsip,c.nama,a.tanggal,a.lokasi')->from('arsip a')
                 ->join('jenis_arsip b', 'a.id_jenis=b.id_jenis', 'left')
                 ->join('login c', 'a.id_pejabat=c.id_user', 'left')
-                ->where('date_format(tanggal,"%Y")', $tahun)
+                // ->where('date_format(tanggal,"%Y")', $tahun)
                 ->order_by('a.id_arsip')
                 ->get();
             return $data;
@@ -132,7 +132,7 @@ class properti
         $data = $this->ci->db->select('count(a.id_arsip) as jum,a.id_jenis,a.nama_arsip, b.jenis_arsip,c.nama')->from('arsip a')
             ->join('jenis_arsip b', 'a.id_jenis=b.id_jenis', 'left')
             ->join('login c', 'a.id_pejabat=c.id_user', 'left')
-            ->where('date_format(tanggal,"%Y")', $tahun)
+            // ->where('date_format(tanggal,"%Y")', $tahun)
             ->group_by('a.id_jenis')
             ->get();
         return $data;
@@ -230,5 +230,31 @@ class properti
             'id_jenis' => $jenis_id
         ])->row_array();
         return isset($data['nama_jenis']) ? str_replace('~', ' ', $data['nama_jenis']) : 'Kosong';
+    }
+
+    public function getField($nip)
+    {
+        $CI = &get_instance();
+        $data =   $CI->db->get_where('pegawai', [
+            'nip' => $nip
+        ])->row_array();
+        return isset($data['nama']) ? str_replace('~', ' ', $data['nama']) : 'Kosong';
+    }
+
+    public function get_pengikut($nip)
+    {
+        $CI = &get_instance();
+        $data =   $CI->db->query("SELECT 
+        group_concat(nama,'',nip separator ',') as nm
+        from pegawai where FIND_IN_SET(pegawai.nip,'$nip') > 0")->row_array();
+        return isset($data['nm']) ? $data['nm'] : 'Kosong';
+    }
+    // pegawai 
+
+    public function getPegawai()
+    {
+        $CI = &get_instance();
+        $data =   $CI->db->get_where('pegawai');
+        return $data;
     }
 }

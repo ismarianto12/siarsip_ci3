@@ -133,12 +133,12 @@
                                         <input type="text" name="no_spt" id="no_spt" class="form-control sc-input-required" placeholder="Nomor Surat Perintah Tugas" value="<?= $letter_code ?>">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Jenis SPT <?php echo form_error('letter_code') ?></b></label>
                                     <div class='col-md-7'>
                                         <input type="text" name="jenisspt_id" name="jenisspt_id" class="form-control" readonly>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Tgl Berangkat<?php echo form_error('date_go') ?></b></label>
@@ -269,12 +269,12 @@
                                     </div>
 
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>JENIS SPPD</b></label>
                                     <div class='col-md-7'>
                                         <input type="text" name="jenisspdata" value="" class="form-control" readonly>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Pejabat yang memberi perintah<?php echo form_error('atasan') ?></b></label>
                                     <div class='col-md-7'>
