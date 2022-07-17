@@ -129,7 +129,7 @@
                                     </div>
 
                                 </div>
-                                <!-- <div class="form-group">
+                                <div class="form-group">
                                    <label for="varchar" class='control-label col-md-4'><b>Lama Perjalanan<?php echo form_error('length_journey') ?></b></label>
                                    <div class='col-md-7'>
                                        <input type="number" class="form-control" name="length_journey" id="length_journey" placeholder="Lama jalan" value="<?php echo $length_journey; ?>" style="
@@ -137,7 +137,7 @@
    display: inline-flex;
 "> / Hari
                                    </div>
-                               </div> -->
+                               </div>
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Pengikut<?php echo form_error('pengikut_nip') ?></b></label>
                                     <div class='col-md-7'>
@@ -201,17 +201,15 @@
                                 <br /> <br />
                                 <br />
 
-                                <div class="callout callout-info">
-                                    Surat Peritah Perjalanan dinas</div>
-                                <hr />
+                               
                                 <div class="form-group">
 
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="varchar" class='control-label col-md-4'><b>Nomor Surat Perjalanan Dinas (SPPD)<?php echo form_error('letter_code') ?></b></label>
                                         <div class='col-md-7'>
                                             <input type="text" name="letter_code" id="letter_code" class="form-control sc-input-required" placeholder="Nomor Surat Perjalanan Dinas" value="<?= $letter_code ?>">
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                 </div>
                                 <!-- <div class="form-group">
@@ -279,7 +277,7 @@
 
 
                                 <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Pimpinan (Walikota ,Sekda, Wakil Walikota)<?php echo form_error('pimpinan') ?></b></label>
+                                    <label for="varchar" class='control-label col-md-4'><b>Pimpinan <?php echo form_error('pimpinan') ?></b></label>
                                     <div class='col-md-7'>
                                         <select class="form-control select2" name="pimpinan">
                                             <?php foreach ($this->properti->getPegawai()->result_array() as $list) {  ?>

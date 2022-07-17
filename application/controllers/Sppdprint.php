@@ -121,9 +121,10 @@ class Sppdprint extends CI_Controller
         $jenissuratnya = explode('~', $jsurat['nama_jenis']);
 
 
-        // var_dump($jenissuratnya);
-        // exit();
-        // custom value at document name
+
+        $templateProcessor->setValue('nip_pimpinan', $val['nip_pimpinan']);
+        $templateProcessor->setValue('tgl_surat', tgl_indonesia(date('Y-m-d'))); 
+
         $templateProcessor->setValue('jenis_surat', strtoupper($jenissuratnya[1]));
         $templateProcessor->setValue('letter_code', $val['letter_code']);
         $templateProcessor->setValue('basic', $val['basic']);
@@ -168,6 +169,7 @@ class Sppdprint extends CI_Controller
 
         $templateProcessor->setValue('id', $data['id']);
         $templateProcessor->setValue('pimpinan', $this->properti->getField($data['pimpinan']));
+        $templateProcessor->setValue('nip_pimpinan', $data['pimpinan']);
         $templateProcessor->setValue('letter_code', $data['letter_code']);
         $templateProcessor->setValue('letter_subject', $data['letter_subject']);
         $templateProcessor->setValue('letter_about', $data['letter_about']);

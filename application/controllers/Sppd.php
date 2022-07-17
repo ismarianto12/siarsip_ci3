@@ -375,9 +375,8 @@ class Sppd extends CI_Controller
 
 		$this->db->select('*')->from('pegawai');
 		if ($atasan != '') {
-			$this->db->where('id !=', $atasan);
+			$this->db->where('nip !=', $atasan);
 		}
-
 
 		$data = $this->db->get()->result_array();
 

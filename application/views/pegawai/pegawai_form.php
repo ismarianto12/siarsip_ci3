@@ -98,11 +98,11 @@
                 <div class="form-group">
                     <label for="varchar" class='control-label col-md-3'><b> Jabatan<?php echo form_error('jabatan') ?></b></label>
                     <div class='col-md-9'>
-                        <select name="sikd_satker_id" class="form-control select2" required>
+                        <select name="jabatan" class="form-control select2" required>
                             <?php foreach ($this->db->get('tmjabatan')->result_array() as $lk) {
                                 $selected = $lk['Id'] == $jabatan ? 'seleted' : '';
                             ?>
-                                <option value="<?= $lk['Id'] ?>" <?= $selected ?>> <?= ucfirst($lk['Description']) ?></option>
+                                <option value="<?= ucfirst($lk['Description']) ?>" <?= $selected ?>> <?= ucfirst($lk['Description']) ?></option>
                             <?php } ?>
                         </select>
                     </div>

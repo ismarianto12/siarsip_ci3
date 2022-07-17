@@ -109,7 +109,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Pejabat yang di perintah<?php echo form_error('bawahan') ?></b></label>
+                                    <label for="varchar" class='control-label col-md-4'>
+
+                                        * ) silahkan pilih data atasan terlebih dahulu
+                                        <b>
+
+                                            Pejabat yang di perintah<?php echo form_error('bawahan') ?></b></label>
                                     <div class='col-md-7'>
 
                                         <select id="bawahan" name="bawahan" class="form-control">
@@ -117,7 +122,7 @@
                                     </div>
 
                                 </div>
-                                <!-- <div class="form-group">
+                                <div class="form-group">
                                    <label for="varchar" class='control-label col-md-4'><b>Lama Perjalanan<?php echo form_error('length_journey') ?></b></label>
                                    <div class='col-md-7'>
                                        <input type="number" class="form-control" name="length_journey" id="length_journey" placeholder="Lama jalan" value="<?php echo $length_journey; ?>" style="
@@ -125,7 +130,7 @@
    display: inline-flex;
 "> / Hari
                                    </div>
-                               </div> -->
+                               </div>
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Pengikut<?php echo form_error('pengikut_nip') ?></b></label>
                                     <div class='col-md-7'>
@@ -189,10 +194,9 @@
                                 <br /> <br />
                                 <br />
 
-                                <div class="callout callout-info">
-                                    Surat Peritah Perjalanan dinas</div>
+
                                 <hr />
-                                <div class="form-group">
+                                <!-- <div class="form-group">
 
                                     <div class="form-group">
                                         <label for="varchar" class='control-label col-md-4'><b>Nomor Surat Perjalanan Dinas (SPPD)<?php echo form_error('letter_code') ?></b></label>
@@ -201,7 +205,7 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                </div> -->
                                 <!-- <div class="form-group">
                                    <label for="varchar" class='control-label col-md-4'><b>JENIS SPPD</b></label>
                                    <div class='col-md-7'>
@@ -267,10 +271,12 @@
 
 
                                 <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Pimpinan (Walikota ,Sekda, Wakil Walikota)<?php echo form_error('pimpinan') ?></b></label>
+                                    <label for="varchar" class='control-label col-md-4'><b>Pimpinan <?php echo form_error('pimpinan') ?></b></label>
                                     <div class='col-md-7'>
                                         <select class="form-control select2" name="pimpinan">
-                                            <?php foreach ($this->properti->getPegawai()->result_array() as $list) {  ?>
+                                            <?php foreach ($this->db->get_where('pegawai', [
+                                                'jabatan' => 'Pimpinan'
+                                            ])->result_array() as $list) {  ?>
                                                 <option value="<?= $list['nip'] ?>" <?= $list['nip'] == $row->pimpinan ? 'selected' : '' ?>><?= $list['nama'] ?></option>
                                             <?php } ?>
                                         </select>
@@ -283,7 +289,9 @@
                                     <div class='col-md-7'>
 
                                         <select name="kabag" class="form-control select2">
-                                            <?php foreach ($this->properti->getPegawai()->result_array() as $list) {  ?>
+                                            <?php foreach ($this->db->get_where('pegawai', [
+                                                'jabatan' => 'Kepala Bagian UMUM'
+                                            ])->result_array() as $list) {  ?>
                                                 <option value="<?= $list['nip'] ?>" <?= $list['nip'] == $row->kabag ? 'selected' : '' ?>><?= $list['nama'] ?></option>
                                             <?php } ?>
                                         </select>
@@ -295,7 +303,9 @@
                                     <label for="varchar" class='control-label col-md-4'><b>Kepala sub bagian<?php echo form_error('kasubag') ?></b></label>
                                     <div class='col-md-7'>
                                         <select name="kasubag" id="kasubag" class="form-control select2">
-                                            <?php foreach ($this->properti->getPegawai()->result_array() as $list) {  ?>
+                                            <?php foreach ($this->db->get_where('pegawai', [
+                                                'jabatan' => 'Kepala sub bagian'
+                                            ])->result_array() as $list) {  ?>
                                                 <option value="<?= $list['nip'] ?>" <?= $list['nip'] == $row->kasubag ? 'selected' : '' ?>><?= $list['nama'] ?></option>
                                             <?php } ?>
                                         </select>

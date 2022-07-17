@@ -3,6 +3,8 @@
          <?= $this->session->userdata('message') ?>
          <div class='white-box'>
             
+
+         * ) Read only
              <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
              <div class='table-responsive'>
                  <?php echo anchor(site_url('tmjabatan/tambah'), 'Tambah Data', 'class="btn bg-navy btn-flat margin"'); ?>

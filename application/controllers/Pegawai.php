@@ -249,14 +249,14 @@ class Pegawai extends CI_Controller
 
 	public function _rules()
 	{
-		$this->form_validation->set_rules('nip', 'nip', 'trim|required|is_unique[pegawai.nip]');
+		// $this->form_validation->set_rules('nip', 'nip', 'trim|required|is_unique[pegawai.nip]');
 		$this->form_validation->set_rules('nama', 'nama', 'trim|required');
 		$this->form_validation->set_rules('no_hp', 'no hp', 'trim|required');
 		$this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
 		$this->form_validation->set_rules('tanggal_lahir', 'tanggal lahir', 'trim|required');
 		$this->form_validation->set_rules('tempat_lahir', 'tempat lahir', 'trim|required');
 		$this->form_validation->set_rules('golongan', 'golongan', 'trim|required'); 
-		$this->form_validation->set_rules('jabatan', 'jabatan', 'trim|required');
+		// $this->form_validation->set_rules('jabatan', 'jabatan', 'trim|required');
 		$this->form_validation->set_rules('jabatan_tanggal', 'jabatan tanggal', 'trim|required');
 		// $this->form_validation->set_rules('kerja_tahun', 'kerja tahun', 'trim|required');
 		// $this->form_validation->set_rules('kerja_bulan', 'kerja bulan', 'trim|required');
