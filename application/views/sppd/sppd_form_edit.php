@@ -42,6 +42,7 @@
                 },
                 function(data) {
                     $.each(data, function(index, value) {
+                    
                         ll += "<option value='" + value.nip + "'>" + value.nama + "</option>";
                     });
                     $('#bawahan').html(ll);
