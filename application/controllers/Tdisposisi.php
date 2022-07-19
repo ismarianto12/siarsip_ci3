@@ -1,10 +1,5 @@
 <?php
-
-/*developed by ismarianto putra
-  you can visit my site in ismarianto.com
-  for more complain anda more information.  
-*/
-
+require_once 'vendor/autoload.php';
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -208,17 +203,23 @@ class Tdisposisi extends CI_Controller
             $data_db = $this->Tdisposisi_model->lembar_disposisi($id);
             if ($data_db->num_rows() > 0) {
 
-                header("Content-type: application/vnd.ms-word");
-                header("Content-Disposition: attachment;Filename=Lembar-disposisi-" . date('Y-m-d') . '.rtf');
+                // var_dump($data_db->result_array());
+                // die;
+                $mpdf = new \Mpdf\Mpdf();
+
+                $mpdf->SetTitle('Cetak Lembar disposisi Surat ' . $data_db->row()->no_agenda);
 
                 $x = array(
                     'judul' => 'Cetak data disposisi surat',
                     'qrcode' => $this->qrcode(),
                     'data' => $data_db->row()
                 );
-                $this->load->view('disposisi/disposisi', $x);
+                $render =  $this->load->view('disposisi/disposisi', $x, true);
+
+                $mpdf->WriteHTML($render);
+                $mpdf->Output();
             } else {
-                redirect(base_url('tsuratmasuk'));
+                // redirect(base_url('tsuratmasuk'));
             }
         else :
         endif;

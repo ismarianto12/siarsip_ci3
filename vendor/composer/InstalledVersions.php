@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'd461f2591425b9126d08423034a59fa28b407730',
+    'reference' => 'bec7f3718433fce25270774082e26dcc3f45e617',
     'name' => '__root__',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'd461f2591425b9126d08423034a59fa28b407730',
+      'reference' => 'bec7f3718433fce25270774082e26dcc3f45e617',
     ),
     'alchemy/binary-driver' => 
     array (
@@ -63,30 +63,57 @@ private static $installed = array (
     ),
     'laminas/laminas-escaper' => 
     array (
-      'pretty_version' => '2.7.0',
-      'version' => '2.7.0.0',
+      'pretty_version' => '2.10.0',
+      'version' => '2.10.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '5e04bc5ae5990b17159d79d331055e2c645e5cc5',
-    ),
-    'laminas/laminas-zendframework-bridge' => 
-    array (
-      'pretty_version' => '1.2.0',
-      'version' => '1.2.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '6cccbddfcfc742eb02158d6137ca5687d92cee32',
+      'reference' => '58af67282db37d24e584a837a94ee55b9c7552be',
     ),
     'monolog/monolog' => 
     array (
-      'pretty_version' => '1.26.0',
-      'version' => '1.26.0.0',
+      'pretty_version' => '1.27.1',
+      'version' => '1.27.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '2209ddd84e7ef1256b7af205d0717fb62cfc9c33',
+      'reference' => '904713c5929655dc9b97288b69cfeedad610c9a1',
+    ),
+    'mpdf/mpdf' => 
+    array (
+      'pretty_version' => 'v8.1.1',
+      'version' => '8.1.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e511e89a66bdb066e3fbf352f00f4734d5064cbf',
+    ),
+    'myclabs/deep-copy' => 
+    array (
+      'pretty_version' => '1.11.0',
+      'version' => '1.11.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '14daed4296fae74d9e3201d2c4925d1acb7aa614',
+    ),
+    'paragonie/random_compat' => 
+    array (
+      'pretty_version' => 'v9.99.100',
+      'version' => '9.99.100.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
+    ),
+    'php-http/message-factory' => 
+    array (
+      'pretty_version' => 'v1.0.2',
+      'version' => '1.0.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a478cb11f66a6ac48d8954216cfed9aa06a501a1',
     ),
     'php-unoconv/php-unoconv' => 
     array (
@@ -99,12 +126,21 @@ private static $installed = array (
     ),
     'phpoffice/phpword' => 
     array (
-      'pretty_version' => '0.18.1',
-      'version' => '0.18.1.0',
+      'pretty_version' => '0.18.3',
+      'version' => '0.18.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => '06b90e39a36872c6ee73534e1a073f4b3132fc6a',
+      'reference' => 'be0190cd5d8f95b4be08d5853b107aa4e352759a',
+    ),
+    'psr/http-message' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f6561bf28d520154e4b0ec72be95418abe6d9363',
     ),
     'psr/log' => 
     array (
@@ -122,6 +158,15 @@ private static $installed = array (
         0 => '1.0.0',
       ),
     ),
+    'setasign/fpdi' => 
+    array (
+      'pretty_version' => 'v2.3.6',
+      'version' => '2.3.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6231e315f73e4f62d72b73f3d6d78ff0eed93c31',
+    ),
     'symfony/process' => 
     array (
       'pretty_version' => 'v3.4.47',
@@ -130,13 +175,6 @@ private static $installed = array (
       array (
       ),
       'reference' => 'b8648cf1d5af12a44a51d07ef9bf980921f15fca',
-    ),
-    'zendframework/zend-escaper' => 
-    array (
-      'replaced' => 
-      array (
-        0 => '^2.6.1',
-      ),
     ),
   ),
 );

@@ -1,6 +1,7 @@
 {
     "require": {
         "ext-mbstring": "*",
+        "mpdf/mpdf": "^8.0",
         "ext-gd": "*",
         "phpoffice/phpword": "^0.18.1",
         "php-unoconv/php-unoconv": "^4.1" 

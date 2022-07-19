@@ -103,6 +103,7 @@ class Tsuratmasuk extends CI_Controller
 
       $conf['allowed_types'] = 'pdf|jpg|png|ico|bmp|docx';
       $conf['upload_path'] = 'assets/file_surat/';
+      // $conf['max_upload_size'] = '';
       $conf['file_name']   = time() . 'file_surat';
       $this->upload->initialize($conf);
       if ($this->upload->do_upload('file')) {

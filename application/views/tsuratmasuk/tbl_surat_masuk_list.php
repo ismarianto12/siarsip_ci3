@@ -9,6 +9,7 @@
     $('#datatables').on('click', ' #edit', function() {
       var access = $(this).attr('to');
       $('.main_app').load(access).slideDown();
+      $(window).scrollTop(100); 
     });
 
   });

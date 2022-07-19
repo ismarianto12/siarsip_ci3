@@ -75,6 +75,8 @@ class Login extends CI_Controller
   {
 
     $this->_rules();
+    $this->form_validation->set_rules('username', 'username', 'trim|required|is_unique[login.username]');
+
     if ($this->form_validation->run() == FALSE) {
 
       echo json_encode([
@@ -220,7 +222,8 @@ class Login extends CI_Controller
 
   public function _rules()
   {
-    $this->form_validation->set_rules('username', 'username', 'trim|required|is_unique[login.username]');
+     
+
     $this->form_validation->set_rules('password', 'password', 'trim|required');
     $this->form_validation->set_rules('nama', 'nama', 'trim|required');
     $this->form_validation->set_rules('level', 'level', 'trim|required');

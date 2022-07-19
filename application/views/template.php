@@ -40,7 +40,7 @@
     <!-- notif that show -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
- 
+
     <!-- aplikasi js -->
 
 </head>
@@ -211,13 +211,16 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="<?= base_url('assets/img/foto/' . $data['foto']) ?>" class="img-circle" alt="User Image" onerror="this.onerror=null;this.src='<?= base_url('assets/img/no_image.jpg') ?>';">
+                        <img src="<?= base_url('assets/img/foto/' . $data['foto']) ?>" class="image-circle image-responsive" alt="User Image" onerror="this.onerror=null;this.src='<?= base_url('assets/img/no_image.jpg') ?>';">
+                        <br /> <br /> 
                     </div>
                     <div class="pull-left info">
                         <p><?= $this->session->username ?></p>
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        <br />
                     </div>
                 </div>
+                
                 <!-- search form -->
                 <!-- <form action="#" method="get" class="sidebar-form">
                     <div class="input-group">
@@ -294,12 +297,12 @@
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js"></script>
 
     <script type="text/javascript">
-       
-        
+
+
     </script>
     <script src="<?= base_url() ?>/assets/template_lte/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
- 
+
 
     <script src="<?= base_url() ?>/assets/template_lte/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
@@ -308,7 +311,7 @@
     <script src="<?= base_url() ?>/assets/template_lte/dist/js/demo.js"></script>
 
     <script src="<?= base_url('assets/template/js/aplikasi.js') ?>"></script>
- 
+
 
 </body>
 
