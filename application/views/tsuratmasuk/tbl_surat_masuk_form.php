@@ -127,7 +127,12 @@
                                          <a href="<?= base_url('assets/file_surat/' . $file) ?>" target="_blank" class="btn btn-primary">Detail File Surat</a>
                                      <?php endif; ?>
                                      <br />
-                                     <input type="file" class="form-control" name="file" id="file" placeholder="File" value="<?php echo $file; ?>" />
+                                     <input type="file" class="form-control" name="file" id="file" placeholder="File" value="<?php echo $file; ?>"
+                                     <?php if ($this->uri->segment(2) == 'edit') : ?>   
+                                        <?php else: ?>
+                                        required
+                                        <?php endif ?> 
+                                      />
                                  </div>
                              </div>
                              <div class="form-group">
