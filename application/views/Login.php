@@ -16,7 +16,8 @@
 
 
   <script type="text/javascript" src="<?= base_url('/assets/template') ?>/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="<?= base_url('/assets/template') ?>/font-awesome-4.1.0/css/font-awesome.min.css" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
   <script src="<?= base_url() ?>assets/template/js/login.js"></script>
 
   <script type="text/javascript" src="<?= base_url('/assets/template') ?>/dialog/bootbox.js"></script>
@@ -129,7 +130,7 @@
       <div class="col-md-8 align-items-center">
         <center>
           <img src="<?= base_url('assets/img/') . logo() ?>" alt="logo" width="80">
-          <br />  <br />
+          <br /> <br />
           <h4 style="color:#000"><?= strtoupper(instansi('nama_instansi')) ?></h4>
         </center>
       </div>
