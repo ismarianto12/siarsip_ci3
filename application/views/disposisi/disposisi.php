@@ -198,21 +198,22 @@
     width: 90%;
   }
 </style>
+
 <body>
   <div class="container">
     <!-- Container START -->
     <div id="colres">
-      <div class="disp"> 
-        <h6 class="up">KEMENTRIAN AGAMA REPUBLIK INDONESIA</h6>
-        <h5 class="up" id="nama">KANTOR KEMENTRIAN AGAMA KOTA MADIUN</h5><br />
-        <h6 class="status">KANTOR KEMENTRIAN AGAMA KOTA MADIUN</h6>
-        <span id="alamat">Jalan Raya Kediri Gg. Kwagean No. 04 Loceret Telp/Fax. (0358) 329806 Nganjuk 64471</span>
+      <div class="disp">
+        <img src="<?= base_url('assets/img/') . logo() ?>" width="60">
+        <h4 class="up"><b><?= strtoupper(instansi('nama_instansi')) ?></b></h4>
+
+        <span id="alamat"><?= (instansi('alamat_lengkap')) ?> Telp/Fax. <?= (instansi('telp')) ?>, <?= (instansi('fax')) ?></span>
       </div>
       <div class="separator"></div>
       <table class="bordered" id="tbl">
         <tbody>
           <tr>
-            <td class="tgh" id="lbr" colspan="5">LEMBAR DISPOSISI</td>
+            <td colspan="3">LEMBAR DISPOSISI</td>
           </tr>
           <tr>
             <td id="right" width="18%"><strong>Indeks Berkas</strong></td>
