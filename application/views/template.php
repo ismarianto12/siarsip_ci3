@@ -134,7 +134,7 @@
             <!-- Logo -->
             <a href="<?= site_url('') ?>" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>A</b>LT</span>
+                <span class="logo-mini"></span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg"><b>Admin</b>Strator</span>
             </a>
@@ -212,7 +212,7 @@
                 <div class="user-panel">
                     <div class="pull-left image">
                         <img src="<?= base_url('assets/img/foto/' . $data['foto']) ?>" class="image-circle image-responsive" alt="User Image" onerror="this.onerror=null;this.src='<?= base_url('assets/img/no_image.jpg') ?>';">
-                        <br /> <br /> 
+                        <br /> <br />
                     </div>
                     <div class="pull-left info">
                         <p><?= $this->session->username ?></p>
@@ -220,22 +220,18 @@
                         <br />
                     </div>
                 </div>
-                
-                <!-- search form -->
-                <!-- <form action="#" method="get" class="sidebar-form">
-                    <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Search...">
-                        <span class="input-group-btn">
-                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                        </span>
-                    </div>
-                </form> -->
-                <!-- /.search form -->
-                <!-- sidebar menu: : style can be found in sidebar.less -->
+
+
                 <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
                     <?= $this->properti->menu_app('Bottom', $this->session->level) ?>
+                    <div class="clearfix"></div>
+                    <li class="header">END NAVIGATION</li>
+
+                    <br /><br /><br />
+
                 </ul>
+
             </section>
             <!-- /.sidebar -->
         </aside>
@@ -279,7 +275,6 @@
 
 
     </div>
-    <!-- <script src="<?= base_url('assets/template/js/jquery.pjax.js') ?>"></script> -->
 
 
     <script src="<?= base_url() ?>/assets/template_lte/plugins/pace/pace.js"></script>
@@ -296,10 +291,6 @@
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js"></script>
 
-    <script type="text/javascript">
-
-
-    </script>
     <script src="<?= base_url() ?>/assets/template_lte/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 
