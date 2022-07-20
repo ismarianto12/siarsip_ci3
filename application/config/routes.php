@@ -55,9 +55,7 @@ $route['logout'] = 'dasboard/logout';
 
 // print doc
 $route['print/(:any)/(:any)'] = 'Sppdprint/printdata/$1/$2';
-$route['print/(:any)/(:any)'] = 'Sppdprint/printdata/$1/$2';
-
-
+$route['print/(:any)/(:any)'] = 'Sppdprint/printdata/$1/$2';     
 
 $route['404_override'] = 'dasboard/_404';
 $route['translate_uri_dashes'] = FALSE;

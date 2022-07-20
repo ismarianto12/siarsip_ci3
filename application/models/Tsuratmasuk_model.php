@@ -26,7 +26,7 @@ class Tsuratmasuk_model extends CI_Model
             $this->datatables->where('disposisi', $this->input->post('disposisi'));
         }
         //$this->datatables->join('table2', 'tbl_surat_masuk.field = table2.field');
-        $this->datatables->add_column('file_surat', "<a href='" . base_url('assets/file_surat/$1') . "' class='btn btn-success btn-xs'><i class='fa fa-download'></i></a>", 'file');
+        $this->datatables->add_column('file_surat', "<a href='" . base_url('sppdprint/download?file=assets/file_surat/$1') . "' class='btn btn-success btn-xs'><i class='fa fa-download'></i></a>", 'file');
 
         if ($this->session->level != 'admin' and $this->session->level != 'staff') {
         } else {
