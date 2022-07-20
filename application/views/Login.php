@@ -3,7 +3,7 @@
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Maybank data Entri</title>
+  <title>Siarsip</title>
   <link rel="shortcut icon" href="<?= base_url('/assets/template') ?>/img/favicon.ico" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="robots" content="noindex, nofollow">
