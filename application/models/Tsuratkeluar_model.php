@@ -16,30 +16,31 @@ class Tsuratkeluar_model extends CI_Model
     }
 
     // datatables
-    function json() {
+    function json()
+    {
         $this->datatables->select('a.id_agenda,a.no_agenda,a.jenis_surat,a.tanggal_kirim,a.no_surat,a.pengirim,a.perihal,a.nama_file,if(a.disposisi = "y" ,"<button class=\'btn  btn-success btn-xs\'>Disposisi</button>","<button class=\'btn  btn-danger btn-xs\'>Belum Disposisi</button>") as tdisposisi,a.id_user, 
 
          b.id_user,b.username,b.nama');
         $this->datatables->from('tsuratkeluar a');
-        $this->datatables->join('login b','a.id_user=b.id_user','left'); 
+        $this->datatables->join('login b', 'a.id_user=b.id_user', 'left');
         if ($this->input->post('disposisi')) {
-          $this->datatables->where('disposisi',$this->input->post('disposisi'));
-      }
-      if($this->session->level !='admin'){
-          $this->datatables->where('a.id_user',$this->session->id_user);   
-      } 
-      $this->datatables->add_column('j_disposisi','$1','tdisposisi');
-      if($this->session->level != 'admin' AND $this->session->level != 'staff'){ 
-      }else{ 
-      $this->datatables->add_column('action', anchor(site_url('tsuratkeluar/detail/$1'),'<i class="fa fa-book"></i>Read','class="btn btn-info btn-xs edit"')."  ".anchor(site_url('tsuratkeluar/edit/$1'),'<i class="fa fa-edit"></i> Update','class="btn btn-success btn-xs edit"')."<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id_agenda');
-     }
-      if ($this->input->post('disposisi')) {
-        $this->datatables->where('disposisi',$this->input->post('disposisi'));
-    }  
-    $this->datatables->add_column("Qrcode","<img src='".base_url('assets/qrsurat/keluar/$1.png')."' style='width:100px;height:100px'>","no_surat");
-    $this->datatables->add_column("file_surat","<a href='".base_url('assets/file_surat/$1')."' target='_blank' class='btn btn-success'>Detail File Surat</a>","nama_file");
-    return $this->datatables->generate();
-}
+            $this->datatables->where('disposisi', $this->input->post('disposisi'));
+        }
+        if ($this->session->level != 'admin') {
+            $this->datatables->where('a.id_user', $this->session->id_user);
+        }
+        $this->datatables->add_column('j_disposisi', '$1', 'tdisposisi');
+        if ($this->session->level != 'admin' and $this->session->level != 'staff') {
+        } else {
+            $this->datatables->add_column('action', anchor(site_url('tsuratkeluar/detail/$1'), '<i class="fa fa-book"></i>Read', 'class="btn btn-info btn-xs edit"') . "  " . anchor(site_url('tsuratkeluar/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id_agenda');
+        }
+        if ($this->input->post('disposisi')) {
+            $this->datatables->where('disposisi', $this->input->post('disposisi'));
+        }
+        $this->datatables->add_column("Qrcode", "<img src='" . base_url('assets/qrsurat/keluar/$1.png') . "' style='width:100px;height:100px'>", "no_surat");
+        $this->datatables->add_column("file_surat", "<a href='" . base_url('sppdprint/download?file=assets/file_surat/$1') . "' target='_blank' class='btn btn-success'>Detail File Surat</a>", "nama_file");
+        return $this->datatables->generate();
+    }
 
     // get all
     function get_all()
@@ -54,9 +55,10 @@ class Tsuratkeluar_model extends CI_Model
         $this->db->where($this->id, $id);
         return $this->db->get($this->table)->row();
     }
-    
+
     // get total rows
-    function total_rows($q = NULL) {
+    function total_rows($q = NULL)
+    {
         $this->db->like('id_agenda', $q);
         $this->db->or_like('no_agenda', $q);
         $this->db->or_like('jenis_surat', $q);
@@ -70,7 +72,8 @@ class Tsuratkeluar_model extends CI_Model
     }
 
     // get data with limit and search
-    function get_limit_data($limit, $start = 0, $q = NULL) {
+    function get_limit_data($limit, $start = 0, $q = NULL)
+    {
         $this->db->order_by($this->id, $this->order);
         $this->db->like('id_agenda', $q);
         $this->db->or_like('no_agenda', $q);
@@ -103,9 +106,4 @@ class Tsuratkeluar_model extends CI_Model
         $this->db->where($this->id, $id);
         $this->db->delete($this->table);
     }
-
- 
-
-
 }
-
