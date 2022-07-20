@@ -1,31 +1,32 @@
-$(function(){
-	$('#clogin').submit(function(event){
+$(function () {
+	$('#clogin').submit(function (event) {
 		event.preventDefault();
-	    $('#notifikasi').html('<div class="alert alert-info"><i class="fa fa-close"></i>Mohon bersabar Sedang memproses login ..</div>');
-	
+		$('#notifikasi').html('<div class="alert alert-info"><i class="fa fa-close"></i>Mohon bersabar Sedang memproses login ..</div>');
+
 		username = $('input[name="username"]').val();
 		password = $('input[name="password"]').val();
 		if (username == '') {
 			$('#notifikasi').html('<div class="alert alert-danger"><i class="fa fa-close"></i>Username Tidak Boleh Kosong</div>');
-		}else if(password == ''){
+		} else if (password == '') {
 			$('#notifikasi').html('<div class="alert alert-warning"><i class="fa fa-close"></i>Password Tidak Boleh Kosong</div>');
-		}else{ 
+		} else {
 			$.ajax({
-				url:base_url()+'/welcome/login',
+				url: base_url() + '/welcome/login',
 				type: 'POST',
-				data: {username : username , password : password},
-				success:function(data){
-					if(data == 'y'){ 
-						window.location.href=base_url()+'?rg=welcome';
-					}else{
+				data: { username: username, password: password },
+				success: function (data) {
+					if (data == 'y') {
+						$('#notifikasi').html('');
+						window.location.href = base_url() + '?rg=welcome';
+					} else {
 						$('#notifikasi').html('<div class="alert alert-danger"><i class="fa fa-close"></i>Username dan Password yang anda masukan salah .</div>');
-					} 
+					}
 				},
-				error:function(jqXHR, textStatus, errorThrown){
+				error: function (jqXHR, textStatus, errorThrown) {
 					alert('GAgal');
-				} 
-			}); 
-		} 
+				}
+			});
+		}
 
 	});
 
