@@ -58,14 +58,14 @@
 
 
     <div class="form-group">
-      <div class="tampil_gambar"><img src="<?= base_url('assets/img/' . $logo) ?>" class="img-responsive" id="image_upload_preview" style="width: 100px"></div>
+      <div class="tampil_gambar"><img src="<?= base_url('assets/img/' . $logo) ?>" class="img-responsive" id="image_upload_preview" style="width: 100px" onerror="this.onerror=null;this.src='<?= base_url('') ?>/assets/img/no_image.jpg';"></div>
       <br />
       <label for="varchar">Logo <?php echo form_error('logo') ?></label>
       <input type="file" class="form-control" name="logo" id="inputFile">
     </div>
 
     <div class="form-group">
-      <div class="tampil_gambar"><img src="<?= base_url('assets/img/' . $favicon) ?>" class="img-responsive" id="image_upload_preview2" style="width: 100px"></div>
+      <div class="tampil_gambar"><img src="<?= base_url('assets/img/' . $favicon) ?>" class="img-responsive" id="image_upload_preview2" style="width: 100px" onerror="this.onerror=null;this.src='<?= base_url('') ?>/assets/img/no_image.jpg';"></div>
       <br />
       <label for="varchar">Favicon</label>
       <input type="file" class="form-control" name="favicon" id="inputFile2">

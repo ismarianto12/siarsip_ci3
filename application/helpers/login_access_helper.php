@@ -19,6 +19,12 @@ function logo()
   }
   return $sqdata;
 }
+function instansi($column)
+{
+  $CI = &get_instance();
+  $data = $CI->db->get_where('instansi')->row_array();
+  return isset($data[$column]) ? $data[$column] : '';
+}
 
 function icon()
 {
