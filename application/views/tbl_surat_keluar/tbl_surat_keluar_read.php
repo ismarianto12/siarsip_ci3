@@ -33,7 +33,7 @@
 					</tr>
 					<tr>
 						<td>File Surat</td>
-						<td><a class="btn bg-green btn-flat margin" href="<?= base_url('sppdprint/download?file=assets/file_surat/$1'); ?>" target="_blank"><i class="fa fa-download"></i> Lihat file</a></td>
+						<td><a class="btn bg-green btn-flat margin" href="<?= base_url('sppdprint/download?file=assets/file_surat/'.$file); ?>" target="_blank"><i class="fa fa-download"></i> Lihat file</a></td>
 					</tr>
 					<tr>
 						<td>Keterangan</td>
