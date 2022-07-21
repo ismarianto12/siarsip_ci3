@@ -8,6 +8,7 @@
     $(function() {
         $('.js-example-basic-multiple').select2();
 
+        $('#government').select2();
         $('#bawahan').select2();
         $('#atasan').select2();
 
@@ -123,14 +124,14 @@
 
                                 </div>
                                 <div class="form-group">
-                                   <label for="varchar" class='control-label col-md-4'><b>Lama Perjalanan<?php echo form_error('length_journey') ?></b></label>
-                                   <div class='col-md-7'>
-                                       <input type="number" class="form-control" name="length_journey" id="length_journey" placeholder="Lama jalan" value="<?php echo $length_journey; ?>" style="
+                                    <label for="varchar" class='control-label col-md-4'><b>Lama Perjalanan<?php echo form_error('length_journey') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <input type="number" class="form-control" name="length_journey" id="length_journey" placeholder="Lama jalan" value="<?php echo $length_journey; ?>" style="
    width: 60px;
    display: inline-flex;
 "> / Hari
-                                   </div>
-                               </div>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Pengikut<?php echo form_error('pengikut_nip') ?></b></label>
                                     <div class='col-md-7'>
@@ -152,7 +153,16 @@
                                     <label for="nip" class='control-label col-md-4'><b>Instansi (Pembebanan Anggaran)<?php echo form_error('nip') ?></b></label>
 
                                     <div class='col-md-7'>
-                                        <input type="text" name="government" id="government" class="form-control sc-input-required" placeholder="Instansi (Pembebanan Anggaran)" value="<?= $government ?>">
+                                        <select class="form-control select2" name="government" id="government" required>
+                                            <option value="">Semua </option>
+                                            <?php
+                                            foreach ($this->properti->satker() as $key) {   ?>
+
+                                                <option value="<?= $key->nama ?>"><?= $key->nama ?></option>
+
+                                            <?php }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
 

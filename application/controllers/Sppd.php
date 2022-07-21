@@ -170,6 +170,7 @@ class Sppd extends CI_Controller
 			$diperintah = implode(',', $this->input->post('pengikut_nip'));
 			$data = [
 				'pimpinan' => $this->input->post('pimpinan'),
+				'no_spt' => $this->input->post('no_spt'),
 				'letter_code' => $this->input->post('letter_code'),
 				'letter_subject' => $this->input->post('letter_subject'),
 				'letter_about' => $this->input->post('letter_about'),
@@ -213,7 +214,7 @@ class Sppd extends CI_Controller
 				'pimpinan_spt' => $this->input->post('pimpinan_spt'),
 				'kabag_spt' => $this->input->post('kabag_spt'),
 				'kasubag_spt' => $this->input->post('kasubag_spt'),
-				'letter_code_spt' => $this->input->post('letter_code_spt'), 
+				'letter_code_spt' => $this->input->post('letter_code_spt'),
 			];
 			$this->Sppd_model->insert($data);
 			$data = [
@@ -314,7 +315,6 @@ class Sppd extends CI_Controller
 				'pimpinan' => $this->input->post('pimpinan'),
 				'letter_code' => $this->input->post('letter_code'),
 				'code' => $this->input->post('letter_code'),
-
 				'letter_subject' => $this->input->post('letter_subject'),
 				'letter_about' => $this->input->post('letter_about'),
 				'letter_from' => $this->input->post('letter_from'),
