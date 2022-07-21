@@ -30,7 +30,7 @@ class Jenis_arsip_model extends CI_Model
         }
         $this->datatables->add_column('action', anchor(site_url('jenis_arsip/detail/$1'), '<i class="fa fa-book"></i>Read', 'class="btn btn-info btn-xs edit"') . "
         
-        <button class='btn bg-navy btn-flat margin edit' id='edit' to='" . base_url('jenis_arsip/edit/$1') . "'><i class='fa fa-trash'></i> Edit</button>
+        <button class='btn bg-navy btn-flat margin btn-xs edit' id='edit' to='" . base_url('jenis_arsip/edit/$1') . "'><i class='fa fa-trash'></i> Edit</button>
         <a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i> Delete</a>", 'id_jenis');
         return $this->datatables->generate();
     }

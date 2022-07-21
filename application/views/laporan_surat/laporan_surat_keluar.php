@@ -91,7 +91,7 @@
                                  },
                                  {
                                      extend: 'csvHtml5',
-                                     className: 'btn bg-navy btn-flat margin'
+                                     className: 'btn bg-navy btn-flat margin btn-xs'
                                  },
                                  {
                                      extend: 'pdfHtml5',

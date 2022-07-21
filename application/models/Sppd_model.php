@@ -224,11 +224,66 @@ class Sppd_model extends CI_Model
 		$dari   = $this->input->post('dari');
 		$sampai = $this->input->post('sampai');
 
-		$this->datatables->select('sppd.id as sppd_id,a.nip , b.nip, sppd.nip,a.nama as pimpinan,b.nama as pengikut, letter_code,letter_subject,letter_about,letter_from,letter_content,letter_date,code,date,nip_leader,rate_travel,purpose,transport,place_from,place_to,length_journey,date_go,date_back,government,budget,budget_from,description,result_date,result,result_username,file,file_update,status');
+		$this->datatables->select('sppd.id as sppd_id,
+		( 	 
+			SELECT GROUP_CONCAT(pegawai.nama) from pegawai where FIND_IN_SET(pegawai.nip,sppd.pengikut_nip) > 0
+			
+			) AS pengikut,
+		sppd.pimpinan,
+		a.nama,
+		sppd.letter_code,
+		sppd.letter_subject,
+		sppd.letter_about,
+		sppd.letter_from,
+		sppd.letter_content,
+		sppd.letter_date,
+		sppd.code,
+		sppd.date,
+		sppd.bawahan,
+		sppd.atasan,
+		sppd.rate_travel,
+		sppd.pengikut_nip,
+		sppd.purpose,
+		sppd.transport,
+		sppd.place_from,
+		sppd.place_to,
+		sppd.length_journey,
+		sppd.date_go,
+		sppd.date_back,
+		sppd.government,
+		sppd.budget,
+		sppd.budget_from,
+		sppd.description,
+		sppd.result_date,
+		sppd.result,
+		sppd.result_username,
+		sppd.file,
+		sppd.jenis_surat_id,
+		sppd.file_update,
+		sppd.status,
+		sppd.username,
+		sppd.username_update,
+		sppd.datetime_insert,
+		sppd.datetime_update,
+		sppd.basic,
+		sppd.city,
+		sppd.rekening,
+		sppd.kabag,
+		sppd.kasubag,
+		sppd.pimpinan_spt,
+		sppd.kabag_spt,
+		sppd.kasubag_spt,
+		sppd.letter_code_spt');
 		$this->datatables->from('sppd');
 		// //add this line for join
-		$this->datatables->join('pegawai a', 'a.nip = sppd.nip_pejabat', 'left outer');
-		$this->datatables->join('pegawai b', 'b.nip = sppd.nip_leader', 'left outer');
+		$this->datatables->join('pegawai a', 'a.nip = sppd.bawahan', 'left outer');
+		$this->datatables->join('pegawai b', 'b.nip = sppd.pimpinan', 'left outer');
+		$this->datatables->join('jenis_surat c', 'sppd.jenis_surat_id = c.id_jenis', 'left outer');
+		$jenis_sppd = $this->input->post('jenisppd_id');
+		if ($jenis_sppd != '') {
+			$this->datatables->where('sppd.jenis_surat_id', $jenis_sppd);
+		}
+		$this->datatables->add_column('action',  "<a href='#' data-id='$2' data-judul='" . strtoupper('$2') . "' data-idp='$1' class='btn btn-info btn-xs delete' id='konfirmasi'><i class='fa fa-print'></i> Print</a>" . "" . anchor(site_url('sppd/edit/$1'), '<i class="fa fa-edit"></i> Update', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' id='delete' data-id='$1'><i class='fa fa-trash'></i> Delete</a>", 'sppd_id,parameter');
 		if ($dari != '' and $sampai != '') {
 			$this->datatables->where('sppd.date >=', $dari);
 			$this->datatables->where('sppd.date <=', $sampai);

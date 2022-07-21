@@ -151,8 +151,8 @@
                                          <div class='row'>
                                              <div class='col-md-offset-3 col-md-9'>
                                                  <br /><br />
-                                                 <button type="submit" id="simpan" class="btn bg-navy btn-flat margin shiny"><i class='fa fa-save'></i><?php echo $button ?></button>
-                                                 <button class="btn bg-navy btn-flat margin shiny" id="batal"><i class='fa fa-share'></i>Cancel</button>
+                                                 <button type="submit" id="simpan" class="btn bg-navy btn-flat margin btn-xs shiny"><i class='fa fa-save'></i><?php echo $button ?></button>
+                                                 <button class="btn bg-navy btn-flat margin btn-xs shiny" id="batal"><i class='fa fa-share'></i>Cancel</button>
                                              </div>
                                          </div>
                                      </div>

@@ -27,9 +27,9 @@
 			<div class="clearfix"></div>
 			<div class='widget-header'>
 				<?php if ($this->session->level == 'admin') : ?>
-					<button class="btn bg-navy btn-flat margin" id="cari"><i class="fa fa-save"></i>Terima pegajuan.</button>
+					<button class="btn bg-navy btn-flat margin btn-xs" id="cari"><i class="fa fa-save"></i>Terima pegajuan.</button>
 				<?php endif; ?>
-				<button class="btn bg-navy btn-flat margin" id="tambah">Tambah data</button>
+				<button class="btn bg-navy btn-flat margin btn-xs" id="tambah">Tambah data</button>
 				<br /><br />
 
 				<div class="col-md-5">

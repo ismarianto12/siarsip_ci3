@@ -23,7 +23,7 @@
       <div class='table-responsive'>
         <?php if ($this->session->level != 'admin' and $this->session->level != 'staff') {
         } else {
-          echo '<button class="btn bg-navy btn-flat margin" to="' . base_url('tsuratmasuk/tambah') . '" id="tambah">Tambah</button>';
+          echo '<button class="btn bg-navy btn-flat margin btn-xs btn-xs" to="' . base_url('tsuratmasuk/tambah') . '" id="tambah">Tambah</button>';
         } ?>
 
         <div class="main_app"></div>

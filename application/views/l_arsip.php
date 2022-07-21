@@ -83,7 +83,7 @@
                     <td><?= $no ?></td>
                     <td><?= $dt['jenis_arsip'] ?></td>
                     <td><?= $dt['nama_arsip'] ?></td>
-                    <td><a href="<?= base_url('assets/arsip/'.$dt['file_arsip']) ?>" class="btn bg-navy btn-flat margin"><?= $dt['file_arsip'] ?></a></td>
+                    <td><a href="<?= base_url('assets/arsip/'.$dt['file_arsip']) ?>" class="btn bg-navy btn-flat margin btn-xs"><?= $dt['file_arsip'] ?></a></td>
                     <td><?= $dt['jumlah'] ?></td>
                     <td><?= $dt['nama_satuan'] ?></td>
                     <td><?= $dt['nama_lokasi'] ?></td>

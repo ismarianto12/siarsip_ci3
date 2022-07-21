@@ -40,7 +40,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><button class="btn bg-navy btn-flat margin" id="close"><i class='fa fa-home'></i>Cancel</button></td>
+						<td><button class="btn bg-navy btn-flat margin btn-xs" id="close"><i class='fa fa-home'></i>Cancel</button></td>
 					</tr>
 				</table>
 			</div>

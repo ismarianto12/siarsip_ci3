@@ -60,8 +60,8 @@
             </div>
 
             <input type="hidden" name="id_lokasi" value="<?php echo $id_lokasi; ?>" />
-            <button type="submit" id="simpan" class="btn bg-navy btn-flat margin"><i class='fa fa-save'></i><?php echo $button ?></button>
-            <button id="batal" class="btn bg-navy btn-flat margin"><i class='fa fa-cancel'></i>Batal</button>
+            <button type="submit" id="simpan" class="btn bg-navy btn-flat margin btn-xs"><i class='fa fa-save'></i><?php echo $button ?></button>
+            <button id="batal" class="btn bg-navy btn-flat margin btn-xs"><i class='fa fa-cancel'></i>Batal</button>
 
           </form>
         </div>

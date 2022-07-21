@@ -4,7 +4,7 @@
          <div class='white-box'>
              <p class='text-muted m-b-30'><i class="fa fa-file"></i> perjalanan dinas</p>
              <div class='table-responsive'>
-                 <?php echo anchor(site_url('sppd/tambah'), '<i class="fa fa-plus"></i> Tambah Data', 'class="btn bg-navy btn-flat margin"'); ?>
+                 <?php echo anchor(site_url('sppd/tambah'), '<i class="fa fa-plus"></i> Tambah Data', 'class="btn bg-navy btn-flat margin btn-xs"'); ?>
                  <br /><br />
                  <form id="filter" method="POST" class="filter_by">
                      <div class="card-body">

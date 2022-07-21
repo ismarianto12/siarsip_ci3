@@ -37,7 +37,8 @@
  					</tr>
  					<tr>
  						<td>File</td>
- 						<td><a href="<?= base_url('assets/file_surat/' . $file) ?>" class="btn btn-primary btn-sm"><i class="fa fa-download"></i>Download </a></td>
+ 						<td> <a class="btn bg-green btn-flat margin" href="<?= base_url('sppdprint/download?file=assets/file_surat/' . $file); ?>" target="_blank">
+ 						<i class="fa fa-download"></i>Download </a></td>
  					</tr>
  					<tr>
  						<td>Keterangan</td>

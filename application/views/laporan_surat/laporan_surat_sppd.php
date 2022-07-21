@@ -40,6 +40,7 @@
 
                 <script type="text/javascript">
                     $(document).ready(function() {
+                        //  $.fn.dataTable.ext.errMode = 'none';
                         $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings) {
                             return {
                                 "iStart": oSettings._iDisplayStart,

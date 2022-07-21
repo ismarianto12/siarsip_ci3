@@ -64,8 +64,8 @@
                 </div>
 
                 <input type="hidden" name="id_jenis" value="<?php echo $id_jenis; ?>" />
-                <button type="submit" id="simpan" class="btn bg-navy btn-flat margin"><i class='fa fa-save'></i><?php echo $button ?></button>
-                <button id="batal" class="btn bg-navy btn-flat margin"><i class='fa fa-share'></i>Cancel</button>
+                <button type="submit" id="simpan" class="btn bg-navy btn-flat margin btn-xs"><i class='fa fa-save'></i><?php echo $button ?></button>
+                <button id="batal" class="btn bg-navy btn-flat margin btn-xs"><i class='fa fa-share'></i>Cancel</button>
             </form>
         </div>
     </div>

@@ -7,7 +7,7 @@
          * ) Read only
              <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
              <div class='table-responsive'>
-                 <?php echo anchor(site_url('tmjabatan/tambah'), 'Tambah Data', 'class="btn bg-navy btn-flat margin"'); ?>
+                 <?php echo anchor(site_url('tmjabatan/tambah'), 'Tambah Data', 'class="btn bg-navy btn-flat margin btn-xs"'); ?>
                  <?php echo anchor(site_url('tmjabatan/excel'), '<i class=\'fa fa-file-excel-o\'></i>Excel', 'class="btn btn-info btn-xs"'); ?>
                  <?php echo anchor(site_url('tmjabatan/word'), '<i class=\'fa fa-file-word-o\'></i>Word', 'class="btn btn-danger btn-xs"'); ?>
 
