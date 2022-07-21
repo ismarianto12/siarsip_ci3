@@ -8,10 +8,17 @@
 
   /* action add or edit */
   $(function() {
+    $('#cancel_').on('click', function() {
+      $(window).scrollTop(10);
+      $('.main_app').html('').slideUp();
+    });
+
     $('#simpan').on('submit', function(e) {
       e.preventDefault();
       var action = $(this).attr('to');
       var datastring = new FormData(this);
+
+
 
       $.ajax({
         url: action,
@@ -97,7 +104,7 @@
             <div id="preview"></div>
             <br />
             <br />
-              
+
             <span class="callout callout-danger">
               <i class="fa fa-info"></i>
               *** File yang dapat di upload docx Zip,gif,jpg,png,jpeg,PNG,pdf,PDF,doc,docx,mp4,mp3,MP3;
@@ -178,7 +185,7 @@
               <div class='row'>
                 <div class='col-md-offset-3 col-md-9'>
                   <button type="submit" class="btn btn-info"><i class='fa fa-check'></i><?php echo $button ?></button>
-                  <button type="reset" class="btn btn-default"><i class='fa fa-share'></i>Cancel</button>
+                  <button type="reset" class="btn btn-default" id="cancel_"><i class='fa fa-share'></i>Cancel</button>
                 </div>
               </div>
             </div>
