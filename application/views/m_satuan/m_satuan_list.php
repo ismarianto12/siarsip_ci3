@@ -62,7 +62,7 @@
                                     });
                             },
                             oLanguage: {
-                                sProcessing: "loading..."
+                                sProcessing: "<i class='fa fa-refresh fa-spin fa-4x'></i><br /> <h3>Loading  ...</h3>"
                             },
                             processing: true,
                             serverSide: true,

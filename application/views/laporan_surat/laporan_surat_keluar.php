@@ -2,22 +2,27 @@
      <div class='col-sm-12'>
          <?= $this->session->userdata('message') ?>
          <div class='white-box'>
-             <h3 class='box-title m-b-0'>Laporan Surat Keluar</h3>
+             <h3 class='box-title m-b-0'><i class="fa fa-copy"></i>Laporan Surat Keluar</h3>
              <br /><br />
              <div class='table-responsive'>
 
-                 <div class="form-group">
-                     <label for="varchar" class='control-label col-md-3'><b>Dari Tanggal</b></label>
-                     <div class='col-md-9'>
-                         <input type="date" class="form-control" name="dari" id="dari" placeholder="Dari .." />
+                 <div class="col-md-6">
+
+                     <div class="form-group row">
+                         <label for="varchar" class='control-label col-md-4'><b>Dari Tanggal</b></label>
+                         <div class="col-md-6">
+                             <input type="date" class="form-control" name="dari" id="dari" placeholder="Dari .." />
+                         </div>
                      </div>
                  </div>
-                 <br />
+                 <div class="col-md-6">
+                     <div class="form-group row">
 
-                 <div class="form-group">
-                     <label for="varchar" class='control-label col-md-3'><b>Sampai Tanggal</b></label>
-                     <div class='col-md-9'>
-                         <input type="date" class="form-control" name="sampai" id="sampai" placeholder="Tujuan" value="" />
+                         <label for="varchar" class='control-label col-md-4'><b>Sampai Tanggal</b></label>
+                         <div class="col-md-6">
+                             <input type="date" class="form-control" name="sampai" id="sampai" placeholder="Tujuan" value="" />
+                         </div>
+
                      </div>
                  </div>
 
@@ -65,7 +70,7 @@
                                      });
                              },
                              oLanguage: {
-                                 sProcessing: "loading..."
+                                 sProcessing: "<i class='fa fa-refresh fa-spin fa-4x'></i><br /> <h3>Loading  ...</h3>"
                              },
                              processing: true,
                              serverSide: true,
