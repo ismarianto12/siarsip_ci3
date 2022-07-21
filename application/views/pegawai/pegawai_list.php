@@ -1,3 +1,6 @@
+<link href="<?= base_url() ?>/assets/template_lte/plugins/select2/select2.min.css" rel="stylesheet" />
+<script src="<?= base_url() ?>/assets/template_lte/plugins/select2/select2.min.js"></script>
+
 <script>
     $(function() {
         $('#satker_id').select2();
