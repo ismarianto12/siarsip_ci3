@@ -80,7 +80,7 @@
                                     <div class='row'>
                                         <div class='col-md-offset-3 col-md-9'>
                                             <button type='submit' id="cupdate" class='btn btn-success'>Simpan Data</button>
-                                            <button type='button' class='btn btn-default'>Cancel</button>
+                                            <button type='reset' class='btn btn-warning'>Cancel</button>
                                         </div>
                                     </div>
                                 </div>

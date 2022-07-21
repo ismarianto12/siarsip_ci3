@@ -2,7 +2,7 @@
 	// /jQuery.noConflict();
 	$(function() {
 		$('#tambah').click(function() {
-			window.scrollTop(0);
+			$(window).scrollTop(10);
 			$('.main_app').load('<?= base_url('arsip/tambah') ?>').slideDown();
 		});
 
