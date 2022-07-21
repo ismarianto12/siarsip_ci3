@@ -180,7 +180,7 @@
                                 <li class="user-header">
                                     <img src="<?= base_url('assets/img/foto/' . $data['foto']) ?>" class="img-circle" alt="User Image" onerror="this.onerror=null;this.src='<?= base_url('assets/img/no_image.jpg') ?>';">
                                     <p>
-                                        <?= ucfirst($this->session->userame) ?> - <?= ucfirst($this->session->level) ?>
+                                        <?= ucfirst($this->session->username) ?> - <?= ucfirst($this->session->level) ?>
                                         <small>Login terakkhir : <?= date('Y-m-d H:i:s')  ?></small>
                                     </p>
                                 </li>
