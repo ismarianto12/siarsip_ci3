@@ -8,6 +8,7 @@
 
 		$('#datatables').on('click', ' #edit', function() {
 			var access = $(this).attr('to');
+			$(window).scrollTop(10);
 			$('.main_app').load(access).slideDown();
 		});
 
