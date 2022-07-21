@@ -114,7 +114,7 @@
         <a href="#" class="navbar-brand">
           <center>
 
-            <h3 class="box-title m-b-20 row" style="color:#fff">SIA Sudikap <br />(Surat + Surat Dinas dan Kearsipan)</h3>
+            <h3 class="box-title m-b-20 row" style="color:#fff;margin-left: 120px;">SIA Sudikap <br />(Surat + Surat Dinas dan Kearsipan)</h3>
           </center>
         </a>
 

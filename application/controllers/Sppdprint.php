@@ -80,7 +80,7 @@ class Sppdprint extends CI_Controller
             'judul' => 'cetak data sspd',
             'sppd'  => $data->row_array(),
         ];
-        $donwloadfl = 'SPPD-' . $data->row()->code;
+        $donwloadfl = 'SPPD-Cetak' . date('Ymd');
         require_once 'vendor/autoload.php';
         // var_dump($namaFile . '.doc');
         // die;
