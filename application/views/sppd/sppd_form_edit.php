@@ -14,6 +14,17 @@
         $('.js-example-basic-multiple').select2();
 
 
+        $('#date_back').on('change', function() {
+            var date_go = $('#date_go').val();
+            var date_back = $('#date_back').val();
+            if (date_go > date_back) {
+                Swal('Keterangan', 'Tanggal berangkat harus lebih besar dari tanggal kembali', 'error');
+            }
+            var lamat = date_back - date_go;
+            $('input[name="length_journey"]').val(lamat);
+        });
+
+
         $('#bawahan').html(`<option value="<?= $row->bawahan ?>" selected><?= $this->properti->getField($row->bawahan) ?></option>`);
 
 
@@ -42,7 +53,7 @@
                 },
                 function(data) {
                     $.each(data, function(index, value) {
-                    
+
                         ll += "<option value='" + value.nip + "'>" + value.nama + "</option>";
                     });
                     $('#bawahan').html(ll);
@@ -130,14 +141,14 @@
 
                                 </div>
                                 <div class="form-group">
-                                   <label for="varchar" class='control-label col-md-4'><b>Lama Perjalanan<?php echo form_error('length_journey') ?></b></label>
-                                   <div class='col-md-7'>
-                                       <input type="number" class="form-control" name="length_journey" id="length_journey" placeholder="Lama jalan" value="<?php echo $length_journey; ?>" style="
+                                    <label for="varchar" class='control-label col-md-4'><b>Lama Perjalanan<?php echo form_error('length_journey') ?></b></label>
+                                    <div class='col-md-7'>
+                                        <input type="number" class="form-control" name="length_journey" id="length_journey" placeholder="Lama jalan" value="<?php echo $length_journey; ?>" style="
    width: 60px;
    display: inline-flex;
 "> / Hari
-                                   </div>
-                               </div>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Pengikut<?php echo form_error('pengikut_nip') ?></b></label>
                                     <div class='col-md-7'>
@@ -201,7 +212,7 @@
                                 <br /> <br />
                                 <br />
 
-                               
+
                                 <div class="form-group">
 
                                     <!-- <div class="form-group">
@@ -334,25 +345,30 @@
     $('.multiplepegawai').select2();
     $(document).ready(function() {
         $('#trsppd').submit(function(e) {
-            //    alert('haha');
             e.preventDefault();
-            $.ajax({
-                url: $(this).attr('action'),
-                method: "POST",
-                data: $(this).serialize(),
-                dataType: 'json',
-                chace: false,
-                success: function(data) {
-                    if (data.response == 'y') {
-                        redirect();
-                    } else if (data.response == 'n') {
-                        $('#notifikasi').html('<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><ul style="display: grid;">' + data.message + '</ul></div>');
+            var date_go = $('#date_go').val();
+            var date_back = $('#date_back').val();
+            if (date_go > date_back) {
+                Swal('Keterangan', 'Tanggal berangkat harus lebih besar dari tanggal kembali', 'error');
+            } else {
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: "POST",
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    chace: false,
+                    success: function(data) {
+                        if (data.response == 'y') {
+                            redirect();
+                        } else if (data.response == 'n') {
+                            $('#notifikasi').html('<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><ul style="display: grid;">' + data.message + '</ul></div>');
+                        }
+                    },
+                    error: function(data, xhr, status) {
+                        swal.fire('Keterangan', 'data tidak response dengan baik' + status, 'error');
                     }
-                },
-                error: function(data, xhr, status) {
-                    swal.fire('Keterangan', 'data tidak response dengan baik' + status, 'error');
-                }
-            });
+                });
+            }
         })
         // if event click on selected leetter of name category
         $('#sspdjeniss_id').on('change', function() {
