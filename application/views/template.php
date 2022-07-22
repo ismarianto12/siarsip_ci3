@@ -38,8 +38,8 @@
     <script src="<?= base_url() ?>assets/frontend/plugins/datatables/dataTables.bootstrap.min.js"></script>
 
     <!-- notif that show -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/frontend/dist/js/confirm/jquery-confirm.min.css">
+    <script src="<?= base_url() ?>/assets/frontend/dist/js/confirm/jquery-confirm.min.js"></script>
 
     <!-- aplikasi js -->
 
