@@ -993,7 +993,7 @@ padding: 0 15px;
 }
 
 .control-sidebar-dark .control-sidebar-menu>li>a:hover {
-    background: #1e282c
+    background: #f39c12
 }
 
 .control-sidebar-dark .control-sidebar-menu>li>a .menu-info>p {
@@ -1698,7 +1698,7 @@ padding: 0 15px;
 }
 
 .small-box>.small-box-footer:hover {
-    color: #fff;
+    color: rgb(0, 0, 0);
     background: rgba(0, 0, 0, 0.15)
 }
 
@@ -1740,7 +1740,7 @@ padding: 0 15px;
 
 .small-box:hover {
     text-decoration: none;
-    color: #f9f9f9
+    color: #000000
 }
 
 .small-box:hover .icon {

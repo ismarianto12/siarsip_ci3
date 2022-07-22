@@ -32,8 +32,8 @@
 
     <script src="<?= base_url('assets/template/plugins/components/jquery/dist/jquery.min.js') ?>"></script>
 
-    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-    <link rel="stylesheet" href="https://fengyuanchen.github.io/datepicker/css/datepicker.css">
+    <script src="<?= base_url() ?>/assets/frontend/dist/js/jquery-ui.js"></script>
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/frontend/dist/css/datepicker.css">
     <script src="<?= base_url() ?>assets/template/plugins/components/datatables/jquery.dataTables.min.js"></script>
     <script src="<?= base_url() ?>assets/frontend/plugins/datatables/dataTables.bootstrap.min.js"></script>
 
@@ -245,7 +245,7 @@
                         Dashboard
                         <small>Control panel</small>
                     </h1>
-                    
+
                 <?php } ?>
                 <br />
                 <ol class="breadcrumb">

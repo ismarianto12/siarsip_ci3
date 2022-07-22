@@ -841,7 +841,7 @@ a:focus {
 .control-sidebar-dark .nav-tabs.control-sidebar-tabs > li.active > a:hover,
 .control-sidebar-dark .nav-tabs.control-sidebar-tabs > li.active > a:focus,
 .control-sidebar-dark .nav-tabs.control-sidebar-tabs > li.active > a:active {
-  background: #222d32;
+  background: #ffd501f0;
   color: #fff;
 }
 .control-sidebar-dark .control-sidebar-heading,
@@ -849,7 +849,7 @@ a:focus {
   color: #fff;
 }
 .control-sidebar-dark .control-sidebar-menu > li > a:hover {
-  background: #1e282c;
+  background: #f39c12;
 }
 .control-sidebar-dark .control-sidebar-menu > li > a .menu-info > p {
   color: #b8c7ce;
@@ -4726,4 +4726,8 @@ table.text-center th {
   .table-responsive > .table tr td {
     white-space: normal!important;
   }
+}
+
+.logo-lg:hover{
+  background-color: transparent;
 }

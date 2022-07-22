@@ -89,7 +89,7 @@
 .skin-blue .sidebar-menu>li:hover>a,
 .skin-blue .sidebar-menu>li.active>a {
   color: #fff;
-  background: #1e282c;
+  background: #f39c12;
   border-left-color: #f39c12;
 }
 
@@ -483,7 +483,7 @@
 .skin-black .sidebar-menu>li:hover>a,
 .skin-black .sidebar-menu>li.active>a {
   color: #fff;
-  background: #1e282c;
+  background: #f39c12;
   border-left-color: #fff
 }
 
@@ -853,7 +853,7 @@
 .skin-green .sidebar-menu>li:hover>a,
 .skin-green .sidebar-menu>li.active>a {
   color: #fff;
-  background: #1e282c;
+  background: #f39c12;
   border-left-color: #00a65a
 }
 
@@ -1201,7 +1201,7 @@
 .skin-red .sidebar-menu>li:hover>a,
 .skin-red .sidebar-menu>li.active>a {
   color: #fff;
-  background: #1e282c;
+  background: #f39c12;
   border-left-color: #dd4b39
 }
 
@@ -1549,7 +1549,7 @@
 .skin-yellow .sidebar-menu>li:hover>a,
 .skin-yellow .sidebar-menu>li.active>a {
   color: #fff;
-  background: #1e282c;
+  background: #f39c12;
   border-left-color: #f39c12
 }
 
@@ -1897,7 +1897,7 @@
 .skin-purple .sidebar-menu>li:hover>a,
 .skin-purple .sidebar-menu>li.active>a {
   color: #fff;
-  background: #1e282c;
+  background: #f39c12;
   border-left-color: #605ca8
 }
 
