@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-aqua">
+            <div class="small-box bg-white">
                 <div class="inner">
                     <h3><?= $jum_arsip ?></h3>
                     <p>Total Arsip</p>
@@ -16,7 +16,7 @@
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-green">
+            <div class="small-box bg-white">
                 <div class="inner">
                     <h3><?= $jum_s_masuk ?></h3>
                     <p>Total Surat Masuk</p>
@@ -29,7 +29,7 @@
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-yellow">
+            <div class="small-box bg-white">
                 <div class="inner">
                     <h3><?= $jum_s_keluar ?></h3>
                     <p>Jumlah Surat Keluar</p>
@@ -42,7 +42,7 @@
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-red">
+            <div class="small-box bg-white">
                 <div class="inner">
                     <h3><?= $jum_disposisi ?></h3>
                     <p>Surat Masuk Disposisi</p>
@@ -55,7 +55,7 @@
         </div><!-- ./col -->
     </div><!-- /.row -->
     <!-- Main row -->
-    <div class="callout callout-info">
+    <div class="callout bg-white">
         <marquee><i class="fa fa-info"></i>Hy <?= ucfirst($this->session->nama) ?> Selamat datang kembali, silahkan gunakan menu disamping untuk menggukan aplikasi</marquee>
     </div>
 
@@ -63,11 +63,11 @@
         <!-- Left col -->
         <section class="col-lg-7 connectedSortable">
 
-            <script src="https://code.highcharts.com/highcharts.js"></script>
-            <script src="https://code.highcharts.com/modules/series-label.js"></script>
-            <script src="https://code.highcharts.com/modules/exporting.js"></script>
-            <script src="https://code.highcharts.com/modules/export-data.js"></script>
-            <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+            <script src="<?= base_url() ?>/assets/frontend/dist/js/chart/highcharts.js"></script>
+            <script src="<?= base_url() ?>/assets/frontend/dist/js/chart/modules/series-label.js"></script>
+            <script src="<?= base_url() ?>/assets/frontend/dist/js/chart/modules/exporting.js"></script>
+            <script src="<?= base_url() ?>/assets/frontend/dist/js/chart/modules/export-data.js"></script>
+            <script src="<?= base_url() ?>/assets/frontend/dist/js/chart/modules/accessibility.js"></script>
 
             <figure class="highcharts-figure">
                 <div id="container"></div>

@@ -6,36 +6,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?= $judul ?></title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/frontend/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="icon" href="<?= base_url('assets/img/' . icon()) ?>" />
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/frontend/dist/css/template.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/frontend/dist/css/skins/_all-skins.min.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/iCheck/flat/blue.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/frontend/plugins/iCheck/flat/blue.css">
     <!-- Morris chart -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/morris/morris.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/frontend/plugins/morris/morris.css">
     <!-- jvectormap -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/frontend/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
 
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template/css/sweet-alert.css">
 
-    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/template_lte/dist/css/pace.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/frontend/dist/css/pace.min.css">
 
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/template_lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/frontend/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-    <link rel="stylesheet" href="<?= base_url('assets/template_lte/plugins/datatables') ?>/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/frontend/plugins/datatables') ?>/dataTables.bootstrap.min.css">
 
     <script src="<?= base_url('assets/template/plugins/components/jquery/dist/jquery.min.js') ?>"></script>
 
     <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://fengyuanchen.github.io/datepicker/css/datepicker.css">
     <script src="<?= base_url() ?>assets/template/plugins/components/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?= base_url() ?>assets/template_lte/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>assets/frontend/plugins/datatables/dataTables.bootstrap.min.js"></script>
 
     <!-- notif that show -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
@@ -69,7 +69,7 @@
 
     .dt-buttons {
         padding: 10px 10px 10px;
-        background: #ddd;
+        background: #fff;
         margin-bottom: 20px;
         margin-left: 10px;
     }
@@ -240,10 +240,14 @@
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1>
-                    Dashboard
-                    <small>Control panel</small>
-                </h1>
+                <?php if ($this->uri->segment(1) == 'dasboard') { ?>
+                    <h1>
+                        Dashboard
+                        <small>Control panel</small>
+                    </h1>
+                    
+                <?php } ?>
+                <br />
                 <ol class="breadcrumb">
                     <li><a href="<?= base_url() ?>"><i class="fa fa-dashboard"></i> Home</a></li>
                     <li class="active"><?= ucfirst(strtolower($judul)) ?></li>
@@ -277,7 +281,7 @@
     </div>
 
 
-    <script src="<?= base_url() ?>/assets/template_lte/plugins/pace/pace.js"></script>
+    <script src="<?= base_url() ?>/assets/frontend/plugins/pace/pace.js"></script>
     <script src="https://fengyuanchen.github.io/datepicker/js/datepicker.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script src="<?= base_url() ?>assets/template/js/sweet-alert.js"></script>
@@ -291,15 +295,15 @@
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js"></script>
 
-    <script src="<?= base_url() ?>/assets/template_lte/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>/assets/frontend/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 
 
-    <script src="<?= base_url() ?>/assets/template_lte/plugins/fastclick/fastclick.min.js"></script>
+    <script src="<?= base_url() ?>/assets/frontend/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="<?= base_url() ?>/assets/template_lte/dist/js/app.min.js"></script>
+    <script src="<?= base_url() ?>/assets/frontend/dist/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="<?= base_url() ?>/assets/template_lte/dist/js/demo.js"></script>
+    <script src="<?= base_url() ?>/assets/frontend/dist/js/demo.js"></script>
 
     <script src="<?= base_url('assets/template/js/aplikasi.js') ?>"></script>
 
