@@ -121,6 +121,8 @@ class Sikd_satker extends CI_Controller
 				'last_updated_date' => date('Y-m-d'),
 				'last_updated_by' => 1,
 				'satker_pendapatan' => 1,
+				'created_by' => 1,
+
 			);
 
 			$this->Sikd_satker_model->insert($data);
@@ -193,7 +195,10 @@ class Sikd_satker extends CI_Controller
 				'creation_date' => date('Y-m-d'),
 				'last_updated_by' => $this->session->userdata('id'),
 				'last_updated_date' => date('Y-m-d'),
-				'last_updated_by' => $this->session->userdata('id')
+				'last_updated_by' => $this->session->userdata('id'),
+				'last_updated_by' => 1,
+				'satker_pendapatan' => 1,
+				'created_by' => 1,
 			);
 
 			$this->Sikd_satker_model->update($this->input->post('id', TRUE), $data);
