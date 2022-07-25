@@ -107,9 +107,9 @@
                                 </div>
                                 <hr />
                                 <div class="form-group">
-                                    <label for="varchar" class='control-label col-md-4'><b>Nomor Surat Perintah Tugas<?php echo form_error('no_spt') ?></b></label>
+                                    <label for="varchar" class='control-label col-md-4'><b>Nomor Surat Perintah Tugas<?php echo form_error('letter_code') ?></b></label>
                                     <div class='col-md-7'>
-                                        <input type="text" name="no_spt" id="no_spt" class="form-control sc-input-required" placeholder="Nomor Surat Perintah Tugas" value="<?= $letter_code ?>">
+                                        <input type="text" name="letter_code" id="letter_code" class="form-control sc-input-required" placeholder="Nomor Surat Perintah Tugas" value="<?= $letter_code ?>">
                                     </div>
                                 </div>
 
@@ -142,10 +142,10 @@
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Lama Perjalanan<?php echo form_error('length_journey') ?></b></label>
                                     <div class='col-md-7'>
-                                        <input type="text" class="form-control" name="length_journey" id="length_journey" placeholder="Lama jalan" value="<?php echo $length_journey; ?>" style="
+                                        <input type="number" class="form-control" name="length_journey" id="length_journey" placeholder="Lama jalan" value="<?php echo $length_journey; ?>" style="
    width: 60px;
    display: inline-flex;
-"> / Hari
+" required> / Hari
                                     </div>
                                 </div>
                                 <div class="form-group">
