@@ -381,7 +381,7 @@
                         }
                     },
                     error: function(data, xhr, status) {
-                        swal.fire('Keterangan', 'data tidak response dengan baik' + status, 'error');
+                        Swal('Keterangan', 'data tidak response dengan baik' + status, 'error');
                     }
                 });
             }

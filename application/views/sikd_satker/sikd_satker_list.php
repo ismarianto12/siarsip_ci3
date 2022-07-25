@@ -96,7 +96,7 @@
                      });
 
                      function hapus(n) {
-                         swal({
+                         Swal({
                                  title: 'Konfirmasi Hapus',
                                  text: 'Apakah Anda Yakin Untuk Menghapus Data Ini?',
                                  type: 'warning',
@@ -106,7 +106,7 @@
                                  closeOnConfirm: false
                              },
                              function() {
-                                 swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
+                                 Swal('Hapus Data', 'Data Berhasil Di Hapus', 'success');
                                  window.location.href = '<?= base_url('sikd_satker/hapus/') ?>' + n;
                              });
                      }

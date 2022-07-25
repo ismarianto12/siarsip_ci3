@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/frontend/dist/css/datepicker.css">
     <script src="<?= base_url() ?>assets/template/plugins/components/datatables/jquery.dataTables.min.js"></script>
     <script src="<?= base_url() ?>assets/frontend/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>assets/template/js/sweet-alert.js"></script>
 
     <!-- notif that show -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/frontend/dist/js/confirm/jquery-confirm.min.css">
@@ -220,7 +221,7 @@
                         <br />
                     </div>
                 </div> -->
- 
+
                 <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
                     <?= $this->properti->menu_app('Bottom', $this->session->level) ?>
@@ -282,7 +283,6 @@
     <script src="<?= base_url() ?>/assets/frontend/plugins/pace/pace.js"></script>
     <script src="https://fengyuanchen.github.io/datepicker/js/datepicker.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <script src="<?= base_url() ?>assets/template/js/sweet-alert.js"></script>
     <script src="<?= base_url('assets/template/js/jquery.slimscroll.js') ?>"></script>
 
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>
