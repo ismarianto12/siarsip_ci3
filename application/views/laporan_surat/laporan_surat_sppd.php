@@ -5,20 +5,23 @@
             <h4 class='text-muted m-b-30'><i class="fa fa-list"></i> Report Surat perjalanan dinas</h4>
             <br /><br />
             <div class='table-responsive'>
-                <div class="col-md-6 align-right">
+                <div class="col-md-6">
 
-                    <div class="form-group">
-                        <label for="varchar" class='control-label col-md-6'><b>Dari Tanggal</b></label>
-                        <div class='col-md-6'>
+                    <div class="form-group row">
+                        <label for="varchar" class='control-label col-md-4'><b>Dari Tanggal</b></label>
+                        <div class="col-md-6">
                             <input type="date" class="form-control" name="dari" id="dari" placeholder="Dari .." />
                         </div>
                     </div>
-                    <br />
-                    <div class="form-group">
-                        <label for="varchar" class='control-label col-md-6'><b>Sampai Tanggal</b></label>
-                        <div class='col-md-6'>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+
+                        <label for="varchar" class='control-label col-md-4'><b>Sampai Tanggal</b></label>
+                        <div class="col-md-6">
                             <input type="date" class="form-control" name="sampai" id="sampai" placeholder="Tujuan" value="" />
                         </div>
+
                     </div>
                 </div>
                 <br /><br />

@@ -1,7 +1,6 @@
  <?php if ($data->num_rows() > 0) {
         foreach ($data->result_array() as $data) : ?>
-         <li>
-             <!-- start message -->
+         <li>   
              <a href="#" onclick="return detailData(<?= $data['id_surat'] ?>)" id="detailss">
                  <div class="pull-left">
                      <img src="<?= base_url('assets/img/' . icon()) ?>" class="img-circle" alt="User Image" style="width:30px;height:30px" onerror="this.onerror=null;this.src='<?= base_url('assets/img/no_image.jpg') ?>';">

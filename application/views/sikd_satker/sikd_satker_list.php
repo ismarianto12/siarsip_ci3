@@ -5,9 +5,9 @@
              <h3 class='box-title m-b-0'><?= $judul ?></h3>
              <p class='text-muted m-b-30'>Tabel Data <?= $judul ?></p>
              <div class='table-responsive'>
-                 <?php echo anchor(site_url('sikd_satker/tambah'), 'Tambah Data', 'class="btn btn-primary"'); ?>
-                 <?php echo anchor(site_url('sikd_satker/excel'), '<i class=\'fa fa-file-excel-o\'></i>Excel', 'class="btn btn-info"'); ?>
-                 <?php echo anchor(site_url('sikd_satker/word'), '<i class=\'fa fa-file-word-o\'></i>Word', 'class="btn btn-danger"'); ?>
+                 <?php echo anchor(site_url('sikd_satker/tambah'), 'Tambah Data', 'class="btn btn-primary btn-md"'); ?>
+                 <?php echo anchor(site_url('sikd_satker/excel'), '<i class=\'fa fa-file-excel-o\'></i>Excel', 'class="btn btn-info btn-md"'); ?>
+                 <?php echo anchor(site_url('sikd_satker/word'), '<i class=\'fa fa-file-word-o\'></i>Word', 'class="btn btn-danger btn-md"'); ?>
 
                  <br /><br />
                  <table class="table" id="datatables">

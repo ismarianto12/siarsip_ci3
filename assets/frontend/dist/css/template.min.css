@@ -7,7 +7,7 @@ body {
 
 
 button {
-    font-family: inherit;
+    font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
     font-size: inherit;
     line-height: inherit;
     background: #ff920b;
@@ -23,7 +23,8 @@ button {
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: inherit;
+    font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
+    ;
     font-weight: 400;
     overflow-x: hidden;
     overflow-y: auto
@@ -180,7 +181,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-    font-family: inherit,
+    font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif,
 }
 
 a {
@@ -1765,7 +1766,6 @@ padding: 0 15px;
     position: relative;
     border-radius: 3px;
     background: #ffffff;
-    border-top: 3px solid #d2d6de;
     margin-bottom: 20px;
     width: 100%;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1)
@@ -2533,7 +2533,7 @@ padding: 0 15px;
 }
 
 .btn {
-    border-radius: 3px;
+    border-radius: unset;
     -webkit-box-shadow: none;
     box-shadow: none;
     border: 1px solid transparent
@@ -5490,4 +5490,14 @@ table.text-center th {
     .table-responsive>.table tr td {
         white-space: normal !important
     }
+}
+
+.treeview-menu {
+    background: white;
+    border-left: 2px solid red;
+}
+
+.treeview-menu>.active {
+    background: white;
+    border-left: 2px solid red;
 }

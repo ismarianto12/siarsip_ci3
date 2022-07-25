@@ -1,25 +1,31 @@
 <div class='row'>
   <div class='col-sm-12'>
     <div class='white-box'>
-     
+
       <p class='text-muted m-b-30'>Laporan<?= $judul ?></p>
-      <br  /><br  />
+      <br /><br />
       <div class='table-responsive'>
 
-        <div class="form-group">
-          <label for="varchar" class='control-label col-md-3'><b>Dari Tanggal</b></label>
-          <div class='col-md-9'>
-            <input type="date" class="form-control" name="dari" id="dari" placeholder="Dari .." />
+        <div class="col-md-6">
+
+          <div class="form-group row">
+            <label for="varchar" class='control-label col-md-4'><b>Dari Tanggal</b></label>
+            <div class="col-md-6">
+              <input type="date" class="form-control" name="dari" id="dari" placeholder="Dari .." />
+            </div>
           </div>
         </div>
-        <br />
-        <div class="form-group">
-          <label for="varchar" class='control-label col-md-3'><b>Sampai Tanggal</b></label>
-          <div class='col-md-9'>
-            <input type="date" class="form-control" name="sampai" id="sampai" placeholder="Tujuan" value="" />
+        <div class="col-md-6">
+          <div class="form-group row">
+
+            <label for="varchar" class='control-label col-md-4'><b>Sampai Tanggal</b></label>
+            <div class="col-md-6">
+              <input type="date" class="form-control" name="sampai" id="sampai" placeholder="Tujuan" value="" />
+            </div>
+
           </div>
         </div>
-        <br  /><br  />
+        <br /><br />
 
         <div id="notifikasi"></div>
         <table class="table" id="datatables">
@@ -31,12 +37,12 @@
               <th>Asal Surat</th>
               <th>Isi</th>
               <th>Tgl Diterima</th>
- 
+
             </tr>
           </thead>
         </table>
-        <br  /><br  />  
-        <br /> 
+        <br /><br />
+        <br />
         <script type="text/javascript">
           $(document).ready(function() {
             $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings) {
@@ -79,13 +85,24 @@
                 },
               },
 
-               dom: 'Bfrtip',
-        buttons: [
-        {extend:'copyHtml5', className: 'btn btn-info btn-xs'},
-        {extend:'excelHtml5', className: 'btn btn-success btn-xs'},
-        {extend:'csvHtml5', className: 'btn btn-prirmay btn-xs'},
-        {extend:'pdfHtml5', className: 'btn btn-prirmay btn-xs'}
-        ],
+              dom: 'Bfrtip',
+              buttons: [{
+                  extend: 'copyHtml5',
+                  className: 'btn btn-info btn-xs'
+                },
+                {
+                  extend: 'excelHtml5',
+                  className: 'btn btn-success btn-xs'
+                },
+                {
+                  extend: 'csvHtml5',
+                  className: 'btn btn-prirmay btn-xs'
+                },
+                {
+                  extend: 'pdfHtml5',
+                  className: 'btn btn-prirmay btn-xs'
+                }
+              ],
 
               columns: [{
                   "data": "id_surat",
@@ -100,7 +117,7 @@
                   "data": "isi"
                 }, {
                   "data": "tgl_diterima"
-                } 
+                }
 
               ],
               order: [

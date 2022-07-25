@@ -145,7 +145,7 @@
                                         <input type="text" class="form-control" name="length_journey" id="length_journey" placeholder="Lama jalan" value="<?php echo $length_journey; ?>" style="
    width: 60px;
    display: inline-flex;
-" disabled> / Hari
+"> / Hari
                                     </div>
                                 </div>
                                 <div class="form-group">

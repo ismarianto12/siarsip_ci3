@@ -209,7 +209,7 @@
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
                 <!-- Sidebar user panel -->
-                <div class="user-panel">
+                <!-- <div class="user-panel">
                     <div class="pull-left image">
                         <img src="<?= base_url('assets/img/foto/' . $data['foto']) ?>" class="image-circle image-responsive" alt="User Image" onerror="this.onerror=null;this.src='<?= base_url('assets/img/no_image.jpg') ?>';">
                         <br /> <br />
@@ -219,14 +219,12 @@
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         <br />
                     </div>
-                </div>
-
-
+                </div> -->
+ 
                 <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
                     <?= $this->properti->menu_app('Bottom', $this->session->level) ?>
                     <div class="clearfix"></div>
-                    <li class="header">END NAVIGATION</li>
 
                     <br /><br /><br />
 
