@@ -273,6 +273,7 @@ class Sppdprint extends CI_Controller
         // custom value at document name
         $templateProcessor->setValue('jenis_surat', strtoupper($jenissuratnya[1]));
         $templateProcessor->setValue('letter_code', $val['letter_code']);
+        
         $templateProcessor->setValue('basic', $val['basic']);
         $templateProcessor->setValue('date_go', tgl_indonesia($val['date_go']));
         $templateProcessor->setValue('date_back', tgl_indonesia($val['date_back']));
