@@ -114,13 +114,13 @@ class Sikd_satker extends CI_Controller
 				'nm_ka_satker' => $this->input->post('nm_ka_satker', TRUE),
 				'jab_ka_satker' => $this->input->post('jab_ka_satker', TRUE),
 				'klasifikasi' => $this->input->post('klasifikasi', TRUE),
-				'satker_pendapatan' => $this->input->post('satker_pendapatan', TRUE),
-				'sotk_lama' => $this->input->post('sotk_lama', TRUE),
 				'npwp_satker' => $this->input->post('npwp_satker', TRUE),
 				'kd_skpd_bmd' => $this->input->post('kd_skpd_bmd', TRUE),
 				'creation_date' => date('Y-m-d'),
 				'last_updated_by' => $this->session->userdata('id'),
 				'last_updated_date' => date('Y-m-d'),
+				'last_updated_by' => 1,
+				'satker_pendapatan' => 1,
 			);
 
 			$this->Sikd_satker_model->insert($data);
@@ -187,14 +187,13 @@ class Sikd_satker extends CI_Controller
 				'nm_ka_satker' => $this->input->post('nm_ka_satker', TRUE),
 				'jab_ka_satker' => $this->input->post('jab_ka_satker', TRUE),
 				'klasifikasi' => $this->input->post('klasifikasi', TRUE),
-				'satker_pendapatan' => $this->input->post('satker_pendapatan', TRUE),
-				'sotk_lama' => $this->input->post('sotk_lama', TRUE),
 				'npwp_satker' => $this->input->post('npwp_satker', TRUE),
 				'kd_skpd_bmd' => $this->input->post('kd_skpd_bmd', TRUE),
 				'created_by' => $this->session->userdata('id'),
 				'creation_date' => date('Y-m-d'),
 				'last_updated_by' => $this->session->userdata('id'),
 				'last_updated_date' => date('Y-m-d'),
+				'last_updated_by' => $this->session->userdata('id')
 			);
 
 			$this->Sikd_satker_model->update($this->input->post('id', TRUE), $data);
@@ -231,14 +230,9 @@ class Sikd_satker extends CI_Controller
 		$this->form_validation->set_rules('nm_ka_satker', 'nm ka satker', 'trim|required');
 		$this->form_validation->set_rules('jab_ka_satker', 'jab ka satker', 'trim|required');
 		$this->form_validation->set_rules('klasifikasi', 'klasifikasi', 'trim|required');
-		$this->form_validation->set_rules('satker_pendapatan', 'satker pendapatan', 'trim|required');
 		$this->form_validation->set_rules('sotk_lama', 'sotk lama', 'trim|required');
 		$this->form_validation->set_rules('npwp_satker', 'npwp satker', 'trim|required');
 		$this->form_validation->set_rules('kd_skpd_bmd', 'kd skpd bmd', 'trim|required');
-		$this->form_validation->set_rules('created_by', 'created by', 'trim|required');
-		$this->form_validation->set_rules('creation_date', 'creation date', 'trim|required');
-		$this->form_validation->set_rules('last_updated_by', 'last updated by', 'trim|required');
-		$this->form_validation->set_rules('last_updated_date', 'last updated date', 'trim|required');
 
 		$this->form_validation->set_rules('id', 'id', 'trim');
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
