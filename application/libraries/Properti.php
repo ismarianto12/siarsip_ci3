@@ -240,6 +240,16 @@ class properti
         ])->row_array();
         return isset($data['nama']) ? str_replace('~', ' ', $data['nama']) : 'Kosong';
     }
+    
+    public function getJabatan($nip)
+    {
+        $CI = &get_instance();
+        $data =   $CI->db->get_where('pegawai', [
+            'nip' => $nip
+        ])->row_array();
+        return isset($data['jabatan']) ? str_replace('~', ' ', $data['jabatan']) : 'Kosong';
+    }
+
 
     public function get_pengikut($nip)
     {

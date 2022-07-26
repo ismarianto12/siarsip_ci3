@@ -168,8 +168,10 @@ class Sppdprint extends CI_Controller
         $templateProcessor->setValue('nama_pimpinan', $dpimpinan['nama']);
 
         $templateProcessor->setValue('id', $data['id']);
-        $templateProcessor->setValue('pimpinan', $this->properti->getField($data['pimpinan']));
-        $templateProcessor->setValue('nip_pimpinan', $data['pimpinan']);
+        $templateProcessor->setValue('namapimpinan', $this->properti->getField($data['pimpinan']));
+        $templateProcessor->setValue('jabatanpimpinan', $this->properti->getJabatan($data['pimpinan']));
+        $templateProcessor->setValue('nippimpinan', $data['pimpinan']);
+        //   nip_pimpinan 
         $templateProcessor->setValue('letter_code', $data['letter_code']);
         $templateProcessor->setValue('letter_subject', $data['letter_subject']);
         $templateProcessor->setValue('letter_about', $data['letter_about']);
@@ -183,6 +185,9 @@ class Sppdprint extends CI_Controller
         $templateProcessor->setValue('nip_bawahan', $data['bawahan']);
 
         $templateProcessor->setValue('atasan', $this->properti->getField($data['atasan']));
+        $templateProcessor->setValue('atasan', $this->properti->getField($data['atasan']));
+
+
         $templateProcessor->setValue('rate_travel', $data['rate_travel']);
         $templateProcessor->setValue('pengikut_nip', $this->properti->get_pengikut($data['pengikut_nip']));
         $templateProcessor->setValue('purpose', $data['purpose']);
@@ -218,6 +223,8 @@ class Sppdprint extends CI_Controller
         $templateProcessor->setValue('letter_code_spt', $data['letter_code_spt']);
 
 
+        // var_dump($data);
+        // die;
 
         header("Content-Disposition: attachment; filename=$donwloadfl.docx");
 
@@ -273,7 +280,7 @@ class Sppdprint extends CI_Controller
         // custom value at document name
         $templateProcessor->setValue('jenis_surat', strtoupper($jenissuratnya[1]));
         $templateProcessor->setValue('letter_code', $val['letter_code']);
-        
+
         $templateProcessor->setValue('basic', $val['basic']);
         $templateProcessor->setValue('date_go', tgl_indonesia($val['date_go']));
         $templateProcessor->setValue('date_back', tgl_indonesia($val['date_back']));
