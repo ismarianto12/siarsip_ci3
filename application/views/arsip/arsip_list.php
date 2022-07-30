@@ -289,6 +289,19 @@
 
 						});
 
+
+						$("#datatables").on('click', '#download', function(e) {
+							e.preventDefault();
+							$('#tampil_arsip').modal('show');
+							let id = $(this).data('id');
+							$.post('arsip/getdetailArsip', {
+								id: id
+							}, function(data) {
+								$('#datanya').html(data);
+							})
+
+						})
+
 					});
 
 					function hapus(n) {
@@ -409,5 +422,18 @@
 					</div>
 				</div>
 			</div>
+			<!--  -->
 
-		<?php endif ?>
+			<div class="modal modal-default" id="tampil_arsip">
+				<div class="modal-dialog" style="width: 50%">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title"><i class="fa fa-copy"></i>File arsip yang ditambahkan</h4>
+						</div>
+						<div class="modal-body" id="datanya" style="overflow: auto;">
+
+						</div>
+					</div>
+				</div>
+			<?php endif ?>

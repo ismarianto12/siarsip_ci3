@@ -71,7 +71,7 @@ class Arsip_model extends CI_Model
             $this->datatables->where('a.id_jenis', $this->input->post('id_jenis'));
         } else {
         }
-        $this->datatables->add_column('file_arsip', "<a href='" . base_url('assets/arsip/$1') . "' class='btn btn-success btn-xs' target='_blank'><i class='fa fa-download'></i></a>", 'file_arsip');
+        $this->datatables->add_column('file_arsip', "<a href='#' data-id='$1' id='download' class='btn btn-success btn-xs'><i class='fa fa-download'></i></a>", 'id_arsip');
         $this->datatables->add_column('nama_satuan', '$1', 'nama_satuan');
         $this->datatables->add_column('nama', '$1', 'nama');
         $this->datatables->add_column('jenis_arsip', '$1', 'jenis_arsip');

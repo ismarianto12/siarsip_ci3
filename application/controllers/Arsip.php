@@ -20,6 +20,18 @@ class Arsip extends CI_Controller
         $this->template->load('template', 'arsip/arsip_list', $x);
     }
 
+    public function getdetailArsip()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data = $this->db->get_where('arsip', ['id_arsip' => $this->input->post('id')]);
+            if ($data->num_rows() > 0) {
+                $this->load->view('arsip/detaildownload', [
+                    'data' => $data
+                ]);
+            }
+        }
+    }
+
     public function json()
     {
         header('Content-Type: application/json');
@@ -120,7 +132,7 @@ class Arsip extends CI_Controller
             $params['size'] = 10;
             $params['savename'] = FCPATH . $config['imagedir'] . $image_name;
             $this->ciqrcode->generate($params);
-           
+
 
             $data = array(
                 'jumlah' => $this->input->post('jumlah'),
@@ -134,7 +146,7 @@ class Arsip extends CI_Controller
                 'tanggal' => date('Y-m-d'),
                 'permision' => $permision
             );
-           
+
             $this->Arsip_model->insert($data);
             $respon = array(
                 'ket' => 1,
