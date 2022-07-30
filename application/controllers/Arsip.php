@@ -103,6 +103,7 @@ class Arsip extends CI_Controller
             );
             echo json_encode($respon);
         } else {
+
             $config['cacheable']    = true;
             $config['cachedir']     = './assets/';
             $config['errorlog']     = './assets/';
@@ -119,39 +120,27 @@ class Arsip extends CI_Controller
             $params['size'] = 10;
             $params['savename'] = FCPATH . $config['imagedir'] . $image_name;
             $this->ciqrcode->generate($params);
-            /*end*/
+           
 
-            $cf['upload_path'] = 'assets/arsip/';
-            $cf['file_name'] = 'arsip_' . time();
-            $cf['allowed_types'] = 'zip|gif|jpg|png|jpeg|png|pdf|PDF|doc|docx|mp4|mp3|MP3';
-            $this->upload->initialize($cf);
-            if ($this->upload->do_upload('file_arsip') == TRUE) {
-                $data = array(
-                    'jumlah' => $this->input->post('jumlah'),
-                    'id_satuan' => $this->input->post('id_satuan'),
-                    'id_jenis' => $this->input->post('id_jenis', TRUE),
-                    'id_pejabat' => $this->session->userdata('id_user'),
-                    'nama_arsip' => $this->input->post('nama_arsip', TRUE),
-                    'file_arsip' => $this->upload->file_name,
-                    'lokasi' => $this->input->post('lokasi', TRUE),
-                    'ket_isi' => $this->input->post('ket_isi', TRUE),
-                    'tanggal' => date('Y-m-d'),
-                    'permision' => $permision
-                );
-                //  print_r($_POST);
-                $this->Arsip_model->insert($data);
-                $respon = array(
-                    'ket' => 1,
-                    'respon' => 'data berhasil di simpan'
-                );
-                echo json_encode($respon);
-            } else {
-                $respon = array(
-                    'ket' => 2,
-                    'respon' => $this->upload->display_errors('<li>', '</li>')
-                );
-                echo json_encode($respon);
-            }
+            $data = array(
+                'jumlah' => $this->input->post('jumlah'),
+                'id_satuan' => $this->input->post('id_satuan'),
+                'id_jenis' => $this->input->post('id_jenis', TRUE),
+                'id_pejabat' => $this->session->userdata('id_user'),
+                'nama_arsip' => $this->input->post('nama_arsip', TRUE),
+                'file_arsip' => $this->input->post('file_arsipxx'),
+                'lokasi' => $this->input->post('lokasi', TRUE),
+                'ket_isi' => $this->input->post('ket_isi', TRUE),
+                'tanggal' => date('Y-m-d'),
+                'permision' => $permision
+            );
+           
+            $this->Arsip_model->insert($data);
+            $respon = array(
+                'ket' => 1,
+                'respon' => 'data berhasil di simpan'
+            );
+            echo json_encode($respon);
         }
     }
 
