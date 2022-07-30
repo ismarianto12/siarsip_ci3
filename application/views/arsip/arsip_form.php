@@ -220,7 +220,7 @@
   $(function() {
     $('#file_arsipxx').on('click', function() {
       event.preventDefault();
-      $('#urlnya').html('<iframe width="100%" height="500px" src="<?= base_url('fm/') ?>/filemanager/dialog.php?type=2&field_id=file_arsipxx\'&fldr=" frameborder="0"  style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; "></iframe>');
+      $('#urlnya').html('<iframe width="100%" height="500px" src="<?= base_url('fm/') ?>/filemanager/dialog.php?akey=klasdkasdkaposdkapodkaszxpokpoqkpaosko90321903&type=2&field_id=file_arsipxx\'&fldr=assets/arsip" frameborder="0"  style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; "></iframe>');
       $('#tampil_cmodal').modal('show');
 
       var link = $('#file_arsipxx').val();

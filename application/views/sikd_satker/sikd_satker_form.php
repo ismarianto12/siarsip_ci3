@@ -38,24 +38,7 @@
                                     <input type="text" class="form-control" name="singkatan" id="singkatan" placeholder="Singkatan" value="<?php echo $singkatan; ?>" />
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="varchar" class='control-label col-md-3'><b>Sikd Bidang Id<?php echo form_error('sikd_bidang_id') ?></b></label>
-                                <div class='col-md-9'>
-                                    <input type="text" class="form-control" name="sikd_bidang_id" id="sikd_bidang_id" placeholder="Sikd Bidang Id" value="<?php echo $sikd_bidang_id; ?>" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="varchar" class='control-label col-md-3'><b>Kd Bidang Induk<?php echo form_error('kd_bidang_induk') ?></b></label>
-                                <div class='col-md-9'>
-                                    <input type="text" class="form-control" name="kd_bidang_induk" id="kd_bidang_induk" placeholder="Kd Bidang Induk" value="<?php echo $kd_bidang_induk; ?>" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="varchar" class='control-label col-md-3'><b>Rek Konsolidasi Id<?php echo form_error('rek_konsolidasi_id') ?></b></label>
-                                <div class='col-md-9'>
-                                    <input type="text" class="form-control" name="rek_konsolidasi_id" id="rek_konsolidasi_id" placeholder="Rek Konsolidasi Id" value="<?php echo $rek_konsolidasi_id; ?>" />
-                                </div>
-                            </div>
+                             
                             <div class="form-group">
                                 <label for="varchar" class='control-label col-md-3'><b>Nip Ka Satker<?php echo form_error('nip_ka_satker') ?></b></label>
                                 <div class='col-md-9'>
@@ -98,12 +81,7 @@
                                     <input type="text" class="form-control" name="npwp_satker" id="npwp_satker" placeholder="Npwp Satker" value="<?php echo $npwp_satker; ?>" />
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="varchar" class='control-label col-md-3'><b>Kd Skpd Bmd<?php echo form_error('kd_skpd_bmd') ?></b></label>
-                                <div class='col-md-9'>
-                                    <input type="text" class="form-control" name="kd_skpd_bmd" id="kd_skpd_bmd" placeholder="Kd Skpd Bmd" value="<?php echo $kd_skpd_bmd; ?>" />
-                                </div>
-                            </div>
+                            
                             
                             <input type="hidden" name="id" value="<?php echo $id; ?>" />
 

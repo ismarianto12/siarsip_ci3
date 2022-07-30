@@ -44,7 +44,7 @@ class Arsip extends CI_Controller
 
     public function json_data()
     {
-        //header('Content-Type : application/json');
+        header('Content-Type : application/json');
         echo $this->Arsip_model->data_ajuan_arsip();
     }
 
@@ -312,9 +312,7 @@ class Arsip extends CI_Controller
             @unlink('assets/arsip/' . $row->file_arsip);
             @unlink('assets/arsip/' . $row->nama_arsip . '.png');
             $this->Arsip_model->delete($id);
-            //$this->session->set_flashdata('message', '<div class="callout callout-danger fade-in"><i class="fa fa-check"></i>Data Berhasil Di Hapus</div>');
-            // redirect(site_url('arsip?jenis='.$row->id_jenis));
-            //  echo $id;
+         
             catat_log($this->session->id_user, $_SERVER['REQUEST_URI'], 'Menghapus data arsip', $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']);
         } else {
             echo "{}";

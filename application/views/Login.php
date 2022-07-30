@@ -6,6 +6,8 @@
   <title>Siarsip</title>
   <link rel="shortcut icon" href="<?= base_url('/assets/template') ?>/img/favicon.ico" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
   <meta name="robots" content="noindex, nofollow">
   <meta name="googlebot" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">

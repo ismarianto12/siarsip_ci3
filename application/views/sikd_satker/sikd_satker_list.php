@@ -19,9 +19,6 @@
                              <th>Singkatan</th>
                              <th>Nama Kepala Satker</th>
                              <th>Klasifikasi</th>
-
-
-
                              <th width="200px">Action</th>
                          </tr>
                      </thead>

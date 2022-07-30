@@ -16,7 +16,7 @@ class Tdisposisi extends CI_Controller
 
     public function index()
     {
-        $x['judul'] = 'Data : Tdisposisi';
+        $x['judul'] = 'Data Master Disposisi';
         $this->template->load('template', 'tdisposisi/tdisposisi_list', $x);
     }
 
