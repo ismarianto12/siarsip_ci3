@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?= $judul ?></title>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/frontend/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
