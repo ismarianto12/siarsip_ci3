@@ -43,8 +43,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/frontend/dist/js/confirm/jquery-confirm.min.css">
     <script src="<?= base_url() ?>/assets/frontend/dist/js/confirm/jquery-confirm.min.js"></script>
 
-    <!-- aplikasi js -->
-
+ 
 </head>
 
 <script type="text/javascript">
@@ -279,6 +278,7 @@
 
 
     </div>
+    <script src="<?= base_url('assets/template/js/aplikasi.js') ?>"></script>
 
 
     <script src="<?= base_url() ?>/assets/frontend/plugins/pace/pace.js"></script>
@@ -304,7 +304,6 @@
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url() ?>/assets/frontend/dist/js/demo.js"></script>
 
-    <script src="<?= base_url('assets/template/js/aplikasi.js') ?>"></script>
 
 
 </body>
