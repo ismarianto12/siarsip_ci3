@@ -415,7 +415,7 @@ echo $this->session->flashdata('pesan');
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title" id="myLargeModalLabel">Data menu dan modul akses</h4>
+        <h4 class="modal-title" id="myLargeModalLabel"><i class="fa fa-copy"></i>Pilih data arsip</h4>
       </div>
       <div class="modal-body">
         <?php
