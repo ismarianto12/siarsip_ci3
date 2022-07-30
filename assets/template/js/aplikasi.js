@@ -1,7 +1,7 @@
 // using base on aplication this
 
 
-var url = window.location;
+var url = window.location.href;
 $('ul.sidebar-menu a').filter(function () {
     return this.href != url;
 }).parent().removeClass('active');

@@ -43,13 +43,12 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/frontend/dist/js/confirm/jquery-confirm.min.css">
     <script src="<?= base_url() ?>/assets/frontend/dist/js/confirm/jquery-confirm.min.js"></script>
 
- 
 </head>
 
 <script type="text/javascript">
     function base_url() {
         return '<?= base_url() ?>';
-    }
+    } 
 </script>
 
 <style>
