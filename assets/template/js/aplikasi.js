@@ -1,7 +1,5 @@
-// using base on aplication this
 
-
-var url = window.location.href;
+var url = window.location;
 $('ul.sidebar-menu a').filter(function () {
     return this.href != url;
 }).parent().removeClass('active');
@@ -36,8 +34,6 @@ function scrollTampil(elem) {
 }
 
 $('ul.sidebar-menu').on('expanded.tree', function (e) {
-    // Manipulasi menu perlu ada tenggang waktu -- supaya dilakukan sesudah
-    // event lain selesai
     e.stopImmediatePropagation();
     setTimeout(scrollTampil($('li.treeview.menu-open')[0]), 500);
 });
