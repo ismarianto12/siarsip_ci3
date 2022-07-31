@@ -11,6 +11,7 @@
     $('#cancel_').on('click', function() {
       $(window).scrollTop(10);
       $('.main_app').html('').slideUp();
+      $('.load_data').slideDown().show();
     });
 
     $('#simpan').on('submit', function(e) {
@@ -45,6 +46,7 @@
             $("form").removeAttr("disabled");
             $('#datatables').DataTable().ajax.reload();
           }
+          $('.load_data').slideDown().show();
         },
         error: function(data) {
           Swal('Keterangan', 'server belum bisa respon', 'warning');
@@ -59,9 +61,11 @@
 
     <div class='widget-body'>
 
-      <div class='form-title'>
-        <h3><?= $judul ?></h3>
+      <div class='form-title' style="text-align:center">
+        <h3><i class="fa fa-copy"></i><?= $judul ?></h3>
+
       </div>
+      <hr />
       <div id="notifikasi"></div>
       <?= $this->session->flashdata('message') ?>
       <form to="<?php echo $action; ?>" id="simpan" method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -198,6 +202,7 @@
 </div>
 
 <hr />
+<br />
 
 <!-- file -->
 
