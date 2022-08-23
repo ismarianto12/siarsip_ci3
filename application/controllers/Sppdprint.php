@@ -1,22 +1,25 @@
 <?php
 
-
 // ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
-if (!defined('BASEPATH'))
+@ini_set("pcre.backtrack_limit", "2000000");
+
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
+}
+
 class Sppdprint extends CI_Controller
 {
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
         login_access();
         $this->load->model(['Sppd_model', 'Pegawai_model']);
         $this->load->library(['form_validation', 'datatables', 'Cpdf']);
     }
-    //action printdata 
+    //action printdata
     private function _datasppd($id)
     {
         return $this->db->select('
@@ -65,7 +68,7 @@ class Sppdprint extends CI_Controller
         sppd.kabag_spt,
         sppd.kasubag_spt,
         sppd.letter_code_spt
-		
+
 		')
             ->from('sppd')
             ->join('jenis_surat', 'sppd.jenis_surat_id = jenis_surat.id_jenis')
@@ -78,7 +81,7 @@ class Sppdprint extends CI_Controller
         $data = $this->Sppd_model->cetak($id);
         $render = [
             'judul' => 'cetak data sspd',
-            'sppd'  => $data->row_array(),
+            'sppd' => $data->row_array(),
         ];
         $donwloadfl = 'SPPD-Cetak' . date('Ymd');
         require_once 'vendor/autoload.php';
@@ -88,8 +91,8 @@ class Sppdprint extends CI_Controller
         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('assets/template/doc/' . $namaFile . '.docx');
 
         // var_dump($templateProcessor);
-        $no       = 1;
-        $sc       = $this->properti->parsing($data->row()->nip);
+        $no = 1;
+        $sc = $this->properti->parsing($data->row()->nip);
         $pengikut = $this->Pegawai_model->getPengikut($sc);
         $no = 1;
         foreach ($pengikut->result_array() as $listp) {
@@ -104,7 +107,7 @@ class Sppdprint extends CI_Controller
                 'date_go' => $listp['date_go'],
                 'date_back' => $listp['date_back'],
                 'government' => $listp['government'],
-                'description' => $listp['description']
+                'description' => $listp['description'],
             );
             $no++;
         }
@@ -114,13 +117,11 @@ class Sppdprint extends CI_Controller
         $templateProcessor->cloneBlock('block_name', 0, true, false, $replacements);
 
         $val = $this->_datasppd($id)->row_array();
-        // get  nama pemberi tugas  
-        $perintah  = $this->db->get_where('pegawai', ['nip' => $val['nip_pejabat']])->row_array();
-        $diperintah  = $this->db->get_where('pegawai', ['nip' => $val['nip_leader']])->row_array();
-        $jsurat  = $this->db->get_where('jenis_surat', ['id_jenis' => $val['jenis_surat_id']])->row_array();
+        // get  nama pemberi tugas
+        $perintah = $this->db->get_where('pegawai', ['nip' => $val['nip_pejabat']])->row_array();
+        $diperintah = $this->db->get_where('pegawai', ['nip' => $val['nip_leader']])->row_array();
+        $jsurat = $this->db->get_where('jenis_surat', ['id_jenis' => $val['jenis_surat_id']])->row_array();
         $jenissuratnya = explode('~', $jsurat['nama_jenis']);
-
-
 
         $templateProcessor->setValue('nip_pimpinan', $val['nip_pimpinan']);
         $templateProcessor->setValue('tgl_surat', tgl_indonesia(date('Y-m-d')));
@@ -140,7 +141,7 @@ class Sppdprint extends CI_Controller
         $templateProcessor->setValue('nama_pemberi_tugas', $perintah['nama']);
         $templateProcessor->setValue('pangkat_pemberi_tugas', $perintah['jabatan']);
         $templateProcessor->setValue('nip_pemberi_tugas', $perintah['nip']);
-        $templateProcessor->setValue('jabatan_pemberi_tugas',  $perintah['jabatan']);
+        $templateProcessor->setValue('jabatan_pemberi_tugas', $perintah['jabatan']);
         $templateProcessor->setValue('nama_yang_diperintah', $diperintah['nama']);
         $templateProcessor->setValue('nip_pegawai_yang_diperintah', $diperintah['nip']);
         $templateProcessor->setValue('jabatan_pegawai_yang_diperintah', $diperintah['jabatan']);
@@ -157,11 +158,10 @@ class Sppdprint extends CI_Controller
         $templateProcessor->setValue('pangkat_penandatangan_sppd', $perintah['jabatan']);
         $templateProcessor->setValue('no_nip_penandatangan_sppd', $perintah['nip']);
         $templateProcessor->setValue('tgl_hari_ini', tgl_indonesia(date('Y-m-d')));
-        //add line to approve that letter 
+        //add line to approve that letter
         $dpimpinan = $this->db->get_where('pegawai', [
-            'nip' => $val['pimpinan']
+            'nip' => $val['pimpinan'],
         ])->row_array();
-
 
         $data = $this->db->get_where('sppd', ['id' => $id])->row_array();
 
@@ -171,7 +171,7 @@ class Sppdprint extends CI_Controller
         $templateProcessor->setValue('namapimpinan', $this->properti->getField($data['pimpinan']));
         $templateProcessor->setValue('jabatanpimpinan', $this->properti->getJabatan($data['pimpinan']));
         $templateProcessor->setValue('nippimpinan', $data['pimpinan']);
-        //   nip_pimpinan 
+        //   nip_pimpinan
         $templateProcessor->setValue('letter_code', $data['letter_code']);
         $templateProcessor->setValue('letter_subject', $data['letter_subject']);
         $templateProcessor->setValue('letter_about', $data['letter_about']);
@@ -186,7 +186,6 @@ class Sppdprint extends CI_Controller
 
         $templateProcessor->setValue('atasan', $this->properti->getField($data['atasan']));
         $templateProcessor->setValue('atasan', $this->properti->getField($data['atasan']));
-
 
         $templateProcessor->setValue('rate_travel', $data['rate_travel']);
         $templateProcessor->setValue('pengikut_nip', $this->properti->get_pengikut($data['pengikut_nip']));
@@ -221,7 +220,6 @@ class Sppdprint extends CI_Controller
         $templateProcessor->setValue('kabag_spt', $data['kabag_spt']);
         $templateProcessor->setValue('kasubag_spt', $data['kasubag_spt']);
         $templateProcessor->setValue('letter_code_spt', $data['letter_code_spt']);
-
 
         // var_dump($data);
         // die;
@@ -236,7 +234,7 @@ class Sppdprint extends CI_Controller
         $data = $this->Sppd_model->cetak($id);
         $render = [
             'judul' => 'cetak data sspd',
-            'sppd'  => $data->row_array(),
+            'sppd' => $data->row_array(),
         ];
         $donwloadfl = 'SPT-Cetak' . date('Ymd');
         require_once 'vendor/autoload.php';
@@ -246,39 +244,17 @@ class Sppdprint extends CI_Controller
         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('assets/template/doc/SPT_BARU.docx');
 
         // var_dump($templateProcessor);
-        $no       = 1;
-        $sc       = $this->properti->parsing($data->row()->nip);
+        $no = 1;
+        $sc = $this->properti->parsing($data->row()->nip);
         $pengikut = $this->Pegawai_model->getPengikut($sc);
         $no = 1;
-        foreach ($pengikut->result_array() as $listp) {
-            $replacements[] = array(
-                'no' => $no,
-                'nama' => $listp['nama'],
-                'golongan_pengikut' => $listp['golongan_pengikut'],
-                'nip' => $listp['nip'],
-                'jabatan_pengikut' => $listp['jabatan'],
-                'place_to' => $listp['place_to'],
-                'length_journey' => $listp['length_journey'],
-                'date_go' => $listp['date_go'],
-                'date_back' => $listp['date_back'],
-                'government' => $listp['government'],
-                'description' => $listp['description']
-            );
-            $no++;
-        }
-        //the head section
-        $logo = (file_exists("./assets/img/" . logo())) ? "assets/img/" . logo() : "assets/img/no_image.png";
-        $templateProcessor->setImageValue('CompanyLogo', $logo);
-        $templateProcessor->cloneBlock('block_name', 0, true, false, $replacements);
 
         $val = $this->_datasppd($id)->row_array();
-        // get  nama pemberi tugas  
-        $perintah  = $this->db->get_where('pegawai', ['nip' => $val['nip_pejabat']])->row_array();
-        $diperintah  = $this->db->get_where('pegawai', ['nip' => $val['nip_leader']])->row_array();
-        $jsurat  = $this->db->get_where('jenis_surat', ['id_jenis' => $val['jenis_surat_id']])->row_array();
+        // get  nama pemberi tugas
+        $perintah = $this->db->get_where('pegawai', ['nip' => $val['nip_pejabat']])->row_array();
+        $diperintah = $this->db->get_where('pegawai', ['nip' => $val['nip_leader']])->row_array();
+        $jsurat = $this->db->get_where('jenis_surat', ['id_jenis' => $val['jenis_surat_id']])->row_array();
         $jenissuratnya = explode('~', $jsurat['nama_jenis']);
-
-
 
         $templateProcessor->setValue('nip_pimpinan', $val['nip_pimpinan']);
         $templateProcessor->setValue('tgl_surat', tgl_indonesia(date('Y-m-d')));
@@ -298,7 +274,7 @@ class Sppdprint extends CI_Controller
         $templateProcessor->setValue('nama_pemberi_tugas', $perintah['nama']);
         $templateProcessor->setValue('pangkat_pemberi_tugas', $perintah['jabatan']);
         $templateProcessor->setValue('nip_pemberi_tugas', $perintah['nip']);
-        $templateProcessor->setValue('jabatan_pemberi_tugas',  $perintah['jabatan']);
+        $templateProcessor->setValue('jabatan_pemberi_tugas', $perintah['jabatan']);
         $templateProcessor->setValue('nama_yang_diperintah', $diperintah['nama']);
         $templateProcessor->setValue('nip_pegawai_yang_diperintah', $diperintah['nip']);
         $templateProcessor->setValue('jabatan_pegawai_yang_diperintah', $diperintah['jabatan']);
@@ -315,11 +291,10 @@ class Sppdprint extends CI_Controller
         $templateProcessor->setValue('pangkat_penandatangan_sppd', $perintah['jabatan']);
         $templateProcessor->setValue('no_nip_penandatangan_sppd', $perintah['nip']);
         $templateProcessor->setValue('tgl_hari_ini', tgl_indonesia(date('Y-m-d')));
-        //add line to approve that letter 
+        //add line to approve that letter
         $dpimpinan = $this->db->get_where('pegawai', [
-            'nip' => $val['pimpinan']
+            'nip' => $val['pimpinan'],
         ])->row_array();
-
 
         $data = $this->db->get_where('sppd', ['id' => $id])->row_array();
 
@@ -329,7 +304,7 @@ class Sppdprint extends CI_Controller
         $templateProcessor->setValue('namapimpinan', $this->properti->getField($data['pimpinan']));
         $templateProcessor->setValue('jabatanpimpinan', $this->properti->getJabatan($data['pimpinan']));
         $templateProcessor->setValue('nippimpinan', $data['pimpinan']);
-        //   nip_pimpinan 
+        //   nip_pimpinan
         $templateProcessor->setValue('letter_code', $data['letter_code']);
         $templateProcessor->setValue('letter_subject', $data['letter_subject']);
         $templateProcessor->setValue('letter_about', $data['letter_about']);
@@ -345,6 +320,27 @@ class Sppdprint extends CI_Controller
         $templateProcessor->setValue('atasan', $this->properti->getField($data['atasan']));
         $templateProcessor->setValue('atasan', $this->properti->getField($data['atasan']));
 
+        $ll = explode(',', $data['pengikut_nip']);
+        $k = 1;
+        foreach ($this->get_pegawai($ll)->result_array() as $ff) {
+            $replacements[] = [
+                'no' => $k,
+                'nip' => $ff['nip'],
+                'nama' => $ff['nama'],
+                'jabatan' => $ff['jabatan'],
+                'golongan' => $ff['golongan'],
+            ];
+            $k++;
+        }
+        // $fg = isset($gg) ? $gg : [
+        //     'nip' =>'',
+        //     'nama' =>'',
+        //     'jabatan' => '',
+        //     'golongan' => '',
+        // ];
+        // $replacements = [$fg];
+
+        $templateProcessor->cloneBlock('block_name', 0, true, false, $replacements);
 
         $templateProcessor->setValue('rate_travel', $data['rate_travel']);
         $templateProcessor->setValue('pengikut_nip', $this->properti->get_pengikut($data['pengikut_nip']));
@@ -380,13 +376,47 @@ class Sppdprint extends CI_Controller
         $templateProcessor->setValue('kasubag_spt', $data['kasubag_spt']);
         $templateProcessor->setValue('letter_code_spt', $data['letter_code_spt']);
 
-
-        // var_dump($data);
-        // die;
-
         header("Content-Disposition: attachment; filename=$donwloadfl.docx");
-
         $templateProcessor->saveAs('php://output');
+    }
+
+    private function get_pegawai($nip)
+    {
+        $this->db->select('
+            pegawai.id,
+            pegawai.sikd_satker_id,
+            pegawai.nip,
+            pegawai.nama,
+            pegawai.no_hp,
+            pegawai.alamat,
+            pegawai.tanggal_lahir,
+            pegawai.tempat_lahir,
+            pegawai.golongan,
+            pegawai.golongan_tanggal,
+            pegawai.jabatan,
+            pegawai.jabatan_tanggal,
+            pegawai.kerja_tahun,
+            pegawai.kerja_bulan,
+            pegawai.latihan_jabatan,
+            pegawai.latihan_jabatan_tanggal,
+            pegawai.latihan_jabatan_jam,
+            pegawai.pendidikan,
+            pegawai.pendidikan_lulus,
+            pegawai.pendidikan_ijazah,
+            pegawai.catatan_mutasi,
+            pegawai.keterangan,
+            pegawai.username,
+            pegawai.username_update,
+            pegawai.datetime_insert,
+            pegawai.datetime_update,
+            pegawai.status_deleted,
+            pegawai.pangkat,
+
+            sikd_satker.kode,
+            sikd_satker.nama as namasatker
+            ');
+        $this->db->from('pegawai')->join('sikd_satker', 'pegawai.sikd_satker_id = sikd_satker.id', 'left outer')->where_in('pegawai.nip', $nip);
+        return $this->db->get();
     }
     // action print
     public function printdata($id = '', $jenis_spt = '', $jen = '')
@@ -413,18 +443,18 @@ class Sppdprint extends CI_Controller
             } else if ($jen == 'spt') {
                 $this->printspt($id, 'SPT_OUTIN');
             } else {
-                echo  json_encode([
-                    'status' => 'parmeter mismatch'
+                echo json_encode([
+                    'status' => 'parmeter mismatch',
                 ]);
             }
         } else {
-            echo  json_encode([
-                'status' => 'parmeter mismatch'
+            echo json_encode([
+                'status' => 'parmeter mismatch',
             ]);
         }
     }
 
-    function download()
+    public function download()
     {
         $file = isset($_GET['file']) ? $_GET['file'] : '';
         // if (file_exists($file)) {
