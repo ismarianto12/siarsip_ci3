@@ -243,7 +243,7 @@ class Sppdprint extends CI_Controller
         // var_dump($namaFile . '.doc');
         // die;
 
-        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('assets/template/doc/SPT_OUTIN.docx');
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('assets/template/doc/SPT_BARU.docx');
 
         // var_dump($templateProcessor);
         $no       = 1;
