@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/frontend/plugins/datatables') ?>/dataTables.bootstrap.min.css">
 
     <script src="<?= base_url('assets/template/plugins/components/jquery/dist/jquery.min.js') ?>"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
 
     <script src="<?= base_url() ?>/assets/frontend/dist/js/jquery-ui.js"></script>
     <link rel="stylesheet" href="<?= base_url() ?>/assets/frontend/dist/css/datepicker.css">

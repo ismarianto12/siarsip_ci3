@@ -417,6 +417,7 @@ class Sppd extends CI_Controller
 			'trim|required',
 			array('required' => 'Transportasi wajib Di isi')
 		);
+		
 		$this->form_validation->set_rules('place_from', 'place_from', 'trim|required');
 		$this->form_validation->set_rules('place_to', 'place_to', 'trim|required');
 		// $this->form_validation->set_rules('length_journey', 'length_journey', 'trim|required');
