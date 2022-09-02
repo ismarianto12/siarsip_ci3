@@ -18,7 +18,7 @@ $(function () {
 				cache: false,
 				success: function (data) {
 					$('#notifikasi').html('<div class="alert alert-success"><i class="fa fa-checklist"></i>Login Berhasil sedang mengalihkan ...</div>');
-					// window.location.href = base_url() + '?rg=welcome';
+					window.location.href = base_url() + '?rg=welcome';
 
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
