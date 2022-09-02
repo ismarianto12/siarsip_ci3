@@ -1,6 +1,6 @@
 <!--  -->
-<link href="<?= base_url() ?>/assets/frontend/plugins/select2/select2.min.css" rel="stylesheet" />
-<script src="<?= base_url() ?>/assets/frontend/plugins/select2/select2.min.js"></script>
+<link href="<?=base_url()?>/assets/frontend/plugins/select2/select2.min.css" rel="stylesheet" />
+<script src="<?=base_url()?>/assets/frontend/plugins/select2/select2.min.js"></script>
 
 <script>
     $(function() {
@@ -15,7 +15,7 @@
 
 
 
-        // if trigger add by system   
+        // if trigger add by system
 
         $('#date_back').on('change', function() {
             var date_go = $('#date_go').val();
@@ -28,7 +28,7 @@
         });
 
 
-        var url = '<?= base_url() ?>/sppd/selectPegawai';
+        var url = '<?=base_url()?>/sppd/selectPegawai';
         option = "<option value='0'>--Semua Data--</option>";
         $.get(url, {
             atasan: $(this).val()
@@ -72,11 +72,11 @@
 <div class='row'>
     <div class='col-md-12'>
         <div class='box-default'>
-            <div class='panel-heading'><i class="fa fa fa-folder-open-o"></i><?= ucfirst($judul) ?></div>
+            <div class='panel-heading'><i class="fa fa fa-folder-open-o"></i><?=ucfirst($judul)?></div>
             <div class='panel-wrapper collapse in' aria-expanded='true'>
                 <div class='panel-body'>
                     <div id="notifikasi"></div>
-                    <form id="trsppd" action="<?= $action ?>" method="POST" class="form-horizontal">
+                    <form id="trsppd" action="<?=$action?>" method="POST" class="form-horizontal">
                         <div class="card-body">
                             <div class="col-md-6">
                                 <label for="varchar" class='control-label col-md-4'><b>Kategori <?php echo form_error('sspdjeniss_id') ?></b></label>
@@ -86,15 +86,15 @@
 
                                         <?php
 
-                                        foreach ($sppdjenis->result() as $sptjeniss) :
+foreach ($sppdjenis->result() as $sptjeniss):
 
-                                            $selected = ($sptjeniss->id == $row->jenis_surat_id) ? "selected" : "";
+    $selected = ($sptjeniss->id == $row->jenis_surat_id) ? "selected" : "";
 
-                                            $namespd = str_replace('~', ' ', $sptjeniss->name);
-                                            $ket     = str_replace('SPPD', 'SPT ', $namespd);
-                                        ?>
-                                            <option bdata="<?= $ket ?>" jsppd="<?= $namespd ?>" value="<?= $sptjeniss->id ?>" <?= $selected ?>><?= $namespd ?></option>
-                                        <?php endforeach; ?>
+    $namespd = str_replace('~', ' ', $sptjeniss->name);
+    $ket = str_replace('SPPD', 'SPT ', $namespd);
+    ?>
+		                                            <option bdata="<?=$ket?>" jsppd="<?=$namespd?>" value="<?=$sptjeniss->id?>" <?=$selected?>><?=$namespd?></option>
+		                                        <?php endforeach;?>
                                     </select>
                                 </div>
 
@@ -109,7 +109,7 @@
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Nomor Surat Perintah Tugas<?php echo form_error('letter_code') ?></b></label>
                                     <div class='col-md-7'>
-                                        <input type="text" name="letter_code" id="letter_code" class="form-control sc-input-required" placeholder="Nomor Surat Perintah Tugas" value="<?= $letter_code ?>">
+                                        <input type="text" name="letter_code" id="letter_code" class="form-control sc-input-required" placeholder="Nomor Surat Perintah Tugas" value="<?=$letter_code?>">
                                     </div>
                                 </div>
 
@@ -154,14 +154,14 @@
 
                                         <select name="pengikut_nip[]" class="js-example-basic-multiple form-control" id="j_pengikut" multiple="multiple">
                                             <?php foreach ($this->db->get('pegawai')->result_array() as $list) {
-                                                if (strpos($row->pengikut_nip, $list['nip']) !== false) {
-                                                    $selected = 'selected'; // stop on first true result
-                                                } else {
-                                                    $selected = '';
-                                                }
-                                            ?>
-                                                <option value="<?= $list['nip'] ?>" <?= $selected ?>><?= $list['nama'] ?> - <?= $list['nip'] ?></option>
-                                            <?php } ?>
+    if (strpos($row->pengikut_nip, $list['nip']) !== false) {
+        $selected = 'selected'; // stop on first true result
+    } else {
+        $selected = '';
+    }
+    ?>
+                                                <option value="<?=$list['nip']?>" <?=$selected?>><?=$list['nama']?> - <?=$list['nip']?></option>
+                                            <?php }?>
                                         </select>
                                     </div>
                                 </div>
@@ -172,12 +172,12 @@
                                         <select class="form-control select2" name="government" id="government" required>
                                             <option value="">Semua </option>
                                             <?php
-                                            foreach ($this->properti->satker() as $key) {   ?>
+foreach ($this->properti->satker() as $key) {?>
 
-                                                <option value="<?= $key->nama ?>"><?= $key->nama ?></option>
+                                                <option value="<?=$key->nama?>"><?=$key->nama?></option>
 
                                             <?php }
-                                            ?>
+?>
                                         </select>
                                     </div>
                                 </div>
@@ -185,20 +185,20 @@
                                 <div class="form-group">
                                     <label for="nip" class='control-label col-md-4'><b>Rekening Anggaran<?php echo form_error('rekening') ?></b></label>
                                     <div class='col-md-7'>
-                                        <input type="text" name="rekening" id="rekening" class="form-control sc-input-required" placeholder="" value="<?= $rekening ?>">
+                                        <input type="text" name="rekening" id="rekening" class="form-control sc-input-required" placeholder="" value="<?=$rekening?>">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="budget_from" class='control-label col-md-4'><b>Mata Aggaran<?php echo form_error('budget_from') ?></b></label>
                                     <div class='col-md-7'>
-                                        <input type="text" name="budget_from" id="budget_from" class="form-control sc-input-required" placeholder="Mata Aggaran" value="<?= $budget_from ?>">
+                                        <input type="text" name="budget_from" id="budget_from" class="form-control sc-input-required" placeholder="Mata Aggaran" value="<?=$budget_from?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Keterangan<?php echo form_error('description') ?></b></label>
                                     <div class='col-md-7'>
-                                        <input type="text" name="description" id="description" value="<?= $description ?>" class="form-control" placeholder="Keterangn Lain">
+                                        <input type="text" name="description" id="description" value="<?=$description?>" class="form-control" placeholder="Keterangn Lain">
 
                                     </div>
                                 </div>
@@ -206,7 +206,7 @@
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Dasar Surat<?php echo form_error('place_from') ?></b></label>
                                     <div class='col-md-7'>
-                                        <input type="text" name="letter_content" id="letter_content" class="form-control  sc-input-required" placeholder="Dasar Surat" value="<?= $letter_content ?>">
+                                        <input type="text" name="letter_content" id="letter_content" class="form-control  sc-input-required" placeholder="Dasar Surat" value="<?=$letter_content?>">
 
                                     </div>
                                 </div>
@@ -227,7 +227,7 @@
                                     <div class="form-group">
                                         <label for="varchar" class='control-label col-md-4'><b>Nomor Surat Perjalanan Dinas (SPPD)<?php echo form_error('letter_code') ?></b></label>
                                         <div class='col-md-7'>
-                                            <input type="text" name="letter_code" id="letter_code" class="form-control sc-input-required" placeholder="Nomor Surat Perjalanan Dinas" value="<?= $letter_code ?>">
+                                            <input type="text" name="letter_code" id="letter_code" class="form-control sc-input-required" placeholder="Nomor Surat Perjalanan Dinas" value="<?=$letter_code?>">
                                         </div>
                                     </div>
 
@@ -251,19 +251,19 @@
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Maksud Perjalanan Dinas<?php echo form_error('purpose') ?></b></label>
                                     <div class='col-md-7'>
-                                        <input type="text" name="purpose" id="purpose" class="form-control sc-input-required" placeholder="Maksud Perjalanan Dinas" value="<?= $purpose ?>">
+                                        <input type="text" name="purpose" id="purpose" class="form-control sc-input-required" placeholder="Maksud Perjalanan Dinas" value="<?=$purpose?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Dasar Perjalanan Dinas <?php echo form_error('basic') ?></b></label>
                                     <div class='col-md-7'>
-                                        <input type="text" name="basic" id="basic" class="form-control sc-input-required" placeholder="Dasar Perjalanan Dinas" value="<?= $basic ?>">
+                                        <input type="text" name="basic" id="basic" class="form-control sc-input-required" placeholder="Dasar Perjalanan Dinas" value="<?=$basic?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="varchar" class='control-label col-md-4'><b>Alat Angkut yang dipergunakan<?php echo form_error('transport') ?></b></label>
                                     <div class='col-md-7'>
-                                        <input type="text" value="<?= $transport ?>" name="transport" id="transport" class="form-control sc-input-required" placeholder="Alat Angkut yang dipergunakan">
+                                        <input type="text" value="<?=$transport?>" name="transport" id="transport" class="form-control sc-input-required" placeholder="Alat Angkut yang dipergunakan">
 
                                     </div>
                                 </div>
@@ -301,10 +301,10 @@
                                     <div class='col-md-7'>
                                         <select class="form-control select2" name="pimpinan">
                                             <?php foreach ($this->db->get_where('pegawai', [
-                                                'jabatan' => 'Pimpinan'
-                                            ])->result_array() as $list) {  ?>
-                                                <option value="<?= $list['nip'] ?>" <?= $list['nip'] == $row->pimpinan ? 'selected' : '' ?>><?= $list['nama'] ?></option>
-                                            <?php } ?>
+    'jabatan' => 'Pimpinan',
+])->result_array() as $list) {?>
+                                                <option value="<?=$list['nip']?>" <?=$list['nip'] == $row->pimpinan ? 'selected' : ''?>><?=$list['nama']?></option>
+                                            <?php }?>
                                         </select>
                                     </div>
                                 </div>
@@ -316,10 +316,10 @@
 
                                         <select name="kabag" class="form-control select2">
                                             <?php foreach ($this->db->get_where('pegawai', [
-                                                'jabatan' => 'Kepala Bagian UMUM'
-                                            ])->result_array() as $list) {  ?>
-                                                <option value="<?= $list['nip'] ?>" <?= $list['nip'] == $row->kabag ? 'selected' : '' ?>><?= $list['nama'] ?></option>
-                                            <?php } ?>
+    'jabatan' => 'Kepala Bagian UMUM',
+])->result_array() as $list) {?>
+                                                <option value="<?=$list['nip']?>" <?=$list['nip'] == $row->kabag ? 'selected' : ''?>><?=$list['nama']?></option>
+                                            <?php }?>
                                         </select>
 
                                     </div>
@@ -330,10 +330,10 @@
                                     <div class='col-md-7'>
                                         <select name="kasubag" id="kasubag" class="form-control select2">
                                             <?php foreach ($this->db->get_where('pegawai', [
-                                                'jabatan' => 'Kepala sub bagian'
-                                            ])->result_array() as $list) {  ?>
-                                                <option value="<?= $list['nip'] ?>" <?= $list['nip'] == $row->kasubag ? 'selected' : '' ?>><?= $list['nama'] ?></option>
-                                            <?php } ?>
+    'jabatan' => 'Kepala sub bagian',
+])->result_array() as $list) {?>
+                                                <option value="<?=$list['nip']?>" <?=$list['nip'] == $row->kasubag ? 'selected' : ''?>><?=$list['nama']?></option>
+                                            <?php }?>
                                         </select>
                                     </div>
                                 </div>
@@ -344,7 +344,7 @@
                                     <div class="col-md-12">
                                         <hr />
                                         <button class="btn btn-success" type="submit"><i class="fa fa-save"></i>Simpan</button>
-                                        <a href="<?= base_url('sppd') ?>" class="btn btn-info"><i class="fa fa-list"></i>Back </a>
+                                        <a href="<?=base_url('sppd')?>" class="btn btn-info"><i class="fa fa-list"></i>Back </a>
                                         <button class="btn btn-danger" type="reset">Batal</button>
                                     </div>
                                 </div>
@@ -377,8 +377,9 @@
                         if (data.response == 'y') {
                             redirect();
                         } else if (data.response == 'n') {
+                            Swal('Keterangan',  data.message, 'error');
                             $('#notifikasi').html('<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><ul style="display: grid;">' + data.message + '</ul></div>');
-                        }
+                         }
                     },
                     error: function(data, xhr, status) {
                         Swal('Keterangan', 'data tidak response dengan baik' + status, 'error');
@@ -401,7 +402,7 @@
     })
 
 
-    ///after data clicked in button 
+    ///after data clicked in button
     function redirect() {
 
 
@@ -417,7 +418,7 @@
             },
             function() {
                 Swal('Mengalihkan .. ', 'Data Sedang di alihkan', 'success');
-                window.location.href = '<?= base_url('sppd') ?>';
+                window.location.href = '<?=base_url('sppd')?>';
             });
     }
 </script>
