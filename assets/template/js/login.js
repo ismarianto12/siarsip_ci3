@@ -23,7 +23,7 @@ $(function () {
 					}
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
-					alert('GAgal');
+					$('#notifikasi').html('<div class="alert alert-danger"><i class="fa fa-close"></i>Username dan Password yang anda masukan salah .</div>');
 				}
 			});
 		}
