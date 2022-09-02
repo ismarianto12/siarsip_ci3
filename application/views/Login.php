@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Siarsip</title>
-  <link rel="shortcut icon" href="<?= base_url('/assets/template') ?>/img/favicon.ico" />
+  <link rel="shortcut icon" href="<?=base_url('/assets/template')?>/img/favicon.ico" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
@@ -13,23 +13,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="/css/result-light.css">
 
-  <link rel="stylesheet" type="text/css" href="<?= base_url('/assets/template') ?>/css/bootstrap4.min.css">
-  <script src="<?= base_url() ?>assets/template/plugins/components/jquery/dist/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="<?=base_url('/assets/template')?>/css/bootstrap4.min.css">
+  <script src="<?=base_url()?>assets/template/plugins/components/jquery/dist/jquery.min.js"></script>
 
 
-  <script type="text/javascript" src="<?= base_url('/assets/template') ?>/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="<?=base_url('/assets/template')?>/js/bootstrap.bundle.min.js"></script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
-  <script src="<?= base_url() ?>assets/template/js/login.js"></script>
+  <script src="<?=base_url()?>assets/template/js/login.js"></script>
 
-  <script type="text/javascript" src="<?= base_url('/assets/template') ?>/dialog/bootbox.js"></script>
+  <script type="text/javascript" src="<?=base_url('/assets/template')?>/dialog/bootbox.js"></script>
   <script>
     function base_url() {
-      return '<?= base_url() ?>/';
+      return '<?=base_url()?>/';
     }
   </script>
 
-  <script src="<?= base_url() ?>assets/template/js/login.js"></script>
+  <script src="<?=base_url()?>assets/template/js/login.js"></script>
 
 
   <style id="compiled-css" type="text/css">
@@ -131,9 +131,9 @@
 
       <div class="col-md-8 align-items-center">
         <center>
-          <img src="<?= base_url('assets/img/') . logo() ?>" alt="logo" width="80">
+          <img src="<?=base_url('assets/img/') . logo()?>" alt="logo" width="80">
           <br /> <br />
-          <h4 style="color:#000"><?= strtoupper(instansi('nama_instansi')) ?></h4>
+          <h4 style="color:#000"><?=strtoupper(instansi('nama_instansi'))?></h4>
         </center>
       </div>
 

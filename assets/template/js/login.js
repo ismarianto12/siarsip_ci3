@@ -14,13 +14,12 @@ $(function () {
 				url: base_url() + '/welcome/login',
 				type: 'POST',
 				data: { username: username, password: password },
+				async: false,
+				cache: false,
 				success: function (data) {
-					if (data == 'y') {
-						$('#notifikasi').html('');
-						window.location.href = base_url() + '?rg=welcome';
-					} else {
-						$('#notifikasi').html('<div class="alert alert-danger"><i class="fa fa-close"></i>Username dan Password yang anda masukan salah .</div>');
-					}
+					$('#notifikasi').html('<div class="alert alert-success"><i class="fa fa-checklist"></i>Login Berhasil sedang mengalihkan ...</div>');
+					// window.location.href = base_url() + '?rg=welcome';
+
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
 					$('#notifikasi').html('<div class="alert alert-danger"><i class="fa fa-close"></i>Username dan Password yang anda masukan salah .</div>');
