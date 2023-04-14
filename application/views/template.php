@@ -284,7 +284,7 @@ if ($this->uri->segment(1) == 'dasboard') {
 
     <script src="<?=base_url()?>/assets/frontend/plugins/pace/pace.js"></script>
     <script src="https://fengyuanchen.github.io/datepicker/js/datepicker.js"></script>
-    <script src="<?=base_url('assets/template/js/js14.js')?>"></script>
+    <script src="<?=base_url('assets/template/js/jquery-ui.1.11.4.min.js')?>"></script>
     <script src="<?=base_url('assets/template/js/jquery.slimscroll.js')?>"></script>
 
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>
