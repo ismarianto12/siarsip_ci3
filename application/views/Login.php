@@ -17,19 +17,18 @@
   <script src="<?=base_url()?>assets/template/plugins/components/jquery/dist/jquery.min.js"></script>
 
 
-  <script type="text/javascript" src="<?=base_url('/assets/template')?>/js/bootstrap.bundle.min.js"></script>
+  <script  src="<?=base_url('/assets/template')?>/js/bootstrap.bundle.min.js"></script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
-  <script src="<?=base_url()?>assets/template/js/login.js"></script>
+  <script  src="<?=base_url()?>assets/template/js/login.js"></script>
 
-  <script type="text/javascript" src="<?=base_url('/assets/template')?>/dialog/bootbox.js"></script>
+  <script src="<?=base_url('/assets/template')?>/dialog/bootbox.js"></script>
   <script>
     function base_url() {
       return '<?=base_url()?>/';
     }
   </script>
-
-  <script src="<?=base_url()?>assets/template/js/login.js"></script>
+ 
 
 
   <style id="compiled-css" type="text/css">
@@ -99,18 +98,14 @@
     }
 
     /* EOS */
-  </style>
-
-  <script id="insert"></script>
+  </style> 
 
 
 </head>
 
 <body>
   <header class="header">
-    <nav class="navbar navbar-expand-lg navbar-light py-3" style="
-    background: orange;
-">
+    <nav class="navbar navbar-expand-lg navbar-light py-3" style="background: orange;">
       <div class="container">
         <!-- Navbar Brand -->
         <a href="#" class="navbar-brand">
@@ -131,7 +126,7 @@
 
       <div class="col-md-8 align-items-center">
         <center>
-          <img src="<?=base_url('assets/img/') . logo()?>" alt="logo" width="80">
+          <img src="<?= base_url('assets/img/') . logo()?>" alt="logo" width="80">
           <br /> <br />
           <h4 style="color:#000"><?=strtoupper(instansi('nama_instansi'))?></h4>
         </center>

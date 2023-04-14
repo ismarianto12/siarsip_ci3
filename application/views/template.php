@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?=$judul?></title>
-     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="<?=base_url()?>/assets/frontend/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -282,7 +284,7 @@ if ($this->uri->segment(1) == 'dasboard') {
 
     <script src="<?=base_url()?>/assets/frontend/plugins/pace/pace.js"></script>
     <script src="https://fengyuanchen.github.io/datepicker/js/datepicker.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="<?=base_url('assets/template/js/js14.js')?>"></script>
     <script src="<?=base_url('assets/template/js/jquery.slimscroll.js')?>"></script>
 
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>

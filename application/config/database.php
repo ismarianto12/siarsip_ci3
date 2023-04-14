@@ -5,10 +5,10 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
+	'username' => 'u6061289_arsip_app',
+	'password' => ';=1(FnHK,{0e',
 	'port' => 3306, //maybe use costumize using you're configuration 
-	'database' => 'aplikasi_arsip',
+	'database' => 'u6061289_arsip_app',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

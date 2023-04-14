@@ -184,8 +184,8 @@
                              var url2 = base_url() + 'sppdprint/printdata/' + idp + '/spt' + id + '/spt';
 
                              $('#judul').html('<h4>Cetak Surat SPPD ' + judul + '</h4> <br />');
-                             $('#sppd').html("<a href='" + url1 + "' class='btn btn-primary' target='_blank'><i class='fa fa-print'>Print Surat SPPD</a>");
-                             $('#spt').html("<a href='" + url2 + "' class='btn btn-warning' target='_blank'><i class='fa fa-print'>Print Data SPT</a>");
+                             $('#sppd').html("<a href='" + url1 + "' class='btn btn-primary'><i class='fa fa-print'>Print Surat SPPD</a>");
+                             $('#spt').html("<a href='" + url2 + "' class='btn btn-warning'><i class='fa fa-print'>Print Data SPT</a>");
 
                          });
                      });
