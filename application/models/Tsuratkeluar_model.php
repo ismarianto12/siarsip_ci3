@@ -38,7 +38,7 @@ class Tsuratkeluar_model extends CI_Model
             $this->datatables->where('disposisi', $this->input->post('disposisi'));
         }
         $this->datatables->add_column("Qrcode", "<img src='" . base_url('assets/qrsurat/keluar/$1.png') . "' style='width:100px;height:100px'>", "no_surat");
-        $this->datatables->add_column("file_surat", "<a href='" . base_url('sppdprint/download?file=assets/file_surat/$1') . "' target='_blank' class='btn btn-success'>Detail File Surat</a>", "nama_file");
+        $this->datatables->add_column("file_surat", "<a href='" . base_url('sppdprint/download?file=assets/file_surat/$1') . "' class='btn btn-success'>Detail File Surat</a>", "nama_file");
         return $this->datatables->generate();
     }
 

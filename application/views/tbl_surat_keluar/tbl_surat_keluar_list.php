@@ -36,7 +36,7 @@
                             <th>Tujuan</th>
                             <th>No Surat</th>
                             <th>No Agenda</th>
-                            <th>jenis_surat</th>
+                            <th>Jenis Surat</th>
                             <th>Kode</th>
                             <th>Tgl Surat</th>
                             <th>File</th>

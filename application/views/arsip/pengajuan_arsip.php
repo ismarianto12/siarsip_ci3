@@ -43,10 +43,10 @@
                     <?php $jenis_file = substr($dt['file_arsip'], -4);
 
                     if ($jenis_file == '.jpg' || $jenis_file == '.png') :  ?>
-                      <button href="<?= base_url('arsip/download_file_arip/' . $dt['id_pengajuan']) ?>" onclick="return tampil_data('<?= $dt['file_arsip'] ?>') " class="btn bg-green btn-flat margin  btn-xs"><?= $dt['file_arsip'] ?></button>
+                      <button href="<?= base_url('arsip/download_file_arip/' . $dt['id_pengajuan']) ?>" onclick="return tampil_data('<?= $dt['file_arsip'] ?>') " class="btn bg-green btn-flat margin  btn-md"><?= $dt['file_arsip'] ?></button>
                     <?php else : ?>
 
-                      <a href="<?= base_url('arsip/download_file_arip/' . $dt['id_pengajuan']) ?>" target="_blank" class="btn bg-green btn-flat margin"><i class="fa fa-list"></i>Download File</a>
+                      <a href="<?= base_url('arsip/download_file_arip/' . $dt['id_pengajuan']) ?>" target="_blank" class="btn bg-green btn-flat margin btn-md"><i class="fa fa-list"></i>Download File</a>
 
                     <?php endif; ?>
 
@@ -65,17 +65,32 @@
           </table>
           <script type="text/javascript">
             function tampil_data(id) {
-              var SplitText = "Arsip Gambar"
-              var $dialog = $('<div></div>')
-                .html(SplitText)
-                .dialog({
-                  height: 500,
-                  width: 600,
-                  title: 'Arsip gambar'
-                });
-              $dialog.dialog('open');
-              $dialog.html('<img src ="<?= base_url() ?>/assets/arsip/' + id + '">');
+            //   var SplitText = "Arsip Gambar"
+            //   var $dialog = $('<div></div>')
+            //     .html(SplitText)
+            //     .dialog({
+            //       height: 500,
+            //       width: 600,
+            //       title: 'Arsip gambar'
+            //     });
+            //   $dialog.dialog('open');
+            //   $dialog.html('<img src ="<?= base_url() ?>/assets/arsip/' + id + '">');
+              
+       $.dialog({
+            title: "Arsip Gambar",
+            content: '<img src ="<?= base_url() ?>/assets/arsip/' + id + '" class="img-responsive" onerror="this.onerror=null;this.src=\'http://arsip.gotrain.id/assets/img/no_image.jpg\';">',
+            animation: 'scale',
+            columnClass: 'large',
+            closeAnimation: 'scale',
+            backgroundDismiss: true,
+        });
+              
+              
+              
             }
+            
+            
+            
           </script>
           * ) . File arsip masih kosong harap isi untuk dapat di proses dari pengajuan arsip yang kurang.
         <?php } elseif ($form == 'y') {  ?>
