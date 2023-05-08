@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-white">
+            <div class="small-box bg-red">
                 <div class="inner">
                     <h3><?= $jum_arsip ?></h3>
                     <p>Total Arsip</p>
@@ -16,7 +16,7 @@
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-white">
+            <div class="small-box bg-green">
                 <div class="inner">
                     <h3><?= $jum_s_masuk ?></h3>
                     <p>Total Surat Masuk</p>
@@ -29,7 +29,7 @@
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-white">
+            <div class="small-box bg-yellow">
                 <div class="inner">
                     <h3><?= $jum_s_keluar ?></h3>
                     <p>Jumlah Surat Keluar</p>
@@ -42,7 +42,7 @@
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-white">
+            <div class="small-box bg-orange">
                 <div class="inner">
                     <h3><?= $jum_disposisi ?></h3>
                     <p>Surat Masuk Disposisi</p>
@@ -56,7 +56,7 @@
     </div><!-- /.row -->
     <!-- Main row -->
     <div class="callout bg-white">
-        <marquee><i class="fa fa-info"></i>Hy <?= ucfirst($this->session->nama) ?> Selamat datang kembali, silahkan gunakan menu disamping untuk menggukan aplikasi</marquee>
+        <marquee><i class="fa fa-info"></i>Hy &nbsp;&nbsp; <?= ucfirst($this->session->nama) ?> Selamat datang kembali, silahkan gunakan menu disamping untuk menggukan aplikasi</marquee>
     </div>
 
     <div class="row">

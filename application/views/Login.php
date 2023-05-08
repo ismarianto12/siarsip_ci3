@@ -7,6 +7,8 @@
   <link rel="shortcut icon" href="<?=base_url('/assets/template')?>/img/favicon.ico" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+      <link rel="icon" href="<?= base_url('assets/img/' . icon()) ?>" />
+
 
   <meta name="robots" content="noindex, nofollow">
   <meta name="googlebot" content="noindex, nofollow">

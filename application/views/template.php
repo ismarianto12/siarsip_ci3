@@ -138,7 +138,7 @@
             <!-- Logo -->
             <a href="<?= site_url('') ?>" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b></b>NB</span>
+                <span class="logo-mini"><b></b>SWADIKAP</span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg"><?= strtoupper($this->session->level) ?></span>
             </a>
@@ -218,10 +218,11 @@
                         <img src="<?= base_url('assets/img/foto/' . $data['foto']) ?>" class="img-circle" alt="User Image" onerror="this.onerror=null;this.src='<?= base_url('assets/img/no_image.jpg') ?>';">
                     </div>
                     <div class="pull-left info">
-                        <p><?= $this->session->username ?></p>
-                        <p>Level :  <?= ucfirst($this->session->level) ?></p>
+                        <p><?= ucfirst($this->session->username) ?></p>
+                       
 
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        <br /><br />
                     </div>
                 </div>
                 <!-- search form -->
@@ -248,15 +249,13 @@
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1>
-                    Beranda
-
-                </h1>
+                
                 <ol class="breadcrumb">
                     <li><a href="<?= base_url() ?>"><i class="fa fa-dashboard"></i> Beranda</a></li>
                     <li class="active"><?= ucfirst(strtolower($judul)) ?></li>
                 </ol>
             </section>
+            <br /><br />
             <!-- Small boxes (Stat box) -->
             <?php
             //dont change by hand 
