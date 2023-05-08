@@ -47,17 +47,15 @@ class Pegawai_model extends CI_Model
         pegawai.datetime_insert,
         pegawai.datetime_update,
         pegawai.status_deleted,
-        pegawai.pangkat,
-        
+        pegawai.pangkat, 
         sikd_satker.kode,
-        sikd_satker.nama as namasatker
-        ');
+        IF(sikd_satker.nama = null, \'Belum diset\',sikd_satker.nama) as namasatker');
         $this->datatables->from('pegawai');
         if ($this->input->get_post('satker_id')) {
             $this->datatables->where('pegawai.sikd_satker_id', $id_satker);
         }
         $this->datatables->join('sikd_satker', 'pegawai.sikd_satker_id = sikd_satker.id', 'left outer');
-        $this->datatables->add_column('action', anchor(site_url('pegawai/detail/$1'), '<i class="fa fa-book"></i> ', 'class="btn btn-info btn-xs"') . "  " . anchor(site_url('pegawai/edit/$1'), '<i class="fa fa-edit"></i>  ', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i>  </a>", 'id');
+        $this->datatables->add_column('action', anchor(site_url('pegawai/edit/$1'), '<i class="fa fa-edit"></i>  ', 'class="btn btn-success btn-xs edit"') . "<a href='#' class='btn btn-danger btn-xs delete' onclick='javasciprt: return hapus($1)'><i class='fa fa-trash'></i>  </a>", 'id');
         return $this->datatables->generate();
     }
 

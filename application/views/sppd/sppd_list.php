@@ -2,10 +2,12 @@
      <div class='col-sm-12'>
          <?= $this->session->userdata('message') ?>
          <div class='white-box'>
-             <p class='text-muted m-b-30'><i class="fa fa-file"></i> perjalanan dinas</p>
+             <br /><br />
+             <h4 class='text-center'><i class="fa fa-file"></i>SURAT PERJALANAN DINAS</h4>
              <div class='table-responsive'>
                  <?php echo anchor(site_url('sppd/tambah'), '<i class="fa fa-plus"></i> Tambah Data', 'class="btn bg-navy btn-flat margin btn-xs"'); ?>
                  <br /><br />
+                 <div style="margin-left:10px"> 
                  <form id="filter" method="POST" class="filter_by">
                      <div class="card-body">
                          <div class="form-group row">
@@ -24,8 +26,9 @@
                          </div>
                      </div>
                  </form>
+                 </div>
                  <hr />
-                 <table class="table" id="datatables">
+                 <table class="table table-bordered table-striped" id="datatables">
                      <thead>
                          <tr>
                              <th width="80px">No</th>

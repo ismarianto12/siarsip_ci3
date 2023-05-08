@@ -84,7 +84,7 @@
 
 				<div class='widget-body' id="scroll">
 					<div id="notifikasi"></div>
-					<table class="table table-striped" id="datatables">
+					<table class="table table-bordered table-striped" id="datatables">
 						<thead>
 							<tr>
 								<th width="80px">No</th>

@@ -41,7 +41,7 @@
         <br /><br />
         <?= $this->session->userdata('message') ?>
         <div id="notifikasi"></div>
-        <table class="table" id="datatables">
+        <table class="table table-bordered table-striped" id="datatables">
           <thead>
             <tr>
               <th width="80px">No</th>
@@ -73,6 +73,7 @@
             };
 
             var table_data = $("#datatables").DataTable({
+              'autoWidth'   : false, 
               initComplete: function() {
                 var api = this.api();
                 $('#datatables input')

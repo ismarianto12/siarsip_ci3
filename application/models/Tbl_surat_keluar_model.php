@@ -26,15 +26,17 @@ class Tbl_surat_keluar_model extends CI_Model
             a.tujuan,
             a.no_surat,
             a.isi,
-            a.kode,
-            a.tgl_surat,
+            a.kode, 
+            IF(a.tgl_surat = "",a.tgl_surat,"Kosong") as tgl_surat,
             a.tgl_catat,
             a.file,
             a.keterangan,
             a.id_user,
 
             b.id_jenis,
-            b.nama_jenis,
+            
+            IF(b.nama_jenis = "", b.nama_jenis,"Kosong") as nama_jenis,
+          
             b.id_user,
             date_format(b.tanggal_create,"%Y-%M-%d") as tgl_ind 
  
